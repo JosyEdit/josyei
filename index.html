@@ -256,6 +256,21 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 .jx .au-msg a{color:var(--cyan)}
 @media (min-width:1024px){.jx .steps3{grid-template-columns:repeat(3,1fr)}}
 .jx .btn.tel{font-size:1.25rem}
+
+/* Accueil 21/10 : titre court, fondateur, sections aérées */
+.jx .hero h1.h1-court{font-size:clamp(1.55rem,3.6vw,2.6rem);max-width:34ch;line-height:1.2}
+.jx .hero .sub-doux{font-size:clamp(.95rem,1.6vw,1.08rem);color:#9aa3c2;max-width:66ch;line-height:1.7}
+.jx .fondateur{display:grid;gap:2rem;align-items:center;max-width:960px;margin:0 auto}
+.jx .fondateur .photo{width:220px;height:220px;border-radius:50%;border:3px dashed rgba(0,212,255,.6);background:linear-gradient(135deg,#131838,#24305e);display:grid;place-items:center;justify-self:center;color:var(--gris);font-weight:600;text-align:center;padding:1rem}
+.jx .fondateur h2{text-align:left;margin-bottom:1rem}
+.jx .fondateur p{color:var(--gris);font-size:1.08rem;line-height:1.75}
+.jx .regle{max-width:640px;margin:0 auto;text-align:center;display:grid;gap:.6rem;padding:1.5rem 1.75rem;border:1px solid rgba(0,212,255,.35);background:rgba(255,255,255,.03)}
+.jx .regle h2{font-size:.85rem;text-transform:uppercase;letter-spacing:.12em;color:var(--cyan);font-weight:700}
+.jx .regle .regle-1{font-size:clamp(1.05rem,2.2vw,1.25rem);font-weight:600;color:var(--blanc)}
+.jx .regle .regle-2{font-size:1rem;color:var(--gris)}
+.jx .hero ~ section{padding:5rem 0}
+@media (min-width:768px){.jx .fondateur{grid-template-columns:auto 1fr}.jx .fondateur .photo{width:260px;height:260px}}
+@media (min-width:1024px){.jx .hero ~ section{padding:6.5rem 0}}
 </style>
 <div class="jx alignfull">
 
@@ -291,27 +306,38 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 
 <section class="hero" aria-labelledby="jx-h1">
   <div class="w">
-    <h1 id="jx-h1" style="max-width:26ch">J'ai testé le dropshipping, l'e-commerce et les fausses promesses d'internet. Aujourd'hui, je mets mon expertise au service des entreprises de la Vienne.</h1>
-    <p class="sub">Après avoir tout essayé, j'en ai tiré une conviction : pour une entreprise locale, la vraie valeur ne se trouve pas dans des stratégies compliquées. Elle se trouve dans trois choses : être visible sur Google, avoir du contenu de qualité, et automatiser ce qui vous fait perdre du temps. Je suis un indépendant, pas une agence. Zéro jargon, zéro réunion interminable.</p>
+    <h1 id="jx-h1" class="h1-court">L'expertise digitale au service des entreprises de la Vienne.</h1>
+    <p class="sub sub-doux">J'ai testé le dropshipping, l'e-commerce et les fausses promesses d'internet. Après avoir tout essayé, j'en ai tiré une conviction : pour une entreprise locale, la vraie valeur ne se trouve pas dans des stratégies compliquées. Elle se trouve dans trois choses : être visible sur Google, avoir du contenu de qualité, et automatiser ce qui vous fait perdre du temps. Je suis un indépendant, pas une agence. Zéro jargon, zéro réunion interminable.</p>
     <div class="ctas">
       <a class="btn btn-p" href="#contact">Discuter de mon projet</a>
       <a class="btn btn-s" href="#services">Ce que je fais pour vous</a>
     </div>
-    <svg class="illus" viewBox="0 0 320 200" role="img" aria-label="Illustration : un ordinateur relié à une carte avec un repère de localisation et un graphique en hausse" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="320" height="200" rx="16" fill="#131838"/><rect x="40" y="50" width="130" height="85" rx="8" stroke="#4d94ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M85 150h40M105 135v15" stroke="#4d94ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M58 115l25-25 20 15 40-35" stroke="#00d4ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M131 70h12v12" stroke="#00d4ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M200 60l30-12 30 12 30-12v95l-30 12-30-12-30 12z" stroke="#4d94ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M230 48v95M260 60v95" stroke="#4d94ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/><path d="M245 112s-16-14-16-26a16 16 0 0 1 32 0c0 12-16 26-16 26z" stroke="#00d4ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="245" cy="86" r="5" stroke="#00d4ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 </section>
 
-<section class="alt" aria-labelledby="jx-h2-regle">
+<section class="alt" aria-labelledby="jx-h2-fondateur">
   <div class="w">
-    <div class="card rv regle" style="max-width:760px;margin:0 auto;text-align:center;border:2px solid var(--cyan);display:grid;gap:1rem">
-      <h2 id="jx-h2-regle" style="font-size:clamp(1.3rem,3vw,1.8rem)">Ma règle d'or</h2>
-      <p style="font-size:clamp(1.15rem,2.5vw,1.5rem);font-weight:700;color:var(--blanc)">« Je ne vous forme pas. Je me forme constamment pour vous. »</p>
-      <p style="font-size:1.1rem;color:var(--cyan);font-weight:600">Je gère la complexité technique. Vous récoltez les résultats.</p>
+    <div class="fondateur rv">
+      <div class="photo" role="img" aria-label="Photo de Valéry, fondateur de JOSY EI (à venir)"><span>Photo de Valéry</span></div>
+      <div class="fondateur-t">
+        <h2 id="jx-h2-fondateur">Qui suis-je ?</h2>
+        <p>Je suis Valéry, fondateur de JOSY EI. Après avoir exploré tous les modèles de business en ligne, j'ai compris que la vraie valeur pour une entreprise locale réside dans trois choses : la visibilité sur Google, le contenu de qualité et l'automatisation. Je ne suis pas une agence. Je suis un indépendant qui s'implique à 200 % et qui ne compte pas ses heures.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="services" aria-labelledby="jx-h2-services">
+<section aria-labelledby="jx-h2-regle">
+  <div class="w">
+    <div class="card rv regle">
+      <h2 id="jx-h2-regle">Ma règle d'or</h2>
+      <p class="regle-1">« Je ne vous forme pas. Je me forme constamment pour vous. »</p>
+      <p class="regle-2">Je gère la complexité technique. Vous récoltez les résultats.</p>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="services" aria-labelledby="jx-h2-services">
   <div class="w">
     <h2 id="jx-h2-services" class="rv">Ce que je fais pour vous</h2>
     <div class="values">
@@ -323,7 +349,7 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
   </div>
 </section>
 
-<section class="alt" aria-labelledby="jx-h2-offre">
+<section aria-labelledby="jx-h2-offre">
   <div class="w cta-band">
     <h2 id="jx-h2-offre" class="rv">L'offre</h2>
     <p style="max-width:68ch;font-size:1.1rem">Chaque entreprise a ses propres défis. C'est pourquoi je ne propose pas de formule toute faite. Mon approche est simple : on échange sur votre situation actuelle, j'identifie où vous perdez du temps et de l'argent, et je vous propose un plan d'action sur-mesure. Sans engagement, et sans jargon.</p>
@@ -331,7 +357,7 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
   </div>
 </section>
 
-<section aria-labelledby="jx-h2-comment">
+<section class="alt" aria-labelledby="jx-h2-comment">
   <div class="w">
     <h2 id="jx-h2-comment" class="rv">Comment ça se passe ?</h2>
     <ol class="steps4 steps3" style="list-style:none;padding:0;margin:2.5rem 0 0">
@@ -342,7 +368,7 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
   </div>
 </section>
 
-<section class="alt" id="contact" aria-labelledby="jx-h2-humain">
+<section id="contact" aria-labelledby="jx-h2-humain">
   <div class="w cta-band">
     <h2 id="jx-h2-humain" class="rv">Un vrai humain, pas un standard</h2>
     <p style="max-width:62ch;font-size:1.1rem">Quand vous me contactez, vous avez mon numéro de portable direct. Vous m'envoyez un SMS ou un WhatsApp, je vous réponds dans la journée. Pas un commercial : moi.</p>
