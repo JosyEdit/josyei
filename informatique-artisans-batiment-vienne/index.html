@@ -417,6 +417,14 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 .jx .meteo-mobile .meteo-ville,.jx .meteo-mobile .meteo-sep:first-of-type{display:none}
 @media (max-width:340px){.jx .meteo-mobile{display:none}}
 @media (min-width:1024px){.jx .meteo-mobile{display:none}}
+
+.jx .cx-fiche{font:inherit;cursor:pointer;background:transparent}
+.jx .cx-points{display:inline-flex;gap:.3rem;padding:.2rem 0}
+.jx .cx-points i{width:.45rem;height:.45rem;border-radius:50%;background:var(--gris);animation:cxp 1s infinite ease-in-out}
+.jx .cx-points i:nth-child(2){animation-delay:.15s}.jx .cx-points i:nth-child(3){animation-delay:.3s}
+@keyframes cxp{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+.jx .cx-tester{display:inline-block;margin-top:.5rem}
+@media (prefers-reduced-motion:reduce){.jx .cx-points i{animation:none;opacity:.7}}
 </style>
 <div class="jx alignfull">
 

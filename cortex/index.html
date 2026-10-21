@@ -417,6 +417,14 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 .jx .meteo-mobile .meteo-ville,.jx .meteo-mobile .meteo-sep:first-of-type{display:none}
 @media (max-width:340px){.jx .meteo-mobile{display:none}}
 @media (min-width:1024px){.jx .meteo-mobile{display:none}}
+
+.jx .cx-fiche{font:inherit;cursor:pointer;background:transparent}
+.jx .cx-points{display:inline-flex;gap:.3rem;padding:.2rem 0}
+.jx .cx-points i{width:.45rem;height:.45rem;border-radius:50%;background:var(--gris);animation:cxp 1s infinite ease-in-out}
+.jx .cx-points i:nth-child(2){animation-delay:.15s}.jx .cx-points i:nth-child(3){animation-delay:.3s}
+@keyframes cxp{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+.jx .cx-tester{display:inline-block;margin-top:.5rem}
+@media (prefers-reduced-motion:reduce){.jx .cx-points i{animation:none;opacity:.7}}
 </style>
 <div class="jx alignfull">
 
@@ -487,27 +495,27 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
       <button type="button" aria-pressed="false" data-f="Services">Services</button>
     </div>
     <div class="cx-grille" id="cx-grille">
-        <article class="cx-agent" data-secteur="BTP"><p class="cx-agent-tag">BTP</p><h3>Agent BTP</h3><p>Prépare vos devis, relance ceux restés sans réponse et suit vos chantiers.</p><p class="cx-base">Basé sur Le Gestionnaire</p></article>
-        <article class="cx-agent" data-secteur="BTP"><p class="cx-agent-tag">BTP</p><h3>Agent Artisan</h3><p>Repère les entreprises et syndics de votre secteur qui ont besoin de vos services.</p><p class="cx-base">Basé sur Le Prospecteur</p></article>
-        <article class="cx-agent" data-secteur="BTP"><p class="cx-agent-tag">BTP</p><h3>Agent Chantier</h3><p>Transforme vos photos de chantier en publications pour votre fiche Google.</p><p class="cx-base">Basé sur Le Rédacteur</p></article>
-        <article class="cx-agent" data-secteur="Commerce"><p class="cx-agent-tag">Commerce</p><h3>Agent Commerce</h3><p>Publie vos nouveautés et promotions sur votre fiche Google et vos réseaux.</p><p class="cx-base">Basé sur Le Rédacteur</p></article>
-        <article class="cx-agent" data-secteur="Commerce"><p class="cx-agent-tag">Commerce</p><h3>Agent Fidélité</h3><p>Prépare les relances de vos clients professionnels et le suivi des commandes.</p><p class="cx-base">Basé sur Le Gestionnaire</p></article>
-        <article class="cx-agent" data-secteur="Commerce"><p class="cx-agent-tag">Commerce</p><h3>Agent Boutique en ligne</h3><p>Rédige vos fiches produits et vos descriptions de catalogue.</p><p class="cx-base">Basé sur Le Rédacteur</p></article>
-        <article class="cx-agent" data-secteur="Santé"><p class="cx-agent-tag">Santé</p><h3>Agent Cabinet</h3><p>Organise vos emails et rappels administratifs, sans traiter de données de santé.</p><p class="cx-base">Basé sur Le Gestionnaire</p></article>
-        <article class="cx-agent" data-secteur="Santé"><p class="cx-agent-tag">Santé</p><h3>Agent Prévention</h3><p>Rédige des contenus pédagogiques pour votre site et votre fiche Google.</p><p class="cx-base">Basé sur Le Rédacteur</p></article>
-        <article class="cx-agent" data-secteur="Santé"><p class="cx-agent-tag">Santé</p><h3>Agent Partenaires</h3><p>Repère les établissements et professionnels avec qui travailler localement.</p><p class="cx-base">Basé sur Le Prospecteur</p></article>
-        <article class="cx-agent" data-secteur="Services"><p class="cx-agent-tag">Services</p><h3>Agent Comptable</h3><p>Relance vos clients pour les pièces manquantes et suit les échéances.</p><p class="cx-base">Basé sur Le Gestionnaire</p></article>
-        <article class="cx-agent" data-secteur="Services"><p class="cx-agent-tag">Services</p><h3>Agent Immobilier</h3><p>Rédige vos annonces et organise le suivi de vos contacts acquéreurs.</p><p class="cx-base">Basé sur Le Rédacteur</p></article>
-        <article class="cx-agent" data-secteur="Services"><p class="cx-agent-tag">Services</p><h3>Agent B2B</h3><p>Trouve des entreprises cibles et prépare des messages de prospection personnalisés.</p><p class="cx-base">Basé sur Le Prospecteur</p></article>
+        <article class="cx-agent" data-secteur="BTP"><p class="cx-agent-tag">BTP</p><h3>Agent BTP</h3><p>Prépare vos devis, relance ceux restés sans réponse et suit vos chantiers.</p><p class="cx-base">Basé sur Le Gestionnaire</p><button type="button" class="btn btn-s cx-btn cx-fiche" data-agent="Agent BTP">Voir la fiche</button></article>
+        <article class="cx-agent" data-secteur="BTP"><p class="cx-agent-tag">BTP</p><h3>Agent Artisan</h3><p>Repère les entreprises et syndics de votre secteur qui ont besoin de vos services.</p><p class="cx-base">Basé sur Le Prospecteur</p><button type="button" class="btn btn-s cx-btn cx-fiche" data-agent="Agent Artisan">Voir la fiche</button></article>
+        <article class="cx-agent" data-secteur="BTP"><p class="cx-agent-tag">BTP</p><h3>Agent Chantier</h3><p>Transforme vos photos de chantier en publications pour votre fiche Google.</p><p class="cx-base">Basé sur Le Rédacteur</p><button type="button" class="btn btn-s cx-btn cx-fiche" data-agent="Agent Chantier">Voir la fiche</button></article>
+        <article class="cx-agent" data-secteur="Commerce"><p class="cx-agent-tag">Commerce</p><h3>Agent Commerce</h3><p>Publie vos nouveautés et promotions sur votre fiche Google et vos réseaux.</p><p class="cx-base">Basé sur Le Rédacteur</p><button type="button" class="btn btn-s cx-btn cx-fiche" data-agent="Agent Commerce">Voir la fiche</button></article>
+        <article class="cx-agent" data-secteur="Commerce"><p class="cx-agent-tag">Commerce</p><h3>Agent Fidélité</h3><p>Prépare les relances de vos clients professionnels et le suivi des commandes.</p><p class="cx-base">Basé sur Le Gestionnaire</p><button type="button" class="btn btn-s cx-btn cx-fiche" data-agent="Agent Fidélité">Voir la fiche</button></article>
+        <article class="cx-agent" data-secteur="Commerce"><p class="cx-agent-tag">Commerce</p><h3>Agent Boutique en ligne</h3><p>Rédige vos fiches produits et vos descriptions de catalogue.</p><p class="cx-base">Basé sur Le Rédacteur</p><button type="button" class="btn btn-s cx-btn cx-fiche" data-agent="Agent Boutique en ligne">Voir la fiche</button></article>
+        <article class="cx-agent" data-secteur="Santé"><p class="cx-agent-tag">Santé</p><h3>Agent Cabinet</h3><p>Organise vos emails et rappels administratifs, sans traiter de données de santé.</p><p class="cx-base">Basé sur Le Gestionnaire</p><button type="button" class="btn btn-s cx-btn cx-fiche" data-agent="Agent Cabinet">Voir la fiche</button></article>
+        <article class="cx-agent" data-secteur="Santé"><p class="cx-agent-tag">Santé</p><h3>Agent Prévention</h3><p>Rédige des contenus pédagogiques pour votre site et votre fiche Google.</p><p class="cx-base">Basé sur Le Rédacteur</p><button type="button" class="btn btn-s cx-btn cx-fiche" data-agent="Agent Prévention">Voir la fiche</button></article>
+        <article class="cx-agent" data-secteur="Santé"><p class="cx-agent-tag">Santé</p><h3>Agent Partenaires</h3><p>Repère les établissements et professionnels avec qui travailler localement.</p><p class="cx-base">Basé sur Le Prospecteur</p><button type="button" class="btn btn-s cx-btn cx-fiche" data-agent="Agent Partenaires">Voir la fiche</button></article>
+        <article class="cx-agent" data-secteur="Services"><p class="cx-agent-tag">Services</p><h3>Agent Comptable</h3><p>Relance vos clients pour les pièces manquantes et suit les échéances.</p><p class="cx-base">Basé sur Le Gestionnaire</p><button type="button" class="btn btn-s cx-btn cx-fiche" data-agent="Agent Comptable">Voir la fiche</button></article>
+        <article class="cx-agent" data-secteur="Services"><p class="cx-agent-tag">Services</p><h3>Agent Immobilier</h3><p>Rédige vos annonces et organise le suivi de vos contacts acquéreurs.</p><p class="cx-base">Basé sur Le Rédacteur</p><button type="button" class="btn btn-s cx-btn cx-fiche" data-agent="Agent Immobilier">Voir la fiche</button></article>
+        <article class="cx-agent" data-secteur="Services"><p class="cx-agent-tag">Services</p><h3>Agent B2B</h3><p>Trouve des entreprises cibles et prépare des messages de prospection personnalisés.</p><p class="cx-base">Basé sur Le Prospecteur</p><button type="button" class="btn btn-s cx-btn cx-fiche" data-agent="Agent B2B">Voir la fiche</button></article>
     </div>
   </div>
 </section>
 
-<section class="cx-chat-zone" aria-labelledby="jx-h2-chat">
+<section class="cx-chat-zone" id="chat" aria-labelledby="jx-h2-chat">
   <div class="w">
     <h2 id="jx-h2-chat" style="text-align:center">Testez Le Cortex en direct.</h2>
     <div class="cx-chat">
-      <div class="cx-chat-tete"><span class="cx-dot"></span><strong>Le Cortex</strong><span class="cx-statut">démo</span></div>
+      <div class="cx-chat-tete"><span class="cx-dot"></span><strong>Le Cortex</strong><span class="cx-statut">démo · réponses préparées</span></div>
       <div class="cx-fil" id="cx-fil" aria-live="polite">
         <div class="cx-bulle ia">Bonjour, je suis Le Cortex. Posez-moi une question sur votre activité.</div>
       </div>
@@ -740,6 +748,21 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
     r.innerHTML='La démonstration en direct du Cortex arrive bientôt. Pour tester cette configuration en direct avec un humain, <a href="sms:+33752941460">cliquez ici pour m\u2019envoyer un SMS</a> (07 52 94 14 60).';
     setTimeout(function(){fil.appendChild(r); fil.scrollTop=fil.scrollHeight;},500);
   });}
+  // Fiches du catalogue : réponse de démonstration préparée dans le chat
+  var REP={"Agent BTP": {"base": "Le Gestionnaire", "secteur": "Artisan/BTP", "rep": "En tant qu'Agent BTP, je suis configuré pour vous décharger de l'administratif de chantier. De A à Z : 1. Je prépare vos devis à partir de vos notes et de votre bibliothèque d'ouvrages. 2. Je relance les devis restés sans réponse, au bon moment. 3. Je vous rappelle les échéances et le suivi de vos chantiers. Rien ne part sans votre validation."}, "Agent Artisan": {"base": "Le Prospecteur", "secteur": "Artisan/BTP", "rep": "En tant qu'Agent Artisan, je cherche vos futurs clients professionnels. De A à Z : 1. Je repère sur Google Maps les entreprises, syndics et gestionnaires de votre secteur. 2. J'analyse leur site et leurs besoins. 3. Je rédige un premier message personnalisé, que vous relisez avant envoi, dans le respect du RGPD."}, "Agent Chantier": {"base": "Le Rédacteur", "secteur": "Artisan/BTP", "rep": "En tant qu'Agent Chantier, je transforme votre travail en visibilité. De A à Z : 1. Vous m'envoyez vos photos de chantier. 2. Je rédige une publication claire : le problème, la solution, le résultat. 3. Je la prépare pour votre fiche Google et vos réseaux, et vous validez avant publication."}, "Agent Commerce": {"base": "Le Rédacteur", "secteur": "Commerce", "rep": "En tant qu'Agent Commerce, je fais vivre votre vitrine en ligne. De A à Z : 1. Je prépare vos publications de nouveautés et de promotions. 2. Je les adapte à votre fiche Google et à vos réseaux. 3. Je vous propose un calendrier de publication, que vous validez."}, "Agent Fidélité": {"base": "Le Gestionnaire", "secteur": "Commerce", "rep": "En tant qu'Agent Fidélité, je m'occupe du suivi de vos clients professionnels. De A à Z : 1. Je repère les commandes à suivre et les clients à relancer. 2. Je prépare les messages de relance. 3. Je vous tiens une liste claire des actions à faire. Vous validez chaque envoi."}, "Agent Boutique en ligne": {"base": "Le Rédacteur", "secteur": "Commerce", "rep": "En tant qu'Agent Boutique en ligne, je rédige pour votre catalogue. De A à Z : 1. Vous me donnez les caractéristiques de vos produits. 2. Je rédige des fiches claires et bien référencées. 3. Je les harmonise sur tout votre catalogue, et vous relisez avant mise en ligne."}, "Agent Cabinet": {"base": "Le Gestionnaire", "secteur": "Santé", "rep": "En tant qu'Agent Cabinet, j'allège votre administratif, sans jamais traiter de données de santé. De A à Z : 1. Je trie vos emails administratifs. 2. Je prépare les réponses courantes et les rappels. 3. Je vous signale ce qui demande votre attention."}, "Agent Prévention": {"base": "Le Rédacteur", "secteur": "Santé", "rep": "En tant qu'Agent Prévention, je vous aide à informer vos patients. De A à Z : 1. Vous choisissez un thème. 2. Je rédige un contenu pédagogique clair pour votre site ou votre fiche Google. 3. Vous le relisez et le validez avant publication, dans le respect de vos règles professionnelles."}, "Agent Partenaires": {"base": "Le Prospecteur", "secteur": "Santé", "rep": "En tant qu'Agent Partenaires, je développe votre réseau local. De A à Z : 1. Je repère les établissements et professionnels avec qui travailler autour de vous. 2. J'analyse leur activité. 3. Je prépare un message de prise de contact, que vous relisez avant envoi."}, "Agent Comptable": {"base": "Le Gestionnaire", "secteur": "Services", "rep": "En tant qu'Agent Comptable, je fais avancer vos dossiers sans relances oubliées. De A à Z : 1. Je repère les pièces manquantes. 2. Je prépare les relances à vos clients. 3. Je vous rappelle les échéances à venir. Vous validez chaque message."}, "Agent Immobilier": {"base": "Le Rédacteur", "secteur": "Services", "rep": "En tant qu'Agent Immobilier, je vous fais gagner du temps sur vos annonces. De A à Z : 1. Vous me donnez les caractéristiques du bien. 2. Je rédige une annonce claire et attractive. 3. Je prépare le suivi de vos contacts acquéreurs, que vous gérez en gardant la main."}, "Agent B2B": {"base": "Le Prospecteur", "secteur": "Services", "rep": "En tant qu'Agent B2B, je trouve des entreprises qui ont besoin de vous. De A à Z : 1. Je recherche des entreprises cibles par métier et par ville. 2. J'analyse leur site et leur présence en ligne. 3. Je rédige des messages de prospection personnalisés, que vous relisez avant envoi."}};
+  var filC=document.getElementById('cx-fil');
+  function bulle(cl,html){var d=document.createElement('div');d.className='cx-bulle '+cl;d.innerHTML=html;filC.appendChild(d);filC.scrollTop=filC.scrollHeight;return d;}
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  document.querySelectorAll('.cx-fiche').forEach(function(b){b.addEventListener('click',function(){
+    var nom=b.getAttribute('data-agent'), r=REP[nom]; if(!r||!filC) return;
+    document.getElementById('chat').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    bulle('moi',esc('Peux-tu m\u2019expliquer ce que tu fais pour le secteur '+nom.replace('Agent ','')+' ?'));
+    var t=bulle('ia ecrit','<span class="cx-points"><i></i><i></i><i></i></span>'); t.setAttribute('aria-label','Le Cortex écrit');
+    setTimeout(function(){ t.remove(); var a=bulle('ia',esc(r.rep)+' <br><a href="#configurateur" class="cx-tester">Voulez-vous tester cette configuration ?</a>');
+      a.querySelector('.cx-tester').addEventListener('click',function(){var f=document.getElementById('cx-form'); if(!f) return; f.secteur.value=r.secteur;
+        f.querySelectorAll('input[name=agent]').forEach(function(c){c.checked=c.value.indexOf(r.base)>-1;}); f.dispatchEvent(new Event('change'));});
+    },1500);
+  });});
   var f=document.getElementById('cx-form'); if(!f) return;
   var resume=document.getElementById('cx-resume'), msg=f.querySelector('.cx-msg');
   function agents(){return Array.prototype.map.call(f.querySelectorAll('input[name=agent]:checked'),function(c){return c.value;});}
