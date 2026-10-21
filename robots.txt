@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://josyei.com/sitemap.xml
+Sitemap: https://josyei.com/news-sitemap.xml
