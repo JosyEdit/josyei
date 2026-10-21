@@ -429,6 +429,35 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 .jx .cx-agent[data-agent]{cursor:pointer}
 .jx .cx-agent[data-agent]:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
 .jx .cx-veux{margin-top:.75rem;padding:.6rem 1.1rem;font-size:.9rem;color:#fff!important;text-decoration:none!important}
+
+/* Pages secondaires harmonisées (structure.py) */
+.jx .pg-hero{background:radial-gradient(ellipse at 30% 0%,var(--nuit) 0%,var(--noir) 70%);padding:3rem 0 2.5rem;text-align:center}
+.jx .pg-hero h1{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;line-height:1.18;max-width:26ch;margin:0 auto 1rem}
+.jx .pg-hero .sub{color:#9aa3c2;font-size:clamp(.98rem,1.4vw,1.1rem);max-width:64ch;margin:0 auto}
+.jx .pg-ctas{display:flex;justify-content:center;margin-top:1.5rem}
+.jx .pg-centre{margin-top:2rem}
+.jx .pg-corps{padding:3rem 0;background:var(--nuit)}
+.jx .pg-grille{display:grid;gap:1.25rem}
+.jx .pg-carte{background:linear-gradient(160deg,#151c45,#0c1130);border:1px solid rgba(0,212,255,.22);border-radius:16px;padding:1.6rem;display:grid;gap:.75rem;align-content:start}
+.jx .pg-carte h2{font-size:1.2rem;text-align:left;margin:0}
+.jx .pg-carte h3{font-size:1.02rem;color:var(--cyan);margin-top:.35rem}
+.jx .pg-carte p,.jx .pg-carte li{color:var(--gris);font-size:.98rem;line-height:1.6}
+.jx .pg-carte ul{margin:0;padding-left:1.1rem;list-style:disc;display:grid;gap:.35rem}
+.jx .pg-carte a:not(.btn){color:var(--bleu-txt)}
+.jx .pg-carte strong{color:var(--blanc)}
+.jx .pg-carte .faq{border-top:1px solid rgba(255,255,255,.12)}
+.jx .pg-chapeau{font-size:.75rem!important;text-transform:uppercase;letter-spacing:.12em;color:var(--cyan)!important;font-weight:700}
+.jx .pg-carte-cta{border:2px solid rgba(0,212,255,.55);background:linear-gradient(160deg,#132060,#0a0e27);justify-items:start}
+.jx .pg-groupes{padding:3rem 0;background:var(--noir)}
+.jx .pg-groupe + .pg-groupe{margin-top:2.5rem}
+.jx .pg-groupe .w{padding:0}
+.jx .pg-cta{padding:2.5rem 0 3.5rem;background:var(--noir)}
+.jx .pg-cta-carte{max-width:760px;margin:0 auto;text-align:center;display:grid;gap:1rem;justify-items:center;background:linear-gradient(135deg,#132060,#0a0e27 70%);border:1px solid rgba(0,212,255,.35);border-radius:20px;padding:2.25rem 1.5rem}
+.jx .pg-cta-carte h2{font-size:clamp(1.3rem,2.6vw,1.8rem)}
+.jx .pg-cta-carte p{color:var(--gris)}
+.jx .btn.pg-gros{font-size:1.1rem;padding:1.05rem 2.3rem}
+@media (min-width:900px){.jx .pg-grille{grid-template-columns:repeat(2,1fr)}}
+.jx .pg-avis section{padding:2rem 0;background:none}
 </style>
 <div class="jx alignfull">
 
@@ -439,10 +468,8 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
       <a href="/">Accueil</a>
       <a href="/a-propos/">À propos</a>
       <a href="/services/">Services</a>
-      <a href="/zone-intervention/">Zone d'intervention</a>
-      <a href="/consultant-informatique-montmorillon/">Montmorillon</a>
       <span class="meteo" aria-label="Météo et heure à Montmorillon"><span class="meteo-ico" aria-hidden="true"></span><span class="meteo-temp">--°C</span><span class="meteo-sep" aria-hidden="true">·</span><span class="meteo-ville">Montmorillon</span><span class="meteo-sep" aria-hidden="true">·</span><time class="meteo-heure">--:--</time></span>
-      <a class="btn btn-p" data-audit href="mailto:contact@josyei.com?subject=%5BAudit%5D%20Conseil%20et%20ing%C3%A9nierie%20des%20SI&amp;body=Bonjour%20JOSY%20EI%2C%0A%0AJe%20souhaite%20un%20audit%20pour%20%3A%20Conseil%20et%20ing%C3%A9nierie%20des%20SI.%0A%0AAudit%20et%20diagnostic%20de%20votre%20informatique%2C%20architecture%20mat%C3%A9riel%20et%20logiciel%2C%20s%C3%A9curit%C3%A9%20et%20conformit%C3%A9%2C%20int%C3%A9gration%20de%20vos%20outils%20entre%20eux.%0A%0A1.%20Quelle%20est%20la%20taille%20de%20votre%20entreprise%20et%20quels%20outils%20utilisez-vous%20aujourd%27hui%20%3F%0A2.%20Quel%20probl%C3%A8me%20concret%20constatez-vous%20%3F%0A3.%20Travaillez-vous%20d%C3%A9j%C3%A0%20avec%20un%20prestataire%20informatique%20%3F%0A%0ACordialement%2C%0A%5BNom%20/%20Entreprise%5D%0A">Discuter de mon projet</a>
+      <a class="btn btn-p" href="/cortex/">Discuter de mon projet</a>
     </nav>
     <span class="meteo meteo-mobile" aria-label="Météo et heure à Montmorillon"><span class="meteo-ico" aria-hidden="true"></span><span class="meteo-temp">--°C</span><span class="meteo-sep" aria-hidden="true">·</span><span class="meteo-ville">Montmorillon</span><span class="meteo-sep" aria-hidden="true">·</span><time class="meteo-heure">--:--</time></span>
     <button type="button" class="burger" aria-expanded="false" aria-controls="jx-drawer">Menu</button>
@@ -456,29 +483,16 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
     <a href="/automatisation-ia/">Automatisation et IA</a>
     <a href="/visibilite-seo-local/">Visibilité et SEO local</a>
     <a href="/formation-accompagnement/">Formation et accompagnement</a>
-    <a href="/zone-intervention/">Zone d'intervention</a>
-    <a href="/consultant-informatique-montmorillon/">Consultant informatique à Montmorillon</a>
     <a href="/ressources/">Ressources et conseils</a>
     <a href="/contact/">Contact et audit</a>
   </nav>
 </header>
 
 <div hidden data-jx-service="0"></div>
-
-<section class="phero" aria-labelledby="jx-h1">
-  <div class="w">
-    <h1 id="jx-h1">Pourquoi un audit informatique avant tout projet digital</h1>
-    <p class="sub">Un nouveau site, un CRM ou une automatisation reposent sur l'existant. Le connaître avant d'investir évite de construire sur du sable.</p>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="w prose">
-    <h2>Le piège du projet lancé trop vite</h2>
+<section class="pg-hero" aria-labelledby="jx-h1"><div class="w"><h1 id="jx-h1">Pourquoi un audit informatique avant tout projet digital</h1><p class="sub">Un nouveau site, un CRM ou une automatisation reposent sur l'existant. Le connaître avant d'investir évite de construire sur du sable.</p></div></section>
+<section class="pg-corps"><div class="w"><div class="pg-grille"><div class="pg-carte"><h2>Le piège du projet lancé trop vite</h2>
     <p>Un dirigeant décide de refaire son site ou de s'équiper d'un CRM. Le projet démarre, puis les surprises arrivent : le nom de domaine est au nom d'un ancien prestataire, les données clients sont éparpillées dans trois fichiers, la messagerie ne permet pas le partage, personne ne sait où sont les sauvegardes. Le budget et le calendrier dérapent.</p>
-    <p>Ces problèmes n'étaient pas imprévisibles : ils n'avaient simplement pas été cherchés.</p>
-
-    <h2>Ce qu'un audit regarde</h2>
+    <p>Ces problèmes n'étaient pas imprévisibles : ils n'avaient simplement pas été cherchés.</p></div><div class="pg-carte"><h2>Ce qu'un audit regarde</h2>
     <ul>
       <li><strong>vos comptes et accès</strong> : qui possède le nom de domaine, l'hébergement, les comptes en ligne, et avec quels mots de passe ;</li>
       <li><strong>vos données</strong> : où sont vos fichiers clients, vos devis, vos factures, et comment ils sont sauvegardés ;</li>
@@ -486,29 +500,15 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
       <li><strong>vos processus</strong> : les tâches répétitives, les ressaisies, les étapes où l'information se perd ;</li>
       <li><strong>votre visibilité</strong> : votre site, votre fiche Google et la façon dont vos clients vous trouvent ;</li>
       <li><strong>la sécurité et le RGPD</strong> : les risques principaux et les obligations à respecter.</li>
-    </ul>
-
-    <h2>Ce que vous y gagnez</h2>
+    </ul></div><div class="pg-carte"><h2>Ce que vous y gagnez</h2>
     <h3>Des décisions éclairées</h3>
     <p>Vous savez ce qui doit être corrigé avant le projet, ce qui peut être réutilisé et ce qui peut être abandonné. Vous comparez les solutions sur une base claire.</p>
     <h3>Des priorités</h3>
     <p>Un bon audit ne se contente pas de lister des problèmes : il les classe par impact et par effort. Vous commencez par ce qui rapporte le plus pour le moins d'effort.</p>
     <h3>Votre autonomie</h3>
-    <p>À la fin, vous savez ce que vous possédez et où sont vos données. Vous n'êtes plus dépendant d'un prestataire qui serait seul à le savoir.</p>
-
-    <h2>Comment se déroule un audit</h2>
-    <p>Un échange pour comprendre votre activité et vos objectifs, une analyse de vos outils et de votre présence en ligne, puis un diagnostic écrit avec un plan d'action priorisé. Vous décidez ensuite librement de la suite, avec ou sans accompagnement.</p>
-  </div>
-</section>
-
-<section>
-  <div class="w cta-band">
-    <h2 class="rv">Un projet digital en vue ?</h2>
-    <p>Commencez par l'audit offert et sans engagement : vous saurez sur quoi construire.</p>
-    <a class="btn btn-p" data-audit href="mailto:contact@josyei.com?subject=%5BAudit%5D%20Conseil%20et%20ing%C3%A9nierie%20des%20SI&amp;body=Bonjour%20JOSY%20EI%2C%0A%0AJe%20souhaite%20un%20audit%20pour%20%3A%20Conseil%20et%20ing%C3%A9nierie%20des%20SI.%0A%0AAudit%20et%20diagnostic%20de%20votre%20informatique%2C%20architecture%20mat%C3%A9riel%20et%20logiciel%2C%20s%C3%A9curit%C3%A9%20et%20conformit%C3%A9%2C%20int%C3%A9gration%20de%20vos%20outils%20entre%20eux.%0A%0A1.%20Quelle%20est%20la%20taille%20de%20votre%20entreprise%20et%20quels%20outils%20utilisez-vous%20aujourd%27hui%20%3F%0A2.%20Quel%20probl%C3%A8me%20concret%20constatez-vous%20%3F%0A3.%20Travaillez-vous%20d%C3%A9j%C3%A0%20avec%20un%20prestataire%20informatique%20%3F%0A%0ACordialement%2C%0A%5BNom%20/%20Entreprise%5D%0A">Discuter de mon projet</a>
-  </div>
-</section>
-
+    <p>À la fin, vous savez ce que vous possédez et où sont vos données. Vous n'êtes plus dépendant d'un prestataire qui serait seul à le savoir.</p></div><div class="pg-carte"><h2>Comment se déroule un audit</h2>
+    <p>Un échange pour comprendre votre activité et vos objectifs, une analyse de vos outils et de votre présence en ligne, puis un diagnostic écrit avec un plan d'action priorisé. Vous décidez ensuite librement de la suite, avec ou sans accompagnement.</p></div></div></div></section>
+<section class="pg-cta"><div class="w"><div class="pg-cta-carte"><h2>Passons à votre projet</h2><p>Un échange simple sur votre situation, puis une proposition claire et adaptée.</p><a class="btn btn-p pg-gros" href="/cortex/">Discuter de mon projet</a></div></div></section>
 <footer class="foot">
   <div class="w">
     <div class="fcols">
@@ -541,6 +541,7 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
         <ul>
           <li><a href="/a-propos/">À propos</a></li>
           <li><a href="/zone-intervention/">Zone d'intervention</a></li>
+          <li><a href="/consultant-informatique-montmorillon/">Montmorillon</a></li>
           <li><a href="/ressources/">Ressources et conseils</a></li>
           <li><a href="/contact/">Contact et audit</a></li>
           <li><a href="/mentions-legales/">Mentions légales</a></li>

@@ -429,6 +429,35 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 .jx .cx-agent[data-agent]{cursor:pointer}
 .jx .cx-agent[data-agent]:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
 .jx .cx-veux{margin-top:.75rem;padding:.6rem 1.1rem;font-size:.9rem;color:#fff!important;text-decoration:none!important}
+
+/* Pages secondaires harmonisées (structure.py) */
+.jx .pg-hero{background:radial-gradient(ellipse at 30% 0%,var(--nuit) 0%,var(--noir) 70%);padding:3rem 0 2.5rem;text-align:center}
+.jx .pg-hero h1{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;line-height:1.18;max-width:26ch;margin:0 auto 1rem}
+.jx .pg-hero .sub{color:#9aa3c2;font-size:clamp(.98rem,1.4vw,1.1rem);max-width:64ch;margin:0 auto}
+.jx .pg-ctas{display:flex;justify-content:center;margin-top:1.5rem}
+.jx .pg-centre{margin-top:2rem}
+.jx .pg-corps{padding:3rem 0;background:var(--nuit)}
+.jx .pg-grille{display:grid;gap:1.25rem}
+.jx .pg-carte{background:linear-gradient(160deg,#151c45,#0c1130);border:1px solid rgba(0,212,255,.22);border-radius:16px;padding:1.6rem;display:grid;gap:.75rem;align-content:start}
+.jx .pg-carte h2{font-size:1.2rem;text-align:left;margin:0}
+.jx .pg-carte h3{font-size:1.02rem;color:var(--cyan);margin-top:.35rem}
+.jx .pg-carte p,.jx .pg-carte li{color:var(--gris);font-size:.98rem;line-height:1.6}
+.jx .pg-carte ul{margin:0;padding-left:1.1rem;list-style:disc;display:grid;gap:.35rem}
+.jx .pg-carte a:not(.btn){color:var(--bleu-txt)}
+.jx .pg-carte strong{color:var(--blanc)}
+.jx .pg-carte .faq{border-top:1px solid rgba(255,255,255,.12)}
+.jx .pg-chapeau{font-size:.75rem!important;text-transform:uppercase;letter-spacing:.12em;color:var(--cyan)!important;font-weight:700}
+.jx .pg-carte-cta{border:2px solid rgba(0,212,255,.55);background:linear-gradient(160deg,#132060,#0a0e27);justify-items:start}
+.jx .pg-groupes{padding:3rem 0;background:var(--noir)}
+.jx .pg-groupe + .pg-groupe{margin-top:2.5rem}
+.jx .pg-groupe .w{padding:0}
+.jx .pg-cta{padding:2.5rem 0 3.5rem;background:var(--noir)}
+.jx .pg-cta-carte{max-width:760px;margin:0 auto;text-align:center;display:grid;gap:1rem;justify-items:center;background:linear-gradient(135deg,#132060,#0a0e27 70%);border:1px solid rgba(0,212,255,.35);border-radius:20px;padding:2.25rem 1.5rem}
+.jx .pg-cta-carte h2{font-size:clamp(1.3rem,2.6vw,1.8rem)}
+.jx .pg-cta-carte p{color:var(--gris)}
+.jx .btn.pg-gros{font-size:1.1rem;padding:1.05rem 2.3rem}
+@media (min-width:900px){.jx .pg-grille{grid-template-columns:repeat(2,1fr)}}
+.jx .pg-avis section{padding:2rem 0;background:none}
 </style>
 <div class="jx alignfull">
 
@@ -439,10 +468,8 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
       <a href="/">Accueil</a>
       <a href="/a-propos/">À propos</a>
       <a href="/services/">Services</a>
-      <a href="/zone-intervention/">Zone d'intervention</a>
-      <a href="/consultant-informatique-montmorillon/">Montmorillon</a>
       <span class="meteo" aria-label="Météo et heure à Montmorillon"><span class="meteo-ico" aria-hidden="true"></span><span class="meteo-temp">--°C</span><span class="meteo-sep" aria-hidden="true">·</span><span class="meteo-ville">Montmorillon</span><span class="meteo-sep" aria-hidden="true">·</span><time class="meteo-heure">--:--</time></span>
-      <a class="btn btn-p" data-audit href="mailto:contact@josyei.com?subject=%5BAudit%5D%20Audit%20offert&amp;body=Bonjour%20JOSY%20EI%2C%0A%0AJe%20souhaite%20un%20audit%20offert.%0A%0AMon%20besoin%20%3A%0A%0ACordialement%2C%0A%5BNom%20/%20Entreprise%5D%0A">Discuter de mon projet</a>
+      <a class="btn btn-p" href="/cortex/">Discuter de mon projet</a>
     </nav>
     <span class="meteo meteo-mobile" aria-label="Météo et heure à Montmorillon"><span class="meteo-ico" aria-hidden="true"></span><span class="meteo-temp">--°C</span><span class="meteo-sep" aria-hidden="true">·</span><span class="meteo-ville">Montmorillon</span><span class="meteo-sep" aria-hidden="true">·</span><time class="meteo-heure">--:--</time></span>
     <button type="button" class="burger" aria-expanded="false" aria-controls="jx-drawer">Menu</button>
@@ -456,30 +483,16 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
     <a href="/automatisation-ia/">Automatisation et IA</a>
     <a href="/visibilite-seo-local/">Visibilité et SEO local</a>
     <a href="/formation-accompagnement/">Formation et accompagnement</a>
-    <a href="/zone-intervention/">Zone d'intervention</a>
-    <a href="/consultant-informatique-montmorillon/">Consultant informatique à Montmorillon</a>
     <a href="/ressources/">Ressources et conseils</a>
     <a href="/contact/">Contact et audit</a>
   </nav>
 </header>
 
-
-<section class="phero" aria-labelledby="jx-h1">
-  <div class="w">
-    <h1 id="jx-h1">Consultant informatique à Montmorillon : l'informatique au service de votre croissance</h1>
-    <p class="sub">Dirigeant d'une TPE, d'une PME, artisan ou commerçant du Montmorillonnais : JOSY EI vous aide à faire de vos outils numériques un levier de temps gagné et de clients en plus, avec un interlocuteur installé à deux pas de chez vous.</p>
-    <div class="ctas"><a class="btn btn-p" data-audit href="mailto:contact@josyei.com?subject=%5BAudit%5D%20Audit%20offert&amp;body=Bonjour%20JOSY%20EI%2C%0A%0AJe%20souhaite%20un%20audit%20offert.%0A%0AMon%20besoin%20%3A%0A%0ACordialement%2C%0A%5BNom%20/%20Entreprise%5D%0A">Discuter de mon projet</a></div>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="w prose">
-    <h2>Pourquoi faire appel à un consultant informatique à Montmorillon ?</h2>
+<section class="pg-hero" aria-labelledby="jx-h1"><div class="w"><h1 id="jx-h1">Consultant informatique à Montmorillon : l'informatique au service de votre croissance</h1><p class="sub">Dirigeant d'une TPE, d'une PME, artisan ou commerçant du Montmorillonnais : JOSY EI vous aide à faire de vos outils numériques un levier de temps gagné et de clients en plus, avec un interlocuteur installé à deux pas de chez vous.</p></div></section>
+<section class="pg-corps"><div class="w"><div class="pg-grille"><div class="pg-carte"><h2>Pourquoi faire appel à un consultant informatique à Montmorillon ?</h2>
     <p>À Montmorillon et dans le sud de la Vienne, la plupart des entreprises n'ont pas de service informatique. Le dirigeant gère lui-même les ordinateurs, la messagerie, le site, la fiche Google et le logiciel de devis, souvent le soir, entre deux rendez-vous. Les outils s'ajoutent au fil des besoins, sans plan d'ensemble, et finissent par coûter plus de temps qu'ils n'en font gagner.</p>
     <p>Un consultant informatique installé à Montmorillon connaît ce quotidien. Il sait que la clientèle d'un artisan du Montmorillonnais ne cherche pas de la même façon que celle d'une entreprise de Poitiers, que beaucoup de commerces vivent du passage et du bouche-à-oreille, et que chaque heure gagnée sur l'administratif compte. Être sur place permet aussi de se rencontrer, de voir comment vous travaillez réellement et d'intervenir rapidement quand un problème ne se règle pas à distance.</p>
-    <p>C'est le rôle de JOSY EI, entreprise de conseil en système d'information basée à Montmorillon : vous apporter les solutions des grandes entreprises, à la taille et au rythme d'une structure locale.</p>
-
-    <h2>Nos services à Montmorillon et dans la Vienne (86)</h2>
+    <p>C'est le rôle de JOSY EI, entreprise de conseil en système d'information basée à Montmorillon : vous apporter les solutions des grandes entreprises, à la taille et au rythme d'une structure locale.</p></div><div class="pg-carte"><h2>Nos services à Montmorillon et dans la Vienne (86)</h2>
     <h3>Conseil et ingénierie des systèmes d'information</h3>
     <p>Un état des lieux clair de votre informatique, des sauvegardes vérifiées et une feuille de route priorisée. Vous savez enfin ce que vous possédez, ce qui est fragile et par quoi commencer.</p>
     <h3>Développement et logiciels</h3>
@@ -489,9 +502,7 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
     <h3>Visibilité Google et SEO local</h3>
     <p>Une fiche Google complète et un site qui vous font apparaître quand un habitant du secteur cherche votre métier sur son téléphone.</p>
     <h3>Formation et accompagnement digital</h3>
-    <p>Un accompagnement digital dans le 86 pour que vous et votre équipe maîtrisiez vos outils, sans dépendre de personne.</p>
-
-    <h2>Les problèmes que nous résolvons au quotidien</h2>
+    <p>Un accompagnement digital dans le 86 pour que vous et votre équipe maîtrisiez vos outils, sans dépendre de personne.</p></div><div class="pg-carte pg-carte-cta"><p class="pg-chapeau">Votre projet</p><p>Un échange simple sur votre situation, puis une proposition adaptée.</p><a class="btn btn-p" href="/cortex/">Optimiser ma présence locale</a></div><div class="pg-carte"><h2>Les problèmes que nous résolvons au quotidien</h2>
     <ul>
       <li><strong>Le temps perdu sur Excel</strong> : des tableaux recopiés à la main, des formules que plus personne n'ose toucher, des informations saisies deux fois.</li>
       <li><strong>Les devis non relancés</strong> : un devis envoyé puis oublié, faute de rappel, alors que le client attendait simplement une relance.</li>
@@ -499,11 +510,17 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
       <li><strong>L'absence sur Google Maps</strong> : une fiche incomplète ou non revendiquée, et des clients qui appellent le concurrent mieux placé.</li>
       <li><strong>La facture électronique</strong> : recevoir dès maintenant, émettre en septembre 2027. Voir notre guide <a href="/facturation-electronique-tpe-vienne/" style="color:var(--bleu-txt)">facturation électronique pour les TPE de la Vienne</a>.</li>
       <li><strong>Des outils qui ne se parlent pas</strong> : un site, un logiciel de facturation et une messagerie qui obligent à ressaisir les mêmes informations.</li>
-    </ul>
-  </div>
-</section>
-
-<section aria-labelledby="jx-h2-methode-m">
+    </ul></div><div class="pg-carte"><h2>Pourquoi choisir JOSY EI plutôt qu'un prestataire éloigné ?</h2>
+    <p><strong>La proximité.</strong> Un expert numérique dans la Vienne, joignable et disponible pour un rendez-vous dans vos locaux. Vous parlez à la personne qui fait le travail, pas à un service client anonyme.</p>
+    <p><strong>La transparence.</strong> Chaque recommandation est expliquée et chaque action est écrite. Vous savez ce qui est fait, pourquoi et avec quels outils, y compris quand une solution gratuite ou open source suffit.</p>
+    <p><strong>Votre autonomie.</strong> Vos comptes, vos données et vos outils restent à votre nom. Tout est documenté pour que vous puissiez continuer seul, ou avec le prestataire de votre choix.</p>
+    <p><strong>La connaissance du territoire.</strong> Vos clients, vos concurrents et leurs recherches sur Google sont locaux. Une stratégie pensée à Montmorillon tient compte de cette réalité.</p></div><div class="pg-carte"><h2>Questions fréquentes</h2>
+    <div class="faq">
+      <details><summary>Intervenez-vous sur site ?</summary><p>Oui. Nous intervenons dans vos locaux à Montmorillon, dans le Montmorillonnais et dans toute la Vienne. Une partie du travail, comme l'analyse ou la configuration de certains outils, peut aussi se faire à distance.</p></details>
+      <details><summary>Travaillez-vous avec les petites structures ?</summary><p>Oui, c'est même le cœur de notre activité : artisans, commerçants, professions libérales, TPE et PME. Les solutions sont choisies pour votre taille, pas pour une grande entreprise.</p></details>
+      <details><summary>Comment se passe le premier rendez-vous ?</summary><p>Vous décrivez votre activité et ce qui vous fait perdre du temps ou des clients. Nous posons quelques questions sur vos outils et votre visibilité. Vous recevez ensuite un diagnostic écrit avec un plan d'action priorisé, sans engagement.</p></details>
+    </div></div></div></div></section>
+<section class="pg-groupes"><div class="w"><div class="pg-groupe">
   <div class="w">
     <h2 id="jx-h2-methode-m" class="rv">Notre méthode d'accompagnement en 4 étapes</h2>
     <ol class="steps4" style="list-style:none;padding:0;margin:2.5rem 0 0">
@@ -513,33 +530,7 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
       <li class="rv"><h3>Suivi et autonomie</h3><p>Nous mesurons les effets, ajustons et formons votre équipe pour qu'elle reste autonome.</p></li>
     </ol>
   </div>
-</section>
-
-<section class="alt">
-  <div class="w prose">
-    <h2>Pourquoi choisir JOSY EI plutôt qu'un prestataire éloigné ?</h2>
-    <p><strong>La proximité.</strong> Un expert numérique dans la Vienne, joignable et disponible pour un rendez-vous dans vos locaux. Vous parlez à la personne qui fait le travail, pas à un service client anonyme.</p>
-    <p><strong>La transparence.</strong> Chaque recommandation est expliquée et chaque action est écrite. Vous savez ce qui est fait, pourquoi et avec quels outils, y compris quand une solution gratuite ou open source suffit.</p>
-    <p><strong>Votre autonomie.</strong> Vos comptes, vos données et vos outils restent à votre nom. Tout est documenté pour que vous puissiez continuer seul, ou avec le prestataire de votre choix.</p>
-    <p><strong>La connaissance du territoire.</strong> Vos clients, vos concurrents et leurs recherches sur Google sont locaux. Une stratégie pensée à Montmorillon tient compte de cette réalité.</p>
-
-    <h2>Questions fréquentes</h2>
-    <div class="faq">
-      <details><summary>Intervenez-vous sur site ?</summary><p>Oui. Nous intervenons dans vos locaux à Montmorillon, dans le Montmorillonnais et dans toute la Vienne. Une partie du travail, comme l'analyse ou la configuration de certains outils, peut aussi se faire à distance.</p></details>
-      <details><summary>Travaillez-vous avec les petites structures ?</summary><p>Oui, c'est même le cœur de notre activité : artisans, commerçants, professions libérales, TPE et PME. Les solutions sont choisies pour votre taille, pas pour une grande entreprise.</p></details>
-      <details><summary>Comment se passe le premier rendez-vous ?</summary><p>Vous décrivez votre activité et ce qui vous fait perdre du temps ou des clients. Nous posons quelques questions sur vos outils et votre visibilité. Vous recevez ensuite un diagnostic écrit avec un plan d'action priorisé, sans engagement.</p></details>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="w cta-band">
-    <h2 class="rv">Parlons de votre entreprise</h2>
-    <p>Que vous soyez à Montmorillon, à Lussac-les-Châteaux, à Chauvigny ou ailleurs dans la Vienne, commencez par un audit offert et sans engagement : un diagnostic écrit de votre informatique et de votre visibilité, et un plan d'action concret.</p>
-    <a class="btn btn-p" data-audit href="mailto:contact@josyei.com?subject=%5BAudit%5D%20Audit%20offert&amp;body=Bonjour%20JOSY%20EI%2C%0A%0AJe%20souhaite%20un%20audit%20offert.%0A%0AMon%20besoin%20%3A%0A%0ACordialement%2C%0A%5BNom%20/%20Entreprise%5D%0A">Discuter de mon projet</a>
-  </div>
-</section>
-
+</div></div></section>
 <footer class="foot">
   <div class="w">
     <div class="fcols">
@@ -572,6 +563,7 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
         <ul>
           <li><a href="/a-propos/">À propos</a></li>
           <li><a href="/zone-intervention/">Zone d'intervention</a></li>
+          <li><a href="/consultant-informatique-montmorillon/">Montmorillon</a></li>
           <li><a href="/ressources/">Ressources et conseils</a></li>
           <li><a href="/contact/">Contact et audit</a></li>
           <li><a href="/mentions-legales/">Mentions légales</a></li>

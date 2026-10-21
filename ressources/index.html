@@ -429,6 +429,35 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 .jx .cx-agent[data-agent]{cursor:pointer}
 .jx .cx-agent[data-agent]:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
 .jx .cx-veux{margin-top:.75rem;padding:.6rem 1.1rem;font-size:.9rem;color:#fff!important;text-decoration:none!important}
+
+/* Pages secondaires harmonisées (structure.py) */
+.jx .pg-hero{background:radial-gradient(ellipse at 30% 0%,var(--nuit) 0%,var(--noir) 70%);padding:3rem 0 2.5rem;text-align:center}
+.jx .pg-hero h1{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;line-height:1.18;max-width:26ch;margin:0 auto 1rem}
+.jx .pg-hero .sub{color:#9aa3c2;font-size:clamp(.98rem,1.4vw,1.1rem);max-width:64ch;margin:0 auto}
+.jx .pg-ctas{display:flex;justify-content:center;margin-top:1.5rem}
+.jx .pg-centre{margin-top:2rem}
+.jx .pg-corps{padding:3rem 0;background:var(--nuit)}
+.jx .pg-grille{display:grid;gap:1.25rem}
+.jx .pg-carte{background:linear-gradient(160deg,#151c45,#0c1130);border:1px solid rgba(0,212,255,.22);border-radius:16px;padding:1.6rem;display:grid;gap:.75rem;align-content:start}
+.jx .pg-carte h2{font-size:1.2rem;text-align:left;margin:0}
+.jx .pg-carte h3{font-size:1.02rem;color:var(--cyan);margin-top:.35rem}
+.jx .pg-carte p,.jx .pg-carte li{color:var(--gris);font-size:.98rem;line-height:1.6}
+.jx .pg-carte ul{margin:0;padding-left:1.1rem;list-style:disc;display:grid;gap:.35rem}
+.jx .pg-carte a:not(.btn){color:var(--bleu-txt)}
+.jx .pg-carte strong{color:var(--blanc)}
+.jx .pg-carte .faq{border-top:1px solid rgba(255,255,255,.12)}
+.jx .pg-chapeau{font-size:.75rem!important;text-transform:uppercase;letter-spacing:.12em;color:var(--cyan)!important;font-weight:700}
+.jx .pg-carte-cta{border:2px solid rgba(0,212,255,.55);background:linear-gradient(160deg,#132060,#0a0e27);justify-items:start}
+.jx .pg-groupes{padding:3rem 0;background:var(--noir)}
+.jx .pg-groupe + .pg-groupe{margin-top:2.5rem}
+.jx .pg-groupe .w{padding:0}
+.jx .pg-cta{padding:2.5rem 0 3.5rem;background:var(--noir)}
+.jx .pg-cta-carte{max-width:760px;margin:0 auto;text-align:center;display:grid;gap:1rem;justify-items:center;background:linear-gradient(135deg,#132060,#0a0e27 70%);border:1px solid rgba(0,212,255,.35);border-radius:20px;padding:2.25rem 1.5rem}
+.jx .pg-cta-carte h2{font-size:clamp(1.3rem,2.6vw,1.8rem)}
+.jx .pg-cta-carte p{color:var(--gris)}
+.jx .btn.pg-gros{font-size:1.1rem;padding:1.05rem 2.3rem}
+@media (min-width:900px){.jx .pg-grille{grid-template-columns:repeat(2,1fr)}}
+.jx .pg-avis section{padding:2rem 0;background:none}
 </style>
 <div class="jx alignfull">
 
@@ -439,10 +468,8 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
       <a href="/">Accueil</a>
       <a href="/a-propos/">À propos</a>
       <a href="/services/">Services</a>
-      <a href="/zone-intervention/">Zone d'intervention</a>
-      <a href="/consultant-informatique-montmorillon/">Montmorillon</a>
       <span class="meteo" aria-label="Météo et heure à Montmorillon"><span class="meteo-ico" aria-hidden="true"></span><span class="meteo-temp">--°C</span><span class="meteo-sep" aria-hidden="true">·</span><span class="meteo-ville">Montmorillon</span><span class="meteo-sep" aria-hidden="true">·</span><time class="meteo-heure">--:--</time></span>
-      <a class="btn btn-p" data-audit href="mailto:contact@josyei.com?subject=%5BAudit%5D%20Audit%20offert&amp;body=Bonjour%20JOSY%20EI%2C%0A%0AJe%20souhaite%20un%20audit%20offert.%0A%0AMon%20besoin%20%3A%0A%0ACordialement%2C%0A%5BNom%20/%20Entreprise%5D%0A">Discuter de mon projet</a>
+      <a class="btn btn-p" href="/cortex/">Discuter de mon projet</a>
     </nav>
     <span class="meteo meteo-mobile" aria-label="Météo et heure à Montmorillon"><span class="meteo-ico" aria-hidden="true"></span><span class="meteo-temp">--°C</span><span class="meteo-sep" aria-hidden="true">·</span><span class="meteo-ville">Montmorillon</span><span class="meteo-sep" aria-hidden="true">·</span><time class="meteo-heure">--:--</time></span>
     <button type="button" class="burger" aria-expanded="false" aria-controls="jx-drawer">Menu</button>
@@ -456,22 +483,13 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
     <a href="/automatisation-ia/">Automatisation et IA</a>
     <a href="/visibilite-seo-local/">Visibilité et SEO local</a>
     <a href="/formation-accompagnement/">Formation et accompagnement</a>
-    <a href="/zone-intervention/">Zone d'intervention</a>
-    <a href="/consultant-informatique-montmorillon/">Consultant informatique à Montmorillon</a>
     <a href="/ressources/">Ressources et conseils</a>
     <a href="/contact/">Contact et audit</a>
   </nav>
 </header>
 
-
-<section class="phero" aria-labelledby="jx-h1">
-  <div class="w">
-    <h1 id="jx-h1">Ressources et conseils</h1>
-    <p class="sub">Des articles pratiques pour mieux utiliser vos outils numériques, gagner du temps et être trouvé par vos clients.</p>
-  </div>
-</section>
-
-<section class="alt">
+<section class="pg-hero" aria-labelledby="jx-h1"><div class="w"><h1 id="jx-h1">Ressources et conseils</h1><p class="sub">Des articles pratiques pour mieux utiliser vos outils numériques, gagner du temps et être trouvé par vos clients.</p></div></section>
+<section class="pg-groupes"><div class="w"><div class="pg-groupe">
   <div class="w">
     <div class="pillars">
       <a class="card pillar rv" href="/pourquoi-audit-informatique-avant-projet-digital/"><h3>Pourquoi un audit informatique avant tout projet digital</h3><p>Nouveau site, CRM, automatisation : pourquoi faire le point sur son informatique avant d'investir évite les mauvaises surprises aux TPE et PME.</p><span class="more">Lire l'article</span></a>
@@ -484,9 +502,7 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 <a class="card pillar rv" href="/visibilite-google-artisan-montmorillonnais/"><h3>Artisan dans le Montmorillonnais : être trouvé sur Google</h3><p>Plombier, électricien, menuisier dans le Montmorillonnais : les actions simples pour apparaître sur Google Maps quand vos clients vous cherchent.</p><span class="more">Lire l'article</span></a>
     </div>
   </div>
-</section>
-
-<section aria-labelledby="jx-h2-guides">
+</div><div class="pg-groupe">
   <div class="w">
     <h2 id="jx-h2-guides" class="rv">Guides pour les entreprises de la Vienne</h2>
     <div class="pillars">
@@ -495,16 +511,7 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
       <a class="card pillar rv" href="/cyberattaque-tpe-que-faire/"><h3>Cyberattaque ou rançongiciel : les premières heures pour une TPE</h3><p>Isoler, ne pas payer, prévenir les bons interlocuteurs et redémarrer depuis une sauvegarde saine.</p><span class="more">Lire le guide</span></a>
     </div>
   </div>
-</section>
-
-<section>
-  <div class="w cta-band">
-    <h2 class="rv">Une question sur votre situation ?</h2>
-    <p>L'audit offert répond à vos questions avec un diagnostic écrit adapté à votre entreprise.</p>
-    <a class="btn btn-p" data-audit href="mailto:contact@josyei.com?subject=%5BAudit%5D%20Audit%20offert&amp;body=Bonjour%20JOSY%20EI%2C%0A%0AJe%20souhaite%20un%20audit%20offert.%0A%0AMon%20besoin%20%3A%0A%0ACordialement%2C%0A%5BNom%20/%20Entreprise%5D%0A">Discuter de mon projet</a>
-  </div>
-</section>
-
+</div><div class="pg-ctas pg-centre"><a class="btn btn-p" href="/cortex/">Discuter de mon projet</a></div></div></section>
 <footer class="foot">
   <div class="w">
     <div class="fcols">
@@ -537,6 +544,7 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
         <ul>
           <li><a href="/a-propos/">À propos</a></li>
           <li><a href="/zone-intervention/">Zone d'intervention</a></li>
+          <li><a href="/consultant-informatique-montmorillon/">Montmorillon</a></li>
           <li><a href="/ressources/">Ressources et conseils</a></li>
           <li><a href="/contact/">Contact et audit</a></li>
           <li><a href="/mentions-legales/">Mentions légales</a></li>

@@ -429,6 +429,35 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 .jx .cx-agent[data-agent]{cursor:pointer}
 .jx .cx-agent[data-agent]:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
 .jx .cx-veux{margin-top:.75rem;padding:.6rem 1.1rem;font-size:.9rem;color:#fff!important;text-decoration:none!important}
+
+/* Pages secondaires harmonisées (structure.py) */
+.jx .pg-hero{background:radial-gradient(ellipse at 30% 0%,var(--nuit) 0%,var(--noir) 70%);padding:3rem 0 2.5rem;text-align:center}
+.jx .pg-hero h1{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;line-height:1.18;max-width:26ch;margin:0 auto 1rem}
+.jx .pg-hero .sub{color:#9aa3c2;font-size:clamp(.98rem,1.4vw,1.1rem);max-width:64ch;margin:0 auto}
+.jx .pg-ctas{display:flex;justify-content:center;margin-top:1.5rem}
+.jx .pg-centre{margin-top:2rem}
+.jx .pg-corps{padding:3rem 0;background:var(--nuit)}
+.jx .pg-grille{display:grid;gap:1.25rem}
+.jx .pg-carte{background:linear-gradient(160deg,#151c45,#0c1130);border:1px solid rgba(0,212,255,.22);border-radius:16px;padding:1.6rem;display:grid;gap:.75rem;align-content:start}
+.jx .pg-carte h2{font-size:1.2rem;text-align:left;margin:0}
+.jx .pg-carte h3{font-size:1.02rem;color:var(--cyan);margin-top:.35rem}
+.jx .pg-carte p,.jx .pg-carte li{color:var(--gris);font-size:.98rem;line-height:1.6}
+.jx .pg-carte ul{margin:0;padding-left:1.1rem;list-style:disc;display:grid;gap:.35rem}
+.jx .pg-carte a:not(.btn){color:var(--bleu-txt)}
+.jx .pg-carte strong{color:var(--blanc)}
+.jx .pg-carte .faq{border-top:1px solid rgba(255,255,255,.12)}
+.jx .pg-chapeau{font-size:.75rem!important;text-transform:uppercase;letter-spacing:.12em;color:var(--cyan)!important;font-weight:700}
+.jx .pg-carte-cta{border:2px solid rgba(0,212,255,.55);background:linear-gradient(160deg,#132060,#0a0e27);justify-items:start}
+.jx .pg-groupes{padding:3rem 0;background:var(--noir)}
+.jx .pg-groupe + .pg-groupe{margin-top:2.5rem}
+.jx .pg-groupe .w{padding:0}
+.jx .pg-cta{padding:2.5rem 0 3.5rem;background:var(--noir)}
+.jx .pg-cta-carte{max-width:760px;margin:0 auto;text-align:center;display:grid;gap:1rem;justify-items:center;background:linear-gradient(135deg,#132060,#0a0e27 70%);border:1px solid rgba(0,212,255,.35);border-radius:20px;padding:2.25rem 1.5rem}
+.jx .pg-cta-carte h2{font-size:clamp(1.3rem,2.6vw,1.8rem)}
+.jx .pg-cta-carte p{color:var(--gris)}
+.jx .btn.pg-gros{font-size:1.1rem;padding:1.05rem 2.3rem}
+@media (min-width:900px){.jx .pg-grille{grid-template-columns:repeat(2,1fr)}}
+.jx .pg-avis section{padding:2rem 0;background:none}
 </style>
 <div class="jx alignfull">
 
@@ -439,10 +468,8 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
       <a href="/">Accueil</a>
       <a href="/a-propos/">À propos</a>
       <a href="/services/">Services</a>
-      <a href="/zone-intervention/">Zone d'intervention</a>
-      <a href="/consultant-informatique-montmorillon/">Montmorillon</a>
       <span class="meteo" aria-label="Météo et heure à Montmorillon"><span class="meteo-ico" aria-hidden="true"></span><span class="meteo-temp">--°C</span><span class="meteo-sep" aria-hidden="true">·</span><span class="meteo-ville">Montmorillon</span><span class="meteo-sep" aria-hidden="true">·</span><time class="meteo-heure">--:--</time></span>
-      <a class="btn btn-p" data-audit href="mailto:contact@josyei.com?subject=%5BAudit%5D%20Conseil%20et%20ing%C3%A9nierie%20des%20SI&amp;body=Bonjour%20JOSY%20EI%2C%0A%0AJe%20souhaite%20un%20audit%20pour%20%3A%20Conseil%20et%20ing%C3%A9nierie%20des%20SI.%0A%0AAudit%20et%20diagnostic%20de%20votre%20informatique%2C%20architecture%20mat%C3%A9riel%20et%20logiciel%2C%20s%C3%A9curit%C3%A9%20et%20conformit%C3%A9%2C%20int%C3%A9gration%20de%20vos%20outils%20entre%20eux.%0A%0A1.%20Quelle%20est%20la%20taille%20de%20votre%20entreprise%20et%20quels%20outils%20utilisez-vous%20aujourd%27hui%20%3F%0A2.%20Quel%20probl%C3%A8me%20concret%20constatez-vous%20%3F%0A3.%20Travaillez-vous%20d%C3%A9j%C3%A0%20avec%20un%20prestataire%20informatique%20%3F%0A%0ACordialement%2C%0A%5BNom%20/%20Entreprise%5D%0A">Discuter de mon projet</a>
+      <a class="btn btn-p" href="/cortex/">Discuter de mon projet</a>
     </nav>
     <span class="meteo meteo-mobile" aria-label="Météo et heure à Montmorillon"><span class="meteo-ico" aria-hidden="true"></span><span class="meteo-temp">--°C</span><span class="meteo-sep" aria-hidden="true">·</span><span class="meteo-ville">Montmorillon</span><span class="meteo-sep" aria-hidden="true">·</span><time class="meteo-heure">--:--</time></span>
     <button type="button" class="burger" aria-expanded="false" aria-controls="jx-drawer">Menu</button>
@@ -456,75 +483,40 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
     <a href="/automatisation-ia/">Automatisation et IA</a>
     <a href="/visibilite-seo-local/">Visibilité et SEO local</a>
     <a href="/formation-accompagnement/">Formation et accompagnement</a>
-    <a href="/zone-intervention/">Zone d'intervention</a>
-    <a href="/consultant-informatique-montmorillon/">Consultant informatique à Montmorillon</a>
     <a href="/ressources/">Ressources et conseils</a>
     <a href="/contact/">Contact et audit</a>
   </nav>
 </header>
 
 <div hidden data-jx-service="0"></div>
-
-<section class="phero" aria-labelledby="jx-h1">
-  <div class="w">
-    <h1 id="jx-h1">Facturation électronique 2026-2027 : comment une TPE de la Vienne se prépare</h1>
-    <p class="sub">La réforme est entrée en vigueur. Pour une TPE, une PME ou un artisan, l'essentiel se joue maintenant : recevoir correctement ses factures, puis être prêt à les émettre.</p>
-    <div class="ctas"><a class="btn btn-p" data-audit href="mailto:contact@josyei.com?subject=%5BAudit%5D%20Conseil%20et%20ing%C3%A9nierie%20des%20SI&amp;body=Bonjour%20JOSY%20EI%2C%0A%0AJe%20souhaite%20un%20audit%20pour%20%3A%20Conseil%20et%20ing%C3%A9nierie%20des%20SI.%0A%0AAudit%20et%20diagnostic%20de%20votre%20informatique%2C%20architecture%20mat%C3%A9riel%20et%20logiciel%2C%20s%C3%A9curit%C3%A9%20et%20conformit%C3%A9%2C%20int%C3%A9gration%20de%20vos%20outils%20entre%20eux.%0A%0A1.%20Quelle%20est%20la%20taille%20de%20votre%20entreprise%20et%20quels%20outils%20utilisez-vous%20aujourd%27hui%20%3F%0A2.%20Quel%20probl%C3%A8me%20concret%20constatez-vous%20%3F%0A3.%20Travaillez-vous%20d%C3%A9j%C3%A0%20avec%20un%20prestataire%20informatique%20%3F%0A%0ACordialement%2C%0A%5BNom%20/%20Entreprise%5D%0A">Discuter de mon projet</a></div>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="w prose">
-    <h2>Ce qui change, en bref</h2>
-    <p>Entre entreprises assujetties à la TVA en France, les factures ne s'échangent plus en PDF par email ou sur papier : elles transitent par une <strong>plateforme agréée</strong> par l'administration, dans un format structuré. Certaines données sont aussi transmises à l'administration fiscale (c'est le « e-reporting », qui concerne notamment les ventes aux particuliers et les opérations internationales).</p>
-
-    <h2>Le calendrier pour une TPE</h2>
+<section class="pg-hero" aria-labelledby="jx-h1"><div class="w"><h1 id="jx-h1">Facturation électronique 2026-2027 : comment une TPE de la Vienne se prépare</h1><p class="sub">La réforme est entrée en vigueur. Pour une TPE, une PME ou un artisan, l'essentiel se joue maintenant : recevoir correctement ses factures, puis être prêt à les émettre.</p></div></section>
+<section class="pg-corps"><div class="w"><div class="pg-grille"><div class="pg-carte"><h2>Ce qui change, en bref</h2>
+    <p>Entre entreprises assujetties à la TVA en France, les factures ne s'échangent plus en PDF par email ou sur papier : elles transitent par une <strong>plateforme agréée</strong> par l'administration, dans un format structuré. Certaines données sont aussi transmises à l'administration fiscale (c'est le « e-reporting », qui concerne notamment les ventes aux particuliers et les opérations internationales).</p></div><div class="pg-carte"><h2>Le calendrier pour une TPE</h2>
     <ul>
       <li><strong>Depuis le 1<sup>er</sup> septembre 2026</strong> : toutes les entreprises doivent être en mesure de <strong>recevoir</strong> des factures électroniques, quelle que soit leur taille.</li>
       <li><strong>Au 1<sup>er</sup> septembre 2027</strong> : les PME, TPE et micro-entreprises devront <strong>émettre</strong> leurs factures au format électronique et effectuer leur e-reporting.</li>
     </ul>
-    <p>Ces dates sont celles du calendrier publié par l'administration fiscale, qui indique la réforme effective depuis le 1<sup>er</sup> septembre 2026 (page impots.gouv.fr mise à jour le 1<sup>er</sup> septembre 2026). Vérifiez toujours la version en vigueur sur <a href="https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique" rel="noopener" target="_blank" style="color:var(--bleu-txt)">impots.gouv.fr</a> : le calendrier a déjà été modifié par le passé.</p>
-
-    <h2>La check-list de la réception (à faire maintenant)</h2>
+    <p>Ces dates sont celles du calendrier publié par l'administration fiscale, qui indique la réforme effective depuis le 1<sup>er</sup> septembre 2026 (page impots.gouv.fr mise à jour le 1<sup>er</sup> septembre 2026). Vérifiez toujours la version en vigueur sur <a href="https://www.impots.gouv.fr/professionnel/je-passe-la-facturation-electronique" rel="noopener" target="_blank" style="color:var(--bleu-txt)">impots.gouv.fr</a> : le calendrier a déjà été modifié par le passé.</p></div><div class="pg-carte"><h2>La check-list de la réception (à faire maintenant)</h2>
     <ul>
       <li><strong>Choisir une plateforme agréée</strong> pour recevoir vos factures, en vérifiant qu'elle figure dans la liste officielle publiée par l'administration.</li>
       <li><strong>Vous inscrire dans l'annuaire</strong> pour que vos fournisseurs sachent où vous envoyer vos factures.</li>
       <li><strong>Prévenir votre expert-comptable</strong> et vérifier qu'il accède aux factures reçues, sans ressaisie.</li>
       <li><strong>Désigner une personne</strong> qui contrôle les factures reçues et les valide pour paiement.</li>
-    </ul>
-
-    <h2>La check-list de l'émission (à préparer avant septembre 2027)</h2>
+    </ul></div><div class="pg-carte pg-carte-cta"><p class="pg-chapeau">Votre projet</p><p>Un échange simple sur votre situation, puis une proposition adaptée.</p><a class="btn btn-p" href="/cortex/">Discuter de mon projet</a></div><div class="pg-carte"><h2>La check-list de l'émission (à préparer avant septembre 2027)</h2>
     <ul>
       <li><strong>Faire l'inventaire de vos factures</strong> : volumes, clients professionnels ou particuliers, factures d'acompte, avoirs.</li>
       <li><strong>Vérifier votre logiciel de facturation</strong> : sait-il produire un format structuré et se connecter à une plateforme agréée ?</li>
       <li><strong>Mettre à jour vos fiches clients</strong> : SIREN, adresses, mentions obligatoires complètes.</li>
       <li><strong>Tester sur quelques factures</strong> avant l'échéance, plutôt que de tout basculer le dernier mois.</li>
-    </ul>
-
-    <h2>Par métier : les points d'attention</h2>
+    </ul></div><div class="pg-carte"><h2>Par métier : les points d'attention</h2>
     <h3>Artisans du bâtiment</h3>
     <p>Devis, acomptes, situations de travaux et factures finales doivent suivre le même circuit. Un outil de devis qui ne se connecte pas à la facturation devient un point de friction. Voir la page <a href="/informatique-artisans-batiment-vienne/" style="color:var(--bleu-txt)">informatique pour les artisans du bâtiment</a>.</p>
     <h3>Commerces et restaurants</h3>
     <p>Les ventes aux particuliers ne sont pas des factures électroniques, mais elles entrent dans le e-reporting. Vos achats auprès des fournisseurs, eux, arrivent désormais en facture électronique.</p>
     <h3>Professions libérales et services</h3>
-    <p>Les factures émises vers des entreprises passent par la plateforme. Celles émises vers des particuliers relèvent du e-reporting.</p>
-
-    <h2>Ce que l'automatisation peut apporter</h2>
-    <p>Bien préparée, la réforme peut faire gagner du temps : factures reçues directement dans le logiciel, rapprochement avec les paiements, relances d'impayés automatisées. Voir la page <a href="/automatisation-ia/" style="color:var(--bleu-txt)">Automatisation et IA</a>.</p>
-
-    <h2>Se faire accompagner dans la Vienne</h2>
-    <p>JOSY EI accompagne les TPE et PME de Montmorillon, Poitiers et de toute la Vienne : inventaire de l'existant, choix des outils en lien avec votre expert-comptable, mise en place et <a href="/formation-accompagnement/" style="color:var(--bleu-txt)">formation de l'équipe</a>. Voir aussi notre <a href="/conseil-ingenierie-si/" style="color:var(--bleu-txt)">conseil en systèmes d'information</a> et la <a href="/zone-intervention/" style="color:var(--bleu-txt)">zone d'intervention</a>.</p>
-  </div>
-</section>
-
-<section>
-  <div class="w cta-band">
-    <h2 class="rv">Où en est votre entreprise ?</h2>
-    <p>L'audit offert fait le point sur votre facturation, vos outils et ce qu'il reste à préparer avant septembre 2027.</p>
-    <a class="btn btn-p" data-audit href="mailto:contact@josyei.com?subject=%5BAudit%5D%20Conseil%20et%20ing%C3%A9nierie%20des%20SI&amp;body=Bonjour%20JOSY%20EI%2C%0A%0AJe%20souhaite%20un%20audit%20pour%20%3A%20Conseil%20et%20ing%C3%A9nierie%20des%20SI.%0A%0AAudit%20et%20diagnostic%20de%20votre%20informatique%2C%20architecture%20mat%C3%A9riel%20et%20logiciel%2C%20s%C3%A9curit%C3%A9%20et%20conformit%C3%A9%2C%20int%C3%A9gration%20de%20vos%20outils%20entre%20eux.%0A%0A1.%20Quelle%20est%20la%20taille%20de%20votre%20entreprise%20et%20quels%20outils%20utilisez-vous%20aujourd%27hui%20%3F%0A2.%20Quel%20probl%C3%A8me%20concret%20constatez-vous%20%3F%0A3.%20Travaillez-vous%20d%C3%A9j%C3%A0%20avec%20un%20prestataire%20informatique%20%3F%0A%0ACordialement%2C%0A%5BNom%20/%20Entreprise%5D%0A">Discuter de mon projet</a>
-  </div>
-</section>
-
+    <p>Les factures émises vers des entreprises passent par la plateforme. Celles émises vers des particuliers relèvent du e-reporting.</p></div><div class="pg-carte"><h2>Ce que l'automatisation peut apporter</h2>
+    <p>Bien préparée, la réforme peut faire gagner du temps : factures reçues directement dans le logiciel, rapprochement avec les paiements, relances d'impayés automatisées. Voir la page <a href="/automatisation-ia/" style="color:var(--bleu-txt)">Automatisation et IA</a>.</p></div><div class="pg-carte"><h2>Se faire accompagner dans la Vienne</h2>
+    <p>JOSY EI accompagne les TPE et PME de Montmorillon, Poitiers et de toute la Vienne : inventaire de l'existant, choix des outils en lien avec votre expert-comptable, mise en place et <a href="/formation-accompagnement/" style="color:var(--bleu-txt)">formation de l'équipe</a>. Voir aussi notre <a href="/conseil-ingenierie-si/" style="color:var(--bleu-txt)">conseil en systèmes d'information</a> et la <a href="/zone-intervention/" style="color:var(--bleu-txt)">zone d'intervention</a>.</p></div></div></div></section>
 <footer class="foot">
   <div class="w">
     <div class="fcols">
@@ -557,6 +549,7 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
         <ul>
           <li><a href="/a-propos/">À propos</a></li>
           <li><a href="/zone-intervention/">Zone d'intervention</a></li>
+          <li><a href="/consultant-informatique-montmorillon/">Montmorillon</a></li>
           <li><a href="/ressources/">Ressources et conseils</a></li>
           <li><a href="/contact/">Contact et audit</a></li>
           <li><a href="/mentions-legales/">Mentions légales</a></li>

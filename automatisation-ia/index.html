@@ -429,6 +429,35 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 .jx .cx-agent[data-agent]{cursor:pointer}
 .jx .cx-agent[data-agent]:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
 .jx .cx-veux{margin-top:.75rem;padding:.6rem 1.1rem;font-size:.9rem;color:#fff!important;text-decoration:none!important}
+
+/* Pages secondaires harmonisées (structure.py) */
+.jx .pg-hero{background:radial-gradient(ellipse at 30% 0%,var(--nuit) 0%,var(--noir) 70%);padding:3rem 0 2.5rem;text-align:center}
+.jx .pg-hero h1{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;line-height:1.18;max-width:26ch;margin:0 auto 1rem}
+.jx .pg-hero .sub{color:#9aa3c2;font-size:clamp(.98rem,1.4vw,1.1rem);max-width:64ch;margin:0 auto}
+.jx .pg-ctas{display:flex;justify-content:center;margin-top:1.5rem}
+.jx .pg-centre{margin-top:2rem}
+.jx .pg-corps{padding:3rem 0;background:var(--nuit)}
+.jx .pg-grille{display:grid;gap:1.25rem}
+.jx .pg-carte{background:linear-gradient(160deg,#151c45,#0c1130);border:1px solid rgba(0,212,255,.22);border-radius:16px;padding:1.6rem;display:grid;gap:.75rem;align-content:start}
+.jx .pg-carte h2{font-size:1.2rem;text-align:left;margin:0}
+.jx .pg-carte h3{font-size:1.02rem;color:var(--cyan);margin-top:.35rem}
+.jx .pg-carte p,.jx .pg-carte li{color:var(--gris);font-size:.98rem;line-height:1.6}
+.jx .pg-carte ul{margin:0;padding-left:1.1rem;list-style:disc;display:grid;gap:.35rem}
+.jx .pg-carte a:not(.btn){color:var(--bleu-txt)}
+.jx .pg-carte strong{color:var(--blanc)}
+.jx .pg-carte .faq{border-top:1px solid rgba(255,255,255,.12)}
+.jx .pg-chapeau{font-size:.75rem!important;text-transform:uppercase;letter-spacing:.12em;color:var(--cyan)!important;font-weight:700}
+.jx .pg-carte-cta{border:2px solid rgba(0,212,255,.55);background:linear-gradient(160deg,#132060,#0a0e27);justify-items:start}
+.jx .pg-groupes{padding:3rem 0;background:var(--noir)}
+.jx .pg-groupe + .pg-groupe{margin-top:2.5rem}
+.jx .pg-groupe .w{padding:0}
+.jx .pg-cta{padding:2.5rem 0 3.5rem;background:var(--noir)}
+.jx .pg-cta-carte{max-width:760px;margin:0 auto;text-align:center;display:grid;gap:1rem;justify-items:center;background:linear-gradient(135deg,#132060,#0a0e27 70%);border:1px solid rgba(0,212,255,.35);border-radius:20px;padding:2.25rem 1.5rem}
+.jx .pg-cta-carte h2{font-size:clamp(1.3rem,2.6vw,1.8rem)}
+.jx .pg-cta-carte p{color:var(--gris)}
+.jx .btn.pg-gros{font-size:1.1rem;padding:1.05rem 2.3rem}
+@media (min-width:900px){.jx .pg-grille{grid-template-columns:repeat(2,1fr)}}
+.jx .pg-avis section{padding:2rem 0;background:none}
 </style>
 <div class="jx alignfull">
 
@@ -439,10 +468,8 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
       <a href="/">Accueil</a>
       <a href="/a-propos/">À propos</a>
       <a href="/services/">Services</a>
-      <a href="/zone-intervention/">Zone d'intervention</a>
-      <a href="/consultant-informatique-montmorillon/">Montmorillon</a>
       <span class="meteo" aria-label="Météo et heure à Montmorillon"><span class="meteo-ico" aria-hidden="true"></span><span class="meteo-temp">--°C</span><span class="meteo-sep" aria-hidden="true">·</span><span class="meteo-ville">Montmorillon</span><span class="meteo-sep" aria-hidden="true">·</span><time class="meteo-heure">--:--</time></span>
-      <a class="btn btn-p" data-audit href="mailto:contact@josyei.com?subject=%5BAudit%5D%20Automatisation%20et%20IA&amp;body=Bonjour%20JOSY%20EI%2C%0A%0AJe%20souhaite%20un%20audit%20pour%20%3A%20Automatisation%20et%20IA.%0A%0ASuppression%20des%20t%C3%A2ches%20r%C3%A9p%C3%A9titives%2C%20assistants%20IA%20encadr%C3%A9s%20et%20supervis%C3%A9s%2C%20parcours%20clients%20digitaux%20plus%20simples.%0A%0A1.%20Quelles%20t%C3%A2ches%20vous%20prennent%20le%20plus%20de%20temps%20%3F%0A2.%20Quels%20outils%20utilisez-vous%20aujourd%27hui%20%3F%0A3.%20Quelles%20donn%C3%A9es%20ne%20doivent%20jamais%20sortir%20de%20l%27entreprise%20%3F%0A%0ACordialement%2C%0A%5BNom%20/%20Entreprise%5D%0A">Discuter de mon projet</a>
+      <a class="btn btn-p" href="/cortex/">Discuter de mon projet</a>
     </nav>
     <span class="meteo meteo-mobile" aria-label="Météo et heure à Montmorillon"><span class="meteo-ico" aria-hidden="true"></span><span class="meteo-temp">--°C</span><span class="meteo-sep" aria-hidden="true">·</span><span class="meteo-ville">Montmorillon</span><span class="meteo-sep" aria-hidden="true">·</span><time class="meteo-heure">--:--</time></span>
     <button type="button" class="burger" aria-expanded="false" aria-controls="jx-drawer">Menu</button>
@@ -456,61 +483,27 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
     <a href="/automatisation-ia/">Automatisation et IA</a>
     <a href="/visibilite-seo-local/">Visibilité et SEO local</a>
     <a href="/formation-accompagnement/">Formation et accompagnement</a>
-    <a href="/zone-intervention/">Zone d'intervention</a>
-    <a href="/consultant-informatique-montmorillon/">Consultant informatique à Montmorillon</a>
     <a href="/ressources/">Ressources et conseils</a>
     <a href="/contact/">Contact et audit</a>
   </nav>
 </header>
 
 <div hidden data-jx-service="2"></div>
-
-<section class="phero" aria-labelledby="jx-h1">
-  <div class="w">
-    <h1 id="jx-h1">Automatisation, intelligence artificielle et productivité</h1>
-    <p class="sub">JOSY EI aide les PME de Poitiers, de Montmorillon et de toute la Vienne à supprimer les tâches répétitives. Les automatisations et les assistants IA travaillent pour vous, avec des règles claires et un humain qui valide ce qui compte.</p>
-    <div class="ctas"><a class="btn btn-p" data-audit href="mailto:contact@josyei.com?subject=%5BAudit%5D%20Automatisation%20et%20IA&amp;body=Bonjour%20JOSY%20EI%2C%0A%0AJe%20souhaite%20un%20audit%20pour%20%3A%20Automatisation%20et%20IA.%0A%0ASuppression%20des%20t%C3%A2ches%20r%C3%A9p%C3%A9titives%2C%20assistants%20IA%20encadr%C3%A9s%20et%20supervis%C3%A9s%2C%20parcours%20clients%20digitaux%20plus%20simples.%0A%0A1.%20Quelles%20t%C3%A2ches%20vous%20prennent%20le%20plus%20de%20temps%20%3F%0A2.%20Quels%20outils%20utilisez-vous%20aujourd%27hui%20%3F%0A3.%20Quelles%20donn%C3%A9es%20ne%20doivent%20jamais%20sortir%20de%20l%27entreprise%20%3F%0A%0ACordialement%2C%0A%5BNom%20/%20Entreprise%5D%0A">Discuter de mon projet</a></div>
-    <svg class="illus" viewBox="0 0 320 200" role="img" aria-label="Illustration : engrenages reliés à une étincelle représentant l'intelligence artificielle, avec une flèche de flux" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="320" height="200" rx="16" fill="#131838"/><circle cx="95" cy="100" r="32" stroke="#4d94ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="95" cy="100" r="12" stroke="#00d4ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M95 60v-8M95 148v-8M55 100h-8M143 100h-8M67 72l-6-6M129 134l-6-6M67 128l-6 6M129 66l-6 6" stroke="#4d94ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M140 100h50" stroke="#00d4ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="m182 92 8 8-8 8" stroke="#00d4ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M240 60l8 25 25 8-25 8-8 25-8-25-25-8 25-8z" stroke="#00d4ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M275 140l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" stroke="#4d94ff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="w prose">
-    <h2>Pour qui</h2>
-    <ul><li>Les équipes qui perdent des heures chaque semaine sur des tâches répétitives.</li><li>Les dirigeants qui veulent utiliser l'IA sans exposer les données de l'entreprise.</li><li>Les entreprises qui reçoivent beaucoup d'emails, de documents ou de demandes similaires.</li></ul>
-    <h2>Problèmes concrets traités</h2>
-    <ul><li>Des relances de devis ou de factures oubliées.</li><li>La saisie manuelle de documents : bons de commande, factures fournisseurs, formulaires.</li><li>Le tri des emails et les réponses aux mêmes questions.</li><li>Des tableaux de bord recopiés à la main chaque semaine.</li></ul>
-    <h2>Prestations détaillées</h2>
+<section class="pg-hero" aria-labelledby="jx-h1"><div class="w"><h1 id="jx-h1">Automatisation, intelligence artificielle et productivité</h1><p class="sub">JOSY EI aide les PME de Poitiers, de Montmorillon et de toute la Vienne à supprimer les tâches répétitives. Les automatisations et les assistants IA travaillent pour vous, avec des règles claires et un humain qui valide ce qui compte.</p></div></section>
+<section class="pg-corps"><div class="w"><div class="pg-grille"><div class="pg-carte"><h2>Pour qui</h2>
+    <ul><li>Les équipes qui perdent des heures chaque semaine sur des tâches répétitives.</li><li>Les dirigeants qui veulent utiliser l'IA sans exposer les données de l'entreprise.</li><li>Les entreprises qui reçoivent beaucoup d'emails, de documents ou de demandes similaires.</li></ul></div><div class="pg-carte"><h2>Problèmes concrets traités</h2>
+    <ul><li>Des relances de devis ou de factures oubliées.</li><li>La saisie manuelle de documents : bons de commande, factures fournisseurs, formulaires.</li><li>Le tri des emails et les réponses aux mêmes questions.</li><li>Des tableaux de bord recopiés à la main chaque semaine.</li></ul></div><div class="pg-carte"><h2>Prestations détaillées</h2>
     <ul><li><strong>Cartographie des tâches répétitives</strong> : repérer ce qui peut être automatisé et estimer le temps récupérable.</li><li><strong>Workflows de relances, devis, factures et accueil de nouveaux clients</strong> : les étapes s'enchaînent sans oubli.</li><li><strong>Extraction de données de documents (OCR)</strong> : les informations d'une facture ou d'un formulaire passent directement dans vos outils.</li><li><strong>Tri et pré-réponse des emails</strong> : les messages sont classés et des réponses sont préparées pour validation.</li><li><strong>Assistants virtuels</strong> : un assistant qui répond aux questions fréquentes ou suit vos tâches.</li><li><strong>IA générative avec garde-fous</strong> : rédaction, résumé, recherche, toujours relus par un humain avant envoi.</li><li><strong>Règles de confidentialité</strong> : ce qui peut être confié à une IA, ce qui ne doit jamais sortir de l'entreprise.</li><li><strong>Tests et suivi</strong> : chaque automatisation est testée, surveillée et peut être arrêtée à tout moment.</li></ul>
-    <div class="card" style="border-color:var(--cyan)"><p><strong>Point de vigilance</strong> : Les données sensibles de votre entreprise ne sortent pas sans votre validation. Nous privilégions les outils open source et les hébergements européens quand ils répondent au besoin, et nous vous indiquons toujours où vos données sont traitées.</p></div>
-    <h2>Livrables</h2>
-    <ul><li>Des processus automatisés et documentés.</li><li>Un tableau de suivi de ce qui tourne et de ce que cela vous fait gagner.</li><li>Des règles écrites sur l'usage de l'IA dans l'entreprise.</li></ul>
-  </div>
-</section>
-
-<section aria-labelledby="jx-h2-etapes">
+    <div class="card" style="border-color:var(--cyan)"><p><strong>Point de vigilance</strong> : Les données sensibles de votre entreprise ne sortent pas sans votre validation. Nous privilégions les outils open source et les hébergements européens quand ils répondent au besoin, et nous vous indiquons toujours où vos données sont traitées.</p></div></div><div class="pg-carte"><h2>Livrables</h2>
+    <ul><li>Des processus automatisés et documentés.</li><li>Un tableau de suivi de ce qui tourne et de ce que cela vous fait gagner.</li><li>Des règles écrites sur l'usage de l'IA dans l'entreprise.</li></ul></div><div class="pg-carte"><h2 id="jx-h2-faq">Questions fréquentes</h2>
+    <div class="faq"><details><summary>L'IA va-t-elle envoyer des messages à ma place ?</summary><p>Seulement si vous le décidez. Par défaut, l'IA prépare et un humain valide avant tout envoi important.</p></details><details><summary>Faut-il changer tous nos outils ?</summary><p>Non. L'automatisation relie d'abord les outils que vous utilisez déjà.</p></details><details><summary>Que se passe-t-il si une automatisation se trompe ?</summary><p>Chaque automatisation est testée avant sa mise en service, surveillée ensuite, et peut être arrêtée immédiatement.</p></details><details><summary>Nos données partent-elles chez un fournisseur d'IA ?</summary><p>Seulement celles que vous autorisez. Nous définissons ensemble les données qui ne doivent jamais sortir de l'entreprise.</p></details></div></div></div></div></section>
+<section class="pg-groupes"><div class="w"><div class="pg-groupe">
   <div class="w">
     <h2 id="jx-h2-etapes" class="rv">Déroulé en 4 étapes</h2>
     <ol class="steps4" style="list-style:none;padding:0;margin:2.5rem 0 0"><li class="rv"><h3>Audit offert</h3><p>Un échange sur votre activité, puis l'analyse de votre situation. Vous recevez un diagnostic écrit.</p></li><li class="rv"><h3>Plan d'action</h3><p>Les actions sont classées par impact et par effort. Vous choisissez ce que vous lancez, sans engagement.</p></li><li class="rv"><h3>Mise en œuvre</h3><p>Nous réalisons les actions retenues étape par étape, en vérifiant chaque résultat avec vous.</p></li><li class="rv"><h3>Suivi et autonomie</h3><p>Nous mesurons les effets, ajustons, documentons et formons votre équipe.</p></li></ol>
   </div>
-</section>
-
-<section class="alt" aria-labelledby="jx-h2-faq">
-  <div class="w prose">
-    <h2 id="jx-h2-faq">Questions fréquentes</h2>
-    <div class="faq"><details><summary>L'IA va-t-elle envoyer des messages à ma place ?</summary><p>Seulement si vous le décidez. Par défaut, l'IA prépare et un humain valide avant tout envoi important.</p></details><details><summary>Faut-il changer tous nos outils ?</summary><p>Non. L'automatisation relie d'abord les outils que vous utilisez déjà.</p></details><details><summary>Que se passe-t-il si une automatisation se trompe ?</summary><p>Chaque automatisation est testée avant sa mise en service, surveillée ensuite, et peut être arrêtée immédiatement.</p></details><details><summary>Nos données partent-elles chez un fournisseur d'IA ?</summary><p>Seulement celles que vous autorisez. Nous définissons ensemble les données qui ne doivent jamais sortir de l'entreprise.</p></details></div>
-  </div>
-</section>
-
-<section aria-labelledby="jx-h2-cta">
-  <div class="w cta-band">
-    <h2 id="jx-h2-cta" class="rv">Parlons de votre situation</h2>
-    <p>L'audit est offert et sans engagement : un diagnostic écrit et un plan d'action priorisé.</p>
-    <a class="btn btn-p" data-audit href="mailto:contact@josyei.com?subject=%5BAudit%5D%20Automatisation%20et%20IA&amp;body=Bonjour%20JOSY%20EI%2C%0A%0AJe%20souhaite%20un%20audit%20pour%20%3A%20Automatisation%20et%20IA.%0A%0ASuppression%20des%20t%C3%A2ches%20r%C3%A9p%C3%A9titives%2C%20assistants%20IA%20encadr%C3%A9s%20et%20supervis%C3%A9s%2C%20parcours%20clients%20digitaux%20plus%20simples.%0A%0A1.%20Quelles%20t%C3%A2ches%20vous%20prennent%20le%20plus%20de%20temps%20%3F%0A2.%20Quels%20outils%20utilisez-vous%20aujourd%27hui%20%3F%0A3.%20Quelles%20donn%C3%A9es%20ne%20doivent%20jamais%20sortir%20de%20l%27entreprise%20%3F%0A%0ACordialement%2C%0A%5BNom%20/%20Entreprise%5D%0A">Discuter de mon projet</a>
-  </div>
-</section>
-
-<section class="alt" aria-labelledby="jx-h2-art"><div class="w"><h2 id="jx-h2-art" class="rv">Pour aller plus loin</h2><div class="pillars"><a class="card pillar rv" href="/automatiser-relances-clients-sans-crm/"><h3>Automatiser les relances clients sans CRM coûteux</h3><span class="more">Lire l'article</span></a><a class="card pillar rv" href="/automatisation-pme-poitiers-vienne-par-ou-commencer/"><h3>Automatisation pour PME à Poitiers et dans la Vienne : par où commencer</h3><span class="more">Lire l'article</span></a></div></div></section>
+</div><div class="pg-groupe"><div class="w"><h2 id="jx-h2-art" class="rv">Pour aller plus loin</h2><div class="pillars"><a class="card pillar rv" href="/automatiser-relances-clients-sans-crm/"><h3>Automatiser les relances clients sans CRM coûteux</h3><span class="more">Lire l'article</span></a><a class="card pillar rv" href="/automatisation-pme-poitiers-vienne-par-ou-commencer/"><h3>Automatisation pour PME à Poitiers et dans la Vienne : par où commencer</h3><span class="more">Lire l'article</span></a></div></div></div></div></section>
+<section class="pg-cta"><div class="w"><div class="pg-cta-carte"><h2>Passons à votre projet</h2><p>Un échange simple sur votre situation, puis une proposition claire et adaptée.</p><a class="btn btn-p pg-gros" href="/cortex/">Voir les agents IA</a></div></div></section>
 <footer class="foot">
   <div class="w">
     <div class="fcols">
@@ -543,6 +536,7 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
         <ul>
           <li><a href="/a-propos/">À propos</a></li>
           <li><a href="/zone-intervention/">Zone d'intervention</a></li>
+          <li><a href="/consultant-informatique-montmorillon/">Montmorillon</a></li>
           <li><a href="/ressources/">Ressources et conseils</a></li>
           <li><a href="/contact/">Contact et audit</a></li>
           <li><a href="/mentions-legales/">Mentions légales</a></li>

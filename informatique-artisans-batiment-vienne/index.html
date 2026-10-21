@@ -429,6 +429,35 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 .jx .cx-agent[data-agent]{cursor:pointer}
 .jx .cx-agent[data-agent]:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
 .jx .cx-veux{margin-top:.75rem;padding:.6rem 1.1rem;font-size:.9rem;color:#fff!important;text-decoration:none!important}
+
+/* Pages secondaires harmonisées (structure.py) */
+.jx .pg-hero{background:radial-gradient(ellipse at 30% 0%,var(--nuit) 0%,var(--noir) 70%);padding:3rem 0 2.5rem;text-align:center}
+.jx .pg-hero h1{font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:800;line-height:1.18;max-width:26ch;margin:0 auto 1rem}
+.jx .pg-hero .sub{color:#9aa3c2;font-size:clamp(.98rem,1.4vw,1.1rem);max-width:64ch;margin:0 auto}
+.jx .pg-ctas{display:flex;justify-content:center;margin-top:1.5rem}
+.jx .pg-centre{margin-top:2rem}
+.jx .pg-corps{padding:3rem 0;background:var(--nuit)}
+.jx .pg-grille{display:grid;gap:1.25rem}
+.jx .pg-carte{background:linear-gradient(160deg,#151c45,#0c1130);border:1px solid rgba(0,212,255,.22);border-radius:16px;padding:1.6rem;display:grid;gap:.75rem;align-content:start}
+.jx .pg-carte h2{font-size:1.2rem;text-align:left;margin:0}
+.jx .pg-carte h3{font-size:1.02rem;color:var(--cyan);margin-top:.35rem}
+.jx .pg-carte p,.jx .pg-carte li{color:var(--gris);font-size:.98rem;line-height:1.6}
+.jx .pg-carte ul{margin:0;padding-left:1.1rem;list-style:disc;display:grid;gap:.35rem}
+.jx .pg-carte a:not(.btn){color:var(--bleu-txt)}
+.jx .pg-carte strong{color:var(--blanc)}
+.jx .pg-carte .faq{border-top:1px solid rgba(255,255,255,.12)}
+.jx .pg-chapeau{font-size:.75rem!important;text-transform:uppercase;letter-spacing:.12em;color:var(--cyan)!important;font-weight:700}
+.jx .pg-carte-cta{border:2px solid rgba(0,212,255,.55);background:linear-gradient(160deg,#132060,#0a0e27);justify-items:start}
+.jx .pg-groupes{padding:3rem 0;background:var(--noir)}
+.jx .pg-groupe + .pg-groupe{margin-top:2.5rem}
+.jx .pg-groupe .w{padding:0}
+.jx .pg-cta{padding:2.5rem 0 3.5rem;background:var(--noir)}
+.jx .pg-cta-carte{max-width:760px;margin:0 auto;text-align:center;display:grid;gap:1rem;justify-items:center;background:linear-gradient(135deg,#132060,#0a0e27 70%);border:1px solid rgba(0,212,255,.35);border-radius:20px;padding:2.25rem 1.5rem}
+.jx .pg-cta-carte h2{font-size:clamp(1.3rem,2.6vw,1.8rem)}
+.jx .pg-cta-carte p{color:var(--gris)}
+.jx .btn.pg-gros{font-size:1.1rem;padding:1.05rem 2.3rem}
+@media (min-width:900px){.jx .pg-grille{grid-template-columns:repeat(2,1fr)}}
+.jx .pg-avis section{padding:2rem 0;background:none}
 </style>
 <div class="jx alignfull">
 
@@ -439,10 +468,8 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
       <a href="/">Accueil</a>
       <a href="/a-propos/">À propos</a>
       <a href="/services/">Services</a>
-      <a href="/zone-intervention/">Zone d'intervention</a>
-      <a href="/consultant-informatique-montmorillon/">Montmorillon</a>
       <span class="meteo" aria-label="Météo et heure à Montmorillon"><span class="meteo-ico" aria-hidden="true"></span><span class="meteo-temp">--°C</span><span class="meteo-sep" aria-hidden="true">·</span><span class="meteo-ville">Montmorillon</span><span class="meteo-sep" aria-hidden="true">·</span><time class="meteo-heure">--:--</time></span>
-      <a class="btn btn-p" data-audit href="mailto:contact@josyei.com?subject=%5BAudit%5D%20Conseil%20et%20ing%C3%A9nierie%20des%20SI&amp;body=Bonjour%20JOSY%20EI%2C%0A%0AJe%20souhaite%20un%20audit%20pour%20%3A%20Conseil%20et%20ing%C3%A9nierie%20des%20SI.%0A%0AAudit%20et%20diagnostic%20de%20votre%20informatique%2C%20architecture%20mat%C3%A9riel%20et%20logiciel%2C%20s%C3%A9curit%C3%A9%20et%20conformit%C3%A9%2C%20int%C3%A9gration%20de%20vos%20outils%20entre%20eux.%0A%0A1.%20Quelle%20est%20la%20taille%20de%20votre%20entreprise%20et%20quels%20outils%20utilisez-vous%20aujourd%27hui%20%3F%0A2.%20Quel%20probl%C3%A8me%20concret%20constatez-vous%20%3F%0A3.%20Travaillez-vous%20d%C3%A9j%C3%A0%20avec%20un%20prestataire%20informatique%20%3F%0A%0ACordialement%2C%0A%5BNom%20/%20Entreprise%5D%0A">Discuter de mon projet</a>
+      <a class="btn btn-p" href="/cortex/">Discuter de mon projet</a>
     </nav>
     <span class="meteo meteo-mobile" aria-label="Météo et heure à Montmorillon"><span class="meteo-ico" aria-hidden="true"></span><span class="meteo-temp">--°C</span><span class="meteo-sep" aria-hidden="true">·</span><span class="meteo-ville">Montmorillon</span><span class="meteo-sep" aria-hidden="true">·</span><time class="meteo-heure">--:--</time></span>
     <button type="button" class="burger" aria-expanded="false" aria-controls="jx-drawer">Menu</button>
@@ -456,64 +483,27 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
     <a href="/automatisation-ia/">Automatisation et IA</a>
     <a href="/visibilite-seo-local/">Visibilité et SEO local</a>
     <a href="/formation-accompagnement/">Formation et accompagnement</a>
-    <a href="/zone-intervention/">Zone d'intervention</a>
-    <a href="/consultant-informatique-montmorillon/">Consultant informatique à Montmorillon</a>
     <a href="/ressources/">Ressources et conseils</a>
     <a href="/contact/">Contact et audit</a>
   </nav>
 </header>
 
 <div hidden data-jx-service="0"></div>
-
-<section class="phero" aria-labelledby="jx-h1">
-  <div class="w">
-    <h1 id="jx-h1">Informatique pour les artisans du bâtiment dans la Vienne</h1>
-    <p class="sub">Plombiers, électriciens, maçons, menuisiers, couvreurs : vos journées se passent sur les chantiers, pas devant un écran. Vos outils doivent suivre ce rythme.</p>
-    <div class="ctas"><a class="btn btn-p" data-audit href="mailto:contact@josyei.com?subject=%5BAudit%5D%20Conseil%20et%20ing%C3%A9nierie%20des%20SI&amp;body=Bonjour%20JOSY%20EI%2C%0A%0AJe%20souhaite%20un%20audit%20pour%20%3A%20Conseil%20et%20ing%C3%A9nierie%20des%20SI.%0A%0AAudit%20et%20diagnostic%20de%20votre%20informatique%2C%20architecture%20mat%C3%A9riel%20et%20logiciel%2C%20s%C3%A9curit%C3%A9%20et%20conformit%C3%A9%2C%20int%C3%A9gration%20de%20vos%20outils%20entre%20eux.%0A%0A1.%20Quelle%20est%20la%20taille%20de%20votre%20entreprise%20et%20quels%20outils%20utilisez-vous%20aujourd%27hui%20%3F%0A2.%20Quel%20probl%C3%A8me%20concret%20constatez-vous%20%3F%0A3.%20Travaillez-vous%20d%C3%A9j%C3%A0%20avec%20un%20prestataire%20informatique%20%3F%0A%0ACordialement%2C%0A%5BNom%20/%20Entreprise%5D%0A">Discuter de mon projet</a></div>
-  </div>
-</section>
-
-<section class="alt">
-  <div class="w prose">
-    <h2>Le quotidien numérique d'un artisan</h2>
-    <p>Un devis noté sur un carnet puis retapé le soir, des photos de chantier éparpillées dans le téléphone, des factures préparées dans un tableur, un ordinateur de bureau qui contient toute l'entreprise sans sauvegarde vérifiée : c'est la situation de nombreux artisans. Chaque étape est faisable, mais l'ensemble prend des heures chaque semaine.</p>
-
-    <h2>Faire ses devis sur le chantier</h2>
-    <p>Un outil de devis utilisable sur téléphone ou tablette permet de chiffrer pendant la visite, avec votre bibliothèque d'ouvrages à jour, puis d'envoyer le devis le jour même. Le client reçoit une proposition propre, et vous n'avez plus rien à retaper le soir.</p>
-
-    <h2>Préparer la facture électronique</h2>
-    <p>Depuis septembre 2026, toutes les entreprises doivent pouvoir recevoir des factures électroniques, et les TPE devront les émettre à partir de septembre 2027. Pour un artisan, devis, acomptes, situations de travaux et factures finales doivent suivre le même circuit. Voir notre page <a href="/facturation-electronique-tpe-vienne/" style="color:var(--bleu-txt)">facturation électronique pour les TPE de la Vienne</a>.</p>
-
-    <h2>Organiser les photos de chantier</h2>
-    <p>Les photos avant, pendant et après travaux servent à la fois de preuve, de suivi et de vitrine. Rangées automatiquement par chantier dans un espace partagé, elles se retrouvent en quelques secondes, et vous pouvez choisir celles qui iront sur votre fiche Google, avec l'accord du client.</p>
-
-    <h2>Sécuriser ses données</h2>
-    <p>Un téléphone perdu ou un ordinateur en panne ne doit pas faire disparaître vos devis, vos factures et vos contacts. Une sauvegarde automatique, vérifiée de temps en temps, et une double authentification sur vos comptes suffisent à écarter l'essentiel des risques. Voir l'article <a href="/sauvegardes-tpe-verifier-qu-elles-fonctionnent/" style="color:var(--bleu-txt)">vérifier que ses sauvegardes fonctionnent</a>.</p>
-
-    <h2>Gagner du temps sur l'administratif</h2>
+<section class="pg-hero" aria-labelledby="jx-h1"><div class="w"><h1 id="jx-h1">Informatique pour les artisans du bâtiment dans la Vienne</h1><p class="sub">Plombiers, électriciens, maçons, menuisiers, couvreurs : vos journées se passent sur les chantiers, pas devant un écran. Vos outils doivent suivre ce rythme.</p><div class="pg-ctas"><a class="btn btn-p" href="/cortex/">Voir les agents IA</a></div></div></section>
+<section class="pg-corps"><div class="w"><div class="pg-grille"><div class="pg-carte"><h2>Le quotidien numérique d'un artisan</h2>
+    <p>Un devis noté sur un carnet puis retapé le soir, des photos de chantier éparpillées dans le téléphone, des factures préparées dans un tableur, un ordinateur de bureau qui contient toute l'entreprise sans sauvegarde vérifiée : c'est la situation de nombreux artisans. Chaque étape est faisable, mais l'ensemble prend des heures chaque semaine.</p></div><div class="pg-carte"><h2>Faire ses devis sur le chantier</h2>
+    <p>Un outil de devis utilisable sur téléphone ou tablette permet de chiffrer pendant la visite, avec votre bibliothèque d'ouvrages à jour, puis d'envoyer le devis le jour même. Le client reçoit une proposition propre, et vous n'avez plus rien à retaper le soir.</p></div><div class="pg-carte"><h2>Préparer la facture électronique</h2>
+    <p>Depuis septembre 2026, toutes les entreprises doivent pouvoir recevoir des factures électroniques, et les TPE devront les émettre à partir de septembre 2027. Pour un artisan, devis, acomptes, situations de travaux et factures finales doivent suivre le même circuit. Voir notre page <a href="/facturation-electronique-tpe-vienne/" style="color:var(--bleu-txt)">facturation électronique pour les TPE de la Vienne</a>.</p></div><div class="pg-carte"><h2>Organiser les photos de chantier</h2>
+    <p>Les photos avant, pendant et après travaux servent à la fois de preuve, de suivi et de vitrine. Rangées automatiquement par chantier dans un espace partagé, elles se retrouvent en quelques secondes, et vous pouvez choisir celles qui iront sur votre fiche Google, avec l'accord du client.</p></div><div class="pg-carte"><h2>Sécuriser ses données</h2>
+    <p>Un téléphone perdu ou un ordinateur en panne ne doit pas faire disparaître vos devis, vos factures et vos contacts. Une sauvegarde automatique, vérifiée de temps en temps, et une double authentification sur vos comptes suffisent à écarter l'essentiel des risques. Voir l'article <a href="/sauvegardes-tpe-verifier-qu-elles-fonctionnent/" style="color:var(--bleu-txt)">vérifier que ses sauvegardes fonctionnent</a>.</p></div><div class="pg-carte"><h2>Gagner du temps sur l'administratif</h2>
     <ul>
       <li>relances de devis automatiques après quelques jours sans réponse ;</li>
       <li>rappels de rendez-vous envoyés aux clients la veille d'une intervention ;</li>
       <li>factures reçues directement dans l'outil, sans ressaisie.</li>
     </ul>
-    <p>Voir la page <a href="/automatisation-ia/" style="color:var(--bleu-txt)">Automatisation et IA</a>, et, quand aucun outil existant ne convient, <a href="/developpement-logiciel/" style="color:var(--bleu-txt)">Développement et logiciels</a>.</p>
-
-    <h2>Et la visibilité ?</h2>
-    <p>Être trouvé sur Google Maps quand un client cherche un artisan près de chez lui est un autre sujet, traité dans l'article <a href="/visibilite-google-artisan-montmorillonnais/" style="color:var(--bleu-txt)">Artisan dans le Montmorillonnais : être trouvé sur Google</a>.</p>
-
-    <h2>Un accompagnement de proximité</h2>
-    <p>JOSY EI est installée à Montmorillon et intervient chez les artisans de la Vienne, sur place ou à distance. Nous partons de vos outils actuels, nous choisissons avec vous des solutions simples, souvent gratuites ou déjà incluses dans ce que vous payez, et nous formons votre équipe. Voir aussi notre <a href="/conseil-ingenierie-si/" style="color:var(--bleu-txt)">conseil en systèmes d'information</a> et la <a href="/zone-intervention/" style="color:var(--bleu-txt)">zone d'intervention</a>.</p>
-  </div>
-</section>
-
-<section>
-  <div class="w cta-band">
-    <h2 class="rv">Combien d'heures passez-vous sur l'administratif ?</h2>
-    <p>L'audit offert repère ce qui vous fait perdre du temps entre le chantier et le bureau, et propose des solutions adaptées à votre métier.</p>
-    <a class="btn btn-p" data-audit href="mailto:contact@josyei.com?subject=%5BAudit%5D%20Conseil%20et%20ing%C3%A9nierie%20des%20SI&amp;body=Bonjour%20JOSY%20EI%2C%0A%0AJe%20souhaite%20un%20audit%20pour%20%3A%20Conseil%20et%20ing%C3%A9nierie%20des%20SI.%0A%0AAudit%20et%20diagnostic%20de%20votre%20informatique%2C%20architecture%20mat%C3%A9riel%20et%20logiciel%2C%20s%C3%A9curit%C3%A9%20et%20conformit%C3%A9%2C%20int%C3%A9gration%20de%20vos%20outils%20entre%20eux.%0A%0A1.%20Quelle%20est%20la%20taille%20de%20votre%20entreprise%20et%20quels%20outils%20utilisez-vous%20aujourd%27hui%20%3F%0A2.%20Quel%20probl%C3%A8me%20concret%20constatez-vous%20%3F%0A3.%20Travaillez-vous%20d%C3%A9j%C3%A0%20avec%20un%20prestataire%20informatique%20%3F%0A%0ACordialement%2C%0A%5BNom%20/%20Entreprise%5D%0A">Discuter de mon projet</a>
-  </div>
-</section>
-
+    <p>Voir la page <a href="/automatisation-ia/" style="color:var(--bleu-txt)">Automatisation et IA</a>, et, quand aucun outil existant ne convient, <a href="/developpement-logiciel/" style="color:var(--bleu-txt)">Développement et logiciels</a>.</p></div><div class="pg-carte"><h2>Et la visibilité ?</h2>
+    <p>Être trouvé sur Google Maps quand un client cherche un artisan près de chez lui est un autre sujet, traité dans l'article <a href="/visibilite-google-artisan-montmorillonnais/" style="color:var(--bleu-txt)">Artisan dans le Montmorillonnais : être trouvé sur Google</a>.</p></div><div class="pg-carte"><h2>Un accompagnement de proximité</h2>
+    <p>JOSY EI est installée à Montmorillon et intervient chez les artisans de la Vienne, sur place ou à distance. Nous partons de vos outils actuels, nous choisissons avec vous des solutions simples, souvent gratuites ou déjà incluses dans ce que vous payez, et nous formons votre équipe. Voir aussi notre <a href="/conseil-ingenierie-si/" style="color:var(--bleu-txt)">conseil en systèmes d'information</a> et la <a href="/zone-intervention/" style="color:var(--bleu-txt)">zone d'intervention</a>.</p></div></div></div></section>
 <footer class="foot">
   <div class="w">
     <div class="fcols">
@@ -546,6 +536,7 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
         <ul>
           <li><a href="/a-propos/">À propos</a></li>
           <li><a href="/zone-intervention/">Zone d'intervention</a></li>
+          <li><a href="/consultant-informatique-montmorillon/">Montmorillon</a></li>
           <li><a href="/ressources/">Ressources et conseils</a></li>
           <li><a href="/contact/">Contact et audit</a></li>
           <li><a href="/mentions-legales/">Mentions légales</a></li>
