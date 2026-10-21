@@ -334,6 +334,34 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 .jx .cx-mobile p{color:var(--gris);font-size:.98rem}
 .jx .cx-soon{background:#00d4ff;color:#0a0e27;font-weight:800;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .8rem;border-radius:999px}
 @media (min-width:1024px){.jx .cx-cartes,.jx .cx-fiches{grid-template-columns:repeat(3,1fr)}}
+
+/* Configurateur (page agents IA) */
+.jx .cx-conf-zone{background:#0e1433;padding:3.5rem 0}
+.jx .cx-conf{max-width:980px;margin:0 auto;background:linear-gradient(160deg,#151c45,#0c1130);border:1px solid rgba(0,212,255,.3);border-radius:20px;padding:2rem 1.5rem;box-shadow:0 30px 60px -40px rgba(0,212,255,.6)}
+.jx .cx-conf-tete{text-align:center;margin-bottom:1.75rem;display:grid;gap:.4rem}
+.jx .cx-conf-tete h2{font-size:clamp(1.4rem,3vw,2rem)}
+.jx .cx-conf-tete p{color:var(--gris)}
+.jx .cx-conf-tag{justify-self:center;font-size:.75rem;text-transform:uppercase;letter-spacing:.14em;color:var(--cyan)!important;font-weight:700}
+.jx #cx-form{display:grid;gap:1rem}
+.jx .cx-etape{border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:1.1rem 1.2rem;background:rgba(255,255,255,.03);display:grid;gap:.7rem;margin:0;min-width:0}
+.jx .cx-etape-n{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--cyan);font-weight:700;padding:0}
+.jx #cx-secteur{width:100%;padding:.85rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:#0a0e27;color:#fff;font:inherit;font-weight:600}
+.jx .cx-choix{display:flex;align-items:center;gap:.9rem;padding:.85rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(10,14,39,.6);cursor:pointer;transition:border-color .2s,background .2s}
+.jx .cx-choix:hover{border-color:var(--bleu)}
+.jx .cx-choix input{position:absolute;opacity:0;width:1px;height:1px}
+.jx .cx-box{flex:none;width:1.5rem;height:1.5rem;border-radius:6px;border:2px solid rgba(255,255,255,.4);display:grid;place-items:center;transition:all .2s}
+.jx .cx-choix input:checked + .cx-box{background:var(--bleu);border-color:var(--bleu)}
+.jx .cx-choix input:checked + .cx-box::after{content:"";width:.45rem;height:.8rem;border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.jx .cx-choix:has(input:checked){border-color:var(--cyan);background:rgba(0,212,255,.08)}
+.jx .cx-choix input:focus-visible + .cx-box{outline:3px solid var(--cyan);outline-offset:2px}
+.jx .cx-choix strong{display:block;color:#fff}
+.jx .cx-choix small{color:var(--gris);font-size:.88rem}
+.jx .cx-resume{color:var(--blanc);font-weight:600}
+.jx .cx-go{justify-self:start;font-size:1.05rem;padding:1rem 2rem}
+.jx .cx-msg{color:var(--cyan);font-size:.92rem;min-height:1.2em}
+@media (min-width:1024px){.jx #cx-form{grid-template-columns:1fr 1.4fr}.jx #cx-form .cx-etape:last-child{grid-column:1/-1}}
+.jx #cx-form{align-items:start}
+.jx .cx-etape{align-content:start}
 </style>
 <div class="jx alignfull">
 

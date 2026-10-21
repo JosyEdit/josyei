@@ -334,6 +334,34 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 .jx .cx-mobile p{color:var(--gris);font-size:.98rem}
 .jx .cx-soon{background:#00d4ff;color:#0a0e27;font-weight:800;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .8rem;border-radius:999px}
 @media (min-width:1024px){.jx .cx-cartes,.jx .cx-fiches{grid-template-columns:repeat(3,1fr)}}
+
+/* Configurateur (page agents IA) */
+.jx .cx-conf-zone{background:#0e1433;padding:3.5rem 0}
+.jx .cx-conf{max-width:980px;margin:0 auto;background:linear-gradient(160deg,#151c45,#0c1130);border:1px solid rgba(0,212,255,.3);border-radius:20px;padding:2rem 1.5rem;box-shadow:0 30px 60px -40px rgba(0,212,255,.6)}
+.jx .cx-conf-tete{text-align:center;margin-bottom:1.75rem;display:grid;gap:.4rem}
+.jx .cx-conf-tete h2{font-size:clamp(1.4rem,3vw,2rem)}
+.jx .cx-conf-tete p{color:var(--gris)}
+.jx .cx-conf-tag{justify-self:center;font-size:.75rem;text-transform:uppercase;letter-spacing:.14em;color:var(--cyan)!important;font-weight:700}
+.jx #cx-form{display:grid;gap:1rem}
+.jx .cx-etape{border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:1.1rem 1.2rem;background:rgba(255,255,255,.03);display:grid;gap:.7rem;margin:0;min-width:0}
+.jx .cx-etape-n{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--cyan);font-weight:700;padding:0}
+.jx #cx-secteur{width:100%;padding:.85rem 1rem;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:#0a0e27;color:#fff;font:inherit;font-weight:600}
+.jx .cx-choix{display:flex;align-items:center;gap:.9rem;padding:.85rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(10,14,39,.6);cursor:pointer;transition:border-color .2s,background .2s}
+.jx .cx-choix:hover{border-color:var(--bleu)}
+.jx .cx-choix input{position:absolute;opacity:0;width:1px;height:1px}
+.jx .cx-box{flex:none;width:1.5rem;height:1.5rem;border-radius:6px;border:2px solid rgba(255,255,255,.4);display:grid;place-items:center;transition:all .2s}
+.jx .cx-choix input:checked + .cx-box{background:var(--bleu);border-color:var(--bleu)}
+.jx .cx-choix input:checked + .cx-box::after{content:"";width:.45rem;height:.8rem;border:solid #fff;border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.jx .cx-choix:has(input:checked){border-color:var(--cyan);background:rgba(0,212,255,.08)}
+.jx .cx-choix input:focus-visible + .cx-box{outline:3px solid var(--cyan);outline-offset:2px}
+.jx .cx-choix strong{display:block;color:#fff}
+.jx .cx-choix small{color:var(--gris);font-size:.88rem}
+.jx .cx-resume{color:var(--blanc);font-weight:600}
+.jx .cx-go{justify-self:start;font-size:1.05rem;padding:1rem 2rem}
+.jx .cx-msg{color:var(--cyan);font-size:.92rem;min-height:1.2em}
+@media (min-width:1024px){.jx #cx-form{grid-template-columns:1fr 1.4fr}.jx #cx-form .cx-etape:last-child{grid-column:1/-1}}
+.jx #cx-form{align-items:start}
+.jx .cx-etape{align-content:start}
 </style>
 <div class="jx alignfull">
 
@@ -400,6 +428,43 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
         <p>Surveille vos emails, prépare vos relances de devis et organise votre suivi client sans que vous ayez à y penser.</p>
         <a class="btn btn-s cx-btn" href="#fiche-gestionnaire">Voir la fiche produit</a>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="cx-conf-zone" id="configurateur" aria-labelledby="jx-h2-conf">
+  <div class="w">
+    <div class="cx-conf">
+      <div class="cx-conf-tete">
+        <p class="cx-conf-tag">Configurateur</p>
+        <h2 id="jx-h2-conf">Composez votre Cortex sur-mesure.</h2>
+        <p>Sélectionnez les employés virtuels dont votre entreprise a besoin.</p>
+      </div>
+      <form id="cx-form" novalidate>
+        <div class="cx-etape">
+          <p class="cx-etape-n">Étape A · Votre secteur d'activité</p>
+          <label class="sr" for="cx-secteur">Secteur d'activité</label>
+          <select id="cx-secteur" name="secteur">
+            <option>Artisan/BTP</option>
+            <option>Commerce</option>
+            <option>Santé</option>
+            <option>Services</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <fieldset class="cx-etape">
+          <legend class="cx-etape-n">Étape B · Vos agents</legend>
+          <label class="cx-choix"><input type="checkbox" name="agent" value="Agent 1 - Le Prospecteur"><span class="cx-box" aria-hidden="true"></span><span><strong>Agent 1 - Le Prospecteur</strong><small>Trouver des clients</small></span></label>
+          <label class="cx-choix"><input type="checkbox" name="agent" value="Agent 2 - Le Rédacteur"><span class="cx-box" aria-hidden="true"></span><span><strong>Agent 2 - Le Rédacteur</strong><small>Créer du contenu</small></span></label>
+          <label class="cx-choix"><input type="checkbox" name="agent" value="Agent 3 - Le Gestionnaire"><span class="cx-box" aria-hidden="true"></span><span><strong>Agent 3 - Le Gestionnaire</strong><small>Suivre les devis et emails</small></span></label>
+        </fieldset>
+        <div class="cx-etape">
+          <p class="cx-etape-n">Étape C · Votre configuration</p>
+          <p class="cx-resume" id="cx-resume" aria-live="polite">Aucun agent sélectionné.</p>
+          <button type="submit" class="btn btn-p cx-go">Générer ma configuration</button>
+          <p class="cx-msg" role="status" aria-live="polite"></p>
+        </div>
+      </form>
     </div>
   </div>
 </section>
@@ -592,6 +657,28 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 })();
 </script>
 
+<script>
+(function(){
+  // Page Cortex : le bouton « Discuter de mon projet » de l'en-tête mène au configurateur
+  document.querySelectorAll('.jx .top a.btn').forEach(function(a){
+    var b=a.cloneNode(true); b.removeAttribute('data-audit'); b.setAttribute('href','#configurateur'); a.parentNode.replaceChild(b,a);
+    b.addEventListener('click',function(ev){ev.preventDefault();document.getElementById('configurateur').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});history.replaceState(null,'','#configurateur');});
+  });
+  var f=document.getElementById('cx-form'); if(!f) return;
+  var resume=document.getElementById('cx-resume'), msg=f.querySelector('.cx-msg');
+  function agents(){return Array.prototype.map.call(f.querySelectorAll('input[name=agent]:checked'),function(c){return c.value;});}
+  function maj(){var a=agents(); resume.textContent=a.length?(f.secteur.value+' · '+a.length+' agent'+(a.length>1?'s':'')+' : '+a.map(function(x){return x.split(' - ')[1];}).join(', ')):'Aucun agent sélectionné.'; msg.textContent='';}
+  f.addEventListener('change',maj);
+  f.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var a=agents(), s=f.secteur.value;
+    if(!a.length){msg.textContent='Cochez au moins un agent.';f.querySelector('input[name=agent]').focus();return;}
+    var corps='Bonjour JOSY EI,\n\nJe souhaite installer Le Cortex avec la configuration suivante :\n- Secteur : '+s+'\n- Agents sélectionnés : '+a.join(', ')+'\n\nPouvez-vous me recontacter pour une démonstration ?\n';
+    location.href='mailto:contact@josyei.com?subject='+encodeURIComponent('[Configuration Cortex] Projet pour le secteur '+s)+'&body='+encodeURIComponent(corps);
+    msg.textContent='Votre messagerie s\u2019ouvre avec votre configuration : il ne reste qu\u2019à envoyer l\u2019email.';
+  });
+})();
+</script>
 
 </div>
 </body>
