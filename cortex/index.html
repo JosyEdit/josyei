@@ -442,7 +442,6 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
       <a href="/zone-intervention/">Zone d'intervention</a>
       <a href="/consultant-informatique-montmorillon/">Montmorillon</a>
       <span class="meteo" aria-label="Météo et heure à Montmorillon"><span class="meteo-ico" aria-hidden="true"></span><span class="meteo-temp">--°C</span><span class="meteo-sep" aria-hidden="true">·</span><span class="meteo-ville">Montmorillon</span><span class="meteo-sep" aria-hidden="true">·</span><time class="meteo-heure">--:--</time></span>
-      <a class="btn btn-p" data-audit href="mailto:contact@josyei.com?subject=%5BAudit%5D%20Audit%20offert&amp;body=Bonjour%20JOSY%20EI%2C%0A%0AJe%20souhaite%20un%20audit%20offert.%0A%0AMon%20besoin%20%3A%0A%0ACordialement%2C%0A%5BNom%20/%20Entreprise%5D%0A">Discuter de mon projet</a>
     </nav>
     <span class="meteo meteo-mobile" aria-label="Météo et heure à Montmorillon"><span class="meteo-ico" aria-hidden="true"></span><span class="meteo-temp">--°C</span><span class="meteo-sep" aria-hidden="true">·</span><span class="meteo-ville">Montmorillon</span><span class="meteo-sep" aria-hidden="true">·</span><time class="meteo-heure">--:--</time></span>
     <button type="button" class="burger" aria-expanded="false" aria-controls="jx-drawer">Menu</button>
@@ -519,7 +518,7 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
   <div class="w">
     <h2 id="jx-h2-chat" style="text-align:center">Testez Le Cortex en direct.</h2>
     <div class="cx-chat">
-      <div class="cx-chat-tete"><span class="cx-dot"></span><strong>Le Cortex</strong><span class="cx-statut">démo · réponses préparées</span></div>
+      <div class="cx-chat-tete"><span class="cx-dot"></span><strong>Le Cortex</strong><span class="cx-statut">Simulateur d'échange</span></div>
       <div class="cx-fil" id="cx-fil" aria-live="polite">
         <div class="cx-bulle ia">Bonjour, je suis Le Cortex. Posez-moi une question sur votre activité.</div>
       </div>
@@ -732,11 +731,8 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 
 <script>
 (function(){
-  // Page Cortex : le bouton « Discuter de mon projet » de l'en-tête mène au configurateur
-  document.querySelectorAll('.jx .top a.btn').forEach(function(a){
-    var b=a.cloneNode(true); b.removeAttribute('data-audit'); b.setAttribute('href','#configurateur'); a.parentNode.replaceChild(b,a);
-    b.addEventListener('click',function(ev){ev.preventDefault();document.getElementById('configurateur').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});history.replaceState(null,'','#configurateur');});
-  });
+  // Page Cortex : pas de bouton « Discuter de mon projet » dans le menu (doublon avec « Composer mon Cortex »)
+  document.querySelectorAll('.jx .top .menu a.btn').forEach(function(a){a.remove();});
   // Catalogue : filtres par secteur
   var btns=document.querySelectorAll('.cx-filtres button');
   btns.forEach(function(b){b.addEventListener('click',function(){
