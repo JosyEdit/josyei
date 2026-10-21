@@ -362,6 +362,36 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 @media (min-width:1024px){.jx #cx-form{grid-template-columns:1fr 1.4fr}.jx #cx-form .cx-etape:last-child{grid-column:1/-1}}
 .jx #cx-form{align-items:start}
 .jx .cx-etape{align-content:start}
+
+/* Catalogue et démo de chat (page agents IA) */
+.jx .cx-intro{text-align:center;color:var(--gris);max-width:62ch;margin:.75rem auto 1.5rem}
+.jx .cx-filtres{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:1.75rem}
+.jx .cx-filtres button{font:inherit;font-weight:600;font-size:.92rem;padding:.55rem 1.2rem;border-radius:999px;border:1px solid rgba(0,212,255,.4);background:transparent;color:var(--blanc);cursor:pointer}
+.jx .cx-filtres button[aria-pressed=true]{background:var(--bleu);border-color:var(--bleu)}
+.jx .cx-grille{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.jx .cx-agent{display:grid;gap:.5rem;align-content:start;padding:1.25rem;border-radius:14px;background:linear-gradient(160deg,#151c45,#0c1130);border:1px solid rgba(0,212,255,.25);box-shadow:0 0 0 0 rgba(0,212,255,0);transition:box-shadow .2s,border-color .2s}
+.jx .cx-agent:hover{border-color:var(--cyan);box-shadow:0 0 24px -6px rgba(0,212,255,.55)}
+.jx .cx-agent[hidden]{display:none}
+.jx .cx-agent-tag{justify-self:start;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#0a0e27;background:var(--cyan);border-radius:999px;padding:.15rem .6rem}
+.jx .cx-agent h3{font-size:1.1rem}
+.jx .cx-agent p{color:var(--gris);font-size:.93rem;line-height:1.5}
+.jx .cx-agent .cx-base{font-size:.8rem;color:#7f88a8}
+.jx .cx-agent .cx-btn{color:var(--bleu-txt)}
+.jx .cx-chat-zone{padding:3.5rem 0;background:var(--noir)}
+.jx .cx-chat{max-width:720px;margin:1.5rem auto 0;border-radius:18px;overflow:hidden;border:1px solid rgba(0,212,255,.35);background:#0b1020;box-shadow:0 30px 60px -40px rgba(0,212,255,.7)}
+.jx .cx-chat-tete{display:flex;align-items:center;gap:.6rem;padding:.9rem 1.2rem;background:#121a3a;border-bottom:1px solid rgba(255,255,255,.08)}
+.jx .cx-dot{width:.6rem;height:.6rem;border-radius:50%;background:#00ff88;box-shadow:0 0 8px #00ff88}
+.jx .cx-statut{margin-left:auto;font-size:.75rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em}
+.jx .cx-fil{min-height:220px;max-height:340px;overflow-y:auto;padding:1.2rem;display:grid;gap:.75rem;align-content:start}
+.jx .cx-bulle{max-width:82%;padding:.75rem 1rem;border-radius:14px;font-size:.96rem;line-height:1.5}
+.jx .cx-bulle.ia{background:#1b2550;color:var(--blanc);border-bottom-left-radius:4px;justify-self:start}
+.jx .cx-bulle.moi{background:#0066ff;color:#fff;border-bottom-right-radius:4px;justify-self:end}
+.jx .cx-bulle a{color:var(--cyan);font-weight:700}
+.jx .cx-saisie{display:flex;gap:.6rem;padding:.9rem;border-top:1px solid rgba(255,255,255,.08);background:#0e1430}
+.jx .cx-saisie input{flex:1;min-width:0;padding:.8rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:#0a0e27;color:#fff;font:inherit}
+.jx .cx-saisie .btn{padding:.75rem 1.3rem}
+.jx .cx-conseil{border-style:dashed}
+.jx .cx-agent .cx-agent-tag{color:#0a0e27;font-size:.72rem}
 </style>
 <div class="jx alignfull">
 
@@ -406,68 +436,52 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
   </div>
 </section>
 
-<section class="h3s-clair" id="agents" aria-labelledby="jx-h2-agents">
+<section class="cx-conf-zone" id="agents" aria-labelledby="jx-h2-agents">
   <div class="w">
-    <h2 id="jx-h2-agents">Les agents du Cortex</h2>
-    <div class="cx-cartes">
-      <article class="h3s-carte cx-carte">
-        <p class="cx-num">Agent 1</p>
-        <h3>Le Prospecteur</h3>
-        <p>Trouve de nouveaux clients locaux sur Google Maps, analyse leur site et rédige des messages de prospection personnalisés pour vous.</p>
-        <a class="btn btn-s cx-btn" href="#fiche-prospecteur">Voir la fiche produit</a>
-      </article>
-      <article class="h3s-carte cx-carte">
-        <p class="cx-num">Agent 2</p>
-        <h3>Le Rédacteur</h3>
-        <p>Génère vos posts LinkedIn, vos articles de blog et vos publications Google Business à partir d'une simple idée ou d'une actualité.</p>
-        <a class="btn btn-s cx-btn" href="#fiche-redacteur">Voir la fiche produit</a>
-      </article>
-      <article class="h3s-carte cx-carte">
-        <p class="cx-num">Agent 3</p>
-        <h3>Le Gestionnaire</h3>
-        <p>Surveille vos emails, prépare vos relances de devis et organise votre suivi client sans que vous ayez à y penser.</p>
-        <a class="btn btn-s cx-btn" href="#fiche-gestionnaire">Voir la fiche produit</a>
-      </article>
+    <h2 id="jx-h2-agents" style="text-align:center">Le catalogue des agents</h2>
+    <p class="cx-intro">Chaque agent est une configuration de l'un des trois agents du Cortex (Prospecteur, Rédacteur, Gestionnaire), adaptée à votre métier.</p>
+    <div class="cx-filtres" role="group" aria-label="Filtrer par secteur">
+      <button type="button" aria-pressed="true" data-f="Tous">Tous</button>
+      <button type="button" aria-pressed="false" data-f="BTP">BTP</button>
+      <button type="button" aria-pressed="false" data-f="Commerce">Commerce</button>
+      <button type="button" aria-pressed="false" data-f="Santé">Santé</button>
+      <button type="button" aria-pressed="false" data-f="Services">Services</button>
+    </div>
+    <div class="cx-grille" id="cx-grille">
+        <article class="cx-agent" data-secteur="BTP"><p class="cx-agent-tag">BTP</p><h3>Agent BTP</h3><p>Prépare vos devis, relance ceux restés sans réponse et suit vos chantiers.</p><p class="cx-base">Basé sur Le Gestionnaire</p><a class="btn btn-s cx-btn" href="#fiche-gestionnaire">Voir la fiche</a></article>
+        <article class="cx-agent" data-secteur="BTP"><p class="cx-agent-tag">BTP</p><h3>Agent Artisan</h3><p>Repère les entreprises et syndics de votre secteur qui ont besoin de vos services.</p><p class="cx-base">Basé sur Le Prospecteur</p><a class="btn btn-s cx-btn" href="#fiche-prospecteur">Voir la fiche</a></article>
+        <article class="cx-agent" data-secteur="BTP"><p class="cx-agent-tag">BTP</p><h3>Agent Chantier</h3><p>Transforme vos photos de chantier en publications pour votre fiche Google.</p><p class="cx-base">Basé sur Le Rédacteur</p><a class="btn btn-s cx-btn" href="#fiche-redacteur">Voir la fiche</a></article>
+        <article class="cx-agent" data-secteur="Commerce"><p class="cx-agent-tag">Commerce</p><h3>Agent Commerce</h3><p>Publie vos nouveautés et promotions sur votre fiche Google et vos réseaux.</p><p class="cx-base">Basé sur Le Rédacteur</p><a class="btn btn-s cx-btn" href="#fiche-redacteur">Voir la fiche</a></article>
+        <article class="cx-agent" data-secteur="Commerce"><p class="cx-agent-tag">Commerce</p><h3>Agent Fidélité</h3><p>Prépare les relances de vos clients professionnels et le suivi des commandes.</p><p class="cx-base">Basé sur Le Gestionnaire</p><a class="btn btn-s cx-btn" href="#fiche-gestionnaire">Voir la fiche</a></article>
+        <article class="cx-agent" data-secteur="Commerce"><p class="cx-agent-tag">Commerce</p><h3>Agent Boutique en ligne</h3><p>Rédige vos fiches produits et vos descriptions de catalogue.</p><p class="cx-base">Basé sur Le Rédacteur</p><a class="btn btn-s cx-btn" href="#fiche-redacteur">Voir la fiche</a></article>
+        <article class="cx-agent" data-secteur="Santé"><p class="cx-agent-tag">Santé</p><h3>Agent Cabinet</h3><p>Organise vos emails et rappels administratifs, sans traiter de données de santé.</p><p class="cx-base">Basé sur Le Gestionnaire</p><a class="btn btn-s cx-btn" href="#fiche-gestionnaire">Voir la fiche</a></article>
+        <article class="cx-agent" data-secteur="Santé"><p class="cx-agent-tag">Santé</p><h3>Agent Prévention</h3><p>Rédige des contenus pédagogiques pour votre site et votre fiche Google.</p><p class="cx-base">Basé sur Le Rédacteur</p><a class="btn btn-s cx-btn" href="#fiche-redacteur">Voir la fiche</a></article>
+        <article class="cx-agent" data-secteur="Santé"><p class="cx-agent-tag">Santé</p><h3>Agent Partenaires</h3><p>Repère les établissements et professionnels avec qui travailler localement.</p><p class="cx-base">Basé sur Le Prospecteur</p><a class="btn btn-s cx-btn" href="#fiche-prospecteur">Voir la fiche</a></article>
+        <article class="cx-agent" data-secteur="Services"><p class="cx-agent-tag">Services</p><h3>Agent Comptable</h3><p>Relance vos clients pour les pièces manquantes et suit les échéances.</p><p class="cx-base">Basé sur Le Gestionnaire</p><a class="btn btn-s cx-btn" href="#fiche-gestionnaire">Voir la fiche</a></article>
+        <article class="cx-agent" data-secteur="Services"><p class="cx-agent-tag">Services</p><h3>Agent Immobilier</h3><p>Rédige vos annonces et organise le suivi de vos contacts acquéreurs.</p><p class="cx-base">Basé sur Le Rédacteur</p><a class="btn btn-s cx-btn" href="#fiche-redacteur">Voir la fiche</a></article>
+        <article class="cx-agent" data-secteur="Services"><p class="cx-agent-tag">Services</p><h3>Agent B2B</h3><p>Trouve des entreprises cibles et prépare des messages de prospection personnalisés.</p><p class="cx-base">Basé sur Le Prospecteur</p><a class="btn btn-s cx-btn" href="#fiche-prospecteur">Voir la fiche</a></article>
     </div>
   </div>
 </section>
 
-<section class="cx-conf-zone" id="configurateur" aria-labelledby="jx-h2-conf">
+<section class="cx-chat-zone" aria-labelledby="jx-h2-chat">
   <div class="w">
-    <div class="cx-conf">
-      <div class="cx-conf-tete">
-        <p class="cx-conf-tag">Configurateur</p>
-        <h2 id="jx-h2-conf">Composez votre Cortex sur-mesure.</h2>
-        <p>Sélectionnez les employés virtuels dont votre entreprise a besoin.</p>
+    <h2 id="jx-h2-chat" style="text-align:center">Testez Le Cortex en direct.</h2>
+    <div class="cx-chat">
+      <div class="cx-chat-tete"><span class="cx-dot"></span><strong>Le Cortex</strong><span class="cx-statut">démo</span></div>
+      <div class="cx-fil" id="cx-fil" aria-live="polite">
+        <div class="cx-bulle ia">Bonjour, je suis Le Cortex. Posez-moi une question sur votre activité.</div>
       </div>
-      <form id="cx-form" novalidate>
-        <div class="cx-etape">
-          <p class="cx-etape-n">Étape A · Votre secteur d'activité</p>
-          <label class="sr" for="cx-secteur">Secteur d'activité</label>
-          <select id="cx-secteur" name="secteur">
-            <option>Artisan/BTP</option>
-            <option>Commerce</option>
-            <option>Santé</option>
-            <option>Services</option>
-            <option>Autre</option>
-          </select>
-        </div>
-        <fieldset class="cx-etape">
-          <legend class="cx-etape-n">Étape B · Vos agents</legend>
-          <label class="cx-choix"><input type="checkbox" name="agent" value="Agent 1 - Le Prospecteur"><span class="cx-box" aria-hidden="true"></span><span><strong>Agent 1 - Le Prospecteur</strong><small>Trouver des clients</small></span></label>
-          <label class="cx-choix"><input type="checkbox" name="agent" value="Agent 2 - Le Rédacteur"><span class="cx-box" aria-hidden="true"></span><span><strong>Agent 2 - Le Rédacteur</strong><small>Créer du contenu</small></span></label>
-          <label class="cx-choix"><input type="checkbox" name="agent" value="Agent 3 - Le Gestionnaire"><span class="cx-box" aria-hidden="true"></span><span><strong>Agent 3 - Le Gestionnaire</strong><small>Suivre les devis et emails</small></span></label>
-        </fieldset>
-        <div class="cx-etape">
-          <p class="cx-etape-n">Étape C · Votre configuration</p>
-          <p class="cx-resume" id="cx-resume" aria-live="polite">Aucun agent sélectionné.</p>
-          <button type="submit" class="btn btn-p cx-go">Générer ma configuration</button>
-          <p class="cx-msg" role="status" aria-live="polite"></p>
-        </div>
+      <form class="cx-saisie" id="cx-chat-form">
+        <label class="sr" for="cx-q">Votre question</label>
+        <input id="cx-q" type="text" placeholder="Posez votre question à l'IA..." autocomplete="off">
+        <button type="submit" class="btn btn-p">Envoyer</button>
       </form>
     </div>
   </div>
 </section>
+
+
 
 <section aria-labelledby="jx-h2-local">
   <div class="w">
@@ -518,6 +532,44 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
       <span class="cx-soon">Bientôt disponible</span>
       <h2 id="jx-h2-mobile">L'application mobile Le Cortex</h2>
       <p>Emportez vos agents IA partout. Pensée pour tous les secteurs d'activité (BTP, commerce, santé, services), directement depuis votre smartphone. En préparation pour iOS et Android.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cx-conf-zone cx-bas" id="configurateur" aria-labelledby="jx-h2-conf">
+  <div class="w">
+    <div class="cx-conf">
+      <div class="cx-conf-tete">
+        <p class="cx-conf-tag">Configurateur</p>
+        <h2 id="jx-h2-conf">Composez votre Cortex sur-mesure.</h2>
+        <p>Sélectionnez les employés virtuels dont votre entreprise a besoin.</p>
+      </div>
+      <form id="cx-form" novalidate>
+        <div class="cx-etape">
+          <p class="cx-etape-n">Étape A · Votre secteur d'activité</p>
+          <label class="sr" for="cx-secteur">Secteur d'activité</label>
+          <select id="cx-secteur" name="secteur">
+            <option>Artisan/BTP</option>
+            <option>Commerce</option>
+            <option>Santé</option>
+            <option>Services</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <fieldset class="cx-etape">
+          <legend class="cx-etape-n">Étape B · Vos agents</legend>
+          <label class="cx-choix"><input type="checkbox" name="agent" value="Agent 1 - Le Prospecteur"><span class="cx-box" aria-hidden="true"></span><span><strong>Agent 1 - Le Prospecteur</strong><small>Trouver des clients</small></span></label>
+          <label class="cx-choix"><input type="checkbox" name="agent" value="Agent 2 - Le Rédacteur"><span class="cx-box" aria-hidden="true"></span><span><strong>Agent 2 - Le Rédacteur</strong><small>Créer du contenu</small></span></label>
+          <label class="cx-choix"><input type="checkbox" name="agent" value="Agent 3 - Le Gestionnaire"><span class="cx-box" aria-hidden="true"></span><span><strong>Agent 3 - Le Gestionnaire</strong><small>Suivre les devis et emails</small></span></label>
+          <label class="cx-choix cx-conseil"><input type="checkbox" name="agent" value="Je ne sais pas encore, conseillez-moi"><span class="cx-box" aria-hidden="true"></span><span><strong>Je ne sais pas encore, conseillez-moi</strong><small>Je vous propose la bonne combinaison</small></span></label>
+        </fieldset>
+        <div class="cx-etape">
+          <p class="cx-etape-n">Étape C · Votre configuration</p>
+          <p class="cx-resume" id="cx-resume" aria-live="polite">Aucun agent sélectionné.</p>
+          <button type="submit" class="btn btn-p cx-go">Générer ma configuration</button>
+          <p class="cx-msg" role="status" aria-live="polite"></p>
+        </div>
+      </form>
     </div>
   </div>
 </section>
@@ -664,6 +716,21 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
     var b=a.cloneNode(true); b.removeAttribute('data-audit'); b.setAttribute('href','#configurateur'); a.parentNode.replaceChild(b,a);
     b.addEventListener('click',function(ev){ev.preventDefault();document.getElementById('configurateur').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});history.replaceState(null,'','#configurateur');});
   });
+  // Catalogue : filtres par secteur
+  var btns=document.querySelectorAll('.cx-filtres button');
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    var v=b.getAttribute('data-f'); btns.forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});
+    document.querySelectorAll('.cx-agent').forEach(function(c){c.hidden=!(v==='Tous'||c.getAttribute('data-secteur')===v);});
+  });});
+  // Démo de chat : pas encore de moteur en ligne, renvoi honnête vers un humain
+  var cf=document.getElementById('cx-chat-form'), fil=document.getElementById('cx-fil');
+  if(cf){cf.addEventListener('submit',function(ev){
+    ev.preventDefault(); var q=document.getElementById('cx-q'), v=q.value.trim(); if(!v){q.focus();return;}
+    var u=document.createElement('div'); u.className='cx-bulle moi'; u.textContent=v; fil.appendChild(u); q.value='';
+    var r=document.createElement('div'); r.className='cx-bulle ia';
+    r.innerHTML='La démonstration en direct du Cortex arrive bientôt. Pour tester cette configuration en direct avec un humain, <a href="sms:+33752941460">cliquez ici pour m\u2019envoyer un SMS</a> (07 52 94 14 60).';
+    setTimeout(function(){fil.appendChild(r); fil.scrollTop=fil.scrollHeight;},500);
+  });}
   var f=document.getElementById('cx-form'); if(!f) return;
   var resume=document.getElementById('cx-resume'), msg=f.querySelector('.cx-msg');
   function agents(){return Array.prototype.map.call(f.querySelectorAll('input[name=agent]:checked'),function(c){return c.value;});}

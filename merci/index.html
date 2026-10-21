@@ -362,6 +362,36 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 @media (min-width:1024px){.jx #cx-form{grid-template-columns:1fr 1.4fr}.jx #cx-form .cx-etape:last-child{grid-column:1/-1}}
 .jx #cx-form{align-items:start}
 .jx .cx-etape{align-content:start}
+
+/* Catalogue et démo de chat (page agents IA) */
+.jx .cx-intro{text-align:center;color:var(--gris);max-width:62ch;margin:.75rem auto 1.5rem}
+.jx .cx-filtres{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:1.75rem}
+.jx .cx-filtres button{font:inherit;font-weight:600;font-size:.92rem;padding:.55rem 1.2rem;border-radius:999px;border:1px solid rgba(0,212,255,.4);background:transparent;color:var(--blanc);cursor:pointer}
+.jx .cx-filtres button[aria-pressed=true]{background:var(--bleu);border-color:var(--bleu)}
+.jx .cx-grille{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.jx .cx-agent{display:grid;gap:.5rem;align-content:start;padding:1.25rem;border-radius:14px;background:linear-gradient(160deg,#151c45,#0c1130);border:1px solid rgba(0,212,255,.25);box-shadow:0 0 0 0 rgba(0,212,255,0);transition:box-shadow .2s,border-color .2s}
+.jx .cx-agent:hover{border-color:var(--cyan);box-shadow:0 0 24px -6px rgba(0,212,255,.55)}
+.jx .cx-agent[hidden]{display:none}
+.jx .cx-agent-tag{justify-self:start;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#0a0e27;background:var(--cyan);border-radius:999px;padding:.15rem .6rem}
+.jx .cx-agent h3{font-size:1.1rem}
+.jx .cx-agent p{color:var(--gris);font-size:.93rem;line-height:1.5}
+.jx .cx-agent .cx-base{font-size:.8rem;color:#7f88a8}
+.jx .cx-agent .cx-btn{color:var(--bleu-txt)}
+.jx .cx-chat-zone{padding:3.5rem 0;background:var(--noir)}
+.jx .cx-chat{max-width:720px;margin:1.5rem auto 0;border-radius:18px;overflow:hidden;border:1px solid rgba(0,212,255,.35);background:#0b1020;box-shadow:0 30px 60px -40px rgba(0,212,255,.7)}
+.jx .cx-chat-tete{display:flex;align-items:center;gap:.6rem;padding:.9rem 1.2rem;background:#121a3a;border-bottom:1px solid rgba(255,255,255,.08)}
+.jx .cx-dot{width:.6rem;height:.6rem;border-radius:50%;background:#00ff88;box-shadow:0 0 8px #00ff88}
+.jx .cx-statut{margin-left:auto;font-size:.75rem;color:var(--gris);text-transform:uppercase;letter-spacing:.1em}
+.jx .cx-fil{min-height:220px;max-height:340px;overflow-y:auto;padding:1.2rem;display:grid;gap:.75rem;align-content:start}
+.jx .cx-bulle{max-width:82%;padding:.75rem 1rem;border-radius:14px;font-size:.96rem;line-height:1.5}
+.jx .cx-bulle.ia{background:#1b2550;color:var(--blanc);border-bottom-left-radius:4px;justify-self:start}
+.jx .cx-bulle.moi{background:#0066ff;color:#fff;border-bottom-right-radius:4px;justify-self:end}
+.jx .cx-bulle a{color:var(--cyan);font-weight:700}
+.jx .cx-saisie{display:flex;gap:.6rem;padding:.9rem;border-top:1px solid rgba(255,255,255,.08);background:#0e1430}
+.jx .cx-saisie input{flex:1;min-width:0;padding:.8rem 1rem;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:#0a0e27;color:#fff;font:inherit}
+.jx .cx-saisie .btn{padding:.75rem 1.3rem}
+.jx .cx-conseil{border-style:dashed}
+.jx .cx-agent .cx-agent-tag{color:#0a0e27;font-size:.72rem}
 </style>
 <div class="jx alignfull">
 
