@@ -533,34 +533,46 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 
 
 
+
 <style>
     /* Styles interactifs pour les 3 sections */
     .interactive-section { padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; }
     .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: inherit; }
-    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-    .interactive-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 2rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .interactive-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); border-color: #0a66c2; }
-    .interactive-card h3 { margin-top: 0; margin-bottom: 1rem; color: #0a66c2; }
     
+    /* Grille pour "Ce que je fais pour vous" */
+    .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+    .interactive-card { background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 2rem; transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .interactive-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 10px 30px rgba(10, 102, 194, 0.2); border-color: #0a66c2; }
+    .interactive-card h3 { margin-top: 0; margin-bottom: 1rem; color: #38bdf8; }
+    .interactive-card p { color: #94a3b8; line-height: 1.6; }
+    
+    /* Timeline */
     .timeline-step { display: flex; align-items: flex-start; margin-bottom: 2rem; }
     .step-number { background: #0a66c2; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; margin-right: 1.5rem; flex-shrink: 0; box-shadow: 0 0 15px rgba(10, 102, 194, 0.5); }
-    .step-content h3 { margin: 0 0 0.5rem 0; }
+    .step-content h3 { margin: 0 0 0.5rem 0; color: #38bdf8; }
+    .step-content p { color: #94a3b8; margin: 0; }
     
+    /* Technos */
     .tech-pills { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; justify-content: center; }
-    .tech-pill { background: rgba(10, 102, 194, 0.1); border: 1px solid #0a66c2; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 500; transition: background 0.3s; }
-    .tech-pill:hover { background: #0a66c2; color: white; }
+    .tech-pill { background: rgba(10, 102, 194, 0.1); border: 1px solid #0a66c2; padding: 0.5rem 1.5rem; border-radius: 50px; font-weight: 500; color: #38bdf8; transition: all 0.3s; }
+    .tech-pill:hover { background: #0a66c2; color: white; transform: scale(1.05); }
     
-    .faq-item { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; margin-bottom: 1rem; overflow: hidden; }
-    .faq-item summary { padding: 1.5rem; cursor: pointer; font-weight: bold; list-style: none; position: relative; }
-    .faq-item summary::after { content: '+'; position: absolute; right: 1.5rem; font-size: 1.5rem; transition: transform 0.3s; }
+    /* FAQ */
+    .faq-item { background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; margin-bottom: 1rem; overflow: hidden; }
+    .faq-item summary { padding: 1.5rem; cursor: pointer; font-weight: bold; list-style: none; position: relative; color: #38bdf8; }
+    .faq-item summary::after { content: '+'; position: absolute; right: 1.5rem; font-size: 1.5rem; transition: transform 0.3s; color: white; }
     .faq-item[open] summary::after { transform: rotate(45deg); }
-    .faq-item p { padding: 0 1.5rem 1.5rem 1.5rem; margin: 0; }
+    .faq-item p { padding: 0 1.5rem 1.5rem 1.5rem; margin: 0; color: #94a3b8; }
     
+    /* Stats */
     .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center; margin-top: 3rem; }
     .stat-number { font-size: 3.5rem; font-weight: bold; color: #0a66c2; display: block; }
-    .stat-label { font-size: 1.1rem; opacity: 0.8; }
+    .stat-label { font-size: 1.1rem; color: #94a3b8; }
     
-    .final-cta { text-align: center; margin-top: 5rem; padding: 3rem; background: rgba(10, 102, 194, 0.1); border-radius: 12px; }
+    /* Final CTA */
+    .final-cta { text-align: center; margin-top: 5rem; padding: 3rem; background: rgba(10, 102, 194, 0.1); border-radius: 12px; border: 1px solid #0a66c2; }
+    .final-cta h2 { color: #38bdf8; }
+    .final-cta p { color: #94a3b8; max-width: 600px; margin: 1rem auto; }
 </style>
 
 <!-- SECTION 1 : L'Offre & l'Approche -->
@@ -586,14 +598,14 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
     </div>
     
     <div style="margin-top: 4rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
-        <h3>Pourquoi le 100% en ligne ?</h3>
-        <p>Un accompagnement à distance simplifie les échanges, rend les décisions consultables et évite les contraintes de déplacement. Le travail s'organise autour de documents partagés, d'étapes explicites et d'accès contrôlés.</p>
-        <p>Le format s'adapte au besoin : échange écrit pour une question simple, visioconférence pour un arbitrage, support réutilisable pour transmettre une méthode.</p>
+        <h3 style="color: #38bdf8;">Pourquoi le 100% en ligne ?</h3>
+        <p style="color: #94a3b8; line-height: 1.6;">Un accompagnement à distance simplifie les échanges, rend les décisions consultables et évite les contraintes de déplacement. Le travail s'organise autour de documents partagés, d'étapes explicites et d'accès contrôlés.</p>
+        <p style="color: #94a3b8; line-height: 1.6;">Le format s'adapte au besoin : échange écrit pour une question simple, visioconférence pour un arbitrage, support réutilisable pour transmettre une méthode.</p>
     </div>
 </section>
 
 <!-- SECTION 2 : La Méthode & Les Outils -->
-<section class="interactive-section" id="methode" style="background: rgba(0,0,0,0.2); border-radius: 20px;">
+<section class="interactive-section" id="methode" style="background: #0f172a; border-radius: 20px; border: 1px solid #1e293b;">
     <h2 class="section-title">Notre processus</h2>
     <div style="max-width: 600px; margin: 0 auto;">
         <div class="timeline-step">
@@ -619,8 +631,8 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
         </div>
     </div>
     
-    <h3 style="text-align: center; margin-top: 4rem;">Technologies & outils</h3>
-    <p style="text-align: center; opacity: 0.8;">Le choix part du besoin et de l'environnement existant, pas d'une marque imposée.</p>
+    <h3 style="text-align: center; margin-top: 4rem; color: #38bdf8;">Technologies & outils</h3>
+    <p style="text-align: center; color: #94a3b8;">Le choix part du besoin et de l'environnement existant, pas d'une marque imposée.</p>
     <div class="tech-pills">
         <span class="tech-pill">Google Business Profile</span>
         <span class="tech-pill">Google Workspace</span>
