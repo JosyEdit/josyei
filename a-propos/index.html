@@ -499,6 +499,26 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 .jx .actu-photo{margin:2rem auto 0;max-width:420px;display:grid;gap:.45rem;justify-items:center}
 .jx .actu-photo img{width:100%;height:auto;border-radius:18px;display:block;border:1px solid rgba(0,212,255,.35)}
 .jx .actu-photo figcaption{color:#7d86a8;font-size:.78rem}
+
+.jx .about-hero .digital-feature-layout{grid-template-columns:1fr;justify-items:center;max-width:900px;text-align:center}
+.jx .about-hero .digital-feature-copy{max-width:68ch}
+.jx .about-hero .digital-feature-copy h1,.jx .about-hero .digital-feature-copy .sub{text-align:center;margin-inline:auto}
+.jx .about-hero .digital-feature-image{width:min(100%,350px);min-height:0;aspect-ratio:1;margin:1.5rem auto 0}
+.jx .about-hero .digital-feature-image img{display:block;width:100%;height:100%;min-height:0;max-height:none;aspect-ratio:1;object-fit:cover;object-position:50% 22%;border:4px solid #3b82f6;border-radius:50%;box-shadow:0 0 30px rgba(59,130,246,.3)}
+.jx .about-content{background:#0f172a}
+.jx .about-content-card{padding:clamp(1.5rem,4vw,3rem);background:#1e293b;border:1px solid #334155;border-radius:16px;transition:transform .3s,border-color .3s}
+.jx .about-content-card:hover{transform:translateY(-5px);border-color:#3b82f6}
+.jx .about-content-card h2{margin:2rem 0 .75rem;text-align:left;font-size:clamp(1.35rem,2.5vw,1.8rem)}
+.jx .about-content-card h2:first-child{margin-top:0}
+.jx .about-content-card h3{margin:1rem 0 .3rem;color:var(--cyan)}
+.jx .about-content-card p,.jx .about-content-card li{margin:.65rem 0;color:var(--gris);line-height:1.75}
+.jx .about-content-card ul,.jx .about-content-card ol{padding-left:1.4rem}
+.jx .about-content-card ul{list-style:disc}
+.jx .about-content-card ol{list-style:decimal}
+.jx .about-content-card li::marker{color:#3b82f6;font-weight:700}
+.jx .about-content-cta{margin-top:2rem;padding-top:1.5rem;border-top:1px solid #334155;text-align:center}
+.jx .about-content-cta p{margin:0 0 1rem}
+@media (prefers-reduced-motion:reduce){.jx .about-content-card{transition:none}.jx .about-content-card:hover{transform:none}}
 </style>
 <div class="jx alignfull">
 
@@ -531,32 +551,50 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
   </nav>
 </header>
 
-<section class="pg-hero digital-feature-hero" aria-labelledby="jx-h1"><div class="w digital-feature-layout"><div class="digital-feature-copy"><h1 id="jx-h1">JOSY EI, conseil informatique en ligne pour les entreprises en France</h1><p class="sub">Une entreprise individuelle qui met l'ingénierie informatique, l'automatisation et l'IA à la portée des TPE, PME, artisans et indépendants.</p></div><figure class="digital-image digital-feature-image"><img src="/img/portrait-josy-ei-640.webp" alt="Portrait du fondateur de JOSY EI" width="640" height="640" loading="eager" decoding="async" fetchpriority="high"></figure></div></section>
-<section class="pg-corps"><div class="w"><div class="pg-grille"><div class="pg-carte"><h2 id="jx-h2-histoire">Pourquoi JOSY EI existe</h2>
-    <p>Les petites entreprises utilisent chaque jour des outils numériques : un site, une fiche Google, une messagerie, un logiciel de devis, parfois un CRM. Ces outils sont souvent installés au fil de l'eau, sans vue d'ensemble, et prennent plus de temps qu'ils n'en font gagner.</p>
-    <p>JOSY EI est née de ce constat. Les solutions qui font gagner du temps et des clients aux grandes entreprises existent aussi pour les petites, souvent gratuites ou open source. Ce qui manque, c'est quelqu'un pour les choisir, les relier entre elles et les rendre simples à utiliser.</p>
-    <p>C'est le rôle de JOSY EI : un interlocuteur unique qui accompagne les entreprises à distance partout en France, en reliant les enjeux techniques et les besoins métier.</p></div><div class="pg-carte pg-carte-cta"><p class="pg-chapeau">Votre projet</p><p>Un échange simple sur votre situation, puis une proposition adaptée.</p></div><div class="pg-carte"><h2>Une expertise en conseil en systèmes et logiciels informatiques</h2>
-    <p>JOSY EI est immatriculée sous le code NAF <strong>6202A, conseil en systèmes et logiciels informatiques</strong>. Concrètement, cela couvre :</p>
-    <ul>
-      <li>l'audit et le conseil sur votre informatique existante ;</li>
-      <li>la conception et l'intégration de solutions logicielles adaptées ;</li>
-      <li>l'automatisation des tâches répétitives et le déploiement d'assistants IA encadrés ;</li>
-      <li>la visibilité locale sur Google et l'acquisition de clients ;</li>
-      <li>la formation des équipes pour qu'elles restent autonomes.</li>
-    </ul></div><div class="pg-carte"><h2>Un accompagnement à distance partout en France</h2>
-    <p>Les missions se déroulent à distance partout en France. Les échanges et les livrables s’organisent en ligne, selon les besoins et les disponibilités de chaque équipe.</p></div></div></div></section>
-<section class="pg-groupes"><div class="w"><div class="pg-groupe">
-  <div class="w">
-    <h2 id="jx-h2-valeurs" class="rv">Nos valeurs</h2>
-    <div class="values">
-      <div class="card rv"><h3>Transparence</h3><p>Chaque recommandation est expliquée et chaque action est écrite. Vous savez toujours ce qui est fait, pourquoi, et avec quels outils.</p></div>
-      <div class="card rv"><h3>Souveraineté numérique</h3><p>Nous privilégions les solutions open source et les hébergements européens quand ils répondent au besoin, et nous vous disons quand ce n'est pas le cas.</p></div>
-      <div class="card rv"><h3>Autonomie du client</h3><p>Vos comptes, vos données et vos outils restent à votre nom. Nous documentons tout et formons votre équipe pour que vous ne dépendiez de personne.</p></div>
-      <div class="card rv"><h3>Réactivité</h3><p>Une entreprise individuelle, c'est un seul interlocuteur et des décisions rapides. Chaque demande reçoit une réponse écrite.</p></div>
-    </div>
+<section class="pg-hero digital-feature-hero about-hero" aria-labelledby="jx-h1"><div class="w digital-feature-layout"><div class="digital-feature-copy"><h1 id="jx-h1">JOSY EI, conseil informatique en ligne pour les entreprises en France</h1><p class="sub">Une entreprise individuelle qui met l'ingénierie informatique, l'automatisation et l'IA à la portée des TPE, PME, artisans et indépendants.</p></div><figure class="digital-image digital-feature-image"><img src="/img/portrait-josy-ei-640.webp" alt="Portrait du fondateur de JOSY EI" width="640" height="640" loading="eager" decoding="async" fetchpriority="high"></figure></div></section>
+<section class="pg-corps about-content"><div class="w"><article class="about-content-card">
+  <h2 id="jx-h2-histoire">Pourquoi JOSY EI existe</h2>
+  <p>Les petites entreprises utilisent chaque jour des outils numériques : un site, une fiche Google, une messagerie, un logiciel de devis, parfois un CRM. Ces outils sont souvent installés au fil de l'eau, sans vue d'ensemble, et prennent plus de temps qu'ils n'en font gagner.</p>
+  <p>JOSY EI est née de ce constat. Les solutions qui font gagner du temps et des clients aux grandes entreprises existent aussi pour les petites, souvent gratuites ou open source. Ce qui manque, c'est quelqu'un pour les choisir, les relier entre elles et les rendre simples à utiliser.</p>
+  <p>C'est le rôle de JOSY EI : un interlocuteur unique qui accompagne les entreprises à distance partout en France, en reliant les enjeux techniques et les besoins métier.</p>
+
+  <h2>Une expertise en conseil en systèmes et logiciels informatiques</h2>
+  <p>JOSY EI est immatriculée sous le code NAF <strong>6202A, conseil en systèmes et logiciels informatiques</strong>. Concrètement, cela couvre :</p>
+  <ul>
+    <li>l'audit et le conseil sur votre informatique existante ;</li>
+    <li>la conception et l'intégration de solutions logicielles adaptées ;</li>
+    <li>l'automatisation des tâches répétitives et le déploiement d'assistants IA encadrés ;</li>
+    <li>la visibilité locale sur Google et l'acquisition de clients ;</li>
+    <li>la formation des équipes pour qu'elles restent autonomes.</li>
+  </ul>
+
+  <h2>Un accompagnement à distance partout en France</h2>
+  <p>Les missions se déroulent à distance partout en France. Les échanges et les livrables s’organisent en ligne, selon les besoins et les disponibilités de chaque équipe.</p>
+
+  <h2 id="jx-h2-valeurs">Nos valeurs</h2>
+  <h3>Transparence</h3>
+  <p>Chaque recommandation est expliquée et chaque action est écrite. Vous savez toujours ce qui est fait, pourquoi, et avec quels outils.</p>
+  <h3>Souveraineté numérique</h3>
+  <p>Nous privilégions les solutions open source et les hébergements européens quand ils répondent au besoin, et nous vous disons quand ce n'est pas le cas.</p>
+  <h3>Autonomie du client</h3>
+  <p>Vos comptes, vos données et vos outils restent à votre nom. Nous documentons tout et formons votre équipe pour que vous ne dépendiez de personne.</p>
+  <h3>Réactivité</h3>
+  <p>Une entreprise individuelle, c'est un seul interlocuteur et des décisions rapides. Chaque demande reçoit une réponse écrite.</p>
+
+  <h2>Une méthode claire, à chaque étape</h2>
+  <ol>
+    <li><strong>Comprendre :</strong> préciser le besoin, les outils concernés et les contraintes.</li>
+    <li><strong>Proposer :</strong> comparer les options et tester une première étape maîtrisée.</li>
+    <li><strong>Transmettre :</strong> documenter les décisions et rendre les équipes autonomes.</li>
+  </ol>
+
+  <div class="about-content-cta">
+    <h2>Échangeons sur votre projet</h2>
+    <p>Un échange simple sur votre situation, puis une proposition adaptée.</p>
+    <p>Présentez votre besoin par message sur LinkedIn.</p>
+    <a class="btn btn-p" href="https://www.linkedin.com/messaging/compose/?to=josyei" target="_blank" rel="noopener noreferrer">Discuter de mon projet sur LinkedIn</a>
   </div>
-</div></div></section>
-<section class="digital-section digital-process" aria-labelledby="about-process-title"><div class="w"><h2 id="about-process-title">Une méthode claire, à chaque étape</h2><ol class="digital-timeline"><li><h3>Comprendre</h3><p>Préciser le besoin, les outils concernés et les contraintes.</p></li><li><h3>Proposer</h3><p>Comparer les options et tester une première étape maîtrisée.</p></li><li><h3>Transmettre</h3><p>Documenter les décisions et rendre les équipes autonomes.</p></li></ol></div></section><section class="digital-section digital-final-cta"><div class="w"><h2>Échangeons sur votre projet</h2><p class="digital-lead">Présentez votre besoin par message sur LinkedIn.</p><a class="btn btn-p" href="https://www.linkedin.com/messaging/compose/?to=josyei" target="_blank" rel="noopener noreferrer">Discuter de mon projet sur LinkedIn</a></div></section><footer class="foot">
+</article></div></section><footer class="foot">
   <div class="w">
     <div class="fcols">
       <div>
