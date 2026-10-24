@@ -619,3 +619,22 @@
     transform: translateY(-3px) scale(1.05) !important;
     box-shadow: 0 8px 18px rgba(96, 165, 250, 0.3) !important;
 }
+/* === BOUTONS BLEUS GLOBAUX SUR TOUTES LES CARTES === */
+.expertise-index-card a, .digital-blog-card a, .gateway-card a, .digital-action-card a, .card a, .reason-card a, .feed-card a, .service-card a {
+    display: inline-block !important;
+    background: #2563eb !important;
+    color: #ffffff !important;
+    padding: 0.8rem 1.5rem !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    margin-top: auto !important;
+    transition: all 0.3s ease !important;
+    border: 1px solid #2563eb !important;
+}
+.expertise-index-card a:hover, .digital-blog-card a:hover, .gateway-card a:hover, .digital-action-card a:hover, .card a:hover, .reason-card a:hover, .feed-card a:hover, .service-card a:hover {
+    background: #1d4ed8 !important;
+    border-color: #60a5fa !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.5) !important;
+}
