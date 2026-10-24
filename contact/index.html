@@ -19,6 +19,9 @@
 body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}.jx{--noir:#0a0e27;--nuit:#1a1f3a;--blanc:#fff;--gris:#b0b8d4;--bleu:#0066ff;--cyan:#00d4ff}.w{width:min(1050px,calc(100% - 2rem));margin:auto}
 .top{background:#0a0e27;border-bottom:1px solid #26304f}.top>.w{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem}.brand{color:#fff;font-weight:800;text-decoration:none}.menu{display:flex;gap:1.5rem}.menu a,.drawer a{color:#d8def0;text-decoration:none}.burger{display:none;background:none;border:1px solid #526080;border-radius:6px;color:#fff;padding:.6rem 1rem;font:inherit}.drawer{padding:1rem;gap:.8rem;background:#121831}.drawer:not([hidden]){display:grid}
 .hero{min-height:55vh;padding:4rem 0;display:grid;place-items:center;text-align:center;background:radial-gradient(ellipse at 50% 0%,#1a1f3a,#0a0e27 72%)}.hero h1{font-size:clamp(2rem,5vw,3.25rem);margin:0 0 1rem}.hero p{color:#cbd5e1;max-width:60ch;margin:0 auto 1.6rem}.btn{display:inline-block;padding:.95rem 1.5rem;border-radius:8px;background:#2563eb;color:#fff;text-decoration:none;font-weight:700}.btn:hover{background:#1d4ed8}
+.contact-main{background:#0f172a;color:#e2e8f0;padding-bottom:5rem}.contact-main .hero{min-height:0;padding:5rem 0 3.5rem;background:radial-gradient(ellipse at 50% 0%,#1e293b,#0f172a 72%)}.contact-main .hero h1{max-width:18ch;margin:0 auto 1rem}.contact-main .hero p{max-width:64ch;color:#cbd5e1}
+.contact-section{padding:2.5rem 0}.section-heading{text-align:center;margin:0 auto 1.5rem;max-width:65ch}.section-heading h2{font-size:clamp(1.5rem,3vw,2rem);margin:0 0 .5rem}.section-heading p{color:#cbd5e1;margin:0}
+.reason-grid,.feed-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.reason-card,.feed-card{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:1.5rem;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;animation:fadeInUp .55s ease both}.reason-card:hover,.feed-card:hover{transform:translateY(-4px);border-color:#3b82f6;box-shadow:0 10px 15px -3px rgba(0,0,0,.3)}.reason-card:nth-child(2),.feed-card:nth-child(2){animation-delay:.1s}.reason-card:nth-child(3),.feed-card:nth-child(3){animation-delay:.2s}.reason-icon{display:grid;place-items:center;width:2.5rem;height:2.5rem;margin-bottom:.75rem;border-radius:10px;background:#172554;color:#60a5fa;font-size:1.25rem}.reason-card h3,.feed-card h3{margin:.25rem 0 .5rem;color:#f8fafc;font-size:1.1rem}.reason-card p,.feed-card p{margin:0;color:#cbd5e1}.feed-card{display:flex;flex-direction:column;min-height:13rem}.feed-label{display:inline-block;margin-bottom:.75rem;color:#93c5fd;font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}.feed-card p{flex:1}.contact-cta{text-align:center;padding:2rem 0 1rem}.contact-cta p{max-width:58ch;margin:0 auto 1.25rem;color:#cbd5e1}.contact-main .btn{background:#3b82f6;padding:1rem 2.5rem;transition:transform .2s ease,background .2s ease,box-shadow .2s ease}.contact-main .btn:hover{background:#2563eb;transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,99,235,.25)}@keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@media(max-width:760px){.reason-grid,.feed-grid{grid-template-columns:1fr}.contact-main .hero{padding:4rem 0 2.5rem}.contact-section{padding:2rem 0}}@media(prefers-reduced-motion:reduce){.reason-card,.feed-card{animation:none;transition:none}.reason-card:hover,.feed-card:hover,.contact-main .btn:hover{transform:none}}
 .foot{background:#080b1c;padding:2.5rem 0;color:#b0b8d4}.fcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem}.foot h2{font-size:1rem;color:#fff}.foot h2 a{text-decoration:none;color:inherit}.foot ul{padding:0;list-style:none}.foot li{margin:.45rem 0}.foot a{color:#b0b8d4}.copy{margin-top:2rem;font-size:.85rem}@media(max-width:760px){.menu{display:none}.burger{display:block}}
 </style>
 </head>
@@ -26,11 +29,63 @@ body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-syst
 <div class="jx">
 <header class="top"><div class="w"><a class="brand" href="/">JOSY EI</a><nav class="menu" aria-label="Navigation principale"><a href="/">Accueil</a><a href="/actualites/">Actualités</a></nav><button type="button" class="burger" aria-expanded="false" aria-controls="jx-drawer">Menu</button></div>
 <nav class="drawer" id="jx-drawer" aria-label="Navigation mobile" hidden><a href="/">Accueil</a><a href="/conseil-ingenierie-si/">Conseil SI</a><a href="/developpement-logiciel/">Développement</a><a href="/automatisation-ia/">Automatisation &amp; IA</a><a href="/visibilite-seo-local/">Visibilité &amp; SEO</a><a href="/formation-accompagnement/">Formation</a><a href="/actualites/">Actualités</a></nav></header>
-<main><section class="hero"><div class="w"><h1>Contact</h1><p>Pour discuter de votre projet, contactez JOSY EI directement sur LinkedIn.</p><a class="btn" href="https://www.linkedin.com/in/josyei/" target="_blank" rel="noopener noreferrer">Me contacter sur LinkedIn</a></div></section></main>
+<main class="contact-main">
+  <section class="hero"><div class="w"><h1>Discutons de votre transformation digitale</h1><p>Pas de formulaire interminable. Pour échanger simplement autour de vos besoins numériques, retrouvez JOSY EI sur LinkedIn.</p></div></section>
+  <section class="contact-section"><div class="w">
+    <div class="section-heading"><h2>Pourquoi échanger sur LinkedIn&nbsp;?</h2><p>Un canal direct pour poser le contexte et voir si un accompagnement peut vous être utile.</p></div>
+    <div class="reason-grid">
+      <article class="reason-card"><span class="reason-icon" aria-hidden="true">↗</span><h3>Échange direct</h3><p>Présentez votre besoin et les questions auxquelles vous cherchez une réponse.</p></article>
+      <article class="reason-card"><span class="reason-icon" aria-hidden="true">▤</span><h3>Un fil de discussion</h3><p>Retrouvez le contexte de vos échanges au même endroit et poursuivez la conversation à votre rythme.</p></article>
+      <article class="reason-card"><span class="reason-icon" aria-hidden="true">✦</span><h3>Des sujets concrets</h3><p>Échangez autour du conseil numérique, de l’automatisation, de l’IA et de la visibilité en ligne.</p></article>
+    </div>
+  </div></section>
+  <section class="contact-section"><div class="w">
+    <div class="section-heading"><h2>À propos de JOSY EI</h2></div>
+    <article class="feed-card">
+      <h3>JOSY EI, conseil informatique en ligne pour les entreprises en France</h3>
+      <p>Une entreprise individuelle qui met l'ingénierie informatique, l'automatisation et l'IA à la portée des TPE, PME, artisans et indépendants.</p>
+      <h3>Pourquoi JOSY EI existe</h3>
+      <p>Les petites entreprises utilisent chaque jour des outils numériques : un site, une fiche Google, une messagerie, un logiciel de devis, parfois un CRM. Ces outils sont souvent installés au fil de l'eau, sans vue d'ensemble, et prennent plus de temps qu'ils n'en font gagner.</p>
+      <p>JOSY EI est née de ce constat. Les solutions qui font gagner du temps et des clients aux grandes entreprises existent aussi pour les petites, souvent gratuites ou open source. Ce qui manque, c'est quelqu'un pour les choisir, les relier entre elles et les rendre simples à utiliser.</p>
+      <p>C'est le rôle de JOSY EI : un interlocuteur unique qui accompagne les entreprises à distance partout en France, en reliant les enjeux techniques et les besoins métier.</p>
+      <h3>Une expertise en conseil en systèmes et logiciels informatiques</h3>
+      <p>JOSY EI est immatriculée sous le code NAF <strong>6202A, conseil en systèmes et logiciels informatiques</strong>. Concrètement, cela couvre :</p>
+      <ul>
+        <li>l'audit et le conseil sur votre informatique existante ;</li>
+        <li>la conception et l'intégration de solutions logicielles adaptées ;</li>
+        <li>l'automatisation des tâches répétitives et le déploiement d'assistants IA encadrés ;</li>
+        <li>la visibilité locale sur Google et l'acquisition de clients ;</li>
+        <li>la formation des équipes pour qu'elles restent autonomes.</li>
+      </ul>
+      <h3>Un accompagnement à distance partout en France</h3>
+      <p>Les missions se déroulent à distance partout en France. Les échanges et les livrables s’organisent en ligne, selon les besoins et les disponibilités de chaque équipe.</p>
+      <h3>Nos valeurs</h3>
+      <p><strong>Transparence :</strong> Chaque recommandation est expliquée et chaque action est écrite. Vous savez toujours ce qui est fait, pourquoi, et avec quels outils.</p>
+      <p><strong>Souveraineté numérique :</strong> Nous privilégions les solutions open source et les hébergements européens quand ils répondent au besoin, et nous vous disons quand ce n'est pas le cas.</p>
+      <p><strong>Autonomie du client :</strong> Vos comptes, vos données et vos outils restent à votre nom. Nous documentons tout et formons votre équipe pour que vous ne dépendiez de personne.</p>
+      <p><strong>Réactivité :</strong> Une entreprise individuelle, c'est un seul interlocuteur et des décisions rapides. Chaque demande reçoit une réponse écrite.</p>
+      <h3>Une méthode claire, à chaque étape</h3>
+      <ol>
+        <li><strong>Comprendre :</strong> préciser le besoin, les outils concernés et les contraintes.</li>
+        <li><strong>Proposer :</strong> comparer les options et tester une première étape maîtrisée.</li>
+        <li><strong>Transmettre :</strong> documenter les décisions et rendre les équipes autonomes.</li>
+      </ol>
+    </article>
+  </div></section>
+  <section class="contact-section"><div class="w">
+    <div class="section-heading"><h2>Quelques sujets que j’aborde</h2><p>Des repères éditoriaux pour découvrir les thèmes de travail, sans témoignages ni résultats clients inventés.</p></div>
+    <div class="feed-grid">
+      <article class="feed-card"><span class="feed-label">IA &amp; automatisation</span><h3>Automatiser avec discernement</h3><p>L’automatisation est utile lorsqu’elle simplifie une étape réelle. Commencer par comprendre le processus aide à choisir quoi automatiser et où garder une validation humaine.</p></article>
+      <article class="feed-card"><span class="feed-label">SEO &amp; expérience</span><h3>Être utile avant d’être visible</h3><p>Une présence en ligne efficace répond clairement aux questions des visiteurs. Des contenus pertinents, une navigation lisible et un site accessible forment une base solide.</p></article>
+      <article class="feed-card"><span class="feed-label">Conseil numérique</span><h3>Avancer par étapes</h3><p>Comprendre le besoin, tester une solution adaptée, puis transmettre son fonctionnement&nbsp;: une démarche progressive aide à garder la maîtrise des outils.</p></article>
+    </div>
+  </div></section>
+  <section class="contact-cta"><div class="w"><p>Vous avez un projet ou une question&nbsp;? Écrivez à JOSY EI sur LinkedIn pour engager la conversation.</p><a class="btn" href="https://www.linkedin.com/in/josyei/" target="_blank" rel="noopener noreferrer">Me contacter sur LinkedIn</a></div></section>
+</main>
 <footer class="foot"><div class="w"><div class="fcols">
   <section><h2><a href="/contact/">CONTACT</a></h2><p>Pour discuter de votre projet, utilisez le bouton LinkedIn ci-dessus.</p></section>
   <nav aria-label="Services"><h2><a href="/services/">SERVICES</a></h2><ul><li><a href="/conseil-ingenierie-si/">Conseil SI</a></li><li><a href="/developpement-logiciel/">Développement</a></li><li><a href="/automatisation-ia/">Automatisation &amp; IA</a></li><li><a href="/visibilite-seo-local/">Visibilité &amp; SEO</a></li><li><a href="/formation-accompagnement/">Formation</a></li></ul></nav>
-  <nav aria-label="Informations"><h2><a href="/informations/">INFORMATIONS</a></h2><ul><li><a href="/a-propos/">À propos</a></li><li><a href="/zone-intervention/">Zone d’intervention</a></li><li><a href="/ressources/">Ressources</a></li><li><a href="/mentions-legales/">Mentions légales</a></li><li><a href="/politique-de-confidentialite/">Politique de confidentialité</a></li></ul></nav>
+  <nav aria-label="Informations"><h2><a href="/informations/">INFORMATIONS</a></h2><ul><li><a href="/zone-intervention/">Zone d’intervention</a></li><li><a href="/ressources/">Ressources</a></li><li><a href="/mentions-legales/">Mentions légales</a></li><li><a href="/politique-de-confidentialite/">Politique de confidentialité</a></li></ul></nav>
 </div><p class="copy">© 2026 JOSY EI · Entrepreneur individuel</p></div></footer></div>
 <script src="/assets/site-enhancements.js" defer></script>
 </body>

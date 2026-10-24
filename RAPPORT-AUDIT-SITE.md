@@ -6,14 +6,12 @@
 
 ## 1. Arborescence
 
-Le site contient **38 fichiers HTML** : 24 pages principales et 14 fichiers sous `actualites/` (index, 12 articles et une ancienne archive).
+Le site contient **40 fichiers HTML** : 26 pages principales et 14 fichiers sous `actualites/` (index, 12 articles et une ancienne archive).
 
 ```text
 website-deploy-work/
 ├── 404.html
 ├── index.html
-├── a-propos/
-│   └── index.html
 ├── actualites/
 │   ├── index.html
 │   ├── agents-ia-autonomes-mythes-realite-pme/index.html
@@ -58,7 +56,7 @@ website-deploy-work/
     └── secteurs/
 ```
 
-Les dossiers de pages, en plus de `a-propos/` et `actualites/`, sont : `automatisation-ia/`, `automatisation-pme-poitiers-vienne-par-ou-commencer/`, `automatiser-relances-clients-sans-crm/`, `conseil-ingenierie-si/`, `consultant-informatique-poitiers/`, `cyberattaque-tpe-que-faire/`, `demander-avis-google-sans-contrepartie/`, `developpement-logiciel/`, `facturation-electronique-tpe-vienne/`, `formation-accompagnement/`, `former-equipe-outils-numeriques/`, `informatique-artisans-batiment-vienne/`, `mentions-legales/`, `merci/`, `politique-de-confidentialite/`, `pourquoi-audit-informatique-avant-projet-digital/`, `ressources/`, `sauvegardes-tpe-verifier-qu-elles-fonctionnent/`, `seo-local-optimiser-fiche-google-business-profile/`, `visibilite-seo-local/` et `zone-intervention/`.
+Les dossiers de pages, en plus de `actualites/`, sont : `automatisation-ia/`, `automatisation-pme-poitiers-vienne-par-ou-commencer/`, `automatiser-relances-clients-sans-crm/`, `conseil-ingenierie-si/`, `consultant-informatique-poitiers/`, `cyberattaque-tpe-que-faire/`, `demander-avis-google-sans-contrepartie/`, `developpement-logiciel/`, `facturation-electronique-tpe-vienne/`, `formation-accompagnement/`, `former-equipe-outils-numeriques/`, `informatique-artisans-batiment-vienne/`, `mentions-legales/`, `merci/`, `politique-de-confidentialite/`, `pourquoi-audit-informatique-avant-projet-digital/`, `ressources/`, `sauvegardes-tpe-verifier-qu-elles-fonctionnent/`, `seo-local-optimiser-fiche-google-business-profile/`, `visibilite-seo-local/` et `zone-intervention/`.
 
 Autres fichiers racine présents : `.article_generator.py`, `.nojekyll`, `CNAME`, `favicon.ico`, `news-sitemap.xml`, `robots.txt`, `sitemap.xml` et `Portrait professionnel corporate de Josy Ei - Photo de Profil - Site Web et Reseaux Sociaux.png`. Le dossier `img/` contient aussi des variantes JPG/WebP, favicons et images de secteurs ; la section Images liste les références réellement trouvées dans les pages.
 
@@ -69,7 +67,6 @@ Les résumés ci-dessous reprennent les principaux titres H1/H2 relevés dans ch
 | Page / fichier | `<title>` | Méta-description | Résumé des sections |
 |---|---|---|---|
 | Accueil — `index.html` | Consultant informatique dans la France \| JOSY EI | Consultant indépendant dans la France : visibilité Google, contenus et automatisation pour TPE et artisans. Un échange, puis un devis sur-mesure. | Expertise digitale ; présentation ; services ; processus ; FAQ interactive. |
-| À propos — `a-propos/index.html` | À propos : conseil informatique en ligne en France \| JOSY EI | JOSY EI, conseil en systèmes et logiciels informatiques à distance, partout en France : transparence, autonomie client et réactivité. | Présentation ; raison d’être ; expertise ; accompagnement à distance ; valeurs ; méthode ; CTA LinkedIn. Le portrait et ses références Open Graph/Twitter ont été retirés de cette page. |
 | Page introuvable — `404.html` | Page introuvable \| JOSY EI | Cette page n'existe pas. | Message « Page introuvable ». |
 | Automatisation et IA — `automatisation-ia/index.html` | Automatisation et IA pour PME, Poitiers et Vienne \| JOSY EI | Automatisez vos tâches répétitives, déployez des assistants IA encadrés et simplifiez vos parcours clients. Pour TPE, PME et artisans. Audit offert. | Public ; problèmes traités ; prestations ; livrables ; FAQ ; étapes ; ressources ; CTA. |
 | Automatisation PME — `automatisation-pme-poitiers-vienne-par-ou-commencer/index.html` | Automatisation PME à Poitiers et dans la France \| JOSY EI | PME de Poitiers, la France ou votre ville : comment choisir les premières tâches à automatiser, avec quels outils et quelles précautions. | Choix des tâches ; critères d’automatisation ; exemples ; outils ; précautions ; accompagnement ; CTA. |
