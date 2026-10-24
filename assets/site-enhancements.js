@@ -97,20 +97,94 @@
     });
   }
 
-  var informationNav = root.querySelector('.foot nav[aria-label="Informations"]');
-  if (informationNav && !informationNav.querySelector('a[href="/expertises/"]')) {
-    var list = informationNav.querySelector('ul');
-    if (list) {
-      var item = document.createElement('li');
-      var link = document.createElement('a');
-      link.href = '/expertises/';
-      link.textContent = 'Toutes nos expertises';
-      item.appendChild(link);
-      list.appendChild(item);
-    }
+  var footer = root.querySelector('footer.foot');
+  var footerGrid = footer && footer.querySelector('.fcols');
+  if (footerGrid && !footerGrid.querySelector('.footer-directory')) {
+    var footerGroups = [
+      {
+        title: 'SERVICES & IA',
+        links: [
+          ['Création d’Agents IA 24/7', '/expertises/agents-ia-support-client/'],
+          ['Automatisation de Processus', '/expertises/automatisation-processus/'],
+          ['Intégration de Chatbots & LLM', '/expertises/agents-ia-support-client/'],
+          ['Audit & Conseil Numérique', '/expertises/audit-numerique-entreprise/'],
+          ['Accompagnement No-Code', '/expertises/developpement-no-code-low-code/'],
+          ['Formation IA & Acculturation', '/formation-accompagnement/']
+        ]
+      },
+      {
+        title: 'MÉTIERS & CIBLES',
+        links: [
+          ['IA pour les Artisans', '/expertises/digitalisation-artisans/'],
+          ['IA pour les Indépendants', '/expertises/solutions-ia-independants/'],
+          ['IA pour les TPE & PME', '/expertises/ia-pour-tpe-pme/'],
+          ['IA pour les Professions Libérales', '/expertises/ia-pour-professions-liberales/'],
+          ['Expert IA Montmorillon (86)', '/expertises/expert-ia-montmorillon-vienne/']
+        ]
+      },
+      {
+        title: 'RESSOURCES',
+        links: [
+          ['Études de Cas & Succès', '/expertises/etudes-de-cas/'],
+          ['Le Blog de l’IA', '/actualites/'],
+          ['Glossaire de l’IA', '/expertises/glossaire-ia/'],
+          ['FAQ (Foire Aux Questions)', '/expertises/faq-ia/'],
+          ['Outils & Simulateurs', '/expertises/outils-simulateurs/'],
+          ['Outils recommandés', '/outils/']
+        ]
+      },
+      {
+        title: 'INFORMATIONS',
+        links: [
+          ['À propos', '/a-propos/'],
+          ['Contact', '/contact/'],
+          ['Conditions Générales de Vente', '/informations/cgv/'],
+          ['Gestion des Cookies', '/informations/politique-cookies/'],
+          ['Mentions légales', '/mentions-legales/'],
+          ['Politique de confidentialité', '/politique-de-confidentialite/'],
+          ['Plan du site', '/informations/plan-du-site/'],
+          ['Zone d’intervention', '/zone-intervention/'],
+          ['Espace partenaires', '/expertises/espace-partenaires/'],
+          ['Me contacter sur LinkedIn', 'https://www.linkedin.com/in/josyei/']
+        ]
+      }
+    ];
+    var directory = document.createElement('div');
+    directory.className = 'footer-directory';
+    var identity = document.createElement('section');
+    identity.className = 'footer-identity';
+    var identityTitle = document.createElement('h2');
+    identityTitle.textContent = 'JOSY EI';
+    var identityCopy = document.createElement('p');
+    identityCopy.textContent = 'Conseil en systèmes informatiques, automatisation et IA pour les TPE, PME, artisans et indépendants.';
+    identity.appendChild(identityTitle);
+    identity.appendChild(identityCopy);
+    directory.appendChild(identity);
+    footerGroups.forEach(function (group) {
+      var navigation = document.createElement('nav');
+      navigation.setAttribute('aria-label', group.title);
+      var heading = document.createElement('h2');
+      heading.textContent = group.title;
+      var list = document.createElement('ul');
+      group.links.forEach(function (item) {
+        var listItem = document.createElement('li');
+        var link = document.createElement('a');
+        link.href = item[1];
+        link.textContent = item[0];
+        if (item[1].indexOf('https://') === 0) {
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+        }
+        listItem.appendChild(link);
+        list.appendChild(listItem);
+      });
+      navigation.appendChild(heading);
+      navigation.appendChild(list);
+      directory.appendChild(navigation);
+    });
+    footerGrid.replaceChildren(directory);
   }
 
-  var footer = root.querySelector('footer.foot');
   if (footer && !root.querySelector('.digital-action-gateway')) {
     var gateway = document.createElement('section');
     gateway.className = 'digital-action-gateway';
