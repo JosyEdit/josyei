@@ -226,9 +226,11 @@
 }
 
 .jx.digital-motion .digital-reveal {
-  opacity: 0;
+  /* Contenu toujours visible : à opacity 0, les sections non encore atteintes au défilement
+     apparaissaient comme un grand vide (captures pleine page, impression, robots). */
+  opacity: 1;
   transform: translateY(18px);
-  transition: opacity .55s ease, transform .55s ease;
+  transition: transform .55s ease;
 }
 
 .jx.digital-motion .digital-reveal.is-visible {
@@ -743,4 +745,42 @@
 .card a.button:hover, .card .btn:hover, .card button:hover {
     background: #3b82f6 !important;
     color: #ffffff !important;
+}
+
+/* === RYTHME VERTICAL (lecture aérée) ===
+   Les pages remettent h2, h3 et p à margin:0 : sans ce bloc, textes et titres se collaient.
+   Les cartes (règles !important plus haut) et le footer gardent leurs propres marges. */
+.jx section h2 {
+  margin-bottom: 1.5rem;
+}
+
+.jx section h3 {
+  margin-bottom: .75rem;
+}
+
+.jx section p {
+  margin-bottom: 1rem;
+}
+
+.jx section p:last-child {
+  margin-bottom: 0;
+}
+
+.jx section ul + p,
+.jx section ol + p {
+  margin-top: 1rem;
+}
+
+.jx .digital-article h2 {
+  margin: 2.5rem 0 1.25rem;
+}
+
+/* Sections d'article : le padding de section de page (2.5rem haut et bas) s'ajoutait à la marge
+   du titre, d'où ~7.5rem de vide entre deux parties. La marge du h2 suffit. */
+.jx .digital-article > section {
+  padding: 0;
+}
+
+.jx .digital-article h3 {
+  margin: 1.75rem 0 .75rem;
 }
