@@ -841,6 +841,16 @@
   max-width: 100%;
 }
 
+/* Logos des outils (/outils/) : l'image de carte générique (.card img, 100 % x 200px) ne s'applique pas */
+.jx .card img.tool-logo {
+  display: block !important;
+  width: 48px !important;
+  height: 48px !important;
+  margin: 0 auto 1rem !important;
+  object-fit: contain !important;
+  border-radius: 10px !important;
+}
+
 /* === RYTHME VERTICAL (lecture aérée) ===
    Les pages remettent h2, h3 et p à margin:0 : sans ce bloc, textes et titres se collaient.
    Les cartes (règles !important plus haut) et le footer gardent leurs propres marges. */

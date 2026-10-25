@@ -193,27 +193,27 @@
     wrapper.className = 'w';
     var title = document.createElement('h2');
     title.id = 'digital-action-title';
-    title.textContent = 'Prêt à passer à l’action ?';
+    title.textContent = '🚀 Passez à la vitesse supérieure !';
     var grid = document.createElement('div');
     grid.className = 'digital-action-grid';
     [
-      ['Discutons de votre projet', 'https://www.linkedin.com/in/josyei/'],
-      ['Découvrir mes outils recommandés', '/outils/'],
-      ['Voir mes services', '/services/']
+      ['🧠', 'Créez votre agent IA', '/outils/'],
+      ['🎯', 'Prospectez malin', '/outils/'],
+      ['🌐', 'Hébergez votre site', '/outils/']
     ].forEach(function (item) {
       var link = document.createElement('a');
       link.className = 'digital-action-card';
-      link.href = item[1];
-      link.textContent = item[0];
-      if (item[1].indexOf('https://') === 0) {
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-      }
+      link.href = item[2];
+      var icon = document.createElement('span');
+      icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = item[0] + ' ';
+      link.appendChild(icon);
+      link.appendChild(document.createTextNode(item[1]));
       grid.appendChild(link);
     });
     var lead = document.createElement('p');
     lead.className = 'digital-action-lead';
-    lead.textContent = 'Un premier échange suffit pour identifier l’action la plus utile pour votre activité.';
+    lead.textContent = 'Les outils que j’utilise pour gagner du temps, trouver des clients et mettre un site en ligne.';
     wrapper.appendChild(title);
     wrapper.appendChild(lead);
     wrapper.appendChild(grid);
