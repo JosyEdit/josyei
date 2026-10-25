@@ -471,6 +471,18 @@
   width: 100%;
 }
 
+.jx .fcols > .footer-directory {
+  /* site-enhancements.js remplace le contenu de .fcols par ce bloc unique : sans cette
+     règle, il n'occupait que la 1re colonne de la grille .fcols et tout s'empilait. */
+  grid-column: 1 / -1;
+  align-items: start; /* colonnes alignées en haut (le bloc JOSY EI était centré) */
+}
+
+.jx .footer-directory .footer-identity {
+  margin: 0;
+  padding: 0;
+}
+
 .jx .footer-directory h2 {
   margin: 0 0 1rem;
   color: #f8fafc;
@@ -486,13 +498,14 @@
 }
 
 .jx .footer-directory ul {
+  gap: .55rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .jx .footer-directory li {
-  margin: .65rem 0;
+  margin: 0;
   overflow-wrap: anywhere;
 }
 
