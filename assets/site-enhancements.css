@@ -638,3 +638,91 @@
     transform: scale(1.05) !important;
     box-shadow: 0 0 15px rgba(37, 99, 235, 0.5) !important;
 }
+/* ==========================================================================
+   SITE ENHANCEMENTS  Design "SaaS moderne" pour les cartes d'articles
+   (Généré par Qwen Coder)
+   ========================================================================== */
+
+/* 1. STRUCTURE DES CARTES */
+.digital-blog-card, .expertise-index-card, .card {
+    background: #0f172a !important;
+    border: 1px solid #1e293b !important;
+    border-radius: 16px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+.digital-blog-card:hover, .expertise-index-card:hover, .card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4) !important;
+    border-color: #3b82f6 !important;
+}
+
+/* 2. IMAGES */
+.digital-blog-card img, .expertise-index-card img, .card img {
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    display: block !important;
+}
+
+/* 3. CONTENEUR DE TEXTE */
+.digital-blog-card > div, .expertise-index-card > div, .card > div {
+    padding: 1.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+}
+
+/* 4. TITRES (SUPPRESSION DES FONDS BLEUS) */
+.digital-blog-card h2, .digital-blog-card h3,
+.expertise-index-card h2, .expertise-index-card h3,
+.card h2, .card h3 {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    color: #f8fafc !important;
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    padding: 0 !important;
+    margin: 0 0 0.75rem 0 !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+}
+.digital-blog-card:hover h2, .digital-blog-card:hover h3,
+.digital-blog-card h2:hover, .digital-blog-card h3:hover,
+.expertise-index-card:hover h2, .expertise-index-card:hover h3,
+.expertise-index-card h2:hover, .expertise-index-card h3:hover,
+.card:hover h2, .card:hover h3, .card h2:hover, .card h3:hover {
+    color: #60a5fa !important;
+    text-decoration: underline !important;
+}
+
+/* 5. BOUTONS ("Lire l'article") */
+.digital-blog-card a.button, .digital-blog-card .btn, .digital-blog-card button,
+.expertise-index-card a.button, .expertise-index-card .btn, .expertise-index-card button,
+.card a.button, .card .btn, .card button {
+    background: transparent !important;
+    border: 1px solid #3b82f6 !important;
+    color: #60a5fa !important;
+    padding: 0.5rem 1.25rem !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    border-radius: 8px !important;
+    align-self: flex-start !important;
+    margin-top: auto !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+.digital-blog-card a.button:hover, .digital-blog-card .btn:hover, .digital-blog-card button:hover,
+.expertise-index-card a.button:hover, .expertise-index-card .btn:hover, .expertise-index-card button:hover,
+.card a.button:hover, .card .btn:hover, .card button:hover {
+    background: #3b82f6 !important;
+    color: #ffffff !important;
+}
