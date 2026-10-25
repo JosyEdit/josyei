@@ -568,25 +568,6 @@
   align-items: start; /* colonnes alignées en haut (le bloc JOSY EI était centré) */
 }
 
-.jx .fcols > .footer-themes {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: 2.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(148, 163, 184, .18);
-}
-
-@media (max-width: 900px) {
-  .jx .fcols > .footer-themes {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 480px) {
-  .jx .fcols > .footer-themes {
-    grid-template-columns: 1fr;
-  }
-}
-
 .jx .footer-directory .footer-identity {
   margin: 0;
   padding: 0;

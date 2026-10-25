@@ -106,7 +106,7 @@
         links: [
           ['Création d’Agents IA 24/7', '/expertises/agents-ia-support-client/'],
           ['Automatisation de Processus', '/expertises/automatisation-processus/'],
-          ['Intégration de Chatbots & LLM', '/expertises/agents-ia-support-client/'],
+          ['Intégration de Chatbots & LLM', '/expertises/conseil-intelligence-artificielle/'],
           ['Audit & Conseil Numérique', '/expertises/audit-numerique-entreprise/'],
           ['Accompagnement No-Code', '/expertises/developpement-no-code-low-code/'],
           ['Formation IA & Acculturation', '/formation-accompagnement/']
@@ -130,7 +130,9 @@
           ['Glossaire de l’IA', '/expertises/glossaire-ia/'],
           ['FAQ (Foire Aux Questions)', '/expertises/faq-ia/'],
           ['Outils & Simulateurs', '/expertises/outils-simulateurs/'],
-          ['Outils recommandés', '/outils/']
+          ['Outils recommandés', '/outils/'],
+          ['Marketing digital', '/expertises/marketing-digital/'],
+          ['Visibilité et SEO local', '/visibilite-seo-local/']
         ]
       },
       {
@@ -182,67 +184,7 @@
       navigation.appendChild(list);
       directory.appendChild(navigation);
     });
-    // Deuxième rangée de menus thématiques (maillage interne), sous les 5 colonnes
-    var themeGroups = [
-      {
-        title: 'INTELLIGENCE ARTIFICIELLE',
-        links: [
-          ['Création d’Agents IA 24/7', '/expertises/agents-ia-support-client/'],
-          ['Automatisation des processus', '/expertises/automatisation-processus/'],
-          ['Intégration de Chatbots & LLM', '/expertises/conseil-intelligence-artificielle/'],
-          ['Formation IA & Acculturation', '/formation-accompagnement/']
-        ]
-      },
-      {
-        title: 'VISIBILITÉ & SEO',
-        links: [
-          ['Audit & Conseil Numérique', '/expertises/audit-numerique-entreprise/'],
-          ['Visibilité et SEO local', '/visibilite-seo-local/'],
-          ['Fiche Google Business', '/seo-local-optimiser-fiche-google-business-profile/'],
-          ['Marketing digital', '/expertises/marketing-digital/']
-        ]
-      },
-      {
-        title: 'MÉTIERS & SECTEURS',
-        links: [
-          ['IA pour les Artisans', '/expertises/digitalisation-artisans/'],
-          ['IA pour les Indépendants', '/expertises/solutions-ia-independants/'],
-          ['IA pour les TPE & PME', '/expertises/ia-pour-tpe-pme/'],
-          ['IA pour les Professions Libérales', '/expertises/ia-pour-professions-liberales/']
-        ]
-      },
-      {
-        title: 'RESSOURCES & GUIDES',
-        links: [
-          ['Le Blog de l’IA', '/actualites/'],
-          ['Glossaire de l’IA', '/expertises/glossaire-ia/'],
-          ['Outils & Simulateurs', '/expertises/outils-simulateurs/'],
-          ['FAQ (Foire Aux Questions)', '/expertises/faq-ia/']
-        ]
-      }
-    ];
-    var themes = document.createElement('div');
-    themes.className = 'footer-directory footer-themes';
-    themeGroups.forEach(function (group) {
-      var navigation = document.createElement('nav');
-      navigation.setAttribute('aria-label', group.title);
-      var heading = document.createElement('h2');
-      heading.textContent = group.title;
-      var list = document.createElement('ul');
-      group.links.forEach(function (item) {
-        var listItem = document.createElement('li');
-        var link = document.createElement('a');
-        link.href = item[1];
-        link.textContent = item[0];
-        listItem.appendChild(link);
-        list.appendChild(listItem);
-      });
-      navigation.appendChild(heading);
-      navigation.appendChild(list);
-      themes.appendChild(navigation);
-    });
-
-    footerGrid.replaceChildren(directory, themes);
+    footerGrid.replaceChildren(directory);
   }
 
   if (footer && !root.querySelector('.digital-action-gateway')) {
