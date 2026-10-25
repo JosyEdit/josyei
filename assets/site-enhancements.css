@@ -620,7 +620,7 @@
     box-shadow: 0 8px 18px rgba(96, 165, 250, 0.3) !important;
 }
 /* === BOUTONS BLEUS GLOBAUX SUR TOUTES LES CARTES === */
-.expertise-index-card a, .digital-blog-card a, .gateway-card a, .digital-action-card a, .card a, .reason-card a, .feed-card a, .service-card a {
+.digital-blog-card a.digital-blog-link {
     display: inline-block !important;
     background: #2563eb !important;
     color: #ffffff !important;
@@ -632,7 +632,7 @@
     transition: all 0.3s ease !important;
     border: 1px solid #2563eb !important;
 }
-.expertise-index-card a:hover, .digital-blog-card a:hover, .gateway-card a:hover, .digital-action-card a:hover, .card a:hover, .reason-card a:hover, .feed-card a:hover, .service-card a:hover {
+.digital-blog-card a.digital-blog-link:hover {
     background: #1d4ed8 !important;
     border-color: #60a5fa !important;
     transform: scale(1.05) !important;
@@ -658,6 +658,11 @@
     transform: translateY(-5px) !important;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4) !important;
     border-color: #3b82f6 !important;
+}
+
+/* 1b. Cartes sans conteneur interne (expertises, outils) : marge intérieure */
+.expertise-index-card, .card {
+    padding: 1.5rem !important;
 }
 
 /* 2. IMAGES */
