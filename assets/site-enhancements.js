@@ -211,10 +211,71 @@
       }
       grid.appendChild(link);
     });
+    var lead = document.createElement('p');
+    lead.className = 'digital-action-lead';
+    lead.textContent = 'Un premier échange suffit pour identifier l’action la plus utile pour votre activité.';
     wrapper.appendChild(title);
+    wrapper.appendChild(lead);
     wrapper.appendChild(grid);
     gateway.appendChild(wrapper);
     footer.before(gateway);
+  }
+
+  // Outils recommandés (liens d'affiliation) : sous « Prêt à passer à l'action ? », sur l'accueil
+  // et en bas des articles. Mention d'affiliation visible au-dessus des cartes (obligation légale).
+  var isArticle = /^\/actualites\/[^/]+\/$/.test(location.pathname) && root.querySelector('.digital-article');
+  var actionGateway = root.querySelector('.digital-action-gateway');
+  if (actionGateway && (location.pathname === '/' || isArticle) && !root.querySelector('.digital-affiliate')) {
+    var affiliate = document.createElement('section');
+    affiliate.className = 'digital-affiliate';
+    affiliate.setAttribute('aria-labelledby', 'digital-affiliate-title');
+    var affiliateWrapper = document.createElement('div');
+    affiliateWrapper.className = 'w';
+    var affiliateTitle = document.createElement('h2');
+    affiliateTitle.id = 'digital-affiliate-title';
+    affiliateTitle.textContent = 'Les outils que je recommande';
+    var affiliateNote = document.createElement('p');
+    affiliateNote.className = 'digital-affiliate-note';
+    affiliateNote.textContent = 'Lien affilié : JOSY EI peut percevoir une commission.';
+    var affiliateGrid = document.createElement('div');
+    affiliateGrid.className = 'digital-affiliate-grid';
+    [
+      ['🚀', 'Boostez votre site avec Hostinger',
+        'Hébergement web et services associés pour mettre votre site en ligne.',
+        'Découvrir Hostinger', 'https://www.hostinger.com?REFERRALCODE=INPMRJOSYASH'],
+      ['🧠', 'Créez votre agent IA avec Relevance AI',
+        'Créez et déployez des agents IA personnalisés pour automatiser vos processus et votre support client.',
+        'Découvrir Relevance AI', 'https://relevanceai.com?via=josyei'],
+      ['🎯', 'Prospectez avec Volia',
+        'Outil français de prospection B2B pour trouver des leads qualifiés et rédiger vos emails de prospection.',
+        'Découvrir Volia', 'https://volia.fr/signup?ref=BgzXx5']
+    ].forEach(function (item) {
+      var card = document.createElement('article');
+      card.className = 'digital-affiliate-card';
+      var cardTitle = document.createElement('h3');
+      var icon = document.createElement('span');
+      icon.setAttribute('aria-hidden', 'true');
+      icon.textContent = item[0];
+      cardTitle.appendChild(icon);
+      cardTitle.appendChild(document.createTextNode(' ' + item[1]));
+      var cardText = document.createElement('p');
+      cardText.textContent = item[2];
+      var cardLink = document.createElement('a');
+      cardLink.className = 'digital-affiliate-link';
+      cardLink.href = item[4];
+      cardLink.target = '_blank';
+      cardLink.rel = 'sponsored noopener';
+      cardLink.textContent = item[3];
+      card.appendChild(cardTitle);
+      card.appendChild(cardText);
+      card.appendChild(cardLink);
+      affiliateGrid.appendChild(card);
+    });
+    affiliateWrapper.appendChild(affiliateTitle);
+    affiliateWrapper.appendChild(affiliateNote);
+    affiliateWrapper.appendChild(affiliateGrid);
+    affiliate.appendChild(affiliateWrapper);
+    actionGateway.after(affiliate);
   }
 
   if (!reducedMotion && 'IntersectionObserver' in window) {

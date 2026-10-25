@@ -428,12 +428,30 @@
 }
 
 .jx .digital-action-gateway {
-  padding: 3rem 0;
-  background: #0f172a;
+  padding: 4.5rem 0;
+  background:
+    radial-gradient(60% 80% at 50% 0%, rgba(37, 99, 235, .22), transparent 70%),
+    #0b1226;
+}
+
+.jx .digital-action-gateway > .w {
+  padding: 2.5rem clamp(1.25rem, 4vw, 3rem);
+  border: 1px solid rgba(96, 165, 250, .35);
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, .16), rgba(14, 165, 233, .05));
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .03) inset, 0 0 48px rgba(37, 99, 235, .22);
+}
+
+.jx .digital-action-lead {
+  max-width: 60ch;
+  margin: 0 auto 2rem;
+  color: #cbd5e1;
+  text-align: center;
 }
 
 .jx .digital-action-gateway h2 {
   margin-bottom: 1.5rem;
+  text-align: center;
   color: #f8fafc;
 }
 
@@ -466,9 +484,78 @@
   box-shadow: 0 16px 32px rgba(0, 0, 0, .3);
 }
 
+.jx .digital-affiliate {
+  padding: 3.5rem 0 4.5rem;
+  background: #0b1226;
+}
+
+.jx .digital-affiliate h2 {
+  margin-bottom: .75rem;
+  text-align: center;
+}
+
+.jx .digital-affiliate-note {
+  margin: 0 auto 2rem;
+  color: #94a3b8;
+  font-size: .875rem;
+  text-align: center;
+}
+
+.jx .digital-affiliate-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 1.25rem;
+}
+
+.jx .digital-affiliate-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem;
+  border: 1px solid #1e3a8a;
+  border-radius: 16px;
+  background: linear-gradient(160deg, #111c3d, #0c1430);
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.jx .digital-affiliate-card:hover,
+.jx .digital-affiliate-card:focus-within {
+  transform: translateY(-4px);
+  border-color: #3b82f6;
+  box-shadow: 0 14px 30px rgba(37, 99, 235, .25);
+}
+
+.jx .digital-affiliate-card h3 {
+  margin: 0 0 .75rem;
+  color: #f8fafc;
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+.jx .digital-affiliate-card p {
+  margin: 0 0 1.5rem;
+  color: #cbd5e1;
+}
+
+.jx .digital-affiliate-link {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: .7rem 1.3rem;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background .2s ease;
+}
+
+.jx .digital-affiliate-link:hover,
+.jx .digital-affiliate-link:focus-visible {
+  background: #1d4ed8;
+}
+
 .jx .footer-directory {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
   gap: 2rem;
   width: 100%;
 }
