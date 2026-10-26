@@ -158,7 +158,7 @@
     var identityTitle = document.createElement('h2');
     identityTitle.textContent = 'JOSY EI';
     var identityCopy = document.createElement('p');
-    identityCopy.textContent = 'Conseil en systèmes informatiques, automatisation et IA pour les TPE, PME, artisans et indépendants.';
+    identityCopy.textContent = 'Conseil en systèmes informatiques, automatisation et IA pour les professionnels et les curieux.';
     identity.appendChild(identityTitle);
     identity.appendChild(identityCopy);
     directory.appendChild(identity);
