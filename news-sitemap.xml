@@ -1,14 +1,135 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
   <url>
-    <loc>https://josyei.com/actualites/josy-ei-lance-le-cortex-agents-ia-tpe-vienne/</loc>
+    <loc>https://josyei.com/actualites/agents-ia-autonomes-mythes-realite-pme/</loc>
     <news:news>
       <news:publication>
         <news:name>JOSY EI</news:name>
         <news:language>fr</news:language>
       </news:publication>
-      <news:publication_date>2026-10-21T22:55:00+02:00</news:publication_date>
-      <news:title>JOSY EI lance Le Cortex : des agents IA pour automatiser les TPE de la Vienne</news:title>
+      <news:publication_date>2026-10-23</news:publication_date>
+      <news:title>Agents IA autonomes : mythes et réalités pour les professionnels</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://josyei.com/actualites/automatisation-ia-distance-gagner-temps/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>JOSY EI</news:name>
+        <news:language>fr</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-21</news:publication_date>
+      <news:title>Automatisation IA à distance : gagnez du temps sur les tâches répétitives</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://josyei.com/actualites/consultant-informatique-distance-guide-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>JOSY EI</news:name>
+        <news:language>fr</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-19</news:publication_date>
+      <news:title>Expert informatique à distance : le guide 2026</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://josyei.com/actualites/contenu-seo-ia-sans-nuits/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>JOSY EI</news:name>
+        <news:language>fr</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-17</news:publication_date>
+      <news:title>Créer du contenu SEO sans y passer ses nuits grâce à l'IA</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://josyei.com/actualites/crm-outils-suivi-choisir-budget/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>JOSY EI</news:name>
+        <news:language>fr</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-15</news:publication_date>
+      <news:title>CRM et outils de suivi : comment choisir sans se ruiner</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://josyei.com/actualites/devis-relances-automatisation-controle/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>JOSY EI</news:name>
+        <news:language>fr</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-13</news:publication_date>
+      <news:title>Devis et relances : automatisez sans perdre le contrôle</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://josyei.com/actualites/digitaliser-entreprise-distance-methode-3-etapes/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>JOSY EI</news:name>
+        <news:language>fr</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-11</news:publication_date>
+      <news:title>La méthode en 3 étapes pour digitaliser son entreprise à distance</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://josyei.com/actualites/erreurs-seo-visibilite-tpe/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>JOSY EI</news:name>
+        <news:language>fr</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-09</news:publication_date>
+      <news:title>Les 5 erreurs SEO qui tuent la visibilité de votre activité</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://josyei.com/actualites/fiche-google-business-optimiser-distance/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>JOSY EI</news:name>
+        <news:language>fr</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-07</news:publication_date>
+      <news:title>Fiche Google Business : dominez les recherches locales depuis chez vous</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://josyei.com/actualites/pourquoi-100-en-ligne-tpe-pme-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>JOSY EI</news:name>
+        <news:language>fr</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-05</news:publication_date>
+      <news:title>Pourquoi le 100 % en ligne séduit les professionnels en 2026</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://josyei.com/actualites/role-humain-automatisation-ia/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>JOSY EI</news:name>
+        <news:language>fr</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-03</news:publication_date>
+      <news:title>Le rôle de l'humain dans un monde automatisé par l'IA</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>https://josyei.com/actualites/securiser-donnees-ia/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>JOSY EI</news:name>
+        <news:language>fr</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-01</news:publication_date>
+      <news:title>Comment sécuriser ses données quand on travaille avec une IA</news:title>
     </news:news>
   </url>
 </urlset>
