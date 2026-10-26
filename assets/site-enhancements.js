@@ -199,11 +199,11 @@
     var grid = document.createElement('div');
     grid.className = 'digital-action-grid';
     [
-      ['Je perds des heures sur mes factures et devis.',
+      ['⏳', 'Je perds des heures sur mes factures et devis.',
         'Automatisez avec Relevance AI.', 'https://relevanceai.com?via=josyei'],
-      ['Je n’ai pas assez de clients, la prospection est longue.',
+      ['🎯', 'Je n’ai pas assez de clients, la prospection est longue.',
         'Trouvez des leads avec Volia.', 'https://volia.fr/signup?ref=BgzXx5'],
-      ['Mon site web est lent et tombe souvent en panne.',
+      ['🐌', 'Mon site web est lent et tombe souvent en panne.',
         'Hébergez-le chez Hostinger.', 'https://www.hostinger.com?REFERRALCODE=INPMRJOSYASH']
     ].forEach(function (item) {
       var card = document.createElement('article');
@@ -211,15 +211,15 @@
       var problem = document.createElement('h3');
       var icon = document.createElement('span');
       icon.setAttribute('aria-hidden', 'true');
-      icon.textContent = '😩 ';
+      icon.textContent = item[0] + ' ';
       problem.appendChild(icon);
-      problem.appendChild(document.createTextNode('Le problème : ' + item[0]));
+      problem.appendChild(document.createTextNode('Le problème : ' + item[1]));
       var solution = document.createElement('p');
       solution.className = 'digital-case-solution';
-      solution.textContent = 'La solution : ' + item[1];
+      solution.textContent = 'La solution : ' + item[2];
       var link = document.createElement('a');
       link.className = 'digital-case-link';
-      link.href = item[2];
+      link.href = item[3];
       link.target = '_blank';
       link.rel = 'sponsored noopener';
       link.textContent = 'Découvrir l’outil';
