@@ -199,28 +199,76 @@
     var grid = document.createElement('div');
     grid.className = 'digital-action-grid';
     [
-      ['🧠', 'Créez votre agent IA', '/outils/'],
-      ['🎯', 'Prospectez malin', '/outils/'],
-      ['🌐', 'Hébergez votre site', '/outils/']
+      ['Je perds des heures sur mes factures et devis.',
+        'Automatisez avec Relevance AI.', 'https://relevanceai.com?via=josyei'],
+      ['Je n’ai pas assez de clients, la prospection est longue.',
+        'Trouvez des leads avec Volia.', 'https://volia.fr/signup?ref=BgzXx5'],
+      ['Mon site web est lent et tombe souvent en panne.',
+        'Hébergez-le chez Hostinger.', 'https://www.hostinger.com?REFERRALCODE=INPMRJOSYASH']
     ].forEach(function (item) {
-      var link = document.createElement('a');
-      link.className = 'digital-action-card';
-      link.href = item[2];
+      var card = document.createElement('article');
+      card.className = 'digital-action-card digital-case-card';
+      var problem = document.createElement('h3');
       var icon = document.createElement('span');
       icon.setAttribute('aria-hidden', 'true');
-      icon.textContent = item[0] + ' ';
-      link.appendChild(icon);
-      link.appendChild(document.createTextNode(item[1]));
-      grid.appendChild(link);
+      icon.textContent = '😩 ';
+      problem.appendChild(icon);
+      problem.appendChild(document.createTextNode('Le problème : ' + item[0]));
+      var solution = document.createElement('p');
+      solution.className = 'digital-case-solution';
+      solution.textContent = 'La solution : ' + item[1];
+      var link = document.createElement('a');
+      link.className = 'digital-case-link';
+      link.href = item[2];
+      link.target = '_blank';
+      link.rel = 'sponsored noopener';
+      link.textContent = 'Découvrir l’outil';
+      card.appendChild(problem);
+      card.appendChild(solution);
+      card.appendChild(link);
+      grid.appendChild(card);
     });
+    var caseNote = document.createElement('p');
+    caseNote.className = 'digital-affiliate-note digital-case-note';
+    caseNote.textContent = 'Liens affiliés : JOSY EI peut percevoir une commission.';
     var lead = document.createElement('p');
     lead.className = 'digital-action-lead';
     lead.textContent = 'Les outils que j’utilise pour gagner du temps, trouver des clients et mettre un site en ligne.';
     wrapper.appendChild(title);
     wrapper.appendChild(lead);
     wrapper.appendChild(grid);
+    wrapper.appendChild(caseNote);
     gateway.appendChild(wrapper);
     footer.before(gateway);
+  }
+
+  // Ligne discrète « outils que j'utilise » sous le h1 (liens d'affiliation)
+  var pageH1 = root.querySelector('main h1') || root.querySelector('h1');
+  var noToolsLine = /^\/(mentions-legales|politique-de-confidentialite|merci|informations\/cgv|informations\/politique-cookies)\//.test(location.pathname)
+    || /404/.test(location.pathname) || document.title.indexOf('404') !== -1;
+  if (pageH1 && !noToolsLine && !root.querySelector('.digital-tools-line')) {
+    var toolsLine = document.createElement('p');
+    toolsLine.className = 'digital-tools-line';
+    var bulb = document.createElement('span');
+    bulb.setAttribute('aria-hidden', 'true');
+    bulb.textContent = '💡 ';
+    toolsLine.appendChild(bulb);
+    toolsLine.appendChild(document.createTextNode('Les outils que j’utilise : '));
+    [
+      ['Hostinger', 'https://www.hostinger.com?REFERRALCODE=INPMRJOSYASH'],
+      ['Relevance AI', 'https://relevanceai.com?via=josyei'],
+      ['Volia', 'https://volia.fr/signup?ref=BgzXx5']
+    ].forEach(function (item, index) {
+      if (index) toolsLine.appendChild(document.createTextNode(' · '));
+      var toolLink = document.createElement('a');
+      toolLink.href = item[1];
+      toolLink.target = '_blank';
+      toolLink.rel = 'sponsored noopener';
+      toolLink.textContent = item[0];
+      toolsLine.appendChild(toolLink);
+    });
+    toolsLine.appendChild(document.createTextNode(' (liens affiliés)'));
+    pageH1.after(toolsLine);
   }
 
   // Outils recommandés (liens d'affiliation) : sous « Prêt à passer à l'action ? », sur l'accueil
