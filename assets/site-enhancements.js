@@ -261,11 +261,10 @@
     pageH1.after(toolsLine);
   }
 
-  // Outils recommandés (liens d'affiliation) : sous « Prêt à passer à l'action ? », sur l'accueil
-  // et en bas des articles. Mention d'affiliation visible au-dessus des cartes (obligation légale).
+  // Outils recommandés (liens d'affiliation) : sous la section d'action, en bas des articles. Mention d'affiliation visible au-dessus des cartes (obligation légale).
   var isArticle = /^\/actualites\/[^/]+\/$/.test(location.pathname) && root.querySelector('.digital-article');
   var actionGateway = root.querySelector('.digital-action-gateway');
-  if (actionGateway && (location.pathname === '/' || isArticle) && !root.querySelector('.digital-affiliate')) {
+  if (actionGateway && isArticle && !root.querySelector('.digital-affiliate')) {
     var affiliate = document.createElement('section');
     affiliate.className = 'digital-affiliate';
     affiliate.setAttribute('aria-labelledby', 'digital-affiliate-title');

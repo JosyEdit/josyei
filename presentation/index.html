@@ -23,7 +23,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/img/favicon-192.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <style>body{margin:0;background:#0a0e27}</style>
-<link rel="stylesheet" href="/assets/site-enhancements.css?v=20261026b">
+<link rel="stylesheet" href="/assets/site-enhancements.css?v=20261026c">
 </head>
 <body>
 <style>
@@ -531,25 +531,30 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 
 <main>
 <section class="h3s-hero presentation-hero">
-  <div class="w">
-    <h1>Présentation</h1>
-    <aside class="h3s-droite">
-      <div class="photo-vraie">
-        <img src="/img/portrait-josy-ei-640.webp" alt="Portrait du fondateur de JOSY EI" width="640" height="640" fetchpriority="high">
-      </div>
-      <div class="h3s-qui">
-        <h2>Qui suis-je ?</h2>
-        <p class="h3s-lead">L’humain derrière JOSY EI</p>
-        <p>Un accompagnement indépendant, attentif aux besoins et au contexte de chaque entreprise.</p>
-      </div>
-      <p class="h3s-badge"><strong>Ma règle d’or :</strong> progresser en continu pour proposer des solutions adaptées.</p>
-    </aside>
+  <div class="w presentation-grid">
+    <div class="photo-vraie presentation-photo">
+      <img src="/img/portrait-josy-ei-640.webp" alt="Portrait du fondateur de JOSY EI" width="640" height="640" fetchpriority="high">
+    </div>
+    <div class="presentation-texte">
+      <h1>Qui suis-je ? L’humain derrière JOSY EI.</h1>
+      <p class="presentation-lead">Je m’implique à 200 % et je ne compte pas mes heures.</p>
+      <p>Un accompagnement indépendant, attentif aux besoins et au contexte de chaque entreprise.</p>
+      <p class="h3s-badge"><strong>Ma règle d’or :</strong> Je ne vous forme pas, je me forme constamment pour vous.</p>
+    </div>
   </div>
 </section>
 <style>
-.jx .presentation-hero .w{display:grid;justify-items:center;gap:1.5rem;text-align:center}
-.jx .presentation-hero .h3s-droite{max-width:520px;width:100%;padding:2rem 1.5rem}
-.jx .presentation-hero .digital-tools-line{margin:0}
+.jx .presentation-hero{padding:3.5rem 0}
+.jx .presentation-grid{display:grid;gap:2rem;justify-items:center;text-align:center;max-width:960px}
+.jx .presentation-photo{width:200px;height:200px;border:3px solid var(--cyan);border-radius:50%;overflow:hidden;background:#131838;box-shadow:0 0 0 6px rgba(0,212,255,.12)}
+.jx .presentation-texte h1{font-size:clamp(1.7rem,3.4vw,2.6rem);line-height:1.15;font-weight:800;margin-bottom:1rem}
+.jx .presentation-texte p{color:var(--gris);font-size:1.05rem;line-height:1.65;margin-bottom:1rem}
+.jx .presentation-texte .presentation-lead{color:var(--blanc);font-size:1.2rem;font-weight:600}
+.jx .presentation-texte .h3s-badge{margin:.5rem 0 0;color:var(--blanc);font-size:.95rem}
+@media (min-width:768px){
+  .jx .presentation-grid{grid-template-columns:260px 1fr;align-items:center;justify-items:start;text-align:left;gap:3rem}
+  .jx .presentation-photo{width:260px;height:260px}
+}
 </style>
 </main>
 <footer class="foot">
@@ -636,6 +641,6 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 
 
 </div>
-<script src="/assets/site-enhancements.js?v=20261026b" defer></script>
+<script src="/assets/site-enhancements.js?v=20261026c" defer></script>
 </body>
 </html>
