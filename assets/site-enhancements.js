@@ -200,11 +200,11 @@
     grid.className = 'digital-action-grid';
     [
       ['⏳', 'Je perds des heures sur mes factures et devis.',
-        'Automatisez avec Relevance AI.', 'https://relevanceai.com?via=josyei'],
+        'Automatisez avec Relevance AI.', '/outils/'],
       ['🎯', 'Je n’ai pas assez de clients, la prospection est longue.',
-        'Trouvez des leads avec Volia.', 'https://volia.fr/signup?ref=BgzXx5'],
+        'Trouvez des leads avec Volia.', '/outils/'],
       ['🐌', 'Mon site web est lent et tombe souvent en panne.',
-        'Hébergez-le chez Hostinger.', 'https://www.hostinger.com?REFERRALCODE=INPMRJOSYASH']
+        'Hébergez-le chez Hostinger.', '/outils/']
     ].forEach(function (item) {
       var card = document.createElement('article');
       card.className = 'digital-action-card digital-case-card';
@@ -220,24 +220,19 @@
       var link = document.createElement('a');
       link.className = 'digital-case-link';
       link.href = item[3];
-      link.target = '_blank';
-      link.rel = 'sponsored noopener';
       link.textContent = 'Découvrir l’outil';
       card.appendChild(problem);
       card.appendChild(solution);
       card.appendChild(link);
       grid.appendChild(card);
     });
-    var caseNote = document.createElement('p');
-    caseNote.className = 'digital-affiliate-note digital-case-note';
-    caseNote.textContent = 'Liens affiliés : JOSY EI peut percevoir une commission.';
+
     var lead = document.createElement('p');
     lead.className = 'digital-action-lead';
     lead.textContent = 'Les outils que j’utilise pour gagner du temps, trouver des clients et mettre un site en ligne.';
     wrapper.appendChild(title);
     wrapper.appendChild(lead);
     wrapper.appendChild(grid);
-    wrapper.appendChild(caseNote);
     gateway.appendChild(wrapper);
     footer.before(gateway);
   }
@@ -261,7 +256,8 @@
     pageH1.after(toolsLine);
   }
 
-  // Outils recommandés (liens d'affiliation) : sous la section d'action, en bas des articles. Mention d'affiliation visible au-dessus des cartes (obligation légale).
+  // Outils recommandés : sous la section d'action, en bas des articles. Les boutons mènent à /outils/,
+  // seule page (avec les mentions légales) à porter les liens partenaires et leur mention.
   var isArticle = /^\/actualites\/[^/]+\/$/.test(location.pathname) && root.querySelector('.digital-article');
   var actionGateway = root.querySelector('.digital-action-gateway');
   if (actionGateway && isArticle && !root.querySelector('.digital-affiliate')) {
@@ -273,21 +269,18 @@
     var affiliateTitle = document.createElement('h2');
     affiliateTitle.id = 'digital-affiliate-title';
     affiliateTitle.textContent = 'Les outils que je recommande';
-    var affiliateNote = document.createElement('p');
-    affiliateNote.className = 'digital-affiliate-note';
-    affiliateNote.textContent = 'Lien affilié : JOSY EI peut percevoir une commission.';
     var affiliateGrid = document.createElement('div');
     affiliateGrid.className = 'digital-affiliate-grid';
     [
       ['🚀', 'Boostez votre site avec Hostinger',
         'Hébergement web et services associés pour mettre votre site en ligne.',
-        'Découvrir Hostinger', 'https://www.hostinger.com?REFERRALCODE=INPMRJOSYASH'],
+        'Découvrir Hostinger', '/outils/'],
       ['🧠', 'Créez votre agent IA avec Relevance AI',
         'Créez et déployez des agents IA personnalisés pour automatiser vos processus et votre support client.',
-        'Découvrir Relevance AI', 'https://relevanceai.com?via=josyei'],
+        'Découvrir Relevance AI', '/outils/'],
       ['🎯', 'Prospectez avec Volia',
         'Outil français de prospection B2B pour trouver des leads qualifiés et rédiger vos emails de prospection.',
-        'Découvrir Volia', 'https://volia.fr/signup?ref=BgzXx5']
+        'Découvrir Volia', '/outils/']
     ].forEach(function (item) {
       var card = document.createElement('article');
       card.className = 'digital-affiliate-card';
@@ -302,8 +295,6 @@
       var cardLink = document.createElement('a');
       cardLink.className = 'digital-affiliate-link';
       cardLink.href = item[4];
-      cardLink.target = '_blank';
-      cardLink.rel = 'sponsored noopener';
       cardLink.textContent = item[3];
       card.appendChild(cardTitle);
       card.appendChild(cardText);
@@ -311,7 +302,6 @@
       affiliateGrid.appendChild(card);
     });
     affiliateWrapper.appendChild(affiliateTitle);
-    affiliateWrapper.appendChild(affiliateNote);
     affiliateWrapper.appendChild(affiliateGrid);
     affiliate.appendChild(affiliateWrapper);
     actionGateway.after(affiliate);
