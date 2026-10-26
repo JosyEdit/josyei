@@ -11,12 +11,13 @@ import re
 import subprocess
 import sys
 import urllib.request
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 from xml.dom import minidom
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://josyei.com"
+CARTES_AUTO_DEPUIS = date(2026, 10, 26)  # cartes de /actualites/ gérées par ce script à partir de cette date
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
 EMOJI = re.compile("^[\U0001F000-\U0001FAFF☀-➿️\\s]+")
 REGLES = [("prénom", re.compile(r"Val[ée]ry", re.I)), ("prix", re.compile(r"\d[\d\s.,]*\s?€")),
@@ -194,8 +195,19 @@ def construire_liste(arts):
     t = path.read_text(encoding="utf-8")
     ancre = '<div class="digital-blog-grid">'
     assert ancre in t, "grille des articles introuvable dans actualites/index.html"
-    nouveaux = [a for a in arts if f'href="{a["url"]}"' not in t]
     x = lambda s: html.escape(s, quote=True)
+    # Cartes ajoutées par ce script (articles du 26/10/2026 ou plus récents) : description alignée sur la page.
+    # Les 12 cartes plus anciennes, écrites à la main, ne sont jamais modifiées.
+    for a in arts:
+        if a["date"].date() < CARTES_AUTO_DEPUIS or f'href="{a["url"]}"' not in t:
+            continue
+        carte = re.search(r'<article class="digital-card digital-blog-card"><a class="digital-blog-media" href="'
+                          + re.escape(x(a["url"])) + r'".*?</article>', t, re.S)
+        if carte:
+            neuve = re.sub(r"(</h2><p>).*?(</p>)", lambda m: m.group(1) + html.escape(a["desc"], quote=False) + m.group(2),
+                           carte.group(0), count=1, flags=re.S)
+            t = t.replace(carte.group(0), neuve)
+    nouveaux = [a for a in arts if f'href="{a["url"]}"' not in t]
     for a in sorted(nouveaux, key=lambda a: (a["date"], a["ordre"])):  # le plus récent finit en tête
         d = a["date"]
         carte = (f'<article class="digital-card digital-blog-card"><a class="digital-blog-media" href="{x(a["url"])}" '
@@ -205,7 +217,7 @@ def construire_liste(arts):
                  f'<a href="{x(a["url"])}">{html.escape(a["titre"], quote=False)}</a></h2><p>{html.escape(a["desc"], quote=False)}</p>'
                  f'<a class="digital-blog-link" href="{x(a["url"])}">Lire l’article</a></div></article>')
         t = t.replace(ancre, ancre + carte, 1)
-    return (ecrire_si_change(path, t), nouveaux) if nouveaux else (False, [])
+    return ecrire_si_change(path, t), nouveaux
 
 
 def controle_regles(arts):
