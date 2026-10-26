@@ -242,32 +242,22 @@
     footer.before(gateway);
   }
 
-  // Ligne discrète « outils que j'utilise » sous le h1 (liens d'affiliation)
+  // Badge discret « Les outils que j'utilise » sous le h1, vers /outils/ (sauf pages légales, merci, 404, /outils/)
   var pageH1 = root.querySelector('main h1') || root.querySelector('h1');
-  var noToolsLine = /^\/(mentions-legales|politique-de-confidentialite|merci|informations\/cgv|informations\/politique-cookies)\//.test(location.pathname)
+  var noToolsLine = /^\/(outils|mentions-legales|politique-de-confidentialite|merci|informations\/cgv|informations\/politique-cookies)\//.test(location.pathname)
     || /404/.test(location.pathname) || document.title.indexOf('404') !== -1;
   if (pageH1 && !noToolsLine && !root.querySelector('.digital-tools-line')) {
     var toolsLine = document.createElement('p');
     toolsLine.className = 'digital-tools-line';
+    var toolsBadge = document.createElement('a');
+    toolsBadge.className = 'digital-tools-badge';
+    toolsBadge.href = '/outils/';
     var bulb = document.createElement('span');
     bulb.setAttribute('aria-hidden', 'true');
     bulb.textContent = '💡 ';
-    toolsLine.appendChild(bulb);
-    toolsLine.appendChild(document.createTextNode('Les outils que j’utilise : '));
-    [
-      ['Hostinger', 'https://www.hostinger.com?REFERRALCODE=INPMRJOSYASH'],
-      ['Relevance AI', 'https://relevanceai.com?via=josyei'],
-      ['Volia', 'https://volia.fr/signup?ref=BgzXx5']
-    ].forEach(function (item, index) {
-      if (index) toolsLine.appendChild(document.createTextNode(' · '));
-      var toolLink = document.createElement('a');
-      toolLink.href = item[1];
-      toolLink.target = '_blank';
-      toolLink.rel = 'sponsored noopener';
-      toolLink.textContent = item[0];
-      toolsLine.appendChild(toolLink);
-    });
-    toolsLine.appendChild(document.createTextNode(' (liens affiliés)'));
+    toolsBadge.appendChild(bulb);
+    toolsBadge.appendChild(document.createTextNode('Les outils que j’utilise'));
+    toolsLine.appendChild(toolsBadge);
     pageH1.after(toolsLine);
   }
 
