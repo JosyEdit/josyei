@@ -132,4 +132,15 @@
       <news:title>Comment sécuriser ses données quand on travaille avec une IA</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://josyei.com/actualites/ia-administration-rapport-force-usagers-261026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>JOSY EI</news:name>
+        <news:language>fr</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-26T16:12:50+01:00</news:publication_date>
+      <news:title>Administration et IA : le rapport de force change pour les usagers</news:title>
+    </news:news>
+  </url>
 </urlset>
