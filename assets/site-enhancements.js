@@ -256,56 +256,11 @@
     pageH1.after(toolsLine);
   }
 
-  // Outils recommandés : sous la section d'action, en bas des articles. Les boutons mènent à /outils/,
-  // seule page (avec les mentions légales) à porter les liens partenaires et leur mention.
-  var isArticle = /^\/actualites\/[^/]+\/$/.test(location.pathname) && root.querySelector('.digital-article');
-  var actionGateway = root.querySelector('.digital-action-gateway');
-  if (actionGateway && isArticle && !root.querySelector('.digital-affiliate')) {
-    var affiliate = document.createElement('section');
-    affiliate.className = 'digital-affiliate';
-    affiliate.setAttribute('aria-labelledby', 'digital-affiliate-title');
-    var affiliateWrapper = document.createElement('div');
-    affiliateWrapper.className = 'w';
-    var affiliateTitle = document.createElement('h2');
-    affiliateTitle.id = 'digital-affiliate-title';
-    affiliateTitle.textContent = 'Les outils que je recommande';
-    var affiliateGrid = document.createElement('div');
-    affiliateGrid.className = 'digital-affiliate-grid';
-    [
-      ['🚀', 'Boostez votre site avec Hostinger',
-        'Hébergement web et services associés pour mettre votre site en ligne.',
-        'Découvrir Hostinger', '/outils/'],
-      ['🧠', 'Créez votre agent IA avec Relevance AI',
-        'Créez et déployez des agents IA personnalisés pour automatiser vos processus et votre support client.',
-        'Découvrir Relevance AI', '/outils/'],
-      ['🎯', 'Prospectez avec Volia',
-        'Outil français de prospection B2B pour trouver des leads qualifiés et rédiger vos emails de prospection.',
-        'Découvrir Volia', '/outils/']
-    ].forEach(function (item) {
-      var card = document.createElement('article');
-      card.className = 'digital-affiliate-card';
-      var cardTitle = document.createElement('h3');
-      var icon = document.createElement('span');
-      icon.setAttribute('aria-hidden', 'true');
-      icon.textContent = item[0];
-      cardTitle.appendChild(icon);
-      cardTitle.appendChild(document.createTextNode(' ' + item[1]));
-      var cardText = document.createElement('p');
-      cardText.textContent = item[2];
-      var cardLink = document.createElement('a');
-      cardLink.className = 'digital-affiliate-link';
-      cardLink.href = item[4];
-      cardLink.textContent = item[3];
-      card.appendChild(cardTitle);
-      card.appendChild(cardText);
-      card.appendChild(cardLink);
-      affiliateGrid.appendChild(card);
-    });
-    affiliateWrapper.appendChild(affiliateTitle);
-    affiliateWrapper.appendChild(affiliateGrid);
-    affiliate.appendChild(affiliateWrapper);
-    actionGateway.after(affiliate);
-  }
+  // Une seule section d'appel à l'action : « Passez à la vitesse supérieure ! ».
+  // Les blocs « Passer à l'action » des articles générés sont retirés.
+  root.querySelectorAll('.pg-cta').forEach(function (element) {
+    if (element.querySelector('a[href="/outils/"]')) element.remove();
+  });
 
   if (!reducedMotion && 'IntersectionObserver' in window) {
     root.classList.add('digital-motion');
