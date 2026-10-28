@@ -229,7 +229,19 @@
 
     var lead = document.createElement('p');
     lead.className = 'digital-action-lead';
-    lead.textContent = 'Les outils que j’utilise pour gagner du temps, trouver des clients et mettre un site en ligne.';
+    if (/^\/actualites\/[^/]+\/$/.test(location.pathname)) {
+      // Fin d'article : accroche chiffrée, avec sa source (Google, Digital Diary, mai 2016).
+      lead.appendChild(document.createTextNode('Saviez-vous que 76 % des personnes qui cherchent un commerce à proximité sur leur smartphone s’y rendent dans la journée ('));
+      var leadSource = document.createElement('a');
+      leadSource.href = 'https://www.thinkwithgoogle.com/_qs/documents/620/mobile-search-trends-consumers-to-stores.pdf';
+      leadSource.target = '_blank';
+      leadSource.rel = 'noopener';
+      leadSource.textContent = 'Google, 2016';
+      lead.appendChild(leadSource);
+      lead.appendChild(document.createTextNode(') ? Une fiche Google soignée vous aide à capter ce trafic.'));
+    } else {
+      lead.textContent = 'Les outils que j’utilise pour gagner du temps, trouver des clients et mettre un site en ligne.';
+    }
     wrapper.appendChild(title);
     wrapper.appendChild(lead);
     wrapper.appendChild(grid);
