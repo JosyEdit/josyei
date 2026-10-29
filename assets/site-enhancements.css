@@ -988,3 +988,26 @@
 .jx .digital-article h3 {
   margin: 1.75rem 0 .75rem;
 }
+
+/* Menu du haut : bouton d'action « Pack Google » (ordinateur et mobile) */
+.jx .menu a.nav-pack,
+.jx .drawer a.nav-pack {
+  color: #fff;
+  background: #0066ff;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: .55rem 1rem;
+  text-decoration: none;
+}
+
+.jx .menu a.nav-pack:hover,
+.jx .drawer a.nav-pack:hover {
+  background: #0052cc;
+  color: #fff;
+}
+
+.jx .drawer a.nav-pack {
+  margin-top: .5rem;
+  text-align: center;
+  border-bottom: 0;
+}
