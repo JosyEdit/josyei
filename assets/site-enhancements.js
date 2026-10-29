@@ -12,7 +12,7 @@
     {
       title: 'IA & automatisation',
       links: [
-        ['Intelligence artificielle pour PME', '/expertises/intelligence-artificielle-pme/'],
+        ['Intelligence artificielle en entreprise', '/expertises/intelligence-artificielle-pme/'],
         ['Automatisation des processus', '/expertises/automatisation-processus/'],
         ['Agents IA et support client', '/expertises/agents-ia-support-client/'],
         ['Conseil en systèmes informatiques', '/expertises/conseil-systemes-informatiques/'],
@@ -24,7 +24,7 @@
       links: [
         ['Digitalisation des artisans', '/expertises/digitalisation-artisans/'],
         ['IA pour indépendants', '/expertises/solutions-ia-independants/'],
-        ['Productivité des TPE', '/expertises/gain-productivite-tpe/'],
+        ['Productivité des petites entreprises', '/expertises/gain-productivite-tpe/'],
         ['Transformation digitale locale', '/expertises/transformation-digitale-locale/'],
         ['Marketing digital', '/expertises/marketing-digital/']
       ]
@@ -52,7 +52,8 @@
     var expertisePanel = document.createElement('div');
     expertiseGroups.forEach(function (group) {
       var section = document.createElement('section');
-      var heading = document.createElement('h2');
+      var heading = document.createElement('p');
+      heading.className = 'expertise-nav-title';
       heading.textContent = group.title;
       section.appendChild(heading);
       group.links.forEach(function (item) {
@@ -71,14 +72,18 @@
 
   if (menuButton && drawer) {
     if (!drawer.querySelector('.expertise-drawer-group')) {
-      var mobileGroup = document.createElement('div');
+      // Même contenu que le menu ordinateur : « Expertises » se déplie au toucher.
+      var mobileGroup = document.createElement('details');
       mobileGroup.className = 'expertise-drawer-group';
-      var mobileHeading = document.createElement('strong');
+      var mobileHeading = document.createElement('summary');
       mobileHeading.textContent = 'Expertises';
       mobileGroup.appendChild(mobileHeading);
       expertiseGroups.forEach(function (group) {
+        var groupTitle = document.createElement('p');
+        groupTitle.className = 'expertise-nav-title';
+        groupTitle.textContent = group.title;
+        mobileGroup.appendChild(groupTitle);
         group.links.forEach(function (item) {
-          if (drawer.querySelector('a[href="' + item[1] + '"]')) return;
           var link = document.createElement('a');
           link.href = item[1];
           link.textContent = item[0];
@@ -117,7 +122,7 @@
         links: [
           ['IA pour les Artisans', '/expertises/digitalisation-artisans/'],
           ['IA pour les Indépendants', '/expertises/solutions-ia-independants/'],
-          ['IA pour les TPE & PME', '/expertises/ia-pour-tpe-pme/'],
+          ['IA pour les entreprises', '/expertises/ia-pour-tpe-pme/'],
           ['IA pour les Professions Libérales', '/expertises/ia-pour-professions-liberales/'],
           ['Expert IA Montmorillon (86)', '/expertises/expert-ia-montmorillon-vienne/']
         ]

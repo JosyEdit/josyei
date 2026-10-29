@@ -220,6 +220,24 @@ def construire_liste(arts):
     return ecrire_si_change(path, t), nouveaux
 
 
+def construire_accueil(arts):
+    """Les 6 derniers articles dans la section « Dernières actualités » de l'accueil."""
+    path = ROOT / "index.html"
+    t = path.read_text(encoding="utf-8")
+    debut, fin = "<!-- derniers-articles -->", "<!-- /derniers-articles -->"
+    if debut not in t or fin not in t:
+        return False
+    x = lambda s: html.escape(s, quote=True)
+    cartes = []
+    for a in arts[:6]:
+        d = a["date"]
+        cartes.append(f'        <article class="interactive-card"><p class="actu-date"><time datetime="{d.date().isoformat()}">'
+                      f'{d.day} {MOIS[d.month - 1]} {d.year}</time></p><h3><a href="{x(a["url"])}">{html.escape(a["titre"], quote=False)}</a></h3>'
+                      f'<p>{html.escape(a["desc"], quote=False)}</p></article>')
+    i, j = t.index(debut) + len(debut), t.index(fin)
+    return ecrire_si_change(path, t[:i] + "\n" + "\n".join(cartes) + "\n" + t[j:])
+
+
 def controle_regles(arts):
     lignes = []
     for a in arts:
@@ -244,6 +262,7 @@ def main():
     construire_sitemap()
     construire_news(arts)
     construire_liste(arts)
+    construire_accueil(arts)
     controle_regles([a for a in arts if a["url"] not in deja])
     print(f"{len(arts)} articles ; flux : {min(10, len(arts))} items")
 

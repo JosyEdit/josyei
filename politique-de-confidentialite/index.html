@@ -23,7 +23,7 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/img/favicon-192.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <style>body{margin:0;background:#0a0e27}</style>
-<link rel="stylesheet" href="/assets/site-enhancements.css?v=20261026e">
+<link rel="stylesheet" href="/assets/site-enhancements.css?v=20261029a">
 </head>
 <body>
 <style>
@@ -505,28 +505,11 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 <header class="top">
   <div class="w">
     <a class="brand" href="/" style="display:inline-flex;align-items:center;gap:.5rem"><img src="/img/logo-josy-ei-64.png" alt="" width="32" height="32" style="display:block">JOSY EI</a>
-    <nav class="menu" aria-label="Navigation principale">
-      <a href="/">Accueil</a>
-      
-      <a href="/actualites/">Actualités</a><a href="/outils/">Outils</a><a href="/presentation/">Présentation</a>
-
-      
-    </nav>
+    <nav class="menu" aria-label="Navigation principale"><a href="/">Accueil</a><a href="/actualites/">Actualités</a><a href="/outils/">Outils</a><a href="/presentation/">Présentation</a></nav>
 
     <button type="button" class="burger" aria-expanded="false" aria-controls="jx-drawer">Menu</button>
   </div>
-  <nav class="drawer" id="jx-drawer" aria-label="Navigation mobile" hidden>
-    <a href="/">Accueil</a>
-    
-    <a href="/conseil-ingenierie-si/">Conseil et ingénierie des SI</a>
-    <a href="/developpement-logiciel/">Développement et logiciels</a>
-    <a href="/automatisation-ia/">Automatisation et IA</a>
-    <a href="/visibilite-seo-local/">Visibilité et SEO local</a>
-    <a href="/formation-accompagnement/">Formation et accompagnement</a>
-    <a href="/actualites/">Actualités</a><a href="/outils/">Outils</a><a href="/presentation/">Présentation</a>
-    <a href="/ressources/">Ressources et conseils</a>
-    
-  </nav>
+  <nav class="drawer" id="jx-drawer" aria-label="Navigation mobile" hidden><a href="/">Accueil</a><a href="/actualites/">Actualités</a><a href="/outils/">Outils</a><a href="/presentation/">Présentation</a></nav>
 </header>
 
 <section class="pg-hero" aria-labelledby="jx-h1"><div class="w"><h1 id="jx-h1">Politique de confidentialité</h1></div></section>
@@ -549,7 +532,7 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
     <div class="fcols">
       <div>
         <p class="logo">JOSY EI</p>
-        <p>Conseil en systèmes et logiciels informatiques, automatisation, IA et visibilité locale pour les TPE, PME, artisans et indépendants.</p>
+        <p>Conseil en systèmes et logiciels informatiques, automatisation, IA et visibilité locale pour les professionnels, artisans et indépendants.</p>
       </div>
       <div>
         <h3><a href="/contact/">Contact</a></h3>
@@ -589,12 +572,12 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ProfessionalService","name":"JOSY EI","url":"https://josyei.com/","description":"Conseil en systèmes et logiciels informatiques, automatisation, IA et visibilité locale pour TPE, PME, artisans et indépendants.","areaServed":["la France","Poitiers","Civray","votre ville","Lussac-les-Châteaux","Vienne","France"],"identifier":[{"@type":"PropertyValue","propertyID":"SIRET","value":"91411354300021"},{"@type":"PropertyValue","propertyID":"NAF","value":"6202A"}],"vatID":"FR00914113543"}
+{"@context":"https://schema.org","@type":"ProfessionalService","name":"JOSY EI","url":"https://josyei.com/","description":"Conseil en systèmes et logiciels informatiques, automatisation, IA et visibilité locale pour professionnels, artisans et indépendants.","areaServed":["France","Vienne","Poitiers","Civray","Lussac-les-Châteaux"],"identifier":[{"@type":"PropertyValue","propertyID":"SIRET","value":"91411354300021"},{"@type":"PropertyValue","propertyID":"NAF","value":"6202A"}],"vatID":"FR00914113543"}
 </script>
 <script>
 (function(){
   var b=document.querySelector('.jx .burger'), d=document.getElementById('jx-drawer');
-  if(b&&d){b.addEventListener('click',function(){var o=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!o));d.hidden=o;});}
+  
   var here=location.pathname;
   document.querySelectorAll('.jx .menu a, .jx .drawer a').forEach(function(a){if(a.getAttribute('href')===here)a.setAttribute('aria-current','page');});
   var els=document.querySelectorAll('.jx .rv');
@@ -628,6 +611,6 @@ margin-block:0!important;background:var(--noir);color:var(--blanc);font-family:v
 
 
 </div>
-<script src="/assets/site-enhancements.js?v=20261028b" defer></script>
+<script src="/assets/site-enhancements.js?v=20261029a" defer></script>
 </body>
 </html>
