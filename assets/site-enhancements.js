@@ -283,7 +283,7 @@
     '<div style="max-width:720px;margin:0 auto">' +
     '<h2 style="margin:0 0 .6rem;font-size:clamp(1.3rem,3vw,1.7rem);color:#fff">Pas encore de fiche Google ni de site ?</h2>' +
     '<p style="margin:0 0 .4rem">Le Pack visibilité Google crée les deux, à votre nom et entièrement à distance : une fiche Google complète et un site d’une page avec bouton d’appel.</p>' +
-    '<p style="margin:0 0 1.2rem;color:#b0b8d4">✓ Aucun paiement avant la mise en ligne · ✓ Aucun abonnement · ✓ En ligne sous 48 h après la validation de Google</p>' +
+    '<p style="margin:0 0 1.2rem;color:#b0b8d4">✓ 100 € net · ✓ Nom de domaine et email inclus · ✓ Site en ligne sous 5 jours ouvrés</p>' +
     '<a href="' + PACK + '" style="display:inline-block;background:#0066ff;color:#fff;font-weight:800;text-decoration:none;border-radius:10px;padding:.85rem 1.4rem">Découvrir le Pack visibilité Google</a>' +
     ' <a href="' + PACK + '#exemples-secteurs" style="display:inline-block;color:#7dd3fc;padding:.85rem .6rem">Voir les exemples par secteur</a>' +
     '</div>';
