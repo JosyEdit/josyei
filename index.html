@@ -65,7 +65,17 @@ body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-syst
 .dg-id-card dd{margin:0;color:#e2e8f0;overflow-wrap:break-word}
 @media (max-width:480px){.dg-id-card dl{grid-template-columns:1fr;gap:.1rem}.dg-id-card dd{margin-bottom:.45rem}}
 .dg-id-card dd.dg-id-key{color:#fff;font-weight:700}
-.dg-moi{max-width:640px;margin:1.6rem auto 0;text-align:left;box-sizing:border-box}
+.dg-moi{display:block;width:fit-content;max-width:100%;margin:1.2rem auto 0;text-align:left;box-sizing:border-box;background:#0f172a;border:1px solid #334155;border-radius:999px;font-size:.8rem;color:#94a3b8}
+.dg-moi[open]{border-radius:10px;max-width:440px;width:auto}
+.dg-moi summary{cursor:pointer;padding:.3rem .8rem;list-style:none;white-space:nowrap}
+.dg-moi summary::-webkit-details-marker{display:none}
+.dg-moi summary::after{content:" ▸";color:#38bdf8}.dg-moi[open] summary::after{content:" ▾"}
+.dg-moi summary strong{color:#e2e8f0;font-weight:600}
+.dg-moi summary:focus-visible{outline:2px solid #38bdf8;outline-offset:2px;border-radius:999px}
+.dg-moi dl{display:grid;grid-template-columns:auto 1fr;gap:.15rem .7rem;margin:0;padding:.1rem .8rem 0}
+.dg-moi dt{color:#94a3b8}.dg-moi dd{margin:0;color:#e2e8f0;overflow-wrap:break-word}
+@media (max-width:480px){.dg-moi dl{grid-template-columns:1fr;gap:0}.dg-moi dd{margin-bottom:.3rem}}
+.dg-moi .dg-id-src{margin:.4rem 0 0;padding:0 .8rem .6rem;font-size:.75rem;color:#94a3b8}.dg-moi .dg-id-src a{color:inherit}
 .dg-id-card .dg-id-src{margin:.6rem 0 0;font-size:.8rem;color:#94a3b8}
 .dg-id-card .dg-id-src a{color:inherit}
 .dg-err{color:#fca5a5;margin:.8rem 0 0}
@@ -101,19 +111,19 @@ body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-syst
   <ul class="ex-reas"><li>Gratuit</li><li>Résultat immédiat</li><li>Pour les professionnels locaux</li><li>Vos réponses restent dans votre navigateur</li></ul>
 
   <div class="dg-res" id="dg-res" hidden aria-live="polite"></div>
-  <aside class="dg-id-card dg-moi" aria-label="Qui fait ce diagnostic">
-    <h3>Qui fait ce diagnostic : JOSY EI</h3>
+  <details class="dg-moi">
+    <summary>Qui fait ce diagnostic : <strong>JOSY EI</strong></summary>
     <dl>
-      <dt>SIREN</dt><dd class="dg-id-key">914 113 543</dd>
-      <dt>SIRET du siège</dt><dd class="dg-id-key">914 113 543 00021</dd>
-      <dt>Activité (NAF / APE)</dt><dd class="dg-id-key">Conseil en systèmes et logiciels informatiques (6202A)</dd>
-      <dt>Forme juridique</dt><dd class="dg-id-key">Entrepreneur individuel</dd>
-      <dt>Adresse du siège</dt><dd class="dg-id-key">5 boulevard Gambetta, LOG 19, 86500 Montmorillon</dd>
+      <dt>SIREN</dt><dd>914 113 543</dd>
+      <dt>SIRET du siège</dt><dd>914 113 543 00021</dd>
+      <dt>Activité (NAF / APE)</dt><dd>Conseil en systèmes et logiciels informatiques (6202A)</dd>
+      <dt>Forme juridique</dt><dd>Entrepreneur individuel</dd>
+      <dt>Adresse du siège</dt><dd>5 boulevard Gambetta, LOG 19, 86500 Montmorillon</dd>
       <dt>Date de création</dt><dd>10 juin 2026</dd>
       <dt>TVA</dt><dd>TVA non applicable, article 293 B du CGI.</dd>
     </dl>
     <p class="dg-id-src">Source : <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/914113543" target="_blank" rel="noopener noreferrer">annuaire des entreprises</a> (INSEE, RNE). Vérifiable avec le numéro SIREN ci-dessus.</p>
-  </aside>
+  </details>
   </div></section>
 
   <section class="pk-s"><div class="w"><h2>Comment fonctionne le diagnostic</h2><ol class="steps">
