@@ -84,14 +84,111 @@ body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-syst
 .dg-pts li strong{color:#fff}.dg-ok{border-left-color:#22c55e!important}.dg-mid{border-left-color:#f59e0b!important}.dg-ko{border-left-color:#ef4444!important}
 .dg-act{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}.dg-act .ex-btn{flex:1 1 220px;text-align:center}.dg-sec{background:#334155!important}
 </style>
+<style>
+/* Accueil en trois sections (30/10) : accroche, diagnostic, ce qui est regardé. */
+html{scroll-behavior:smooth}
+.ac{padding-bottom:0}
+.ac-hero{padding:3.5rem 0 3rem;background:radial-gradient(ellipse at 30% 0%,#1e3a8a55,transparent 60%),radial-gradient(ellipse at 90% 40%,#00d4ff22,transparent 55%),#0f172a;overflow:hidden}
+.ac-hero-in{display:grid;grid-template-columns:1.15fr .85fr;gap:2.5rem;align-items:center}
+.ac-hero h1{font-size:clamp(1.9rem,4.6vw,3.1rem);line-height:1.15;margin:0 0 1rem;color:#fff}
+.ac-grad{background:linear-gradient(90deg,#3b82f6,#00d4ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ac-hero-txt>p{color:#cbd5e1;font-size:1.08rem;max-width:52ch;margin:0 0 1.6rem}
+.ac-go{position:relative;display:inline-flex;align-items:center;gap:.7rem;padding:1.05rem 1.6rem;border-radius:999px;background:linear-gradient(90deg,#0066ff,#00b4ff);color:#fff;font-weight:800;font-size:1.12rem;text-decoration:none;border:0;cursor:pointer;font-family:inherit;box-shadow:0 10px 30px -6px #0066ffaa,inset 0 1px 0 #ffffff40;overflow:hidden;isolation:isolate;transition:transform .2s,box-shadow .2s}
+.ac-go::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 30%,#ffffff55 50%,transparent 70%);transform:translateX(-120%)}
+.ac-go:hover,.ac-go:focus-visible{transform:translateY(-2px) scale(1.02);box-shadow:0 16px 40px -6px #00b4ffcc,inset 0 1px 0 #ffffff40}
+.ac-go:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.ac-go-ico{display:grid;place-items:center;width:2.1rem;height:2.1rem;border-radius:50%;background:#ffffff26}
+.ac-go-arr{transition:transform .2s}.ac-go:hover .ac-go-arr{transform:translateX(4px)}
+@media(max-width:400px){.ac-go-ico{display:none}}
+.ac-go{white-space:nowrap}
+.ac-go-sub{color:#94a3b8;font-size:.9rem;margin:1rem 0 0}
+.ac-phone{margin:0;text-align:center}.ac-phone svg{width:100%;max-width:300px;height:auto;filter:drop-shadow(0 24px 40px #00000080)}
+.ac-phone figcaption{color:#64748b;font-size:.8rem;margin-top:.3rem}
+.ac-diag{padding:3.5rem 0;background:#0b1224;border-top:1px solid #1e293b;border-bottom:1px solid #1e293b;scroll-margin-top:0}
+.ac-diag:focus{outline:none}
+.ac-diag h2,.ac-quoi h2{font-size:clamp(1.5rem,3.4vw,2.1rem);text-align:center;margin:0 0 .5rem;color:#fff}
+.ac-lead{text-align:center;color:#94a3b8;margin:0 auto 1.2rem;max-width:56ch}
+.ac-prog{max-width:640px;margin:0 auto .8rem;display:flex;align-items:center;gap:.8rem;font-size:.85rem;color:#94a3b8}
+.ac-prog-bar{flex:1;height:8px;border-radius:99px;background:#1e293b;overflow:hidden}
+.ac-prog-bar span{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,#0066ff,#22c55e);transition:width .4s ease}
+.ac-diag .dg-form .ac-go{width:100%;justify-content:center;margin-top:1.3rem}
+.ac-diag .ex-reas{margin-top:1rem}
+.ac-quoi{padding:3.5rem 0 4rem}
+.ac-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.4rem}
+.ac-card{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:1.3rem;text-align:center}
+.ac-card h3{margin:.6rem 0 .4rem;color:#fff;font-size:1.15rem}.ac-card p{margin:0;color:#cbd5e1}
+.ac-ill{width:100%;max-width:200px;height:auto}
+.ac-metiers{list-style:none;padding:0;margin:1.8rem auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem}
+.ac-metiers li{display:inline-flex;align-items:center;gap:.4rem;background:#0f172a;border:1px solid #334155;border-radius:999px;padding:.4rem .85rem;font-size:.9rem;color:#e2e8f0}
+.ac-metiers svg{width:18px;height:18px;fill:none;stroke:#7dd3fc;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ac-faq{margin-top:2rem}
+.ac-fin{text-align:center;margin:2rem 0 0}
+.ac-sticky{width:auto!important;position:fixed;left:16px;right:16px;bottom:16px;z-index:60;justify-content:center;font-size:1rem;padding:.9rem 1.2rem}
+.ac-sticky[hidden]{display:none}
+@media(min-width:761px){.ac-sticky{display:none!important}}
+@media(max-width:760px){.ac-go{width:100%;box-sizing:border-box;justify-content:center;padding:1rem 1.1rem}.ac-hero{padding:2.2rem 0 2rem}.ac-hero-in{grid-template-columns:1fr;gap:1.5rem;text-align:center}.ac-hero-txt>p{margin-left:auto;margin-right:auto}.ac-phone svg{max-width:220px}.ac-go{font-size:1.05rem}.ac-cards{grid-template-columns:1fr}.ac-diag,.ac-quoi{padding:2.4rem 0}}
+@media (prefers-reduced-motion:no-preference){
+  .ac-hero .ac-go::after{animation:ac-shine 3.8s ease-in-out 1.2s infinite}
+  .ac-hero .ac-go{animation:ac-pulse 2.6s ease-in-out infinite}
+  .ac-hero-txt>*{animation:ac-up .6s ease both}.ac-hero-txt>:nth-child(2){animation-delay:.08s}.ac-hero-txt>:nth-child(3){animation-delay:.16s}.ac-hero-txt>:nth-child(4){animation-delay:.24s}
+  .ac-row{animation:ac-pop .5s cubic-bezier(.2,.9,.3,1.3) both}.ac-r1{animation-delay:.5s}.ac-r2{animation-delay:.9s}.ac-r3{animation-delay:1.3s}
+  .ac-ping{transform-origin:158px 156px;animation:ac-ping 2s ease-out infinite}
+  .ac-caret{animation:ac-blink 1s steps(1) infinite}
+}
+@keyframes ac-shine{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+@keyframes ac-pulse{0%,100%{box-shadow:0 10px 30px -6px #0066ffaa,0 0 0 0 #00b4ff66}50%{box-shadow:0 10px 30px -6px #0066ffaa,0 0 0 12px #00b4ff00}}
+@keyframes ac-up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes ac-pop{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+@keyframes ac-ping{0%{transform:scale(.6);opacity:.5}100%{transform:scale(2.2);opacity:0}}
+@keyframes ac-blink{50%{opacity:0}}
+</style>
 </head>
 <body>
 <div class="jx">
 <header class="top"><div class="w"><a class="brand" href="/" style="display:inline-flex;align-items:center;gap:.5rem"><img src="/img/logo-josy-ei-64.png" alt="" width="32" height="32" style="display:block">JOSY EI</a><nav class="menu" aria-label="Navigation principale"></nav><button type="button" class="burger" aria-expanded="false" aria-controls="jx-drawer">Menu</button></div>
 <nav class="drawer" id="jx-drawer" aria-label="Navigation mobile" hidden></nav></header>
-<main class="pk">
-  <section class="hero"><div class="w"><span class="badge">Gratuit · 2 minutes · 4 questions</span><h1>Test de visibilité locale : site, fiche Google, publicité</h1><p>Découvrez si votre entreprise est prête à être trouvée par les clients de votre ville, et ce qui manque pour qu’ils vous appellent.</p>
+<main class="pk ac">
+  <section class="ac-hero"><div class="w ac-hero-in">
+    <div class="ac-hero-txt">
+      <span class="badge">Gratuit · 2 minutes · sans inscription</span>
+      <h1>Quand on cherche votre métier sur Google, est-ce <span class="ac-grad">vous</span> qu’on trouve&nbsp;?</h1>
+      <p>Trois questions sur votre site, votre fiche Google et votre publicité. Vous voyez tout de suite ce qui manque pour que les clients de votre ville vous appellent.</p>
+      <a class="ac-go" href="#diagnostic"><span class="ac-go-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></span><span>Diagnostiquer mon entreprise</span><span class="ac-go-arr" aria-hidden="true">→</span></a>
+      <p class="ac-go-sub">Résultat immédiat · vos réponses restent dans votre navigateur</p>
+    </div>
+    <figure class="ac-phone">
+      <svg viewBox="0 0 300 420" role="img" aria-labelledby="ac-phone-t">
+        <title id="ac-phone-t">Illustration : un téléphone affiche une recherche Google locale et les trois points vérifiés par le diagnostic (site, fiche Google, publicité)</title>
+        <defs><linearGradient id="ac-g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0066ff"/><stop offset="1" stop-color="#00d4ff"/></linearGradient></defs>
+        <rect x="30" y="8" width="240" height="404" rx="34" fill="#111833" stroke="#2b3866" stroke-width="3"/>
+        <rect x="44" y="24" width="212" height="372" rx="22" fill="#0b1124"/>
+        <rect x="120" y="32" width="60" height="8" rx="4" fill="#1e2a4d"/>
+        <rect x="58" y="54" width="184" height="34" rx="17" fill="#18213f" stroke="#2f3d6b"/>
+        <circle cx="76" cy="71" r="6" fill="none" stroke="#7dd3fc" stroke-width="2"/><path d="m80 75 5 5" stroke="#7dd3fc" stroke-width="2" stroke-linecap="round"/>
+        <text x="94" y="76" fill="#cbd5e1" font-size="12" font-family="system-ui,sans-serif">votre métier + votre ville<tspan class="ac-caret" fill="#7dd3fc">|</tspan></text>
+        <g class="ac-map">
+          <rect x="58" y="100" width="184" height="118" rx="12" fill="#13203f"/>
+          <path d="M58 150 C110 130 150 175 242 140" stroke="#22315c" stroke-width="10" fill="none"/>
+          <path d="M120 100 L140 218 M200 100 L176 218" stroke="#1b2a52" stroke-width="6"/>
+          <g fill="#475569"><circle cx="92" cy="128" r="5"/><circle cx="214" cy="190" r="5"/><circle cx="104" cy="196" r="5"/></g>
+          <circle class="ac-ping" cx="158" cy="156" r="16" fill="#00d4ff" opacity=".25"/>
+          <path d="M158 134c-9 0-15 7-15 15 0 11 15 25 15 25s15-14 15-25c0-8-6-15-15-15z" fill="url(#ac-g1)"/>
+          <text x="158" y="155" fill="#fff" font-size="13" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">?</text>
+        </g>
+        <g font-family="system-ui,sans-serif" font-size="13">
+          <g class="ac-row ac-r1"><rect x="58" y="232" width="184" height="42" rx="10" fill="#18213f"/><text x="72" y="258" fill="#e2e8f0">Site internet</text><circle cx="222" cy="253" r="10" fill="#22c55e"/><path d="m217 253 4 4 6-7" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round"/></g>
+          <g class="ac-row ac-r2"><rect x="58" y="282" width="184" height="42" rx="10" fill="#18213f"/><text x="72" y="308" fill="#e2e8f0">Fiche Google</text><circle cx="222" cy="303" r="10" fill="#f59e0b"/><text x="222" y="308" fill="#111" font-size="14" font-weight="800" text-anchor="middle">!</text></g>
+          <g class="ac-row ac-r3"><rect x="58" y="332" width="184" height="42" rx="10" fill="#18213f"/><text x="72" y="358" fill="#e2e8f0">Publicité Google</text><circle cx="222" cy="353" r="10" fill="#ef4444"/><path d="m218 349 8 8m0-8-8 8" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></g>
+        </g>
+      </svg>
+      <figcaption>Exemple de résultat</figcaption>
+    </figure>
+  </div></section>
 
+  <section class="ac-diag" id="diagnostic" tabindex="-1"><div class="w">
+    <h2>Votre diagnostic en 3 questions</h2>
+    <p class="ac-lead">Répondez simplement, sans chercher la réponse parfaite. Le numéro SIREN est facultatif.</p>
+    <div class="ac-prog" aria-hidden="true"><div class="ac-prog-bar"><span id="ac-prog-fill"></span></div><span id="ac-prog-txt">0 sur 3 réponses</span></div>
   <form class="dg-form" id="dg-form" novalidate>
     <label for="dg-ent">Votre entreprise, votre métier et votre ville</label>
     <input type="text" id="dg-ent" name="entreprise" placeholder="ex. : Plomberie Dupont, plombier, Montmorillon" autocomplete="organization">
@@ -105,7 +202,7 @@ body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-syst
       <label><input type="radio" name="fiche" value="oui">Oui, complète</label><label><input type="radio" name="fiche" value="vide">Oui, mais incomplète (photos, horaires…)</label><label><input type="radio" name="fiche" value="non">Non</label><label><input type="radio" name="fiche" value="nsp">Je ne sais pas</label></div></fieldset>
     <fieldset><legend>Faites-vous de la publicité sur Google (Google Ads) ?</legend><div class="dg-opt">
       <label><input type="radio" name="ads" value="oui">Oui</label><label><input type="radio" name="ads" value="non">Non</label></div></fieldset>
-    <button type="submit" class="ex-btn">Lancer le diagnostic</button>
+    <button type="submit" class="ac-go"><span>Voir mon résultat</span><span class="ac-go-arr" aria-hidden="true">→</span></button>
     <p class="dg-err" id="dg-err" hidden>Merci de répondre aux trois questions.</p>
   </form>
   <ul class="ex-reas"><li>Gratuit</li><li>Résultat immédiat</li><li>Pour les professionnels locaux</li><li>Vos réponses restent dans votre navigateur</li></ul>
@@ -126,38 +223,50 @@ body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-syst
   </details>
   </div></section>
 
-  <section class="pk-s"><div class="w"><h2>Comment fonctionne le diagnostic</h2><ol class="steps">
-    <li><strong>Le site web.</strong> Avez-vous une page claire, lisible sur téléphone, qui donne envie d’appeler ou de demander un devis ?</li>
-    <li><strong>La fiche Google.</strong> Apparaissez-vous sur Google Maps, avec horaires, photos et services à jour, quand on cherche votre métier dans votre ville ?</li>
-    <li><strong>La publicité Google Ads.</strong> Êtes-vous affiché tout en haut quand quelqu’un cherche votre métier aujourd’hui, avec un bouton pour vous appeler ?</li>
-  </ol><p style="text-align:center;color:#94a3b8;max-width:640px;margin:1rem auto 0">Le résultat immédiat repose uniquement sur vos réponses. Pour une analyse réelle de votre fiche et de votre site, envoyez-moi votre diagnostic : je regarde moi-même ce que Google affiche pour votre entreprise et je vous réponds par écrit, gratuitement.</p></div></section>
-
-  <section class="pk-s"><div class="w"><h2>Les trois situations les plus fréquentes</h2><div class="grid">
-    <article class="card"><h3>🔴 Invisible sur Google</h3><p>Pas de site, ou une fiche Google vide. Quand on cherche votre métier et votre ville, ce sont vos concurrents qui s’affichent.</p><p style="margin-top:.8rem"><strong>Ce qui aide :</strong> une fiche Google complète et un site d’une page avec bouton d’appel. <a href="/pack-google-site/#presence" style="color:#93c5fd">Voir l’offre Présence</a></p></article>
-    <article class="card"><h3>🟠 Présent, mais pas choisi</h3><p>Vous avez un site et une fiche, mais un concurrent apparaît avant vous, ou les appels restent rares.</p><p style="margin-top:.8rem"><strong>Ce qui aide :</strong> compléter la fiche et lancer une campagne Google Ads limitée à votre zone. <a href="/pack-google-site/#google-ads" style="color:#93c5fd">Voir l’offre Google Ads</a></p></article>
-    <article class="card card-top"><h3>❓ « Mon concurrent est visible, mais pas moi »</h3><ul>
-      <li><strong>Sa fiche est plus complète :</strong> photos, bonnes catégories, horaires, avis.</li>
-      <li><strong>Son site est plus clair :</strong> Google comprend ce qu’il fait et où il travaille.</li>
-      <li><strong>Il paie de la publicité :</strong> son annonce s’affiche au-dessus des résultats gratuits.</li>
-    </ul><p style="margin-top:.8rem">L’<a href="/pack-google-site/#complete" style="color:#93c5fd">offre complète</a> traite les trois points à la fois.</p></article>
-  </div></div></section>
-
-  <section class="pk-s"><div class="w"><h2>Questions fréquentes</h2><div class="faq">
-    <details><summary>Le diagnostic est-il vraiment gratuit ?</summary><p>Oui. Le test en ligne et l’analyse écrite qui suit, si vous la demandez, sont gratuits et ne vous engagent à rien. Vous choisissez ensuite, ou non, l’une des offres.</p></details>
-    <details><summary>Ce test analyse-t-il ma vraie fiche Google ?</summary><p>Non, le résultat immédiat se base sur vos réponses. Ce que Google affiche réellement pour votre entreprise, je le vérifie moi-même si vous m’envoyez votre diagnostic.</p></details>
-    <details><summary>Pourquoi être sur Google quand on est artisan ou commerçant local ?</summary><p>Parce que vos clients y cherchent. 76 % des personnes qui font une recherche de proximité sur leur smartphone se rendent dans un établissement dans la journée, et 28 % de ces recherches se terminent par un achat (source : <a href="https://www.thinkwithgoogle.com/_qs/documents/620/mobile-search-trends-consumers-to-stores.pdf" target="_blank" rel="noopener noreferrer" style="color:#93c5fd">Google, Digital Diary, mai 2016</a>).</p></details>
-    <details><summary>Je n’ai pas de site : est-ce grave ?</summary><p>Ce n’est pas obligatoire, mais une page simple avec vos services, vos photos et un bouton d’appel rassure le client qui hésite. Elle est aussi nécessaire pour faire de la publicité Google Ads, car l’annonce doit renvoyer vers une page.</p></details>
-    <details><summary>Puis-je gérer Google Ads moi-même ?</summary><p>C’est possible, mais cela prend du temps et un mauvais réglage fait vite payer des clics inutiles. Mon rôle : une campagne limitée à votre zone et à votre métier, avec un plafond de dépense par jour que vous fixez.</p></details>
-    <details><summary>Que deviennent mes réponses ?</summary><p>Elles restent dans votre navigateur. Rien n’est transmis tant que vous ne choisissez pas vous-même de m’envoyer votre diagnostic, par email ou sur LinkedIn. Voir la <a href="/politique-de-confidentialite/" style="color:#93c5fd">politique de confidentialité</a>.</p></details>
-  </div></div></section>
+  <section class="ac-quoi"><div class="w">
+    <h2>Ce que le diagnostic regarde</h2>
+    <div class="ac-cards">
+      <article class="ac-card digital-reveal">
+        <svg class="ac-ill" viewBox="0 0 160 100" role="img" aria-label="Illustration : un site internet affiché sur un téléphone, avec un bouton d’appel"><rect x="50" y="6" width="60" height="88" rx="10" fill="#111833" stroke="#3b82f6" stroke-width="2"/><rect x="58" y="18" width="44" height="22" rx="4" fill="#1e3a8a"/><rect x="58" y="46" width="44" height="5" rx="2.5" fill="#334155"/><rect x="58" y="55" width="32" height="5" rx="2.5" fill="#334155"/><rect x="58" y="70" width="44" height="14" rx="7" fill="#22c55e"/><path d="M75 74.5c1 2.5 3 4.5 5.5 5.5l1.6-1.6 2.4 1-0.6 2.2c-5-0.4-9-4.4-9.4-9.4l2.2-.6 1 2.4z" fill="#fff"/></svg>
+        <h3>Votre site internet</h3>
+        <p>Une page claire, lisible sur téléphone, avec un bouton pour vous appeler ou demander un devis.</p>
+      </article>
+      <article class="ac-card digital-reveal">
+        <svg class="ac-ill" viewBox="0 0 160 100" role="img" aria-label="Illustration : une carte avec un repère et des étoiles, comme une fiche Google"><rect x="18" y="10" width="124" height="80" rx="10" fill="#13203f"/><path d="M18 60c30-14 60 14 124-12" stroke="#22315c" stroke-width="8" fill="none"/><path d="M60 10 72 90M110 10 98 90" stroke="#1b2a52" stroke-width="5"/><path d="M84 22c-8 0-13 6-13 13 0 10 13 22 13 22s13-12 13-22c0-7-5-13-13-13z" fill="#ef4444"/><circle cx="84" cy="35" r="5" fill="#fff"/><g fill="#f59e0b"><path d="m58 74 2.4 5 5.4.6-4 3.6 1.1 5.3L58 86l-4.9 2.5 1.1-5.3-4-3.6 5.4-.6z"/><path d="m80 74 2.4 5 5.4.6-4 3.6 1.1 5.3L80 86l-4.9 2.5 1.1-5.3-4-3.6 5.4-.6z"/><path d="m102 74 2.4 5 5.4.6-4 3.6 1.1 5.3L102 86l-4.9 2.5 1.1-5.3-4-3.6 5.4-.6z"/></g></svg>
+        <h3>Votre fiche Google</h3>
+        <p>Votre présence sur Google Maps quand on cherche votre métier près de chez vous : horaires, photos, services.</p>
+      </article>
+      <article class="ac-card digital-reveal">
+        <svg class="ac-ill" viewBox="0 0 160 100" role="img" aria-label="Illustration : une annonce affichée tout en haut des résultats de recherche"><rect x="18" y="8" width="124" height="84" rx="10" fill="#111833" stroke="#334155"/><rect x="28" y="18" width="104" height="26" rx="6" fill="#172554" stroke="#00d4ff"/><rect x="32" y="24" width="32" height="12" rx="3" fill="#00d4ff"/><text x="48" y="32.5" fill="#0a0e27" font-size="7" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">Annonce</text><rect x="70" y="27" width="54" height="6" rx="3" fill="#93c5fd"/><rect x="28" y="52" width="90" height="6" rx="3" fill="#334155"/><rect x="28" y="62" width="70" height="6" rx="3" fill="#334155"/><rect x="28" y="74" width="84" height="6" rx="3" fill="#334155"/><path d="M130 50v-8m-4 4 4-4 4 4" stroke="#22c55e" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+        <h3>Votre publicité Google</h3>
+        <p>Être affiché tout en haut au moment où quelqu’un cherche votre métier aujourd’hui, dans votre zone.</p>
+      </article>
+    </div>
+    <ul class="ac-metiers" aria-label="Exemples de métiers concernés">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4l6 6-3 3-6-6zM11 7 3 15v6h6l8-8"/></svg>Artisans</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l2-5h14l2 5M4 9v11h16V9M3 9h18M9 20v-6h6v6"/></svg>Commerces</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v8a2 2 0 0 0 2 2v8M5 3v6M9 3v6M17 3c-2 2-2 6 0 8v10"/></svg>Restaurants</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-8-5-8-11a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 6-8 11-8 11z"/></svg>Santé, bien-être</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7M5 10v10h14V10"/></svg>Immobilier</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v12H4zM9 8V5h6v3"/></svg>Cabinets, services</li>
+    </ul>
+    <div class="faq ac-faq">
+      <details><summary>Le diagnostic est-il vraiment gratuit ?</summary><p>Oui. Le test en ligne et l’analyse écrite qui suit, si vous la demandez, sont gratuits et ne vous engagent à rien.</p></details>
+      <details><summary>Ce test analyse-t-il ma vraie fiche Google ?</summary><p>Non, le résultat immédiat se base sur vos réponses. Ce que Google affiche réellement pour votre entreprise, je le vérifie moi-même si vous m’envoyez votre diagnostic, et je vous réponds par écrit.</p></details>
+      <details><summary>Pourquoi être sur Google quand on est un professionnel local ?</summary><p>Parce que vos clients y cherchent. 76 % des personnes qui font une recherche de proximité sur leur smartphone se rendent dans un établissement dans la journée (source : <a href="https://www.thinkwithgoogle.com/_qs/documents/620/mobile-search-trends-consumers-to-stores.pdf" target="_blank" rel="noopener noreferrer" style="color:#93c5fd">Google, Digital Diary, mai 2016</a>).</p></details>
+      <details><summary>Que deviennent mes réponses ?</summary><p>Elles restent dans votre navigateur. Rien n’est transmis tant que vous ne choisissez pas vous-même de m’envoyer votre diagnostic. Voir la <a href="/politique-de-confidentialite/" style="color:#93c5fd">politique de confidentialité</a>.</p></details>
+    </div>
+    <p class="ac-fin"><a class="ac-go" href="#diagnostic"><span>Je lance mon diagnostic</span><span class="ac-go-arr" aria-hidden="true">→</span></a></p>
+  </div></section>
 
 </main>
+<a class="ac-go ac-sticky" id="ac-sticky" href="#diagnostic" hidden><span>Diagnostiquer mon entreprise</span><span class="ac-go-arr" aria-hidden="true">→</span></a>
 <footer class="foot"><div class="w"><div class="fcols">
   <section><h2><a href="/contact/">CONTACT</a></h2><p>Pour toute question sur nos offres, répondez à l’email reçu ou écrivez sur LinkedIn.</p></section>
   <nav aria-label="Services"><h2><a href="/services/">SERVICES</a></h2><ul><li><a href="/conseil-ingenierie-si/">Conseil SI</a></li><li><a href="/developpement-logiciel/">Développement</a></li><li><a href="/automatisation-ia/">Automatisation &amp; IA</a></li><li><a href="/visibilite-seo-local/">Visibilité &amp; SEO</a></li><li><a href="/formation-accompagnement/">Formation</a></li></ul></nav>
   <nav aria-label="Informations"><h2><a href="/informations/">INFORMATIONS</a></h2><ul><li><a href="/zone-intervention/">Zone d’intervention</a></li><li><a href="/ressources/">Ressources</a></li><li><a href="/outils/">Outils recommandés</a></li><li><a href="/mentions-legales/">Mentions légales</a></li><li><a href="/politique-de-confidentialite/">Politique de confidentialité</a></li></ul></nav>
 </div><p class="copy">© 2026 JOSY EI · Entrepreneur individuel · SIREN 914 113 543 · NAF 6202A</p></div></footer></div>
-<script src="/assets/site-enhancements.js?v=20261030c" defer></script>
+<script src="/assets/site-enhancements.js?v=20261030d" defer></script>
 <script>
 (function(){
   var f=document.getElementById('dg-form'),res=document.getElementById('dg-res'),err=document.getElementById('dg-err');
@@ -208,6 +317,16 @@ body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-syst
   }
   idBtn.addEventListener('click',chercher);
   idIn.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();chercher();}});
+  // Accueil : barre de progression des réponses, bouton fixe sur téléphone, focus sur le premier champ.
+  var pf=document.getElementById('ac-prog-fill'),pt=document.getElementById('ac-prog-txt');
+  f.addEventListener('change',function(){var n=['site','fiche','ads'].filter(val).length;pf.style.width=(n*100/3)+'%';pt.textContent=n+' sur 3 réponse'+(n>1?'s':'');});
+  document.querySelectorAll('a.ac-go[href="#diagnostic"]').forEach(function(a){a.addEventListener('click',function(){setTimeout(function(){document.getElementById('dg-ent').focus({preventScroll:true});},450);});});
+  var sticky=document.getElementById('ac-sticky'),diagSec=document.getElementById('diagnostic'),heroGo=document.querySelector('.ac-hero .ac-go');
+  if(sticky&&'IntersectionObserver' in window){
+    var vu={hero:true,diag:false};
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){vu[e.target===diagSec?'diag':'hero']=e.isIntersecting;});sticky.hidden=vu.hero||vu.diag;});
+    io.observe(heroGo);io.observe(diagSec);
+  }
   f.addEventListener('submit',function(e){
     e.preventDefault();
     var site=val('site'),fiche=val('fiche'),ads=val('ads'),ent=document.getElementById('dg-ent').value.trim();

@@ -294,7 +294,8 @@
   // Badge discret « Les outils que j'utilise » sous le h1, vers /outils/ (sauf pages légales, merci, 404, /outils/)
   var pageH1 = root.querySelector('main h1') || root.querySelector('h1');
   var noToolsLine = /^\/(outils|mentions-legales|politique-de-confidentialite|merci|informations\/cgv|informations\/politique-cookies)\//.test(location.pathname)
-    || /404/.test(location.pathname) || document.title.indexOf('404') !== -1;
+    || /404/.test(location.pathname) || document.title.indexOf('404') !== -1
+    || onDiagnostic; // accueil épuré en trois sections (30/10)
   if (pageH1 && !noToolsLine && !root.querySelector('.digital-tools-line')) {
     var toolsLine = document.createElement('p');
     toolsLine.className = 'digital-tools-line';
