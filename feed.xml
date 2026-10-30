@@ -6,7 +6,15 @@
     <atom:link href="https://josyei.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Analyses, guides et sélections d’outils : l’IA et l’automatisation décryptées sans jargon.</description>
     <language>fr</language>
-    <lastBuildDate>Mon, 26 Oct 2026 16:12:50 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 08:00:13 +0100</lastBuildDate>
+    <item>
+      <title>Mistral Large 4 recule sur le nouvel indice d'Artificial Analysis</title>
+      <link>https://josyei.com/actualites/mistral-large-4-indice-artificial-analysis-261030/</link>
+      <guid isPermaLink="true">https://josyei.com/actualites/mistral-large-4-indice-artificial-analysis-261030/</guid>
+      <description>Découvrez comment la version 5 de l'indice Artificial Analysis bouleverse le classement des modèles d'intelligence artificielle et impacte Mistral Large 4.</description>
+      <pubDate>Fri, 30 Oct 2026 08:00:13 +0100</pubDate>
+      <enclosure url="https://images.unsplash.com/photo-1778146476147-5f8d4bd03c79?w=1200&amp;q=80&amp;fm=jpg" length="276638" type="image/jpeg"/>
+    </item>
     <item>
       <title>Administration et IA : le rapport de force change pour les usagers</title>
       <link>https://josyei.com/actualites/ia-administration-rapport-force-usagers-261026/</link>
@@ -78,14 +86,6 @@
       <description>Repérez cinq erreurs SEO fréquentes des petites entreprises et appliquez une méthode simple pour améliorer la qualité de vos pages web.</description>
       <pubDate>Fri, 23 Oct 2026 17:03:45 +0200</pubDate>
       <enclosure url="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?auto=format&amp;fit=crop&amp;w=800&amp;q=80" length="55886" type="image/jpeg"/>
-    </item>
-    <item>
-      <title>Fiche Google Business : dominez les recherches locales depuis chez vous</title>
-      <link>https://josyei.com/actualites/fiche-google-business-optimiser-distance/</link>
-      <guid isPermaLink="true">https://josyei.com/actualites/fiche-google-business-optimiser-distance/</guid>
-      <description>Optimisez une fiche Google Business Profile à distance : informations exactes, catégories, contenus, avis et suivi conforme.</description>
-      <pubDate>Fri, 23 Oct 2026 17:03:45 +0200</pubDate>
-      <enclosure url="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&amp;fit=crop&amp;w=800&amp;q=80" length="111647" type="image/jpeg"/>
     </item>
   </channel>
 </rss>

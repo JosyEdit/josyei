@@ -143,4 +143,15 @@
       <news:title>Administration et IA : le rapport de force change pour les usagers</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://josyei.com/actualites/mistral-large-4-indice-artificial-analysis-261030/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>JOSY EI</news:name>
+        <news:language>fr</news:language>
+      </news:publication>
+      <news:publication_date>2026-10-30T08:00:13+01:00</news:publication_date>
+      <news:title>Mistral Large 4 recule sur le nouvel indice d'Artificial Analysis</news:title>
+    </news:news>
+  </url>
 </urlset>
