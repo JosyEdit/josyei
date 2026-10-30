@@ -1021,3 +1021,79 @@
   text-align: center;
   border-bottom: 0;
 }
+
+/* Haut du site : barre de recherche + lien vers le diagnostic gratuit (30/10) */
+.jx .top .w { flex-wrap: wrap; }
+.jx .top-tools {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  min-width: 0;
+}
+.jx .top-search {
+  position: relative;
+  flex: 0 1 320px;
+  min-width: 0;
+  margin: 0;
+}
+.jx .top-search input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: .55rem .8rem;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 10px;
+  background: #0f172a;
+  color: #f8fafc;
+  font: inherit;
+  font-size: .95rem;
+}
+.jx .top-search input::placeholder { color: #94a3b8; }
+.jx .top-search input:focus { outline: 2px solid #38bdf8; outline-offset: 1px; }
+.jx .top-search-results {
+  position: absolute;
+  top: calc(100% + .35rem);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  margin: 0;
+  padding: .35rem;
+  list-style: none;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .45);
+}
+.jx .top-search-results a,
+.jx .top-search-empty {
+  display: block;
+  padding: .5rem .6rem;
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-size: .9rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+.jx .top-search-empty { color: #94a3b8; }
+.jx .top-search-results a:hover,
+.jx .top-search-results a:focus-visible { background: #1e293b; color: #fff; }
+.jx .top-diag {
+  flex: 0 0 auto;
+  padding: .55rem .95rem;
+  border-radius: 10px;
+  background: #0066ff;
+  color: #fff;
+  font-weight: 700;
+  font-size: .95rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.jx .top-diag:hover,
+.jx .top-diag:focus-visible { background: #1d4ed8; }
+@media (max-width: 640px) {
+  .jx .top .w { padding-top: .6rem; padding-bottom: .6rem; row-gap: .6rem; }
+  .jx .top-tools { flex-basis: 100%; }
+  .jx .top-search { flex: 1 1 auto; }
+  .jx .top-diag { padding: .55rem .75rem; font-size: .9rem; }
+}

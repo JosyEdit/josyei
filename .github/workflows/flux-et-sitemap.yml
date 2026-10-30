@@ -39,7 +39,7 @@ jobs:
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add -A feed.xml sitemap.xml news-sitemap.xml actualites/index.html index.html
+            git add -A feed.xml sitemap.xml news-sitemap.xml actualites/index.html le-media/index.html assets/recherche.json
             git commit -m "Mise à jour flux, sitemap et liste des articles [skip ci]"
             git push
             echo "pousse=true" >> "$GITHUB_OUTPUT"

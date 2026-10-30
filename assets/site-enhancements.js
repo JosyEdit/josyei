@@ -16,6 +16,98 @@
   });
   if (menuButton && (!drawer || !drawer.querySelector('a'))) menuButton.style.display = 'none';
 
+  // Haut du site (demande du 30/10) : barre de recherche + lien vers le diagnostic gratuit (page d'accueil).
+  var topBar = root.querySelector('header.top .w');
+  if (topBar && !topBar.querySelector('.top-tools')) {
+    var tools = document.createElement('div');
+    tools.className = 'top-tools';
+    var form = document.createElement('form');
+    form.className = 'top-search';
+    form.setAttribute('role', 'search');
+    var input = document.createElement('input');
+    input.type = 'search';
+    input.placeholder = 'Rechercher sur le site';
+    input.setAttribute('aria-label', 'Rechercher sur le site');
+    input.autocomplete = 'off';
+    var results = document.createElement('ul');
+    results.className = 'top-search-results';
+    results.hidden = true;
+    form.appendChild(input);
+    form.appendChild(results);
+    var diag = document.createElement('a');
+    diag.className = 'top-diag';
+    diag.href = '/';
+    diag.textContent = 'Diagnostic gratuit';
+    if (location.pathname === '/' || location.pathname === '/index.html') diag.setAttribute('aria-current', 'page');
+    tools.appendChild(form);
+    tools.appendChild(diag);
+    topBar.appendChild(tools);
+
+    var pages = null;
+    var normalize = function (text) {
+      return (text || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    };
+    var loadPages = function () {
+      if (pages) return Promise.resolve(pages);
+      var index = fetch('/assets/recherche.json').then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; });
+      // Les articles publiés après la dernière mise à jour de l'index sont repris du flux RSS.
+      var feed = fetch('/feed.xml').then(function (r) { return r.ok ? r.text() : ''; }).then(function (xml) {
+        if (!xml) return [];
+        var doc = new DOMParser().parseFromString(xml, 'application/xml');
+        return Array.prototype.map.call(doc.querySelectorAll('item'), function (item) {
+          var link = (item.querySelector('link') || {}).textContent || '';
+          return { t: (item.querySelector('title') || {}).textContent || '', d: (item.querySelector('description') || {}).textContent || '', u: link.replace(/^https:\/\/josyei\.com/, '') };
+        });
+      }).catch(function () { return []; });
+      return Promise.all([index, feed]).then(function (lists) {
+        var seen = {};
+        pages = lists[0].concat(lists[1]).filter(function (page) {
+          if (!page.u || seen[page.u]) return false;
+          seen[page.u] = true;
+          return true;
+        });
+        return pages;
+      });
+    };
+    var search = function () {
+      var words = normalize(input.value).split(/\s+/).filter(function (w) { return w.length > 1; });
+      if (!words.length) { results.hidden = true; results.replaceChildren(); return Promise.resolve([]); }
+      return loadPages().then(function (list) {
+        var found = list.map(function (page) {
+          var title = normalize(page.t), text = title + ' ' + normalize(page.d);
+          var score = 0;
+          words.forEach(function (w) { if (text.indexOf(w) !== -1) score += title.indexOf(w) !== -1 ? 3 : 1; else score -= 100; });
+          return { page: page, score: score };
+        }).filter(function (r) { return r.score > 0; }).sort(function (a, b) { return b.score - a.score; }).slice(0, 6);
+        results.replaceChildren();
+        if (!found.length) {
+          var empty = document.createElement('li');
+          empty.className = 'top-search-empty';
+          empty.textContent = 'Aucun résultat';
+          results.appendChild(empty);
+        }
+        found.forEach(function (r) {
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          a.href = r.page.u;
+          a.textContent = r.page.t;
+          li.appendChild(a);
+          results.appendChild(li);
+        });
+        results.hidden = false;
+        return found;
+      });
+    };
+    input.addEventListener('input', search);
+    input.addEventListener('focus', loadPages);
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      search().then(function (found) { if (found.length) location.href = found[0].page.u; });
+    });
+    document.addEventListener('click', function (event) { if (!form.contains(event.target)) results.hidden = true; });
+    input.addEventListener('keydown', function (event) { if (event.key === 'Escape') results.hidden = true; });
+  }
+
   if (menuButton && drawer) {
     menuButton.addEventListener('click', function () {
       var expanded = menuButton.getAttribute('aria-expanded') === 'true';
@@ -72,7 +164,8 @@
       {
         title: 'INFORMATIONS',
         links: [
-          ['Accueil', '/'],
+          ['Accueil : diagnostic gratuit', '/'],
+          ['Le média : actualités et outils', '/le-media/'],
           ['À propos', '/a-propos/'],
           ['Contact', '/contact/'],
           ['Conditions Générales de Vente', '/informations/cgv/'],
@@ -134,8 +227,9 @@
     footerGrid.replaceChildren(directory);
   }
 
-  // Pas de bloc d'outils sur la page diagnostic (demande du 30/10)
-  if (footer && !root.querySelector('.digital-action-gateway') && location.pathname.indexOf('/diagnostic-visibilite/') !== 0) {
+  // Pas de bloc d'outils sur la page diagnostic, devenue l'accueil (demandes du 30/10)
+  var onDiagnostic = location.pathname === '/' || location.pathname === '/index.html' || location.pathname.indexOf('/diagnostic-visibilite/') === 0;
+  if (footer && !root.querySelector('.digital-action-gateway') && !onDiagnostic) {
     var gateway = document.createElement('section');
     gateway.className = 'digital-action-gateway';
     gateway.setAttribute('aria-labelledby', 'digital-action-title');
@@ -279,7 +373,7 @@
   'use strict';
   var PACK = '/pack-google-site/';
   var path = location.pathname;
-  if (path.indexOf(PACK) === 0 || path.indexOf('/diagnostic-visibilite/') === 0 || path === '/' || path === '/index.html') return;
+  if (path.indexOf(PACK) === 0 || path.indexOf('/diagnostic-visibilite/') === 0 || path === '/' || path === '/index.html' || path.indexOf('/le-media/') === 0) return;
   var foot = document.querySelector('footer.foot') || document.querySelector('footer');
   if (!foot || document.getElementById('pack-cta')) return;
   var s = document.createElement('section');
@@ -291,7 +385,7 @@
     '<h2 style="margin:0 0 .6rem;font-size:clamp(1.3rem,3vw,1.7rem);color:#fff">Être trouvé par les clients de votre ville ?</h2>' +
     '<p style="margin:0 0 .4rem">Site web, fiche Google et publicité Google Ads, mis en place et gérés pour vous, à votre nom et entièrement à distance.</p>' +
     '<p style="margin:0 0 1.2rem;color:#b0b8d4">✓ Diagnostic gratuit en 2 minutes · ✓ Solution adaptée à votre situation · ✓ Tout reste à votre nom</p>' +
-    '<a href="/diagnostic-visibilite/" style="display:inline-block;background:#0066ff;color:#fff;font-weight:800;text-decoration:none;border-radius:10px;padding:.85rem 1.4rem">Faire le diagnostic gratuit</a>' +
+    '<a href="/" style="display:inline-block;background:#0066ff;color:#fff;font-weight:800;text-decoration:none;border-radius:10px;padding:.85rem 1.4rem">Faire le diagnostic gratuit</a>' +
     ' <a href="' + PACK + '#offres" style="display:inline-block;color:#7dd3fc;padding:.85rem .6rem">Voir les offres</a>' +
     '</div>';
   foot.parentNode.insertBefore(s, foot);

@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Met à jour feed.xml, sitemap.xml, news-sitemap.xml et la liste /actualites/ à partir des articles publiés.
+"""Met à jour feed.xml, sitemap.xml, news-sitemap.xml, la liste /actualites/, la page /le-media/
+et l'index de la barre de recherche (assets/recherche.json) à partir des pages publiées.
 
 Relançable sans effet de bord : un fichier n'est réécrit que si son contenu change.
 Bibliothèque standard uniquement. À lancer depuis n'importe où : python scripts/build_feeds.py
 """
 import email.utils
 import html
+import json
 import os
 import re
 import subprocess
@@ -221,8 +223,8 @@ def construire_liste(arts):
 
 
 def construire_accueil(arts):
-    """Les 6 derniers articles dans la section « Dernières actualités » de l'accueil."""
-    path = ROOT / "index.html"
+    """Les 6 derniers articles dans la section « Dernières actualités » de /le-media/ (l'ancien accueil)."""
+    path = ROOT / "le-media" / "index.html"
     t = path.read_text(encoding="utf-8")
     debut, fin = "<!-- derniers-articles -->", "<!-- /derniers-articles -->"
     if debut not in t or fin not in t:
@@ -236,6 +238,25 @@ def construire_accueil(arts):
                       f'<p>{html.escape(a["desc"], quote=False)}</p></article>')
     i, j = t.index(debut) + len(debut), t.index(fin)
     return ecrire_si_change(path, t[:i] + "\n" + "\n".join(cartes) + "\n" + t[j:])
+
+
+def construire_recherche():
+    """Titre, description et adresse de chaque page indexable, pour la barre de recherche du haut du site."""
+    pages = []
+    for f in sorted(ROOT.rglob("index.html")):
+        if ".git" in f.parts:
+            continue
+        rel = f.relative_to(ROOT).as_posix()
+        if rel.split("/")[0] in ("merci",) or rel.startswith("404"):
+            continue
+        p = f.read_text(encoding="utf-8")
+        titre = re.search(r"<title>(.*?)</title>", p, re.S)
+        if not indexable(p) or not titre:
+            continue
+        titre = re.sub(r"\s*[|\-–]\s*JOSY EI.*$", "", html.unescape(titre.group(1).strip()))
+        pages.append({"t": titre, "d": meta(p, "name", "description"), "u": "/" + rel[: -len("index.html")]})
+    contenu = json.dumps(pages, ensure_ascii=False, separators=(",", ":"))
+    return ecrire_si_change(ROOT / "assets" / "recherche.json", contenu)
 
 
 def controle_regles(arts):
@@ -263,6 +284,7 @@ def main():
     construire_news(arts)
     construire_liste(arts)
     construire_accueil(arts)
+    construire_recherche()
     controle_regles([a for a in arts if a["url"] not in deja])
     print(f"{len(arts)} articles ; flux : {min(10, len(arts))} items")
 
