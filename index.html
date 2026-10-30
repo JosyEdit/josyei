@@ -151,10 +151,14 @@ body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-syst
     var act=r.activite_principale||sg.activite_principale||'';
     var actLib=naf&&naf[act]?naf[act]+' ('+act.replace('.','')+')':act;
     var adresse=sg.adresse||[sg.code_postal,sg.libelle_commune].filter(Boolean).join(' ');
-    ident={nom:r.nom_complet||r.nom_raison_sociale||'',siren:grp(r.siren,'siren'),siret:grp(sg.siret,'siret'),act:actLib,forme:forme,creation:dateFr(r.date_creation),adresse:adresse,ferme:r.etat_administratif==='C'};
-    [['SIREN',ident.siren,1],['SIRET du siège',ident.siret,1],['Activité (NAF / APE)',actLib,1],['Adresse du siège',adresse,1],['Forme juridique',forme],['Date de création',ident.creation]].forEach(function(l){if(l[1])lignes.push('<dt>'+l[0]+'</dt><dd'+(l[2]?' class="dg-id-key"':'')+'>'+esc(l[1])+'</dd>');});
+    var dir=(r.dirigeants||[]).map(function(d){var n=d.type_dirigeant==='personne morale'?(d.denomination||''):[d.prenoms,d.nom].filter(Boolean).join(' ');return n?n+(d.qualite?' ('+d.qualite+')':''):'';}).filter(Boolean);
+    var dirTxt=dir.slice(0,3).join(', ')+(dir.length>3?' et '+(dir.length-3)+' autre'+(dir.length>4?'s':''):'');
+    // Numéro de TVA intracommunautaire calculé à partir du SIREN (même calcul que l'annuaire) : ne dit pas s'il est actif.
+    var tva=/^\d{9}$/.test(r.siren||'')?'FR'+('0'+((12+3*(+r.siren%97))%97)).slice(-2)+r.siren:'';
+    ident={tva:tva,dir:dirTxt,nom:r.nom_complet||r.nom_raison_sociale||'',siren:grp(r.siren,'siren'),siret:grp(sg.siret,'siret'),act:actLib,forme:forme,creation:dateFr(r.date_creation),adresse:adresse,ferme:r.etat_administratif==='C'};
+    [['SIREN',ident.siren,1],['SIRET du siège',ident.siret,1],['Activité (NAF / APE)',actLib,1],['Adresse du siège',adresse,1],['Forme juridique',forme,1],['Numéro de TVA (calculé)',tva],['Dirigeants',dirTxt],['Date de création',ident.creation]].forEach(function(l){if(l[1])lignes.push('<dt>'+l[0]+'</dt><dd'+(l[2]?' class="dg-id-key"':'')+'>'+esc(l[1])+'</dd>');});
     idOut.innerHTML='<div class="dg-id-card"><h3>'+esc(ident.nom||'Entreprise')+(ident.ferme?' (fermée)':'')+'</h3><dl>'+lignes.join('')+'</dl>'
-      +'<p class="dg-id-src">Source : <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/'+encodeURIComponent(r.siren)+'" target="_blank" rel="noopener noreferrer">annuaire des entreprises</a> (INSEE, RNE).</p></div>';
+      +'<p class="dg-id-src">'+(tva?'Le numéro de TVA est calculé à partir du SIREN ; une entreprise en franchise de TVA peut ne pas l’utiliser. Vérification : service VIES de la Commission européenne. ':'')+'Source : <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/'+encodeURIComponent(r.siren)+'" target="_blank" rel="noopener noreferrer">annuaire des entreprises</a> (INSEE, RNE).</p></div>';
     var ent=document.getElementById('dg-ent');
     if(!ent.value.trim()&&ident.nom)ent.value=ident.nom+(sg.libelle_commune?', '+sg.libelle_commune:'');
   }
@@ -202,7 +206,7 @@ body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-syst
     else if(!ficheOk){titre='🟠 Votre site existe, votre fiche Google est à créer ou compléter';txt='Sur la carte Google, c’est la fiche qui vous fait apparaître, avec votre numéro. C’est le point le plus simple à corriger.';offre='Fiche Google';lien='#fiche';}
     else if(ads==='non'){titre='🟢 Les bases sont là, prêt pour Google Ads';txt='Site et fiche sont en place. L’étape suivante : une campagne limitée à votre ville et à votre métier, pour être affiché au moment où le client cherche.';offre='Google Ads';lien='#google-ads';}
     else{titre='🟢 Tout est en place';txt='Vous avez les trois leviers. Un regard extérieur sur votre campagne et votre fiche peut montrer ce qui coûte sans rapporter.';offre='Sur mesure';lien='#sur-mesure';}
-    var idTxt=ident?'Fiche entreprise (annuaire public) : '+[ident.nom,ident.siren&&'SIREN '+ident.siren,ident.siret&&'SIRET '+ident.siret,ident.act&&'activité '+ident.act,ident.adresse,ident.forme,ident.creation&&'créée le '+ident.creation].filter(Boolean).join(' · ')+'\n':'';
+    var idTxt=ident?'Fiche entreprise (annuaire public) : '+[ident.nom,ident.siren&&'SIREN '+ident.siren,ident.siret&&'SIRET '+ident.siret,ident.act&&'activité '+ident.act,ident.adresse,ident.forme,ident.dir&&'dirigeants : '+ident.dir,ident.creation&&'créée le '+ident.creation].filter(Boolean).join(' · ')+'\n':'';
     var corps='Bonjour,\n\nVoici mon diagnostic de visibilité locale, fait sur josyei.com.\n\nEntreprise, métier, ville : '+(ent||'(à compléter)')+'\n'+idTxt+'Résultat : '+titre.replace(/^\S+ /,'')+'\n'+lignes.join('\n')+'\nOffre suggérée : '+offre+'\n\nPouvez-vous vérifier ma fiche et mon site et me répondre par écrit ?\n\nMerci,\n';
     var mail='mailto:mrjosyvalery@gmail.com?subject='+encodeURIComponent('Mon diagnostic de visibilité locale'+(ent?' : '+ent:''))+'&body='+encodeURIComponent(corps);
     res.innerHTML='<h2>'+titre+'</h2>'+(ent?'<p style="color:#94a3b8;margin:0">Pour : '+esc(ent)+'</p>':'')+'<p>'+txt+'</p><ul class="dg-pts">'+pts.join('')+'</ul>'
