@@ -121,7 +121,8 @@
     footerGrid.replaceChildren(directory);
   }
 
-  if (footer && !root.querySelector('.digital-action-gateway')) {
+  // Pas de bloc d'outils sur la page diagnostic (demande du 30/10)
+  if (footer && !root.querySelector('.digital-action-gateway') && location.pathname.indexOf('/diagnostic-visibilite/') !== 0) {
     var gateway = document.createElement('section');
     gateway.className = 'digital-action-gateway';
     gateway.setAttribute('aria-labelledby', 'digital-action-title');
@@ -272,7 +273,7 @@
     a.className = 'nav-pack';
     nav.appendChild(a);
   });
-  if (path.indexOf(PACK) === 0 || path === '/' || path === '/index.html') return;
+  if (path.indexOf(PACK) === 0 || path.indexOf('/diagnostic-visibilite/') === 0 || path === '/' || path === '/index.html') return;
   var foot = document.querySelector('footer.foot') || document.querySelector('footer');
   if (!foot || document.getElementById('pack-cta')) return;
   var s = document.createElement('section');
