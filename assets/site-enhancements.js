@@ -269,7 +269,7 @@
   document.querySelectorAll('nav.menu, #jx-drawer').forEach(function (nav) {
     if (nav.querySelector('a[href="' + PACK + '"]')) return;
     var a = document.createElement('a');
-    a.href = PACK; a.textContent = 'Pack Google';
+    a.href = PACK; a.textContent = 'Google Ads';
     a.className = 'nav-pack';
     nav.appendChild(a);
   });
@@ -278,15 +278,15 @@
   if (!foot || document.getElementById('pack-cta')) return;
   var s = document.createElement('section');
   s.id = 'pack-cta';
-  s.setAttribute('aria-label', 'Pack visibilité Google');
+  s.setAttribute('aria-label', 'Offres Google');
   s.style.cssText = 'background:#0f172a;border-top:1px solid #1e293b;padding:2.4rem 16px;text-align:center;color:#e2e8f0;font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif';
   s.innerHTML =
     '<div style="max-width:720px;margin:0 auto">' +
-    '<h2 style="margin:0 0 .6rem;font-size:clamp(1.3rem,3vw,1.7rem);color:#fff">Pas encore de fiche Google ni de site ?</h2>' +
-    '<p style="margin:0 0 .4rem">Le Pack visibilité Google crée les deux, à votre nom et entièrement à distance : une fiche Google complète et un site d’une page avec bouton d’appel.</p>' +
-    '<p style="margin:0 0 1.2rem;color:#b0b8d4">✓ 390 € net · ✓ Nom de domaine et email inclus · ✓ Site en ligne sous 5 jours ouvrés</p>' +
-    '<a href="' + PACK + '" style="display:inline-block;background:#0066ff;color:#fff;font-weight:800;text-decoration:none;border-radius:10px;padding:.85rem 1.4rem">Découvrir le Pack visibilité Google</a>' +
-    ' <a href="' + PACK + '#exemples-secteurs" style="display:inline-block;color:#7dd3fc;padding:.85rem .6rem">Voir les exemples par secteur</a>' +
+    '<h2 style="margin:0 0 .6rem;font-size:clamp(1.3rem,3vw,1.7rem);color:#fff">Être trouvé par les clients de votre ville ?</h2>' +
+    '<p style="margin:0 0 .4rem">Site web, fiche Google et publicité Google Ads, mis en place et gérés pour vous, à votre nom et entièrement à distance.</p>' +
+    '<p style="margin:0 0 1.2rem;color:#b0b8d4">✓ Diagnostic gratuit en 2 minutes · ✓ Solution adaptée à votre situation · ✓ Tout reste à votre nom</p>' +
+    '<a href="/diagnostic-visibilite/" style="display:inline-block;background:#0066ff;color:#fff;font-weight:800;text-decoration:none;border-radius:10px;padding:.85rem 1.4rem">Faire le diagnostic gratuit</a>' +
+    ' <a href="' + PACK + '#offres" style="display:inline-block;color:#7dd3fc;padding:.85rem .6rem">Voir les offres</a>' +
     '</div>';
   foot.parentNode.insertBefore(s, foot);
 })();
