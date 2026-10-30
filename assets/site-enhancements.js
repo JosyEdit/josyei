@@ -8,11 +8,13 @@
   var menuButton = root.querySelector('.burger');
   var drawer = root.querySelector('#jx-drawer');
 
-  // Menu du haut limité à 3 liens (Actualités, Présentation, Pack Google) ; Accueil (logo),
-  // Expertises et Outils sont dans le pied de page. Retire les anciens liens si une page les a encore.
+  // Plus de menu du haut (demande du 30/10) : Accueil (logo), Présentation, Actualités, Google Ads,
+  // Expertises et Outils sont dans le pied de page. Retire les anciens liens si une page les a encore
+  // (par exemple un article publié avec l'ancien modèle) et masque le bouton Menu devenu vide.
   root.querySelectorAll('nav.menu, #jx-drawer').forEach(function (nav) {
-    nav.querySelectorAll('a[href="/"], a[href="/outils/"]').forEach(function (link) { link.remove(); });
+    nav.querySelectorAll('a[href="/"], a[href="/outils/"], a[href="/presentation/"], a[href="/actualites/"], a[href="/pack-google-site/"]').forEach(function (link) { link.remove(); });
   });
+  if (menuButton && (!drawer || !drawer.querySelector('a'))) menuButton.style.display = 'none';
 
   if (menuButton && drawer) {
     menuButton.addEventListener('click', function () {
@@ -59,7 +61,6 @@
         title: 'RESSOURCES',
         links: [
           ['Études de Cas & Succès', '/expertises/etudes-de-cas/'],
-          ['Le Blog de l’IA', '/actualites/'],
           ['Glossaire de l’IA', '/expertises/glossaire-ia/'],
           ['FAQ (Foire Aux Questions)', '/expertises/faq-ia/'],
           ['Outils & Simulateurs', '/expertises/outils-simulateurs/'],
@@ -93,8 +94,20 @@
     identityTitle.textContent = 'JOSY EI';
     var identityCopy = document.createElement('p');
     identityCopy.textContent = 'Conseil en systèmes informatiques, automatisation et IA pour les professionnels et les curieux.';
+    // Présentation, Actualités et Google Ads, retirées du menu du haut, sont rangées sous le bloc JOSY EI.
+    var identityLinks = document.createElement('ul');
+    identityLinks.className = 'footer-identity-links';
+    [['Présentation', '/presentation/'], ['Actualités', '/actualites/'], ['Google Ads', '/pack-google-site/']].forEach(function (item) {
+      var listItem = document.createElement('li');
+      var link = document.createElement('a');
+      link.href = item[1];
+      link.textContent = item[0];
+      listItem.appendChild(link);
+      identityLinks.appendChild(listItem);
+    });
     identity.appendChild(identityTitle);
     identity.appendChild(identityCopy);
+    identity.appendChild(identityLinks);
     directory.appendChild(identity);
     footerGroups.forEach(function (group) {
       var navigation = document.createElement('nav');
@@ -261,18 +274,11 @@
   }
 })();
 
-/* AJOUT 29/10 : lien « Pack Google » dans le menu et bloc d'action vers /pack-google-site/ sur chaque page */
+/* AJOUT 29/10 : bloc d'action vers /pack-google-site/ sur chaque page (le lien du menu est passé dans le pied de page le 30/10) */
 (function () {
   'use strict';
   var PACK = '/pack-google-site/';
   var path = location.pathname;
-  document.querySelectorAll('nav.menu, #jx-drawer').forEach(function (nav) {
-    if (nav.querySelector('a[href="' + PACK + '"]')) return;
-    var a = document.createElement('a');
-    a.href = PACK; a.textContent = 'Google Ads';
-    a.className = 'nav-pack';
-    nav.appendChild(a);
-  });
   if (path.indexOf(PACK) === 0 || path.indexOf('/diagnostic-visibilite/') === 0 || path === '/' || path === '/index.html') return;
   var foot = document.querySelector('footer.foot') || document.querySelector('footer');
   if (!foot || document.getElementById('pack-cta')) return;

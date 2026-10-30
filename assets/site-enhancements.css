@@ -673,6 +673,16 @@
   padding: 0;
 }
 
+.jx .footer-directory .footer-identity-links {
+  display: grid;
+  margin-top: 1rem;
+}
+
+.jx .footer-directory .footer-identity-links a {
+  color: #f8fafc;
+  font-weight: 600;
+}
+
 .jx .footer-directory h2 {
   margin: 0 0 1rem;
   color: #f8fafc;
