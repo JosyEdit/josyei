@@ -48,7 +48,26 @@ body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-syst
 .dg-form fieldset{border:0;padding:0;margin:1.1rem 0 0}.dg-opt{display:flex;flex-wrap:wrap;gap:.5rem}
 .dg-opt label{font-weight:400;color:#e2e8f0;background:#0f172a;border:1px solid #475569;border-radius:999px;padding:.45rem .9rem;cursor:pointer;margin:0}
 .dg-opt input{accent-color:#3b82f6;margin-right:.35rem}.dg-opt label:has(input:checked){border-color:#3b82f6;background:#172554}
-.dg-form .ex-btn{border:0;cursor:pointer;font:inherit;font-weight:800;width:100%;margin-top:1.3rem}.dg-err{color:#fca5a5;margin:.8rem 0 0}
+.dg-form .ex-btn{border:0;cursor:pointer;font:inherit;font-weight:800;width:100%;margin-top:1.3rem}.dg-fac{font-weight:400;color:#94a3b8}
+.dg-id-row{display:flex;gap:.5rem}
+.dg-id-row input{flex:1 1 auto;min-width:0}
+.dg-id-btn{flex:0 0 auto;background:#334155;color:#fff;border:0;border-radius:10px;padding:0 1rem;font:inherit;font-weight:700;cursor:pointer}
+.dg-id-btn:hover,.dg-id-btn:focus-visible{background:#475569}
+.dg-id-note{text-align:left;margin:.35rem 0 0;color:#94a3b8;font-size:.85rem}
+.dg-id-msg{margin:.6rem 0 0;color:#cbd5e1;font-size:.92rem}
+.dg-id-list{list-style:none;padding:0;margin:.6rem 0 0;display:grid;gap:.4rem}
+.dg-id-list button{width:100%;text-align:left;background:#0f172a;color:#e2e8f0;border:1px solid #334155;border-radius:10px;padding:.55rem .75rem;font:inherit;font-size:.92rem;cursor:pointer}
+.dg-id-list button:hover,.dg-id-list button:focus-visible{border-color:#38bdf8}
+.dg-id-card{margin:.7rem 0 0;padding:.9rem 1rem;background:#0f172a;border:1px solid #334155;border-left:4px solid #38bdf8;border-radius:10px}
+.dg-id-card h3{margin:0 0 .5rem;font-size:1rem;color:#f8fafc}
+.dg-id-card dl{display:grid;grid-template-columns:auto 1fr;gap:.3rem .9rem;margin:0;font-size:.92rem}
+.dg-id-card dt{color:#94a3b8}
+.dg-id-card dd{margin:0;color:#e2e8f0;overflow-wrap:break-word}
+@media (max-width:480px){.dg-id-card dl{grid-template-columns:1fr;gap:.1rem}.dg-id-card dd{margin-bottom:.45rem}}
+.dg-id-card dd.dg-id-key{color:#fff;font-weight:700}
+.dg-id-card .dg-id-src{margin:.6rem 0 0;font-size:.8rem;color:#94a3b8}
+.dg-id-card .dg-id-src a{color:inherit}
+.dg-err{color:#fca5a5;margin:.8rem 0 0}
 .dg-res{max-width:760px;margin:1.6rem auto 0;text-align:left}.dg-res h2{text-align:left;margin:0 0 .6rem}
 .dg-pts{list-style:none;padding:0;margin:1rem 0;display:grid;gap:.6rem}.dg-pts li{background:#1e293b;border:1px solid #334155;border-left:5px solid #64748b;border-radius:10px;padding:.8rem 1rem;color:#cbd5e1}
 .dg-pts li strong{color:#fff}.dg-ok{border-left-color:#22c55e!important}.dg-mid{border-left-color:#f59e0b!important}.dg-ko{border-left-color:#ef4444!important}
@@ -65,6 +84,10 @@ body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-syst
   <form class="dg-form" id="dg-form" novalidate>
     <label for="dg-ent">Votre entreprise, votre métier et votre ville</label>
     <input type="text" id="dg-ent" name="entreprise" placeholder="ex. : Plomberie Dupont, plombier, Montmorillon" autocomplete="organization">
+    <label for="dg-siren">Numéro SIREN ou SIRET, ou nom de l’entreprise <span class="dg-fac">(facultatif)</span></label>
+    <div class="dg-id-row"><input type="text" id="dg-siren" name="siren" placeholder="ex. : 914 113 543" autocomplete="off" inputmode="search"><button type="button" class="dg-id-btn" id="dg-id-btn">Rechercher</button></div>
+    <p class="dg-id-note">Lecture de l’annuaire public des entreprises (INSEE, RNE), sans inscription.</p>
+    <div id="dg-id-out" aria-live="polite"></div>
     <fieldset><legend>Avez-vous un site internet ?</legend><div class="dg-opt">
       <label><input type="radio" name="site" value="oui">Oui</label><label><input type="radio" name="site" value="vieux">Oui, mais ancien ou peu clair</label><label><input type="radio" name="site" value="non">Non</label></div></fieldset>
     <fieldset><legend>Avez-vous une fiche Google (celle qui s’affiche sur Google Maps) ?</legend><div class="dg-opt">
@@ -74,7 +97,7 @@ body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-syst
     <button type="submit" class="ex-btn">Lancer le diagnostic</button>
     <p class="dg-err" id="dg-err" hidden>Merci de répondre aux trois questions.</p>
   </form>
-  <ul class="ex-reas"><li>Gratuit</li><li>Résultat immédiat</li><li>Pour les professionnels locaux</li><li>Rien n’est envoyé : le test se fait dans votre navigateur</li></ul>
+  <ul class="ex-reas"><li>Gratuit</li><li>Résultat immédiat</li><li>Pour les professionnels locaux</li><li>Vos réponses restent dans votre navigateur</li></ul>
 
   <div class="dg-res" id="dg-res" hidden aria-live="polite"></div>
   </div></section>
@@ -116,6 +139,47 @@ body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-syst
   var f=document.getElementById('dg-form'),res=document.getElementById('dg-res'),err=document.getElementById('dg-err');
   function val(n){var c=f.querySelector('input[name="'+n+'"]:checked');return c?c.value:'';}
   function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  // Lecture de l'annuaire public des entreprises (API gratuite de l'État, sans clé) : SIREN, SIRET, activité…
+  var idIn=document.getElementById('dg-siren'),idBtn=document.getElementById('dg-id-btn'),idOut=document.getElementById('dg-id-out'),ident=null;
+  var FORMES={'1000':'Entrepreneur individuel','5499':'SARL','5498':'EURL (SARL unipersonnelle)','5710':'SAS','5720':'SASU','5599':'SA','6540':'SCI','9220':'Association déclarée','5485':'SELARL','5785':'SELAS'};
+  function grp(n,t){return n?n.replace(t==='siret'?/^(\d{3})(\d{3})(\d{3})(\d{5})$/:/^(\d{3})(\d{3})(\d{3})$/,t==='siret'?'$1 $2 $3 $4':'$1 $2 $3'):'';}
+  function dateFr(d){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||'');if(!m)return '';var M=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];return (+m[3])+' '+M[+m[2]-1]+' '+m[1];}
+  function msg(t){idOut.innerHTML='<p class="dg-id-msg">'+esc(t)+'</p>';}
+  function fiche(r){
+    var sg=r.siege||{},lignes=[];
+    var forme=FORMES[String(r.nature_juridique||'')]||'';
+    var act=r.activite_principale||sg.activite_principale||'';
+    var actLib=naf&&naf[act]?naf[act]+' ('+act.replace('.','')+')':act;
+    var adresse=sg.adresse||[sg.code_postal,sg.libelle_commune].filter(Boolean).join(' ');
+    ident={nom:r.nom_complet||r.nom_raison_sociale||'',siren:grp(r.siren,'siren'),siret:grp(sg.siret,'siret'),act:actLib,forme:forme,creation:dateFr(r.date_creation),adresse:adresse,ferme:r.etat_administratif==='C'};
+    [['SIREN',ident.siren,1],['SIRET du siège',ident.siret,1],['Activité (NAF / APE)',actLib,1],['Adresse du siège',adresse,1],['Forme juridique',forme],['Date de création',ident.creation]].forEach(function(l){if(l[1])lignes.push('<dt>'+l[0]+'</dt><dd'+(l[2]?' class="dg-id-key"':'')+'>'+esc(l[1])+'</dd>');});
+    idOut.innerHTML='<div class="dg-id-card"><h3>'+esc(ident.nom||'Entreprise')+(ident.ferme?' (fermée)':'')+'</h3><dl>'+lignes.join('')+'</dl>'
+      +'<p class="dg-id-src">Source : <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/'+encodeURIComponent(r.siren)+'" target="_blank" rel="noopener noreferrer">annuaire des entreprises</a> (INSEE, RNE).</p></div>';
+    var ent=document.getElementById('dg-ent');
+    if(!ent.value.trim()&&ident.nom)ent.value=ident.nom+(sg.libelle_commune?', '+sg.libelle_commune:'');
+  }
+  // Libellés officiels des codes NAF (INSEE, NAF rév. 2), chargés à la première recherche.
+  var naf=null,nafP=null;
+  function chargerNaf(){if(!nafP)nafP=fetch('/assets/naf.json').then(function(r){return r.ok?r.json():null;}).then(function(d){naf=d;}).catch(function(){});return nafP;}
+  function chercher(){
+    var q=idIn.value.trim(),num=q.replace(/[\s.]/g,'');
+    ident=null;
+    if(/^\d+$/.test(num)&&num.length!==9&&num.length!==14){msg('Un SIREN compte 9 chiffres, un SIRET 14 chiffres.');return;}
+    if(q.length<3){msg('Saisissez un SIREN, un SIRET ou au moins 3 lettres du nom.');return;}
+    msg('Recherche en cours…');
+    Promise.all([fetch('https://recherche-entreprises.api.gouv.fr/search?per_page=5&q='+encodeURIComponent(/^\d+$/.test(num)?num:q)),chargerNaf()])
+      .then(function(x){var r=x[0];if(!r.ok)throw new Error(r.status);return r.json();})
+      .then(function(d){
+        var list=(d&&d.results)||[];
+        if(!list.length){msg('Aucune entreprise trouvée. Vérifiez le numéro ou le nom.');return;}
+        if(list.length===1||/^\d+$/.test(num)){fiche(list[0]);return;}
+        idOut.innerHTML='<p class="dg-id-msg">Choisissez votre entreprise :</p><ul class="dg-id-list">'+list.map(function(r,i){var sg=r.siege||{};return '<li><button type="button" data-i="'+i+'">'+esc((r.nom_complet||'')+(sg.libelle_commune?' · '+sg.libelle_commune:'')+' · SIREN '+grp(r.siren,'siren'))+'</button></li>';}).join('')+'</ul>';
+        idOut.querySelectorAll('button[data-i]').forEach(function(b){b.addEventListener('click',function(){fiche(list[+b.getAttribute('data-i')]);});});
+      })
+      .catch(function(){msg('L’annuaire ne répond pas pour le moment. Vous pouvez faire le diagnostic sans ce numéro.');});
+  }
+  idBtn.addEventListener('click',chercher);
+  idIn.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();chercher();}});
   f.addEventListener('submit',function(e){
     e.preventDefault();
     var site=val('site'),fiche=val('fiche'),ads=val('ads'),ent=document.getElementById('dg-ent').value.trim();
@@ -138,7 +202,8 @@ body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-syst
     else if(!ficheOk){titre='🟠 Votre site existe, votre fiche Google est à créer ou compléter';txt='Sur la carte Google, c’est la fiche qui vous fait apparaître, avec votre numéro. C’est le point le plus simple à corriger.';offre='Fiche Google';lien='#fiche';}
     else if(ads==='non'){titre='🟢 Les bases sont là, prêt pour Google Ads';txt='Site et fiche sont en place. L’étape suivante : une campagne limitée à votre ville et à votre métier, pour être affiché au moment où le client cherche.';offre='Google Ads';lien='#google-ads';}
     else{titre='🟢 Tout est en place';txt='Vous avez les trois leviers. Un regard extérieur sur votre campagne et votre fiche peut montrer ce qui coûte sans rapporter.';offre='Sur mesure';lien='#sur-mesure';}
-    var corps='Bonjour,\n\nVoici mon diagnostic de visibilité locale, fait sur josyei.com.\n\nEntreprise, métier, ville : '+(ent||'(à compléter)')+'\nRésultat : '+titre.replace(/^\S+ /,'')+'\n'+lignes.join('\n')+'\nOffre suggérée : '+offre+'\n\nPouvez-vous vérifier ma fiche et mon site et me répondre par écrit ?\n\nMerci,\n';
+    var idTxt=ident?'Fiche entreprise (annuaire public) : '+[ident.nom,ident.siren&&'SIREN '+ident.siren,ident.siret&&'SIRET '+ident.siret,ident.act&&'activité '+ident.act,ident.adresse,ident.forme,ident.creation&&'créée le '+ident.creation].filter(Boolean).join(' · ')+'\n':'';
+    var corps='Bonjour,\n\nVoici mon diagnostic de visibilité locale, fait sur josyei.com.\n\nEntreprise, métier, ville : '+(ent||'(à compléter)')+'\n'+idTxt+'Résultat : '+titre.replace(/^\S+ /,'')+'\n'+lignes.join('\n')+'\nOffre suggérée : '+offre+'\n\nPouvez-vous vérifier ma fiche et mon site et me répondre par écrit ?\n\nMerci,\n';
     var mail='mailto:mrjosyvalery@gmail.com?subject='+encodeURIComponent('Mon diagnostic de visibilité locale'+(ent?' : '+ent:''))+'&body='+encodeURIComponent(corps);
     res.innerHTML='<h2>'+titre+'</h2>'+(ent?'<p style="color:#94a3b8;margin:0">Pour : '+esc(ent)+'</p>':'')+'<p>'+txt+'</p><ul class="dg-pts">'+pts.join('')+'</ul>'
       +'<p><strong>Offre qui correspond :</strong> <a href="/pack-google-site/'+lien+'" style="color:#93c5fd">'+offre+'</a></p>'
