@@ -147,7 +147,7 @@ html{scroll-behavior:smooth}
 /* Styles pour le tiroir modal */
 .modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(10,14,39,0.95);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.4s ease}
 .modal-overlay.active{opacity:1;pointer-events:auto}
-.modal-box{background:#1e293b;border:1px solid #334155;border-radius:16px;width:90%;max-width:650px;padding:2rem;position:relative;transform:translateY(30px);transition:transform 0.4s ease;max-height:90vh;overflow-y:auto;text-align:center}
+.modal-box{background:#1e293b;border:1px solid #334155;border-radius:16px;width:90%;max-width:700px;padding:2rem;position:relative;transform:translateY(30px);transition:transform 0.4s ease;max-height:90vh;overflow-y:auto;text-align:center}
 .modal-overlay.active .modal-box{transform:translateY(0)}
 .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:#94a3b8;font-size:1.5rem;cursor:pointer}
 .modal-step{display:none;opacity:0;transition:opacity 0.4s ease}
@@ -155,15 +155,24 @@ html{scroll-behavior:smooth}
 @keyframes fadeIn{from{opacity:0;transform:scale(0.98)}to{opacity:1;transform:scale(1)}}
 .modal-q{font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:1.5rem}
 .modal-btn-group{display:flex;gap:1rem;justify-content:center;margin-top:1rem}
-.modal-btn{background:#0066ff;color:#fff;border:none;padding:1rem 2rem;border-radius:8px;font-weight:700;cursor:pointer;font-size:1rem;transition:background 0.2s;flex:1}
+.modal-btn{background:#0066ff;color:#fff;border:none;padding:1rem 2rem;border-radius:8px;font-weight:700;cursor:pointer;font-size:1rem;transition:background 0.2s;flex:1; text-decoration:none; display:inline-block;}
 .modal-btn:hover{background:#0052cc}
 .modal-btn.sec{background:#334155}
 .modal-btn.sec:hover{background:#475569}
+
+/* Tableau de résultats */
+.res-table{width:100%;border-collapse:collapse;margin:1.5rem 0;text-align:left;background:#0f172a;border-radius:8px;overflow:hidden;font-size:0.9rem;}
+.res-table th,.res-table td{padding:0.8rem 1rem;border-bottom:1px solid #334155;}
+.res-table th{background:#1e293b;color:#93c5fd;font-weight:700;}
+.res-table td{color:#cbd5e1;}
+.res-table tr:last-child td{border-bottom:none;}
+.status-ok{color:#22c55e;font-weight:bold;}
+.status-ko{color:#ef4444;font-weight:bold;}
+
 #pdf-content{background:#fff;color:#000;padding:2rem;border-radius:8px;text-align:left;display:none}
 .pdf-table{width:100%;border-collapse:collapse;margin-top:1rem}
 .pdf-table th,.pdf-table td{border:1px solid #ccc;padding:0.8rem;text-align:left}
 .pdf-table th{background:#f0f0f0}
-.pack-img{width:100%;max-width:300px;border-radius:8px;margin:1rem auto;display:block;border:2px solid #3b82f6}
 </style>
 </head>
 <body>
@@ -273,6 +282,7 @@ html{scroll-behavior:smooth}
   <div class="modal-box">
     <button class="modal-close" onclick="closeModal()">×</button>
     
+    <!-- Étape 1 -->
     <div class="modal-step active" id="step-1">
       <div class="modal-q">1/3 - Avez-vous un site internet ?</div>
       <div class="modal-btn-group">
@@ -281,6 +291,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
+    <!-- Étape 2 -->
     <div class="modal-step" id="step-2">
       <div class="modal-q">2/3 - Avez-vous une fiche Google (Google Maps) ?</div>
       <div class="modal-btn-group">
@@ -289,6 +300,7 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
+    <!-- Étape 3 -->
     <div class="modal-step" id="step-3">
       <div class="modal-q">3/3 - Faites-vous de la publicité sur Google (Google Ads) ?</div>
       <div class="modal-btn-group">
@@ -297,10 +309,12 @@ html{scroll-behavior:smooth}
       </div>
     </div>
 
+    <!-- Étape Finale -->
     <div class="modal-step" id="step-4">
       <h2 style="color:#fff; margin-top:0;">Votre plan d'action personnalisé</h2>
-      <p style="color:#cbd5e1; margin-bottom:1.5rem;">Voici les actions exactes à mettre en place pour être visible.</p>
+      <p style="color:#cbd5e1; margin-bottom:1.5rem;">Voici l'analyse détaillée de votre visibilité et les actions à mettre en place.</p>
       
+      <!-- Conteneur caché pour le PDF -->
       <div id="pdf-content">
         <h2 style="margin-top:0; color:#0a0e27;">Plan d'action JOSY EI</h2>
         <p style="color:#333;">Entreprise : <strong id="pdf-ent-name">...</strong></p>
@@ -311,19 +325,39 @@ html{scroll-behavior:smooth}
         <p style="margin-top:2rem; font-size:0.9rem; color:#666;">Recommandation JOSY EI : <strong id="pdf-pack-reco">...</strong></p>
       </div>
 
+      <!-- Contenu affiché à l'écran -->
       <div id="screen-result">
+        
+        <!-- Analyse -->
         <ul class="dg-pts" id="modal-pts" style="text-align:left;"></ul>
         
-        <!-- Image du pack -->
-        <div style="margin-top: 1.5rem; background: #0f172a; border: 1px solid #3b82f6; border-radius: 10px; padding: 1rem;">
-            <h4 style="color:#fff; margin:0 0 0.5rem 0;">Le pack recommandé pour vous :</h4>
-            <p id="modal-pack-name" style="color:#93c5fd; font-weight:bold; font-size:1.2rem; margin:0 0 1rem 0;"></p>
-            <!-- IMAGE DU PACK : Remplace l'adresse "src" par le lien de ton image -->
-            <img id="modal-pack-img" class="pack-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Visuel du Pack Web">
+        <!-- Tableau de résultats -->
+        <table class="res-table">
+          <thead>
+            <tr>
+              <th>Levier</th>
+              <th>Outil / Techno</th>
+              <th>Statut</th>
+              <th>Impact estimé</th>
+            </tr>
+          </thead>
+          <tbody id="res-table-body">
+            <!-- Rempli par JS -->
+          </tbody>
+        </table>
+
+        <!-- Pack Recommandé (Texte seul) -->
+        <div style="margin-top: 1.5rem; background: #0f172a; border: 1px solid #3b82f6; border-radius: 10px; padding: 1.5rem; text-align: left;">
+            <h4 style="color:#fff; margin:0 0 0.5rem 0; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.05em;">Recommandation JOSY EI</h4>
+            <p id="modal-pack-name" style="color:#93c5fd; font-weight:bold; font-size:1.3rem; margin:0;"></p>
         </div>
 
-        <button class="modal-btn" style="margin-top: 1.5rem; width: 100%;" onclick="downloadPDF()">📥 Télécharger mon plan d'action (PDF)</button>
-        <a href="https://josyei.com/contact" class="modal-btn sec" style="margin-top: 0.5rem; width: 100%; display:block; box-sizing:border-box; text-decoration:none;">Me contacter pour ce pack</a>
+        <!-- Boutons d'action -->
+        <div style="margin-top: 1.5rem;">
+            <a href="https://josyei.com/contact" class="modal-btn" style="width: 100%; display:block; box-sizing:border-box; font-size:1.1rem;">Découvrir le pack recommandé</a>
+            <button class="modal-btn sec" style="margin-top: 0.8rem; width: 100%; font-size:0.9rem; background:transparent; border:1px solid #475569;" onclick="downloadPDF()">📥 Télécharger l'analyse (PDF)</button>
+        </div>
+
       </div>
     </div>
   </div>
@@ -334,7 +368,7 @@ html{scroll-behavior:smooth}
 var dgAnswers = { site: '', fiche: '', ads: '' };
 var dgEntName = '';
 
-// Cette fonction permet d'éviter les bugs avec les accents et caractères spéciaux
+// Fonction de sécurité pour les caractères spéciaux
 function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
 function openModal() { document.getElementById('dg-modal').classList.add('active'); }
@@ -351,33 +385,44 @@ function nextStep(stepNumber, key, value) {
 
 function generateFinalResult() {
     var pts = [];
-    var reco = '';
+    var tableRows = '';
     var pdfRows = '';
+    var reco = '';
 
+    // Analyse Site
     if(dgAnswers.site === 'oui') {
         pts.push('<li class="dg-ok"><strong>Site internet : en place.</strong> Vérifiez qu\'il s\'affiche bien sur mobile.</li>');
+        tableRows += '<tr><td>Site Web</td><td>WordPress / Site Vitrine</td><td><span class="status-ok">Actif</span></td><td>+20% de trafic</td></tr>';
         pdfRows += '<tr><td>Site internet</td><td>Présent</td><td>Optimiser la vitesse et le bouton d\'appel</td></tr>';
     } else {
         pts.push('<li class="dg-ko"><strong>Site internet : absent.</strong> Une page simple est indispensable.</li>');
+        tableRows += '<tr><td>Site Web</td><td>WordPress / Site Vitrine</td><td><span class="status-ko">Manquant</span></td><td>Perte de 40% des appels</td></tr>';
         pdfRows += '<tr><td>Site internet</td><td>Absent</td><td>Créer un site vitrine 1 page avec bouton d\'appel</td></tr>';
     }
 
+    // Analyse Fiche
     if(dgAnswers.fiche === 'oui') {
         pts.push('<li class="dg-ok"><strong>Fiche Google : en place.</strong> Ajoutez des photos récentes et répondez aux avis.</li>');
+        tableRows += '<tr><td>Fiche Google</td><td>Google Business Profile</td><td><span class="status-ok">Actif</span></td><td>+30% de visibilité locale</td></tr>';
         pdfRows += '<tr><td>Fiche Google</td><td>Présente</td><td>Ajouter photos et répondre aux avis</td></tr>';
     } else {
         pts.push('<li class="dg-ko"><strong>Fiche Google : absente.</strong> Sans elle, vous n\'êtes pas sur Google Maps.</li>');
+        tableRows += '<tr><td>Fiche Google</td><td>Google Business Profile</td><td><span class="status-ko">Manquant</span></td><td>Invisible sur Google Maps</td></tr>';
         pdfRows += '<tr><td>Fiche Google</td><td>Absente</td><td>Créer et optimiser la fiche Google Business Profile</td></tr>';
     }
 
+    // Analyse Ads
     if(dgAnswers.ads === 'oui') {
         pts.push('<li class="dg-ok"><strong>Google Ads : active.</strong> Vérifiez que vous ne payez pas de clics inutiles.</li>');
+        tableRows += '<tr><td>Publicité Google</td><td>Google Ads</td><td><span class="status-ok">Actif</span></td><td>Trafic immédiat</td></tr>';
         pdfRows += '<tr><td>Google Ads</td><td>Active</td><td>Auditer les campagnes pour optimiser le budget</td></tr>';
     } else {
         pts.push('<li class="dg-ko"><strong>Google Ads : absente.</strong> Vous laissez les appels à vos concurrents.</li>');
+        tableRows += '<tr><td>Publicité Google</td><td>Google Ads</td><td><span class="status-ko">Manquant</span></td><td>0 clic payant généré</td></tr>';
         pdfRows += '<tr><td>Google Ads</td><td>Absente</td><td>Lancer une campagne locale ciblée (Ville + Métier)</td></tr>';
     }
 
+    // Déterminer le pack
     if(dgAnswers.site === 'oui' && dgAnswers.fiche === 'oui' && dgAnswers.ads === 'oui') {
         reco = 'Audit et Optimisation sur-mesure';
     } else if(dgAnswers.site === 'non' && dgAnswers.fiche === 'non') {
@@ -386,8 +431,12 @@ function generateFinalResult() {
         reco = 'Pack Visibilité Locale (Site + Fiche + Ads)';
     }
 
+    // Mise à jour de l'écran
     document.getElementById('modal-pts').innerHTML = pts.join('');
+    document.getElementById('res-table-body').innerHTML = tableRows;
     document.getElementById('modal-pack-name').innerText = reco;
+    
+    // Mise à jour du PDF
     document.getElementById('pdf-ent-name').innerText = dgEntName || 'Votre entreprise';
     document.getElementById('pdf-table-body').innerHTML = pdfRows;
     document.getElementById('pdf-pack-reco').innerText = reco;
