@@ -353,6 +353,29 @@ html{scroll-behavior:smooth}
     [['SIREN',ident.siren,1],['SIRET du siège',ident.siret,1],['Activité (NAF / APE)',actLib,1],['Adresse du siège',adresse,1],['Forme juridique',forme,1],['Numéro de TVA (calculé)',tva],['Dirigeants',dirTxt],['Date de création',ident.creation]].forEach(function(l){if(l[1])lignes.push('<dt>'+l[0]+'</dt><dd'+(l[2]?' class="dg-id-key"':'')+'>'+esc(l[1])+'</dd>');});
     idOut.innerHTML='<div class="dg-id-card"><h3>'+esc(ident.nom||'Entreprise')+(ident.ferme?' (fermée)':'')+'</h3><dl>'+lignes.join('')+'</dl>'
       +'<p class="dg-id-src">'+(tva?'Le numéro de TVA est calculé à partir du SIREN ; une entreprise en franchise de TVA peut ne pas l’utiliser. Vérification : service VIES de la Commission européenne. ':'')+'Source : <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/'+encodeURIComponent(r.siren)+'" target="_blank" rel="noopener noreferrer">annuaire des entreprises</a> (INSEE, RNE).</p></div>';
+      
+    // --- AJOUT DE LA FLUIDITÉ AUTOMATIQUE ---
+    var nomStr = ident.nom || '';
+    var villeStr = sg.libelle_commune || '';
+    
+    // Pré-remplissage Site Web (on enlève les espaces, on met en minuscules et on ajoute .fr)
+    var slugSite = nomStr.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '');
+    if(slugSite.length > 2) {
+      document.getElementById('dg-url').value = "https://www." + slugSite + ".fr";
+    }
+    
+    // Pré-remplissage Google Maps
+    if(nomStr && villeStr) {
+      document.getElementById('dg-maps').value = nomStr + " " + villeStr;
+    }
+    
+    // On déroule automatiquement les sections pour faire gagner du temps
+    var radioSite = f.querySelector('input[name="site"]');
+    if(radioSite) { radioSite.checked = true; montrer(); }
+    
+    var radioFiche = f.querySelector('input[name="fiche"]');
+    if(radioFiche) { radioFiche.checked = true; montrer(); }
+    // ----------------------------------------
   }
   // Libellés officiels des codes NAF (INSEE, NAF rév. 2), chargés à la première recherche.
   var naf=null,nafP=null;
