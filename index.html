@@ -219,7 +219,7 @@ html{scroll-behavior:smooth}
     <p class="dg-id-note">Lecture de l’annuaire public des entreprises (INSEE, RNE), sans inscription.</p>
     <div id="dg-id-out" aria-live="polite"></div>
     <fieldset><legend>Avez-vous un site internet ?</legend><div class="dg-opt">
-      <label><input type="radio" name="site" value="oui">Oui</label><label><input type="radio" name="site" value="vieux">Oui, mais ancien ou peu clair</label><label><input type="radio" name="site" value="non">Non</label></div>
+      <label><input type="radio" name="site" value="oui">Oui</label><label><input type="radio" name="site" value="non">Non</label></div>
       <div class="dg-an" id="dg-an-site" hidden>
         <label for="dg-url">Analyser mon site</label>
         <div class="dg-id-row"><input type="url" id="dg-url" placeholder="ex. : www.mon-entreprise.fr" autocomplete="url" inputmode="url"><button type="button" class="dg-id-btn" id="dg-url-btn">Analyser</button></div>
@@ -227,7 +227,7 @@ html{scroll-behavior:smooth}
         <div id="dg-an-site-out" aria-live="polite"></div>
       </div></fieldset>
     <fieldset><legend>Avez-vous une fiche Google (celle qui s’affiche sur Google Maps) ?</legend><div class="dg-opt">
-      <label><input type="radio" name="fiche" value="oui">Oui, complète</label><label><input type="radio" name="fiche" value="vide">Oui, mais incomplète (photos, horaires…)</label><label><input type="radio" name="fiche" value="non">Non</label><label><input type="radio" name="fiche" value="nsp">Je ne sais pas</label></div>
+      <label><input type="radio" name="fiche" value="oui">Oui</label><label><input type="radio" name="fiche" value="non">Non</label></div>
       <div class="dg-an" id="dg-an-fiche" hidden>
         <label for="dg-maps">Analyser ma fiche Google</label>
         <div class="dg-id-row"><input type="text" id="dg-maps" placeholder="ex. : Plomberie Dupont Montmorillon" autocomplete="off"><button type="button" class="dg-id-btn" id="dg-maps-btn">Ouvrir sur Google Maps</button></div>
@@ -347,31 +347,25 @@ html{scroll-behavior:smooth}
     var adresse=sg.adresse||[sg.code_postal,sg.libelle_commune].filter(Boolean).join(' ');
     var dir=(r.dirigeants||[]).map(function(d){var n=d.type_dirigeant==='personne morale'?(d.denomination||''):[d.prenoms,d.nom].filter(Boolean).join(' ');return n?n+(d.qualite?' ('+d.qualite+')':''):'';}).filter(Boolean);
     var dirTxt=dir.slice(0,3).join(', ')+(dir.length>3?' et '+(dir.length-3)+' autre'+(dir.length>4?'s':''):'');
-    // Numéro de TVA intracommunautaire calculé à partir du SIREN (même calcul que l'annuaire) : ne dit pas s'il est actif.
     var tva=/^\d{9}$/.test(r.siren||'')?'FR'+('0'+((12+3*(+r.siren%97))%97)).slice(-2)+r.siren:'';
     ident={tva:tva,dir:dirTxt,nom:r.nom_complet||r.nom_raison_sociale||'',siren:grp(r.siren,'siren'),siret:grp(sg.siret,'siret'),act:actLib,forme:forme,creation:dateFr(r.date_creation),adresse:adresse,ferme:r.etat_administratif==='C'};
     [['SIREN',ident.siren,1],['SIRET du siège',ident.siret,1],['Activité (NAF / APE)',actLib,1],['Adresse du siège',adresse,1],['Forme juridique',forme,1],['Numéro de TVA (calculé)',tva],['Dirigeants',dirTxt],['Date de création',ident.creation]].forEach(function(l){if(l[1])lignes.push('<dt>'+l[0]+'</dt><dd'+(l[2]?' class="dg-id-key"':'')+'>'+esc(l[1])+'</dd>');});
     idOut.innerHTML='<div class="dg-id-card"><h3>'+esc(ident.nom||'Entreprise')+(ident.ferme?' (fermée)':'')+'</h3><dl>'+lignes.join('')+'</dl>'
       +'<p class="dg-id-src">'+(tva?'Le numéro de TVA est calculé à partir du SIREN ; une entreprise en franchise de TVA peut ne pas l’utiliser. Vérification : service VIES de la Commission européenne. ':'')+'Source : <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/'+encodeURIComponent(r.siren)+'" target="_blank" rel="noopener noreferrer">annuaire des entreprises</a> (INSEE, RNE).</p></div>';
       
-    // --- AJOUT DE LA FLUIDITÉ AUTOMATIQUE ---
     var nomStr = ident.nom || '';
     var villeStr = sg.libelle_commune || '';
     
-    // Pré-remplissage Google Maps
     if(nomStr && villeStr) {
       document.getElementById('dg-maps').value = nomStr + " " + villeStr;
     }
     
-    // On coche automatiquement "Oui" pour faire gagner du temps
     var radioSite = f.querySelector('input[name="site"][value="oui"]');
     if(radioSite) { radioSite.checked = true; montrer(); }
     
     var radioFiche = f.querySelector('input[name="fiche"][value="oui"]');
     if(radioFiche) { radioFiche.checked = true; montrer(); }
-    // ----------------------------------------
   }
-  // Libellés officiels des codes NAF (INSEE, NAF rév. 2), chargés à la première recherche.
   var naf=null,nafP=null;
   function chargerNaf(){if(!nafP)nafP=fetch('/assets/naf.json').then(function(r){return r.ok?r.json():null;}).then(function(d){naf=d;}).catch(function(){});return nafP;}
   function chercher(){
@@ -393,7 +387,6 @@ html{scroll-behavior:smooth}
   }
   idBtn.addEventListener('click',chercher);
   idIn.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();chercher();}});
-  // Barres d'analyse sous chaque question : visibles si la personne possède déjà l'élément.
   var an={site:null,fiche:null,ads:null},adsTag=null;
   function montrer(){
     document.getElementById('dg-an-site').hidden=!(val('site')&&val('site')!=='non');
@@ -408,8 +401,6 @@ html{scroll-behavior:smooth}
       +'<div class="dg-moins"><h4>Points à améliorer</h4><ul>'+(moins.length?moins.slice(0,3).map(function(t){return '<li>'+esc(t)+'</li>';}).join(''):'<li style="color:#94a3b8">Aucun relevé</li>')+'</ul></div></div>'
       +'<p class="dg-sc-src">'+src+'</p></div>';
   }
-  // Site : mesure Google PageSpeed Insights (gratuite). Sans clé, Google limite fortement le nombre d'analyses par jour ;
-  // une clé gratuite (Google Cloud, limitée au domaine josyei.com) se place ici.
   var PSI_CLE='';
   var urlIn=document.getElementById('dg-url'),urlBtn=document.getElementById('dg-url-btn'),siteOut=document.getElementById('dg-an-site-out');
   var AUDITS=[
@@ -443,7 +434,6 @@ html{scroll-behavior:smooth}
         if(t[0]==='largest-contentful-paint'){var s=(x.numericValue||0)/1000;if(x.score>=.9)plus.push('Contenu principal affiché en '+s.toFixed(1).replace('.',',')+' s');else if(x.score<.5)moins.push('Contenu principal affiché en '+s.toFixed(1).replace('.',',')+' s : le client attend');return;}
         (x.score>=.9?plus:moins).push(x.score>=.9?t[1]:t[2]);
       });
-      // Balise publicitaire Google chargée par la page (liste des services tiers mesurée par Google).
       var tp=a['third-party-summary'],ents=tp&&tp.details&&tp.details.items||[];
       adsTag=ents.some(function(e){var n=(e.entity&&(e.entity.text||e.entity))||'';return /Doubleclick|Google Ads/i.test(String(n));});
       an.site={score:score,url:lh.finalDisplayedUrl||lh.finalUrl||u,plus:plus.slice(0,3),moins:moins.slice(0,3)};
@@ -455,7 +445,6 @@ html{scroll-behavior:smooth}
   }
   urlBtn.addEventListener('click',analyserSite);
   urlIn.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();analyserSite();}});
-  // Fiche et publicité : Google ne permet pas de les lire gratuitement depuis un site, score calculé à partir des cases cochées.
   var FI=[["nap", 3, "Nom, adresse et téléphone exacts", "Nom, adresse ou téléphone à corriger : le client doit pouvoir vous appeler sans erreur"], ["cat", 3, "Catégorie principale = votre métier", "Catégorie principale à revoir : c’est elle qui vous rattache à la recherche de votre métier"], ["hor", 2, "Horaires à jour", "Horaires absents ou anciens : le client ne sait pas si vous êtes ouvert"], ["pho", 2, "Photos présentes", "Peu ou pas de photos : le client compare avec les fiches voisines"], ["avi", 2, "Des avis clients visibles", "Moins de 10 avis : c’est souvent le premier élément regardé"], ["rep", 1, "Réponses aux avis", "Avis sans réponse : répondre montre que vous êtes présent"], ["sit", 1, "Lien vers votre site", "Pas de lien vers un site : le client qui hésite n’a rien de plus à lire"], ["des", 1, "Description et services remplis", "Description ou services vides"], ["pub", 1, "Fiche mise à jour récemment", "Rien d’ajouté depuis plus de 3 mois"]],AI=[["zon", 3, "Diffusion limitée à votre zone", "Zone non limitée : des clics peuvent venir de clients trop loin"], ["pag", 3, "Page d’arrivée avec numéro ou bouton d’appel", "La page d’arrivée ne met pas en avant votre numéro"], ["cnv", 2, "Appels et demandes comptés", "Appels et demandes non comptés : impossible de savoir ce qui rapporte"], ["neg", 2, "Mots inutiles exclus", "Aucun mot exclu : vous pouvez payer des clics sans rapport avec votre métier"], ["tel", 1, "Numéro ou adresse sous l’annonce", "Ni numéro ni adresse sous l’annonce"], ["bud", 1, "Budget par jour connu", "Budget par jour non suivi"], ["sui", 1, "Résultats suivis chaque mois", "Résultats rarement regardés"]];
   function cases(p,items){var tot=0,pts=0,plus=[],moins=[];items.forEach(function(it){tot+=it[1];var c=f.querySelector('input[name="'+p+'-'+it[0]+'"]');if(c&&c.checked){pts+=it[1];plus.push(it[2]);}else moins.push(it[3]);});return {score:Math.round(pts*100/tot),plus:plus,moins:moins};}
   var mapsIn=document.getElementById('dg-maps');
@@ -473,7 +462,6 @@ html{scroll-behavior:smooth}
     document.getElementById('dg-an-ads-out').innerHTML=bloc(r.score,'Score de votre publicité Google',plus,moins,'Score calculé d’après les cases que vous avez cochées.'+(adsTag===null?' Analysez votre site plus haut pour vérifier aussi la présence de la balise Google Ads.':' La balise Google Ads est vérifiée sur la page de votre site analysée plus haut, grâce à l’analyse Google PageSpeed Insights.'));}
   document.getElementById('dg-fiche-btn').addEventListener('click',calcFiche);
   document.getElementById('dg-ads-btn').addEventListener('click',calcAds);
-  // Accueil : barre de progression des réponses, bouton fixe sur téléphone, focus sur le premier champ.
   var pf=document.getElementById('ac-prog-fill'),pt=document.getElementById('ac-prog-txt');
   f.addEventListener('change',function(){var n=['site','fiche','ads'].filter(val).length;pf.style.width=(n*100/3)+'%';pt.textContent=n+' sur 3 réponse'+(n>1?'s':'');});
   document.querySelectorAll('a.ac-go[href="#diagnostic"]').forEach(function(a){a.addEventListener('click',function(){setTimeout(function(){document.getElementById('dg-siren').focus({preventScroll:true});},450);});});
@@ -490,12 +478,9 @@ html{scroll-behavior:smooth}
     err.hidden=true;
     var pts=[],lignes=[];
     var S={oui:['dg-ok','Site web : en place.','Vérifiez qu’il affiche votre numéro et un bouton d’appel sur téléphone.'],
-      vieux:['dg-mid','Site web : à revoir.','Un site ancien ou peu clair fait hésiter le client et sert mal de page d’arrivée pour une publicité.'],
       non:['dg-ko','Site web : absent.','Le client qui hésite n’a rien pour se rassurer, et la publicité Google Ads exige une page vers laquelle renvoyer.']}[site];
     var F={oui:['dg-ok','Fiche Google : en place.','C’est elle qui vous fait apparaître sur Google Maps. Photos et horaires à jour gardent leur effet.'],
-      vide:['dg-mid','Fiche Google : incomplète.','Une fiche sans photos, horaires ou services passe souvent derrière celle des concurrents.'],
-      non:['dg-ko','Fiche Google : absente.','Quand on cherche votre métier près de chez vous, vous n’apparaissez pas sur la carte.'],
-      nsp:['dg-ko','Fiche Google : à vérifier.','Une fiche a peut-être été créée automatiquement, sans vous. Elle peut être réclamée et complétée.']}[fiche];
+      non:['dg-ko','Fiche Google : absente.','Quand on cherche votre métier près de chez vous, vous n’apparaissez pas sur la carte.']}[fiche];
     var A={oui:['dg-ok','Publicité Google : active.','Un regard extérieur peut vérifier que vous ne payez pas de clics inutiles.'],
       non:['dg-mid','Publicité Google : aucune.','Les annonces s’affichent au-dessus des résultats gratuits : c’est souvent là que le concurrent prend l’appel.']}[ads];
     [S,F,A].forEach(function(p){pts.push('<li class="'+p[0]+'"><strong>'+p[1]+'</strong> '+p[2]+'</li>');lignes.push('- '+p[1]+' '+p[2]);});
