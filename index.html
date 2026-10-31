@@ -251,6 +251,11 @@ html{scroll-behavior:smooth}
         <p id="res-ent-name" style="color:#93c5fd; font-weight:bold; font-size:1.2rem; margin-top:.5rem;"></p>
       </div>
 
+      <!-- Synthèse Globale -->
+      <div id="global-analysis" style="background:#1e293b; border-left:4px solid #3b82f6; padding:1.5rem; border-radius:8px; margin-bottom:2rem; color:#cbd5e1; line-height:1.6;">
+        <!-- Rempli par JS -->
+      </div>
+
       <!-- Analyse -->
       <ul class="dg-pts" id="modal-pts" style="text-align:left; margin-bottom:2rem;"></ul>
       
@@ -351,68 +356,112 @@ function nextStep(stepNumber, key, value) {
 function generateFinalResult() {
     var pts = [];
     var tableRows = '';
+    var globalText = '';
     var reco = '';
     
-    // Analyse contextuelle du métier
-    var contexte = "votre secteur";
-    var impactSite = "+20% de trafic";
-    var impactFiche = "+30% de visibilité";
-    var impactAds = "Trafic immédiat";
-    
+    // Variables contextuelles selon le métier
+    var secteur = "service";
     var m = dgMetier.toLowerCase();
-    if(m.includes('resto') || m.includes('restau') || m.includes('café') || m.includes('hôtel')) {
-        contexte = "la restauration à " + dgVille;
-        impactSite = "Menu et réservation en ligne";
-        impactFiche = "Photos des plats = plus de clients";
-        impactAds = "Capter les touristes et locaux";
-    } else if(m.includes('plomb') || m.includes('élect') || m.includes('chauff') || m.includes('menuis') || m.includes('artisan')) {
-        contexte = "les artisans à " + dgVille;
-        impactSite = "Générer des demandes de devis";
-        impactFiche = "Capter les urgences sur Maps";
-        impactAds = "Être le 1er en cas d'urgence";
-    } else if(m.includes('commerce') || m.includes('boutique') || m.includes('vente') || m.includes('magasin')) {
-        contexte = "le commerce local à " + dgVille;
-        impactSite = "Vitrine et vente en ligne";
-        impactFiche = "Attirer les recherches 'près de moi'";
-        impactAds = "Cibler un rayon de 20km";
-    } else if(m.includes('photo') || m.includes('graphi') || m.includes('conseil') || m.includes('avocat') || m.includes('santé')) {
-        contexte = "les professions libérales à " + dgVille;
-        impactSite = "Asseoir votre crédibilité";
-        impactFiche = "Montrer vos avis et réalisations";
-        impactAds = "Générer des contacts qualifiés";
+    var v = dgVille;
+    
+    if (m.includes('restaurant') || m.includes('hôtel') || m.includes('café') || m.includes('bar')) {
+        secteur = "restauration";
+    } else if (m.includes('plomb') || m.includes('élect') || m.includes('menuiserie') || m.includes('bâtiment') || m.includes('travaux')) {
+        secteur = "artisanat";
+    } else if (m.includes('commerce') || m.includes('vente') || m.includes('boutique') || m.includes('magasin')) {
+        secteur = "commerce";
+    } else if (m.includes('conseil') || m.includes('avocat') || m.includes('santé') || m.includes('médecin') || m.includes('expert')) {
+        secteur = "profession_libérale";
     }
 
+    // 1. ANALYSE GLOBALE
+    var introSecteur = "";
+    if(secteur === "restauration") introSecteur = "En tant que professionnel de la restauration à " + v + ", vos clients vous cherchent principalement sur leur téléphone en tapant 'restaurant " + v + "' ou 'où manger près de moi'.";
+    else if(secteur === "artisanat") introSecteur = "En tant qu'artisan à " + v + ", vos clients ont un besoin urgent (panne, fuite) ou cherchent un devis. Ils tapent 'plombier " + v + "' sur Google et appellent les 3 premiers.";
+    else if(secteur === "commerce") introSecteur = "Pour un commerce à " + v + ", 80% des clients cherchent d'abord l'itinéraire ou les horaires sur Google Maps avant de se déplacer.";
+    else if(secteur === "profession_libérale") introSecteur = "Pour une profession libérale à " + v + ", la confiance est primordiale. Vos clients regardent vos avis et votre site avant de prendre rendez-vous.";
+    else introSecteur = "En tant qu'entreprise à " + v + ", votre visibilité sur Google est le premier levier pour trouver de nouveaux clients locaux.";
+
+    var diagnostic = "";
+    if(dgAnswers.site === 'oui' && dgAnswers.fiche === 'oui' && dgAnswers.ads === 'oui') {
+        diagnostic = "Vous avez les trois piliers (Site, Fiche, Ads). Votre défi n'est plus d'être visible, mais d'optimiser ce qui existe pour ne pas payer de clics inutiles et convertir un maximum d'appels.";
+        reco = 'Audit d\'optimisation sur-mesure';
+    } else if(dgAnswers.site === 'non' && dgAnswers.fiche === 'non') {
+        diagnostic = "C'est le scénario le plus critique : vous êtes invisible. Aujourd'hui, si un client cherche votre métier à " + v + ", il trouve vos concurrents. Vous devez absolument créer une fiche Google et une page web pour exister.";
+        reco = 'Pack Complet : Site + Fiche Google + Google Ads';
+    } else if(dgAnswers.site === 'oui' && dgAnswers.fiche === 'non') {
+        diagnostic = "Votre site existe mais sans fiche Google, c'est comme avoir une belle boutique au fond d'une impasse. Personne ne vous trouve sur Maps. C'est la priorité absolue à corriger.";
+        reco = 'Pack Visibilité Locale (Fiche + Ads)';
+    } else if(dgAnswers.site === 'non' && dgAnswers.fiche === 'oui') {
+        diagnostic = "Votre fiche Google vous sauve la mise, mais sans site web, les clients hésitent à vous faire confiance (pas de photos, pas de tarifs clairs). Vous perdez des appels à cause de ça.";
+        reco = 'Pack Site Web + Optimisation Fiche';
+    } else {
+        diagnostic = "Vous avez les bases, mais vous n'êtes pas encore devant vos concurrents. L'étape suivante est de lancer une campagne Google Ads locale pour capter les recherches actives.";
+        reco = 'Pack Google Ads Local';
+    }
+
+    globalText = "<strong>Analyse pour " + (dgEntName || "votre entreprise") + " :</strong><br><br>" + introSecteur + "<br><br>" + diagnostic;
+    document.getElementById('global-analysis').innerHTML = globalText;
+
+    // 2. ANALYSE DU TABLEAU (détaillée)
+    var impactSiteOk = "", impactSiteKo = "";
+    var impactFicheOk = "", impactFicheKo = "";
+    var impactAdsOk = "", impactAdsKo = "";
+
+    // Adaptation des textes selon le secteur
+    if(secteur === "restauration") {
+        impactSiteOk = "Le menu est-il à jour et téléchargeable ?";
+        impactSiteKo = "Aucun client ne peut voir la carte en ligne.";
+        impactFicheOk = "Ajoutez des photos de vos plats (crucial).";
+        impactFicheKo = "Invisible sur Maps quand on cherche 'où manger'.";
+        impactAdsOk = "Permet de capter les touristes de passage.";
+        impactAdsKo = "Vous laissez les clients de passage à vos concurrents.";
+    } else if(secteur === "artisanat") {
+        impactSiteOk = "Le bouton d'appel est-il visible immédiatement ?";
+        impactSiteKo = "Impossible de demander un devis en ligne.";
+        impactFicheOk = "Les avis clients sont vitaux pour rassurer.";
+        impactFicheKo = "Vous n'apparaissez pas dans les urgences.";
+        impactAdsOk = "Cible les recherches 'panne' ou 'urgence'.";
+        impactAdsKo = "Les urgences vont chez le concurrent qui paye.";
+    } else if(secteur === "commerce") {
+        impactSiteOk = "Vos produits phares sont-ils mis en avant ?";
+        impactSiteKo = "Pas de vitrine en ligne pour donner envie.";
+        impactFicheOk = "Photos de la devanture et horaires à jour.";
+        impactFicheKo = "Le client cherche 'près de moi' et ne vous voit pas.";
+        impactAdsOk = "Cible les clients dans un rayon de 10 km.";
+        impactAdsKo = "Vous perdez les clients qui passent à côté.";
+    } else {
+        impactSiteOk = "Votre expertise est-elle assez détaillée ?";
+        impactSiteKo = "Manque de crédibilité pour rassurer le client.";
+        impactFicheOk = "Vos meilleurs avis sont-ils en évidence ?";
+        impactFicheKo = "Perte de confiance, le client va chez un autre.";
+        impactAdsOk = "Génère des contacts qualifiés immédiatement.";
+        impactAdsKo = "Vous laissez les demandes aux concurrents.";
+    }
+
+    // Remplissage du tableau
     if(dgAnswers.site === 'oui') {
         pts.push('<li class="dg-ok"><strong>Site internet : en place.</strong> Vérifiez qu\'il s\'affiche bien sur mobile.</li>');
-        tableRows += '<tr><td>Site Web</td><td>WordPress / Site Vitrine</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar green" style="width: 75%;"></div></div> <span class="score-text green">75/100</span><br><small>'+impactSite+'</small></td></tr>';
+        tableRows += '<tr><td>Site Web</td><td>WordPress / Vitrine</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar green" style="width: 75%;"></div></div> <span class="score-text green">75/100</span><br><small style="color:#94a3b8;font-size:0.8rem;">' + impactSiteOk + '</small></td></tr>';
     } else {
         pts.push('<li class="dg-ko"><strong>Site internet : absent.</strong> Une page simple est indispensable.</li>');
-        tableRows += '<tr><td>Site Web</td><td>WordPress / Site Vitrine</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span><br><small>Perte de clients</small></td></tr>';
+        tableRows += '<tr><td>Site Web</td><td>WordPress / Vitrine</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span><br><small style="color:#94a3b8;font-size:0.8rem;">' + impactSiteKo + '</small></td></tr>';
     }
 
     if(dgAnswers.fiche === 'oui') {
         pts.push('<li class="dg-ok"><strong>Fiche Google : en place.</strong> Ajoutez des photos récentes et répondez aux avis.</li>');
-        tableRows += '<tr><td>Fiche Google</td><td>Google Business Profile</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar orange" style="width: 60%;"></div></div> <span class="score-text orange">60/100</span><br><small>'+impactFiche+'</small></td></tr>';
+        tableRows += '<tr><td>Fiche Google</td><td>Google Profile</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar orange" style="width: 60%;"></div></div> <span class="score-text orange">60/100</span><br><small style="color:#94a3b8;font-size:0.8rem;">' + impactFicheOk + '</small></td></tr>';
     } else {
         pts.push('<li class="dg-ko"><strong>Fiche Google : absente.</strong> Sans elle, vous n\'êtes pas sur Google Maps.</li>');
-        tableRows += '<tr><td>Fiche Google</td><td>Google Business Profile</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span><br><small>Invisible sur Maps</small></td></tr>';
+        tableRows += '<tr><td>Fiche Google</td><td>Google Profile</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span><br><small style="color:#94a3b8;font-size:0.8rem;">' + impactFicheKo + '</small></td></tr>';
     }
 
     if(dgAnswers.ads === 'oui') {
         pts.push('<li class="dg-ok"><strong>Google Ads : active.</strong> Vérifiez que vous ne payez pas de clics inutiles.</li>');
-        tableRows += '<tr><td>Publicité Google</td><td>Google Ads</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar green" style="width: 80%;"></div></div> <span class="score-text green">80/100</span><br><small>'+impactAds+'</small></td></tr>';
+        tableRows += '<tr><td>Publicité Google</td><td>Google Ads</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar green" style="width: 80%;"></div></div> <span class="score-text green">80/100</span><br><small style="color:#94a3b8;font-size:0.8rem;">' + impactAdsOk + '</small></td></tr>';
     } else {
         pts.push('<li class="dg-ko"><strong>Google Ads : absente.</strong> Vous laissez les appels à vos concurrents.</li>');
-        tableRows += '<tr><td>Publicité Google</td><td>Google Ads</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span><br><small>Concurrents devant vous</small></td></tr>';
-    }
-
-    // Recommandation contextuelle
-    if(dgAnswers.site === 'oui' && dgAnswers.fiche === 'oui' && dgAnswers.ads === 'oui') {
-        reco = 'Audit et Optimisation sur-mesure pour ' + contexte;
-    } else if(dgAnswers.site === 'non' && dgAnswers.fiche === 'non') {
-        reco = 'Pack Complet : Site + Fiche Google + Google Ads';
-    } else {
-        reco = 'Pack Visibilité Locale (Site + Fiche + Ads)';
+        tableRows += '<tr><td>Publicité Google</td><td>Google Ads</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span><br><small style="color:#94a3b8;font-size:0.8rem;">' + impactAdsKo + '</small></td></tr>';
     }
 
     document.getElementById('modal-pts').innerHTML = pts.join('');
