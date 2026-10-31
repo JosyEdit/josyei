@@ -221,7 +221,7 @@ html{scroll-behavior:smooth}
     <fieldset><legend>Avez-vous un site internet ?</legend><div class="dg-opt">
       <label><input type="radio" name="site" value="oui">Oui</label><label><input type="radio" name="site" value="vieux">Oui, mais ancien ou peu clair</label><label><input type="radio" name="site" value="non">Non</label></div>
       <div class="dg-an" id="dg-an-site" hidden>
-        <label for="dg-url">Analyser mon site <span class="dg-fac">(facultatif)</span></label>
+        <label for="dg-url">Analyser mon site</label>
         <div class="dg-id-row"><input type="url" id="dg-url" placeholder="ex. : www.mon-entreprise.fr" autocomplete="url" inputmode="url"><button type="button" class="dg-id-btn" id="dg-url-btn">Analyser</button></div>
         <p class="dg-id-note">Mesure réelle faite par l’outil gratuit de Google (PageSpeed Insights), sur téléphone. L’adresse du site lui est envoyée. Comptez 20 à 40 secondes.</p>
         <div id="dg-an-site-out" aria-live="polite"></div>
@@ -229,7 +229,7 @@ html{scroll-behavior:smooth}
     <fieldset><legend>Avez-vous une fiche Google (celle qui s’affiche sur Google Maps) ?</legend><div class="dg-opt">
       <label><input type="radio" name="fiche" value="oui">Oui, complète</label><label><input type="radio" name="fiche" value="vide">Oui, mais incomplète (photos, horaires…)</label><label><input type="radio" name="fiche" value="non">Non</label><label><input type="radio" name="fiche" value="nsp">Je ne sais pas</label></div>
       <div class="dg-an" id="dg-an-fiche" hidden>
-        <label for="dg-maps">Analyser ma fiche Google <span class="dg-fac">(facultatif)</span></label>
+        <label for="dg-maps">Analyser ma fiche Google</label>
         <div class="dg-id-row"><input type="text" id="dg-maps" placeholder="ex. : Plomberie Dupont Montmorillon" autocomplete="off"><button type="button" class="dg-id-btn" id="dg-maps-btn">Ouvrir sur Google Maps</button></div>
         <p class="dg-id-note">Google ne permet pas de lire une fiche gratuitement depuis un site. Ouvrez votre fiche, puis cochez ce que vous y voyez : le score se calcule avec vos cases.</p>
         <ul class="dg-chk" id="dg-chk-fiche">
@@ -249,7 +249,7 @@ html{scroll-behavior:smooth}
     <fieldset><legend>Faites-vous de la publicité sur Google (Google Ads) ?</legend><div class="dg-opt">
       <label><input type="radio" name="ads" value="oui">Oui</label><label><input type="radio" name="ads" value="non">Non</label></div>
       <div class="dg-an" id="dg-an-ads" hidden>
-        <label>Analyser ma publicité Google <span class="dg-fac">(facultatif)</span></label>
+        <label>Analyser ma publicité Google</label>
         <p class="dg-id-note" style="margin-top:0">Google ne donne pas accès aux campagnes d’un annonceur depuis un site. Vos annonces publiques sont visibles dans le <a href="https://adstransparency.google.com/?region=FR" target="_blank" rel="noopener noreferrer" style="color:#93c5fd">Centre de transparence des annonces Google</a>. Cochez ce qui est vrai pour vos campagnes : le score se calcule avec vos cases. Si vous avez analysé votre site plus haut, la présence de la balise Google Ads y est vérifiée.</p>
         <ul class="dg-chk" id="dg-chk-ads">
           <li><label><input type="checkbox" name="ga-zon" value="3">Les annonces sont limitées à ma ville ou à ma zone</label></li>
