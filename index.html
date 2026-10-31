@@ -211,11 +211,11 @@ html{scroll-behavior:smooth}
 
   <section class="ac-diag" id="diagnostic" tabindex="-1"><div class="w">
     <h2>Votre diagnostic en 3 questions</h2>
-    <p class="ac-lead">Répondez simplement, sans chercher la réponse parfaite. Le numéro SIREN est facultatif.</p>
+    <p class="ac-lead">Répondez simplement, sans chercher la réponse parfaite. Le numéro SIREN est obligatoire.</p>
     <div class="ac-prog" aria-hidden="true"><div class="ac-prog-bar"><span id="ac-prog-fill"></span></div><span id="ac-prog-txt">0 sur 3 réponses</span></div>
   <form class="dg-form" id="dg-form" novalidate>
-    <label for="dg-siren">Numéro SIREN ou SIRET, ou nom de l’entreprise <span class="dg-fac">(facultatif)</span></label>
-    <div class="dg-id-row"><input type="text" id="dg-siren" name="siren" placeholder="ex. : 914 113 543" autocomplete="off" inputmode="search"required><button type="button" class="dg-id-btn" id="dg-id-btn">Rechercher</button></div>
+    <label for="dg-siren">Numéro SIREN ou SIRET, ou nom de l’entreprise</label>
+    <div class="dg-id-row"><input type="text" id="dg-siren" name="siren" placeholder="ex. : 914 113 543" autocomplete="off" inputmode="search" required><button type="button" class="dg-id-btn" id="dg-id-btn">Rechercher</button></div>
     <p class="dg-id-note">Lecture de l’annuaire public des entreprises (INSEE, RNE), sans inscription.</p>
     <div id="dg-id-out" aria-live="polite"></div>
     <fieldset><legend>Avez-vous un site internet ?</legend><div class="dg-opt">
@@ -353,8 +353,6 @@ html{scroll-behavior:smooth}
     [['SIREN',ident.siren,1],['SIRET du siège',ident.siret,1],['Activité (NAF / APE)',actLib,1],['Adresse du siège',adresse,1],['Forme juridique',forme,1],['Numéro de TVA (calculé)',tva],['Dirigeants',dirTxt],['Date de création',ident.creation]].forEach(function(l){if(l[1])lignes.push('<dt>'+l[0]+'</dt><dd'+(l[2]?' class="dg-id-key"':'')+'>'+esc(l[1])+'</dd>');});
     idOut.innerHTML='<div class="dg-id-card"><h3>'+esc(ident.nom||'Entreprise')+(ident.ferme?' (fermée)':'')+'</h3><dl>'+lignes.join('')+'</dl>'
       +'<p class="dg-id-src">'+(tva?'Le numéro de TVA est calculé à partir du SIREN ; une entreprise en franchise de TVA peut ne pas l’utiliser. Vérification : service VIES de la Commission européenne. ':'')+'Source : <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/'+encodeURIComponent(r.siren)+'" target="_blank" rel="noopener noreferrer">annuaire des entreprises</a> (INSEE, RNE).</p></div>';
-    var ent=document.getElementById('dg-ent');
-    if(!ent.value.trim()&&ident.nom)ent.value=ident.nom+(sg.libelle_commune?', '+sg.libelle_commune:'');
   }
   // Libellés officiels des codes NAF (INSEE, NAF rév. 2), chargés à la première recherche.
   var naf=null,nafP=null;
@@ -445,7 +443,7 @@ html{scroll-behavior:smooth}
   function cases(p,items){var tot=0,pts=0,plus=[],moins=[];items.forEach(function(it){tot+=it[1];var c=f.querySelector('input[name="'+p+'-'+it[0]+'"]');if(c&&c.checked){pts+=it[1];plus.push(it[2]);}else moins.push(it[3]);});return {score:Math.round(pts*100/tot),plus:plus,moins:moins};}
   var mapsIn=document.getElementById('dg-maps');
   document.getElementById('dg-maps-btn').addEventListener('click',function(){
-    var q=mapsIn.value.trim()||document.getElementById('dg-ent').value.trim()||(ident&&ident.nom)||'';
+    var q=mapsIn.value.trim()||(ident&&ident.nom)||'';
     if(!mapsIn.value.trim()&&q)mapsIn.value=q;
     window.open('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q),'_blank','noopener');
   });
@@ -461,7 +459,7 @@ html{scroll-behavior:smooth}
   // Accueil : barre de progression des réponses, bouton fixe sur téléphone, focus sur le premier champ.
   var pf=document.getElementById('ac-prog-fill'),pt=document.getElementById('ac-prog-txt');
   f.addEventListener('change',function(){var n=['site','fiche','ads'].filter(val).length;pf.style.width=(n*100/3)+'%';pt.textContent=n+' sur 3 réponse'+(n>1?'s':'');});
-  document.querySelectorAll('a.ac-go[href="#diagnostic"]').forEach(function(a){a.addEventListener('click',function(){setTimeout(function(){document.getElementById('dg-ent').focus({preventScroll:true});},450);});});
+  document.querySelectorAll('a.ac-go[href="#diagnostic"]').forEach(function(a){a.addEventListener('click',function(){setTimeout(function(){document.getElementById('dg-siren').focus({preventScroll:true});},450);});});
   var sticky=document.getElementById('ac-sticky'),diagSec=document.getElementById('diagnostic'),heroGo=document.querySelector('.ac-hero .ac-go');
   if(sticky&&'IntersectionObserver' in window){
     var vu={hero:true,diag:false};
@@ -470,7 +468,7 @@ html{scroll-behavior:smooth}
   }
   f.addEventListener('submit',function(e){
     e.preventDefault();
-    var site=val('site'),fiche=val('fiche'),ads=val('ads'),ent=document.getElementById('dg-ent').value.trim();
+    var site=val('site'),fiche=val('fiche'),ads=val('ads'),ent=ident?ident.nom:document.getElementById('dg-siren').value.trim();
     if(!site||!fiche||!ads){err.hidden=false;return;}
     err.hidden=true;
     var pts=[],lignes=[];
