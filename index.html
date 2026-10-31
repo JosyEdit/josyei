@@ -318,8 +318,8 @@ html{scroll-behavior:smooth}
         <div style="margin-top: 1.5rem; background: #0f172a; border: 1px solid #3b82f6; border-radius: 10px; padding: 1rem;">
             <h4 style="color:#fff; margin:0 0 0.5rem 0;">Le pack recommandé pour vous :</h4>
             <p id="modal-pack-name" style="color:#93c5fd; font-weight:bold; font-size:1.2rem; margin:0 0 1rem 0;"></p>
-            <!-- Image placeholder - remplace l'URL par la vraie image de ton pack -->
-            <img id="modal-pack-img" class="pack-img" src="https://josyei.com/img/pack-google.png" alt="Pack recommandé" onerror="this.src='https://via.placeholder.com/300x150/1e293b/3b82f6?text=Visuel+du+Pack'">
+            <!-- IMAGE DU PACK : Remplace l'adresse "src" par le lien de ton image -->
+            <img id="modal-pack-img" class="pack-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Visuel du Pack Web">
         </div>
 
         <button class="modal-btn" style="margin-top: 1.5rem; width: 100%;" onclick="downloadPDF()">📥 Télécharger mon plan d'action (PDF)</button>
@@ -407,21 +407,29 @@ function downloadPDF() {
   
   function fiche(r){
     var sg=r.siege||{},lignes=[];
+    var forme=FORMES[String(r.nature_juridique||'')]||'';
+    var act=r.activite_principale||sg.activite_principale||'';
+    var actLib=naf&&naf[act]?naf[act]+' ('+act.replace('.','')+')':act;
     var adresse=sg.adresse||[sg.code_postal,sg.libelle_commune].filter(Boolean).join(' ');
-    ident={nom:r.nom_complet||r.nom_raison_sociale||'',siren:grp(r.siren,'siren'),siret:grp(sg.siret,'siret')};
-    dgEntName = ident.nom; 
-    lignes.push('<dt>SIREN</dt><dd>'+ident.siren+'</dd>');
-    lignes.push('<dt>Adresse</dt><dd>'+adresse+'</dd>');
-    idOut.innerHTML='<div class="dg-id-card"><h3>'+ident.nom+'</h3><dl>'+lignes.join('')+'</dl></div>';
+    var dir=(r.dirigeants||[]).map(function(d){var n=d.type_dirigeant==='personne morale'?(d.denomination||''):[d.prenoms,d.nom].filter(Boolean).join(' ');return n?n+(d.qualite?' ('+d.qualite+')':''):'';}).filter(Boolean);
+    var dirTxt=dir.slice(0,3).join(', ')+(dir.length>3?' et '+(dir.length-3)+' autre'+(dir.length>4?'s':''):'');
+    var tva=/^\d{9}$/.test(r.siren||'')?'FR'+('0'+((12+3*(+r.siren%97))%97)).slice(-2)+r.siren:'';
+    ident={tva:tva,dir:dirTxt,nom:r.nom_complet||r.nom_raison_sociale||'',siren:grp(r.siren,'siren'),siret:grp(sg.siret,'siret'),act:actLib,forme:forme,creation:dateFr(r.date_creation),adresse:adresse,ferme:r.etat_administratif==='C'};
+    dgEntName = ident.nom;
+    [['SIREN',ident.siren,1],['SIRET du siège',ident.siret,1],['Activité (NAF / APE)',actLib,1],['Adresse du siège',adresse,1],['Forme juridique',forme,1],['Numéro de TVA (calculé)',tva],['Dirigeants',dirTxt],['Date de création',ident.creation]].forEach(function(l){if(l[1])lignes.push('<dt>'+l[0]+'</dt><dd'+(l[2]?' class="dg-id-key"':'')+'>'+esc(l[1])+'</dd>');});
+    idOut.innerHTML='<div class="dg-id-card"><h3>'+esc(ident.nom||'Entreprise')+(ident.ferme?' (fermée)':'')+'</h3><dl>'+lignes.join('')+'</dl>'
+      +'<p class="dg-id-src">'+(tva?'Le numéro de TVA est calculé à partir du SIREN ; une entreprise en franchise de TVA peut ne pas l’utiliser. Vérification : service VIES de la Commission européenne. ':'')+'Source : <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/'+encodeURIComponent(r.siren)+'" target="_blank" rel="noopener noreferrer">annuaire des entreprises</a> (INSEE, RNE).</p></div>';
   }
   
+  var naf=null,nafP=null;
+  function chargerNaf(){if(!nafP)nafP=fetch('/assets/naf.json').then(function(r){return r.ok?r.json():null;}).then(function(d){naf=d;}).catch(function(){});return nafP;}
   function chercher(){
     var q=idIn.value.trim(),num=q.replace(/[\s.]/g,'');
     ident=null;
     if(q.length<3){msg('Saisissez un SIREN, un SIRET ou un nom.');return;}
     msg('Recherche…');
-    fetch('https://recherche-entreprises.api.gouv.fr/search?per_page=5&q='+encodeURIComponent(/^\d+$/.test(num)?num:q))
-      .then(function(r){return r.json();})
+    Promise.all([fetch('https://recherche-entreprises.api.gouv.fr/search?per_page=5&q='+encodeURIComponent(/^\d+$/.test(num)?num:q)),chargerNaf()])
+      .then(function(x){var r=x[0];if(!r.ok)throw new Error(r.status);return r.json();})
       .then(function(d){
         var list=(d&&d.results)||[];
         if(!list.length){msg('Aucune entreprise trouvée.');return;}
