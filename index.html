@@ -18,7 +18,6 @@
 <link rel="stylesheet" href="/assets/site-enhancements.css?v=20261030c">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Diagnostic de visibilité locale","url":"https://josyei.com/","description":"Test gratuit en 2 minutes : site web, fiche Google, publicité Google Ads. Répondez à 4 questions et voyez ce qui manque pour être trouvé par les clients de votre ville.","publisher":{"@type":"Organization","name":"JOSY EI","url":"https://josyei.com/"}}</script>
 <style>
-
 body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}.jx{--noir:#0a0e27;--nuit:#1a1f3a;--blanc:#fff;--gris:#b0b8d4;--bleu:#0066ff;--cyan:#00d4ff}.w{width:min(1050px,calc(100% - 2rem));margin:auto}
 .top{background:#0a0e27;border-bottom:1px solid #26304f}.top>.w{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem}.brand{color:#fff;font-weight:800;text-decoration:none}.menu{display:flex;gap:1.5rem}.menu a,.drawer a{color:#d8def0;text-decoration:none}.burger{display:none;background:none;border:1px solid #526080;border-radius:6px;color:#fff;padding:.6rem 1rem;font:inherit}.drawer{padding:1rem;gap:.8rem;background:#121831}.drawer:not([hidden]){display:grid}
 .hero{min-height:55vh;padding:4rem 0;display:grid;place-items:center;text-align:center;background:radial-gradient(ellipse at 50% 0%,#1a1f3a,#0a0e27 72%)}.hero h1{font-size:clamp(2rem,5vw,3.25rem);margin:0 0 1rem}.hero p{color:#cbd5e1;max-width:60ch;margin:0 auto 1.6rem}.btn{display:inline-block;padding:.95rem 1.5rem;border-radius:8px;background:#2563eb;color:#fff;text-decoration:none;font-weight:700}.btn:hover{background:#1d4ed8}
@@ -147,9 +146,11 @@ html{scroll-behavior:smooth}
 .score-bar { height: 100%; border-radius: 4px; }
 .score-bar.green { background: #22c55e; }
 .score-bar.red { background: #ef4444; }
+.score-bar.orange { background: #f59e0b; }
 .score-text { font-size: 0.85rem; font-weight: bold; }
 .score-text.green { color: #22c55e; }
 .score-text.red { color: #ef4444; }
+.score-text.orange { color: #f59e0b; }
 
 #page-resultats { padding: 3rem 0; display: none; }
 #page-resultats .w { max-width: 800px; }
@@ -330,6 +331,8 @@ html{scroll-behavior:smooth}
 <script>
 var dgAnswers = { site: '', fiche: '', ads: '' };
 var dgEntName = '';
+var dgMetier = '';
+var dgVille = '';
 
 function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
@@ -349,33 +352,63 @@ function generateFinalResult() {
     var pts = [];
     var tableRows = '';
     var reco = '';
+    
+    // Analyse contextuelle du métier
+    var contexte = "votre secteur";
+    var impactSite = "+20% de trafic";
+    var impactFiche = "+30% de visibilité";
+    var impactAds = "Trafic immédiat";
+    
+    var m = dgMetier.toLowerCase();
+    if(m.includes('resto') || m.includes('restau') || m.includes('café') || m.includes('hôtel')) {
+        contexte = "la restauration à " + dgVille;
+        impactSite = "Menu et réservation en ligne";
+        impactFiche = "Photos des plats = plus de clients";
+        impactAds = "Capter les touristes et locaux";
+    } else if(m.includes('plomb') || m.includes('élect') || m.includes('chauff') || m.includes('menuis') || m.includes('artisan')) {
+        contexte = "les artisans à " + dgVille;
+        impactSite = "Générer des demandes de devis";
+        impactFiche = "Capter les urgences sur Maps";
+        impactAds = "Être le 1er en cas d'urgence";
+    } else if(m.includes('commerce') || m.includes('boutique') || m.includes('vente') || m.includes('magasin')) {
+        contexte = "le commerce local à " + dgVille;
+        impactSite = "Vitrine et vente en ligne";
+        impactFiche = "Attirer les recherches 'près de moi'";
+        impactAds = "Cibler un rayon de 20km";
+    } else if(m.includes('photo') || m.includes('graphi') || m.includes('conseil') || m.includes('avocat') || m.includes('santé')) {
+        contexte = "les professions libérales à " + dgVille;
+        impactSite = "Asseoir votre crédibilité";
+        impactFiche = "Montrer vos avis et réalisations";
+        impactAds = "Générer des contacts qualifiés";
+    }
 
     if(dgAnswers.site === 'oui') {
         pts.push('<li class="dg-ok"><strong>Site internet : en place.</strong> Vérifiez qu\'il s\'affiche bien sur mobile.</li>');
-        tableRows += '<tr><td>Site Web</td><td>WordPress / Site Vitrine</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar green" style="width: 85%;"></div></div> <span class="score-text green">85/100</span></td></tr>';
+        tableRows += '<tr><td>Site Web</td><td>WordPress / Site Vitrine</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar green" style="width: 75%;"></div></div> <span class="score-text green">75/100</span><br><small>'+impactSite+'</small></td></tr>';
     } else {
         pts.push('<li class="dg-ko"><strong>Site internet : absent.</strong> Une page simple est indispensable.</li>');
-        tableRows += '<tr><td>Site Web</td><td>WordPress / Site Vitrine</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span></td></tr>';
+        tableRows += '<tr><td>Site Web</td><td>WordPress / Site Vitrine</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span><br><small>Perte de clients</small></td></tr>';
     }
 
     if(dgAnswers.fiche === 'oui') {
         pts.push('<li class="dg-ok"><strong>Fiche Google : en place.</strong> Ajoutez des photos récentes et répondez aux avis.</li>');
-        tableRows += '<tr><td>Fiche Google</td><td>Google Business Profile</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar green" style="width: 70%;"></div></div> <span class="score-text green">70/100</span></td></tr>';
+        tableRows += '<tr><td>Fiche Google</td><td>Google Business Profile</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar orange" style="width: 60%;"></div></div> <span class="score-text orange">60/100</span><br><small>'+impactFiche+'</small></td></tr>';
     } else {
         pts.push('<li class="dg-ko"><strong>Fiche Google : absente.</strong> Sans elle, vous n\'êtes pas sur Google Maps.</li>');
-        tableRows += '<tr><td>Fiche Google</td><td>Google Business Profile</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span></td></tr>';
+        tableRows += '<tr><td>Fiche Google</td><td>Google Business Profile</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span><br><small>Invisible sur Maps</small></td></tr>';
     }
 
     if(dgAnswers.ads === 'oui') {
         pts.push('<li class="dg-ok"><strong>Google Ads : active.</strong> Vérifiez que vous ne payez pas de clics inutiles.</li>');
-        tableRows += '<tr><td>Publicité Google</td><td>Google Ads</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar green" style="width: 90%;"></div></div> <span class="score-text green">90/100</span></td></tr>';
+        tableRows += '<tr><td>Publicité Google</td><td>Google Ads</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar green" style="width: 80%;"></div></div> <span class="score-text green">80/100</span><br><small>'+impactAds+'</small></td></tr>';
     } else {
         pts.push('<li class="dg-ko"><strong>Google Ads : absente.</strong> Vous laissez les appels à vos concurrents.</li>');
-        tableRows += '<tr><td>Publicité Google</td><td>Google Ads</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span></td></tr>';
+        tableRows += '<tr><td>Publicité Google</td><td>Google Ads</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span><br><small>Concurrents devant vous</small></td></tr>';
     }
 
+    // Recommandation contextuelle
     if(dgAnswers.site === 'oui' && dgAnswers.fiche === 'oui' && dgAnswers.ads === 'oui') {
-        reco = 'Audit et Optimisation sur-mesure';
+        reco = 'Audit et Optimisation sur-mesure pour ' + contexte;
     } else if(dgAnswers.site === 'non' && dgAnswers.fiche === 'non') {
         reco = 'Pack Complet : Site + Fiche Google + Google Ads';
     } else {
@@ -385,7 +418,7 @@ function generateFinalResult() {
     document.getElementById('modal-pts').innerHTML = pts.join('');
     document.getElementById('res-table-body').innerHTML = tableRows;
     document.getElementById('modal-pack-name').innerText = reco;
-    document.getElementById('res-ent-name').innerText = dgEntName || 'Votre entreprise';
+    document.getElementById('res-ent-name').innerText = dgEntName ? dgEntName + ' (' + dgVille + ')' : 'Votre entreprise';
 }
 
 function afficherPageResultats() {
@@ -413,7 +446,12 @@ function afficherPageResultats() {
     var dirTxt=dir.slice(0,3).join(', ')+(dir.length>3?' et '+(dir.length-3)+' autre'+(dir.length>4?'s':''):'');
     var tva=/^\d{9}$/.test(r.siren||'')?'FR'+('0'+((12+3*(+r.siren%97))%97)).slice(-2)+r.siren:'';
     ident={tva:tva,dir:dirTxt,nom:r.nom_complet||r.nom_raison_sociale||'',siren:grp(r.siren,'siren'),siret:grp(sg.siret,'siret'),act:actLib,forme:forme,creation:dateFr(r.date_creation),adresse:adresse,ferme:r.etat_administratif==='C'};
+    
+    // Sauvegarde pour l'analyse
     dgEntName = ident.nom;
+    dgMetier = actLib;
+    dgVille = sg.libelle_commune || 'votre ville';
+
     [['SIREN',ident.siren,1],['SIRET du siège',ident.siret,1],['Activité (NAF / APE)',actLib,1],['Adresse du siège',adresse,1],['Forme juridique',forme,1],['Numéro de TVA (calculé)',tva],['Dirigeants',dirTxt],['Date de création',ident.creation]].forEach(function(l){if(l[1])lignes.push('<dt>'+l[0]+'</dt><dd'+(l[2]?' class="dg-id-key"':'')+'>'+esc(l[1])+'</dd>');});
     idOut.innerHTML='<div class="dg-id-card"><h3>'+esc(ident.nom||'Entreprise')+(ident.ferme?' (fermée)':'')+'</h3><dl>'+lignes.join('')+'</dl>'
       +'<p class="dg-id-src">'+(tva?'Le numéro de TVA est calculé à partir du SIREN ; une entreprise en franchise de TVA peut ne pas l’utiliser. Vérification : service VIES de la Commission européenne. ':'')+'Source : <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/'+encodeURIComponent(r.siren)+'" target="_blank" rel="noopener noreferrer">annuaire des entreprises</a> (INSEE, RNE).</p></div>';
