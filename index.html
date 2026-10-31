@@ -28,6 +28,19 @@ body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-syst
 .foot{background:#080b1c;padding:2.5rem 0;color:#b0b8d4}.fcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem}.foot h2{font-size:1rem;color:#fff}.foot h2 a{text-decoration:none;color:inherit}.foot ul{padding:0;list-style:none}.foot li{margin:.45rem 0}.foot a{color:#b0b8d4}.copy{margin-top:2rem;font-size:.85rem}@media(max-width:760px){.menu{display:none}.burger{display:block}}
 </style>
 <style>
+.ex{padding:2.4rem 0;color:#e2e8f0}.ex .w{width:min(1050px,calc(100% - 32px));margin:0 auto}.ex h2{font-size:clamp(1.4rem,3vw,1.9rem);text-align:center;margin:0 0 .5rem;color:#fff}.ex-intro{text-align:center;max-width:680px;margin:0 auto 1.4rem;color:#b0b8d4}
+.ex-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}.ex-card{background:#1e293b;border:1px solid #334155;border-radius:14px;padding:1.3rem;display:flex;flex-direction:column;gap:.7rem}.ex-card h3{margin:0;font-size:1.15rem;color:#fff}
+.ex-tag{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:#93c5fd;background:#172554;border:1px solid #1d4ed8;border-radius:999px;padding:.15rem .6rem;align-self:flex-start}
+.ex-step{margin:0;padding-left:.8rem;border-left:3px solid #334155}.ex-step b{display:block;font-size:.8rem;text-transform:uppercase;letter-spacing:.03em}.ex-p b{color:#fca5a5}.ex-s b{color:#7dd3fc}.ex-r b{color:#86efac}.ex-p{border-color:#ef4444}.ex-s{border-color:#0ea5e9}.ex-r{border-color:#22c55e}
+.ex-mention{max-width:760px;margin:1.2rem auto 0;text-align:center;font-size:.9rem;color:#b0b8d4}.ex-proof{max-width:760px;margin:1.4rem auto 0;background:#172554;border:1px solid #1d4ed8;border-radius:12px;padding:1rem 1.2rem;color:#dbeafe;font-size:.95rem}
+.ex-go{text-align:center;margin-top:1.4rem}.ex-btn{display:inline-block;background:#0066ff;color:#fff;font-weight:800;text-decoration:none;border-radius:10px;padding:.85rem 1.4rem}.ex-btn:hover,.ex-btn:focus{background:#00a3ff}
+.ex-reas{list-style:none;padding:0;margin:1.2rem auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem}.ex-reas li{background:#0f172a;border:1px solid #334155;border-radius:999px;padding:.35rem .8rem;font-size:.9rem;color:#e2e8f0}.ex-reas li::before{content:"✓ ";color:#22c55e;font-weight:800}
+.ex-trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;max-width:960px;margin:0 auto}.ex-trust div{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:1rem}.ex-trust strong{color:#fff;display:block;margin-bottom:.3rem}.ex-trust a{color:#7dd3fc}
+.ex-sticky{position:fixed;left:16px;right:16px;bottom:16px;z-index:50;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.45)}@media(min-width:760px){.ex-sticky{display:none}}
+.card-top{border:2px solid #3b82f6;grid-column:1/-1}.card-top .badge{width:fit-content}.prix{font-size:1.6rem;font-weight:800;color:#fff!important;margin:.2rem 0 .8rem!important;line-height:1.2}.prix small{font-size:.9rem;font-weight:400;color:#94a3b8}
+#offres .card{scroll-margin-top:1rem}#offres .card:target{outline:3px solid #22c55e}
+</style>
+<style>
 .dg-form{max-width:640px;margin:0 auto;background:#1e293b;border:1px solid #334155;border-radius:14px;padding:1.4rem;text-align:left}
 .dg-form label,.dg-form legend{display:block;font-weight:700;color:#f8fafc;margin:0 0 .4rem}
 .dg-form input[type=text]{width:100%;box-sizing:border-box;padding:.8rem;border-radius:8px;border:1px solid #475569;background:#0f172a;color:#fff;font:inherit}
@@ -51,7 +64,21 @@ body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-syst
 .dg-id-card dd{margin:0;color:#e2e8f0;overflow-wrap:break-word}
 @media (max-width:480px){.dg-id-card dl{grid-template-columns:1fr;gap:.1rem}.dg-id-card dd{margin-bottom:.45rem}}
 .dg-id-card dd.dg-id-key{color:#fff;font-weight:700}
+.dg-moi{display:block;width:fit-content;max-width:100%;margin:1.2rem auto 0;text-align:left;box-sizing:border-box;background:#0f172a;border:1px solid #334155;border-radius:999px;font-size:.8rem;color:#94a3b8}
+.dg-moi[open]{border-radius:10px;max-width:440px;width:auto}
+.dg-moi summary{cursor:pointer;padding:.3rem .8rem;list-style:none;white-space:nowrap}
+.dg-moi summary::-webkit-details-marker{display:none}
+.dg-moi summary::after{content:" ▸";color:#38bdf8}.dg-moi[open] summary::after{content:" ▾"}
+.dg-moi summary strong{color:#e2e8f0;font-weight:600}
+.dg-moi summary:focus-visible{outline:2px solid #38bdf8;outline-offset:2px;border-radius:999px}
+.dg-moi dl{display:grid;grid-template-columns:auto 1fr;gap:.15rem .7rem;margin:0;padding:.1rem .8rem 0}
+.dg-moi dt{color:#94a3b8}.dg-moi dd{margin:0;color:#e2e8f0;overflow-wrap:break-word}
+@media (max-width:480px){.dg-moi dl{grid-template-columns:1fr;gap:0}.dg-moi dd{margin-bottom:.3rem}}
+.dg-moi .dg-id-src{margin:.4rem 0 0;padding:0 .8rem .6rem;font-size:.75rem;color:#94a3b8}.dg-moi .dg-id-src a{color:inherit}
+.dg-id-card .dg-id-src{margin:.6rem 0 0;font-size:.8rem;color:#94a3b8}
+.dg-id-card .dg-id-src a{color:inherit}
 .dg-err{color:#fca5a5;margin:.8rem 0 0}
+.dg-res{max-width:760px;margin:1.6rem auto 0;text-align:left}.dg-res h2{text-align:left;margin:0 0 .6rem}
 .dg-pts{list-style:none;padding:0;margin:1rem 0;display:grid;gap:.6rem}.dg-pts li{background:#1e293b;border:1px solid #334155;border-left:5px solid #64748b;border-radius:10px;padding:.8rem 1rem;color:#cbd5e1}
 .dg-pts li strong{color:#fff}.dg-ok{border-left-color:#22c55e!important}.dg-mid{border-left-color:#f59e0b!important}.dg-ko{border-left-color:#ef4444!important}
 .dg-act{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}.dg-act .ex-btn{flex:1 1 220px;text-align:center}.dg-sec{background:#334155!important}
@@ -113,6 +140,15 @@ html{scroll-behavior:smooth}
 .res-table tr:last-child td{border-bottom:none;}
 .status-ok{color:#22c55e;font-weight:bold;}
 .status-ko{color:#ef4444;font-weight:bold;}
+
+/* Styles pour les barres de progression */
+.score-bar-container { background: #334155; border-radius: 4px; height: 8px; width: 80px; display: inline-block; vertical-align: middle; margin-right: 10px; overflow: hidden; }
+.score-bar { height: 100%; border-radius: 4px; }
+.score-bar.green { background: #22c55e; }
+.score-bar.red { background: #ef4444; }
+.score-text { font-size: 0.85rem; font-weight: bold; }
+.score-text.green { color: #22c55e; }
+.score-text.red { color: #ef4444; }
 
 #page-resultats { padding: 3rem 0; display: none; }
 #page-resultats .w { max-width: 800px; }
@@ -198,6 +234,8 @@ html{scroll-behavior:smooth}
       <div class="faq ac-faq">
         <details><summary>Le diagnostic est-il vraiment gratuit ?</summary><p>Oui. Le test en ligne et l’analyse écrite qui suit, si vous la demandez, sont gratuits et ne vous engagent à rien.</p></details>
         <details><summary>Ce test analyse-t-il ma vraie fiche Google ?</summary><p>Non, le résultat immédiat se base sur vos réponses. Ce que Google affiche réellement pour votre entreprise, je le vérifie moi-même si vous m’envoyez votre diagnostic, et je vous réponds par écrit.</p></details>
+        <details><summary>Pourquoi être sur Google quand on est un professionnel local ?</summary><p>Parce que vos clients y cherchent. 76 % des personnes qui font une recherche de proximité sur leur smartphone se rendent dans un établissement dans la journée (source : <a href="https://www.thinkwithgoogle.com/_qs/documents/620/mobile-search-trends-consumers-to-stores.pdf" target="_blank" rel="noopener noreferrer" style="color:#93c5fd">Google, Digital Diary, mai 2016</a>).</p></details>
+        <details><summary>Que deviennent mes réponses ?</summary><p>Elles restent dans votre navigateur. Rien n’est transmis tant que vous ne choisissez pas vous-même de m’envoyer votre diagnostic. Seule exception, si vous la demandez : l’analyse de votre site, dont l’adresse est alors envoyée à l’outil gratuit de Google PageSpeed Insights. Voir la <a href="/politique-de-confidentialite/" style="color:#93c5fd">politique de confidentialité</a>.</p></details>
       </div>
     </div></section>
   </div>
@@ -222,7 +260,7 @@ html{scroll-behavior:smooth}
               <th>Levier</th>
               <th>Outil / Techno</th>
               <th>Statut</th>
-              <th>Impact estimé</th>
+              <th>Analyse & Impact</th>
             </tr>
           </thead>
           <tbody id="res-table-body">
@@ -236,9 +274,7 @@ html{scroll-behavior:smooth}
           <h4 style="color:#94a3b8; margin:0 0 0.5rem 0; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.05em;">Le pack recommandé pour vous</h4>
           <p id="modal-pack-name" style="color:#fff; font-weight:bold; font-size:1.6rem; margin:0 0 1.5rem 0;"></p>
           
-          <!-- BOUTON CORRIGÉ ICI -->
           <a href="https://josyei.com/pack-google-site/" class="ac-go" style="width: 100%; display:inline-flex; justify-content:center; box-sizing:border-box; font-size:1.1rem;">Découvrir cette offre maintenant</a>
-          <!-- FIN DU BOUTON CORRIGÉ -->
           
           <a href="https://josyei.com" class="ac-go-sub" style="display:inline-block; margin-top:1.5rem; text-decoration:underline; cursor:pointer;" onclick="window.location.reload()">← Refaire le test</a>
       </div>
@@ -315,26 +351,26 @@ function generateFinalResult() {
 
     if(dgAnswers.site === 'oui') {
         pts.push('<li class="dg-ok"><strong>Site internet : en place.</strong> Vérifiez qu\'il s\'affiche bien sur mobile.</li>');
-        tableRows += '<tr><td>Site Web</td><td>WordPress / Site Vitrine</td><td><span class="status-ok">Actif</span></td><td>+20% de trafic</td></tr>';
+        tableRows += '<tr><td>Site Web</td><td>WordPress / Site Vitrine</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar green" style="width: 85%;"></div></div> <span class="score-text green">85/100</span></td></tr>';
     } else {
         pts.push('<li class="dg-ko"><strong>Site internet : absent.</strong> Une page simple est indispensable.</li>');
-        tableRows += '<tr><td>Site Web</td><td>WordPress / Site Vitrine</td><td><span class="status-ko">Manquant</span></td><td>Perte de 40% des appels</td></tr>';
+        tableRows += '<tr><td>Site Web</td><td>WordPress / Site Vitrine</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span></td></tr>';
     }
 
     if(dgAnswers.fiche === 'oui') {
         pts.push('<li class="dg-ok"><strong>Fiche Google : en place.</strong> Ajoutez des photos récentes et répondez aux avis.</li>');
-        tableRows += '<tr><td>Fiche Google</td><td>Google Business Profile</td><td><span class="status-ok">Actif</span></td><td>+30% de visibilité locale</td></tr>';
+        tableRows += '<tr><td>Fiche Google</td><td>Google Business Profile</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar green" style="width: 70%;"></div></div> <span class="score-text green">70/100</span></td></tr>';
     } else {
         pts.push('<li class="dg-ko"><strong>Fiche Google : absente.</strong> Sans elle, vous n\'êtes pas sur Google Maps.</li>');
-        tableRows += '<tr><td>Fiche Google</td><td>Google Business Profile</td><td><span class="status-ko">Manquant</span></td><td>Invisible sur Google Maps</td></tr>';
+        tableRows += '<tr><td>Fiche Google</td><td>Google Business Profile</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span></td></tr>';
     }
 
     if(dgAnswers.ads === 'oui') {
         pts.push('<li class="dg-ok"><strong>Google Ads : active.</strong> Vérifiez que vous ne payez pas de clics inutiles.</li>');
-        tableRows += '<tr><td>Publicité Google</td><td>Google Ads</td><td><span class="status-ok">Actif</span></td><td>Trafic immédiat</td></tr>';
+        tableRows += '<tr><td>Publicité Google</td><td>Google Ads</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar green" style="width: 90%;"></div></div> <span class="score-text green">90/100</span></td></tr>';
     } else {
         pts.push('<li class="dg-ko"><strong>Google Ads : absente.</strong> Vous laissez les appels à vos concurrents.</li>');
-        tableRows += '<tr><td>Publicité Google</td><td>Google Ads</td><td><span class="status-ko">Manquant</span></td><td>0 clic payant généré</td></tr>';
+        tableRows += '<tr><td>Publicité Google</td><td>Google Ads</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span></td></tr>';
     }
 
     if(dgAnswers.site === 'oui' && dgAnswers.fiche === 'oui' && dgAnswers.ads === 'oui') {
