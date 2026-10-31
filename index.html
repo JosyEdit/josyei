@@ -358,22 +358,16 @@ html{scroll-behavior:smooth}
     var nomStr = ident.nom || '';
     var villeStr = sg.libelle_commune || '';
     
-    // Pré-remplissage Site Web (on enlève les espaces, on met en minuscules et on ajoute .fr)
-    var slugSite = nomStr.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, '');
-    if(slugSite.length > 2) {
-      document.getElementById('dg-url').value = "https://www." + slugSite + ".fr";
-    }
-    
     // Pré-remplissage Google Maps
     if(nomStr && villeStr) {
       document.getElementById('dg-maps').value = nomStr + " " + villeStr;
     }
     
-    // On déroule automatiquement les sections pour faire gagner du temps
-    var radioSite = f.querySelector('input[name="site"]');
+    // On coche automatiquement "Oui" pour faire gagner du temps
+    var radioSite = f.querySelector('input[name="site"][value="oui"]');
     if(radioSite) { radioSite.checked = true; montrer(); }
     
-    var radioFiche = f.querySelector('input[name="fiche"]');
+    var radioFiche = f.querySelector('input[name="fiche"][value="oui"]');
     if(radioFiche) { radioFiche.checked = true; montrer(); }
     // ----------------------------------------
   }
