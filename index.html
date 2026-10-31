@@ -176,7 +176,7 @@ html{scroll-behavior:smooth}
     <div class="ac-hero-txt">
       <span class="badge">Gratuit · 2 minutes · sans inscription</span>
       <h1>Quand on cherche votre métier sur Google, est-ce <span class="ac-grad">vous</span> qu’on trouve&nbsp;?</h1>
-      <p>Une question sur votre site, votre fiche Google et votre publicité. Vous voyez tout de suite ce qui manque pour que les clients de votre ville vous appellent.</p>
+      <p>Trois questions sur votre site, votre fiche Google et votre publicité. Vous voyez tout de suite ce qui manque pour que les clients de votre ville vous appellent.</p>
       <a class="ac-go" href="#diagnostic"><span class="ac-go-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></span><span>Diagnostiquer mon entreprise</span><span class="ac-go-arr" aria-hidden="true">→</span></a>
       <p class="ac-go-sub">Résultat immédiat · vos réponses restent dans votre navigateur</p>
     </div>
@@ -210,25 +210,61 @@ html{scroll-behavior:smooth}
   </div></section>
 
   <section class="ac-diag" id="diagnostic" tabindex="-1"><div class="w">
-    <h2>Votre diagnostic</h2>
+    <h2>Votre diagnostic en 3 questions</h2>
     <p class="ac-lead">Répondez simplement, sans chercher la réponse parfaite. Le numéro SIREN est obligatoire.</p>
-    <div class="ac-prog" aria-hidden="true"><div class="ac-prog-bar"><span id="ac-prog-fill"></span></div><span id="ac-prog-txt">0 sur 1 réponse</span></div>
+    <div class="ac-prog" aria-hidden="true"><div class="ac-prog-bar"><span id="ac-prog-fill"></span></div><span id="ac-prog-txt">0 sur 3 réponses</span></div>
   <form class="dg-form" id="dg-form" novalidate>
     <label for="dg-siren">Numéro SIREN ou SIRET, ou nom de l’entreprise</label>
     <div class="dg-id-row"><input type="text" id="dg-siren" name="siren" placeholder="ex. : 914 113 543" autocomplete="off" inputmode="search" required><button type="button" class="dg-id-btn" id="dg-id-btn">Rechercher</button></div>
     <p class="dg-id-note">Lecture de l’annuaire public des entreprises (INSEE, RNE), sans inscription.</p>
     <div id="dg-id-out" aria-live="polite"></div>
-    
-    <fieldset>
-      <legend>Avez-vous un site internet ET une fiche Google (celle qui s’affiche sur Google Maps) ?</legend>
-      <div class="dg-opt">
-        <label><input type="radio" name="presence" value="oui">Oui, j'ai les deux</label>
-        <label><input type="radio" name="presence" value="non">Non, il m'en manque un ou les deux</label>
-      </div>
-    </fieldset>
-
+    <fieldset><legend>Avez-vous un site internet ?</legend><div class="dg-opt">
+      <label><input type="radio" name="site" value="oui">Oui</label><label><input type="radio" name="site" value="non">Non</label></div>
+      <div class="dg-an" id="dg-an-site" hidden>
+        <label for="dg-url">Analyser mon site</label>
+        <div class="dg-id-row"><input type="url" id="dg-url" placeholder="ex. : www.mon-entreprise.fr" autocomplete="url" inputmode="url"><button type="button" class="dg-id-btn" id="dg-url-btn">Analyser</button></div>
+        <p class="dg-id-note">Mesure réelle faite par l’outil gratuit de Google (PageSpeed Insights), sur téléphone. L’adresse du site lui est envoyée. Comptez 20 à 40 secondes.</p>
+        <div id="dg-an-site-out" aria-live="polite"></div>
+      </div></fieldset>
+    <fieldset><legend>Avez-vous une fiche Google (celle qui s’affiche sur Google Maps) ?</legend><div class="dg-opt">
+      <label><input type="radio" name="fiche" value="oui">Oui</label><label><input type="radio" name="fiche" value="non">Non</label></div>
+      <div class="dg-an" id="dg-an-fiche" hidden>
+        <label for="dg-maps">Analyser ma fiche Google</label>
+        <div class="dg-id-row"><input type="text" id="dg-maps" placeholder="ex. : Plomberie Dupont Montmorillon" autocomplete="off"><button type="button" class="dg-id-btn" id="dg-maps-btn">Ouvrir sur Google Maps</button></div>
+        <p class="dg-id-note">Google ne permet pas de lire une fiche gratuitement depuis un site. Ouvrez votre fiche, puis cochez ce que vous y voyez : le score se calcule avec vos cases.</p>
+        <ul class="dg-chk" id="dg-chk-fiche">
+          <li><label><input type="checkbox" name="gf-nap" value="3">Nom, adresse et téléphone exacts</label></li>
+          <li><label><input type="checkbox" name="gf-cat" value="3">La catégorie principale est bien mon métier</label></li>
+          <li><label><input type="checkbox" name="gf-hor" value="2">Horaires renseignés et à jour</label></li>
+          <li><label><input type="checkbox" name="gf-pho" value="2">Au moins 5 photos (devanture, travaux, équipe)</label></li>
+          <li><label><input type="checkbox" name="gf-avi" value="2">Au moins 10 avis clients</label></li>
+          <li><label><input type="checkbox" name="gf-rep" value="1">Je réponds aux avis</label></li>
+          <li><label><input type="checkbox" name="gf-sit" value="1">Un lien vers mon site</label></li>
+          <li><label><input type="checkbox" name="gf-des" value="1">Description et services remplis</label></li>
+          <li><label><input type="checkbox" name="gf-pub" value="1">Une photo ou une publication ajoutée ces 3 derniers mois</label></li>
+        </ul>
+        <button type="button" class="dg-id-btn dg-an-btn" id="dg-fiche-btn">Calculer le score de ma fiche</button>
+        <div id="dg-an-fiche-out" aria-live="polite"></div>
+      </div></fieldset>
+    <fieldset><legend>Faites-vous de la publicité sur Google (Google Ads) ?</legend><div class="dg-opt">
+      <label><input type="radio" name="ads" value="oui">Oui</label><label><input type="radio" name="ads" value="non">Non</label></div>
+      <div class="dg-an" id="dg-an-ads" hidden>
+        <label>Analyser ma publicité Google</label>
+        <p class="dg-id-note" style="margin-top:0">Google ne donne pas accès aux campagnes d’un annonceur depuis un site. Vos annonces publiques sont visibles dans le <a href="https://adstransparency.google.com/?region=FR" target="_blank" rel="noopener noreferrer" style="color:#93c5fd">Centre de transparence des annonces Google</a>. Cochez ce qui est vrai pour vos campagnes : le score se calcule avec vos cases. Si vous avez analysé votre site plus haut, la présence de la balise Google Ads y est vérifiée.</p>
+        <ul class="dg-chk" id="dg-chk-ads">
+          <li><label><input type="checkbox" name="ga-zon" value="3">Les annonces sont limitées à ma ville ou à ma zone</label></li>
+          <li><label><input type="checkbox" name="ga-pag" value="3">Elles renvoient vers une page avec mon numéro ou un bouton d’appel</label></li>
+          <li><label><input type="checkbox" name="ga-cnv" value="2">Les appels et les demandes sont comptés dans Google Ads</label></li>
+          <li><label><input type="checkbox" name="ga-neg" value="2">J’ai exclu des mots inutiles (ex. : « gratuit », « emploi »)</label></li>
+          <li><label><input type="checkbox" name="ga-tel" value="1">Mon numéro ou mon adresse s’affiche sous l’annonce</label></li>
+          <li><label><input type="checkbox" name="ga-bud" value="1">Je connais mon budget par jour</label></li>
+          <li><label><input type="checkbox" name="ga-sui" value="1">Je regarde les résultats au moins une fois par mois</label></li>
+        </ul>
+        <button type="button" class="dg-id-btn dg-an-btn" id="dg-ads-btn">Calculer le score de ma publicité</button>
+        <div id="dg-an-ads-out" aria-live="polite"></div>
+      </div></fieldset>
     <button type="submit" class="ac-go"><span>Voir mon résultat</span><span class="ac-go-arr" aria-hidden="true">→</span></button>
-    <p class="dg-err" id="dg-err" hidden>Merci de répondre à la question.</p>
+    <p class="dg-err" id="dg-err" hidden>Merci de répondre aux trois questions.</p>
   </form>
   <ul class="ex-reas"><li>Gratuit</li><li>Résultat immédiat</li><li>Pour les professionnels locaux</li><li>Vos réponses restent dans votre navigateur</li></ul>
 
@@ -248,6 +284,42 @@ html{scroll-behavior:smooth}
   </details>
   </div></section>
 
+  <section class="ac-quoi"><div class="w">
+    <h2>Ce que le diagnostic regarde</h2>
+    <div class="ac-cards">
+      <article class="ac-card digital-reveal">
+        <svg class="ac-ill" viewBox="0 0 160 100" role="img" aria-label="Illustration : un site internet affiché sur un téléphone, avec un bouton d’appel"><rect x="50" y="6" width="60" height="88" rx="10" fill="#111833" stroke="#3b82f6" stroke-width="2"/><rect x="58" y="18" width="44" height="22" rx="4" fill="#1e3a8a"/><rect x="58" y="46" width="44" height="5" rx="2.5" fill="#334155"/><rect x="58" y="55" width="32" height="5" rx="2.5" fill="#334155"/><rect x="58" y="70" width="44" height="14" rx="7" fill="#22c55e"/><path d="M75 74.5c1 2.5 3 4.5 5.5 5.5l1.6-1.6 2.4 1-0.6 2.2c-5-0.4-9-4.4-9.4-9.4l2.2-.6 1 2.4z" fill="#fff"/></svg>
+        <h3>Votre site internet</h3>
+        <p>Une page claire, lisible sur téléphone, avec un bouton pour vous appeler ou demander un devis.</p>
+      </article>
+      <article class="ac-card digital-reveal">
+        <svg class="ac-ill" viewBox="0 0 160 100" role="img" aria-label="Illustration : une carte avec un repère et des étoiles, comme une fiche Google"><rect x="18" y="10" width="124" height="80" rx="10" fill="#13203f"/><path d="M18 60c30-14 60 14 124-12" stroke="#22315c" stroke-width="8" fill="none"/><path d="M60 10 72 90M110 10 98 90" stroke="#1b2a52" stroke-width="5"/><path d="M84 22c-8 0-13 6-13 13 0 10 13 22 13 22s13-12 13-22c0-7-5-13-13-13z" fill="#ef4444"/><circle cx="84" cy="35" r="5" fill="#fff"/><g fill="#f59e0b"><path d="m58 74 2.4 5 5.4.6-4 3.6 1.1 5.3L58 86l-4.9 2.5 1.1-5.3-4-3.6 5.4-.6z"/><path d="m80 74 2.4 5 5.4.6-4 3.6 1.1 5.3L80 86l-4.9 2.5 1.1-5.3-4-3.6 5.4-.6z"/><path d="m102 74 2.4 5 5.4.6-4 3.6 1.1 5.3L102 86l-4.9 2.5 1.1-5.3-4-3.6 5.4-.6z"/></g></svg>
+        <h3>Votre fiche Google</h3>
+        <p>Votre présence sur Google Maps quand on cherche votre métier près de chez vous : horaires, photos, services.</p>
+      </article>
+      <article class="ac-card digital-reveal">
+        <svg class="ac-ill" viewBox="0 0 160 100" role="img" aria-label="Illustration : une annonce affichée tout en haut des résultats de recherche"><rect x="18" y="8" width="124" height="84" rx="10" fill="#111833" stroke="#334155"/><rect x="28" y="18" width="104" height="26" rx="6" fill="#172554" stroke="#00d4ff"/><rect x="32" y="24" width="32" height="12" rx="3" fill="#00d4ff"/><text x="48" y="32.5" fill="#0a0e27" font-size="7" font-weight="800" text-anchor="middle" font-family="system-ui,sans-serif">Annonce</text><rect x="70" y="27" width="54" height="6" rx="3" fill="#93c5fd"/><rect x="28" y="52" width="90" height="6" rx="3" fill="#334155"/><rect x="28" y="62" width="70" height="6" rx="3" fill="#334155"/><rect x="28" y="74" width="84" height="6" rx="3" fill="#334155"/><path d="M130 50v-8m-4 4 4-4 4 4" stroke="#22c55e" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg>
+        <h3>Votre publicité Google</h3>
+        <p>Être affiché tout en haut au moment où quelqu’un cherche votre métier aujourd’hui, dans votre zone.</p>
+      </article>
+    </div>
+    <ul class="ac-metiers" aria-label="Exemples de métiers concernés">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4l6 6-3 3-6-6zM11 7 3 15v6h6l8-8"/></svg>Artisans</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l2-5h14l2 5M4 9v11h16V9M3 9h18M9 20v-6h6v6"/></svg>Commerces</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3v8a2 2 0 0 0 2 2v8M5 3v6M9 3v6M17 3c-2 2-2 6 0 8v10"/></svg>Restaurants</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-8-5-8-11a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 6-8 11-8 11z"/></svg>Santé, bien-être</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7M5 10v10h14V10"/></svg>Immobilier</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v12H4zM9 8V5h6v3"/></svg>Cabinets, services</li>
+    </ul>
+    <div class="faq ac-faq">
+      <details><summary>Le diagnostic est-il vraiment gratuit ?</summary><p>Oui. Le test en ligne et l’analyse écrite qui suit, si vous la demandez, sont gratuits et ne vous engagent à rien.</p></details>
+      <details><summary>Ce test analyse-t-il ma vraie fiche Google ?</summary><p>Non, le résultat immédiat se base sur vos réponses. Ce que Google affiche réellement pour votre entreprise, je le vérifie moi-même si vous m’envoyez votre diagnostic, et je vous réponds par écrit.</p></details>
+      <details><summary>Pourquoi être sur Google quand on est un professionnel local ?</summary><p>Parce que vos clients y cherchent. 76 % des personnes qui font une recherche de proximité sur leur smartphone se rendent dans un établissement dans la journée (source : <a href="https://www.thinkwithgoogle.com/_qs/documents/620/mobile-search-trends-consumers-to-stores.pdf" target="_blank" rel="noopener noreferrer" style="color:#93c5fd">Google, Digital Diary, mai 2016</a>).</p></details>
+      <details><summary>Que deviennent mes réponses ?</summary><p>Elles restent dans votre navigateur. Rien n’est transmis tant que vous ne choisissez pas vous-même de m’envoyer votre diagnostic. Seule exception, si vous la demandez : l’analyse de votre site, dont l’adresse est alors envoyée à l’outil gratuit de Google PageSpeed Insights. Voir la <a href="/politique-de-confidentialite/" style="color:#93c5fd">politique de confidentialité</a>.</p></details>
+    </div>
+    <p class="ac-fin"><a class="ac-go" href="#diagnostic"><span>Je lance mon diagnostic</span><span class="ac-go-arr" aria-hidden="true">→</span></a></p>
+  </div></section>
+
 </main>
 <a class="ac-go ac-sticky" id="ac-sticky" href="#diagnostic" hidden><span>Diagnostiquer mon entreprise</span><span class="ac-go-arr" aria-hidden="true">→</span></a>
 <footer class="foot"><div class="w"><div class="fcols">
@@ -261,13 +333,12 @@ html{scroll-behavior:smooth}
   var f=document.getElementById('dg-form'),res=document.getElementById('dg-res'),err=document.getElementById('dg-err');
   function val(n){var c=f.querySelector('input[name="'+n+'"]:checked');return c?c.value:'';}
   function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
-  
+  // Lecture de l'annuaire public des entreprises (API gratuite de l'État, sans clé) : SIREN, SIRET, activité…
   var idIn=document.getElementById('dg-siren'),idBtn=document.getElementById('dg-id-btn'),idOut=document.getElementById('dg-id-out'),ident=null;
   var FORMES={'1000':'Entrepreneur individuel','5499':'SARL','5498':'EURL (SARL unipersonnelle)','5710':'SAS','5720':'SASU','5599':'SA','6540':'SCI','9220':'Association déclarée','5485':'SELARL','5785':'SELAS'};
   function grp(n,t){return n?n.replace(t==='siret'?/^(\d{3})(\d{3})(\d{3})(\d{5})$/:/^(\d{3})(\d{3})(\d{3})$/,t==='siret'?'$1 $2 $3 $4':'$1 $2 $3'):'';}
   function dateFr(d){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||'');if(!m)return '';var M=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];return (+m[3])+' '+M[+m[2]-1]+' '+m[1];}
   function msg(t){idOut.innerHTML='<p class="dg-id-msg">'+esc(t)+'</p>';}
-  
   function fiche(r){
     var sg=r.siege||{},lignes=[];
     var forme=FORMES[String(r.nature_juridique||'')]||'';
@@ -281,8 +352,20 @@ html{scroll-behavior:smooth}
     [['SIREN',ident.siren,1],['SIRET du siège',ident.siret,1],['Activité (NAF / APE)',actLib,1],['Adresse du siège',adresse,1],['Forme juridique',forme,1],['Numéro de TVA (calculé)',tva],['Dirigeants',dirTxt],['Date de création',ident.creation]].forEach(function(l){if(l[1])lignes.push('<dt>'+l[0]+'</dt><dd'+(l[2]?' class="dg-id-key"':'')+'>'+esc(l[1])+'</dd>');});
     idOut.innerHTML='<div class="dg-id-card"><h3>'+esc(ident.nom||'Entreprise')+(ident.ferme?' (fermée)':'')+'</h3><dl>'+lignes.join('')+'</dl>'
       +'<p class="dg-id-src">'+(tva?'Le numéro de TVA est calculé à partir du SIREN ; une entreprise en franchise de TVA peut ne pas l’utiliser. Vérification : service VIES de la Commission européenne. ':'')+'Source : <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/'+encodeURIComponent(r.siren)+'" target="_blank" rel="noopener noreferrer">annuaire des entreprises</a> (INSEE, RNE).</p></div>';
+      
+    var nomStr = ident.nom || '';
+    var villeStr = sg.libelle_commune || '';
+    
+    if(nomStr && villeStr) {
+      document.getElementById('dg-maps').value = nomStr + " " + villeStr;
+    }
+    
+    var radioSite = f.querySelector('input[name="site"][value="oui"]');
+    if(radioSite) { radioSite.checked = true; montrer(); }
+    
+    var radioFiche = f.querySelector('input[name="fiche"][value="oui"]');
+    if(radioFiche) { radioFiche.checked = true; montrer(); }
   }
-  
   var naf=null,nafP=null;
   function chargerNaf(){if(!nafP)nafP=fetch('/assets/naf.json').then(function(r){return r.ok?r.json():null;}).then(function(d){naf=d;}).catch(function(){});return nafP;}
   function chercher(){
@@ -304,15 +387,83 @@ html{scroll-behavior:smooth}
   }
   idBtn.addEventListener('click',chercher);
   idIn.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();chercher();}});
-
-  var pf=document.getElementById('ac-prog-fill'),pt=document.getElementById('ac-prog-txt');
-  f.addEventListener('change',function(e){
-    if(e.target.type==='radio') {
-      pf.style.width='100%';
-      pt.textContent='1 sur 1 réponse';
-    }
+  var an={site:null,fiche:null,ads:null},adsTag=null;
+  function montrer(){
+    document.getElementById('dg-an-site').hidden=!(val('site')&&val('site')!=='non');
+    document.getElementById('dg-an-fiche').hidden=!(val('fiche')&&val('fiche')!=='non');
+    document.getElementById('dg-an-ads').hidden=val('ads')!=='oui';
+  }
+  f.addEventListener('change',function(e){if(e.target.type==='radio')montrer();});
+  function classe(n){return n>=80?'dg-sc-ok':n>=50?'dg-sc-mid':'dg-sc-ko';}
+  function bloc(score,titre,plus,moins,src){
+    return '<div class="dg-sc '+classe(score)+'"><div class="dg-sc-top"><div class="dg-sc-num">'+score+'<small>sur 100</small></div><p><strong>'+esc(titre)+'</strong></p></div>'
+      +'<div class="dg-pn"><div class="dg-plus"><h4>Points positifs</h4><ul>'+(plus.length?plus.slice(0,3).map(function(t){return '<li>'+esc(t)+'</li>';}).join(''):'<li style="color:#94a3b8">Aucun pour l’instant</li>')+'</ul></div>'
+      +'<div class="dg-moins"><h4>Points à améliorer</h4><ul>'+(moins.length?moins.slice(0,3).map(function(t){return '<li>'+esc(t)+'</li>';}).join(''):'<li style="color:#94a3b8">Aucun relevé</li>')+'</ul></div></div>'
+      +'<p class="dg-sc-src">'+src+'</p></div>';
+  }
+  var PSI_CLE='';
+  var urlIn=document.getElementById('dg-url'),urlBtn=document.getElementById('dg-url-btn'),siteOut=document.getElementById('dg-an-site-out');
+  var AUDITS=[
+    ['is-on-https','Site sécurisé (adresse en https)','Site non sécurisé : pas d’adresse en https'],
+    ['viewport','Affichage adapté au téléphone','Affichage non adapté au téléphone'],
+    ['is-crawlable','Google peut référencer la page','La page est bloquée pour Google'],
+    ['http-status-code','La page répond correctement','La page répond avec une erreur'],
+    ['document-title','La page a un titre pour Google','La page n’a pas de titre pour Google'],
+    ['meta-description','Une description est prévue pour Google','Pas de description prévue pour Google'],
+    ['largest-contentful-paint',null,null],
+    ['image-alt','Images décrites (utile à Google et à l’accessibilité)','Images sans description'],
+    ['link-text','Liens clairs','Liens peu clairs (ex. : « cliquez ici »)'],
+    ['color-contrast','Texte bien contrasté, lisible','Texte peu contrasté, difficile à lire']];
+  function analyserSite(){
+    var u=urlIn.value.trim();
+    if(!/^https?:\/\//i.test(u))u='https://'+u.replace(/^\/+/,'');
+    var ok=false;try{var x=new URL(u);ok=/\./.test(x.hostname);}catch(e){}
+    if(!ok){siteOut.innerHTML='<p class="dg-id-msg">Saisissez l’adresse de votre site, par exemple www.mon-entreprise.fr.</p>';return;}
+    var lien='https://pagespeed.web.dev/report?url='+encodeURIComponent(u)+'&form_factor=mobile';
+    siteOut.innerHTML='<p class="dg-id-msg">Analyse en cours chez Google… (20 à 40 secondes)</p>';urlBtn.disabled=true;
+    var q='https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=mobile&locale=fr&category=performance&category=accessibility&category=best-practices&category=seo&url='+encodeURIComponent(u)+(PSI_CLE?'&key='+PSI_CLE:'');
+    fetch(q).then(function(r){if(!r.ok)throw new Error(r.status);return r.json();}).then(function(d){
+      var lh=d.lighthouseResult||{},c=lh.categories||{},a=lh.audits||{},vals=[],plus=[],moins=[];
+      ['performance','seo','accessibility','best-practices'].forEach(function(k){if(c[k]&&typeof c[k].score==='number')vals.push(c[k].score);});
+      if(!vals.length)throw new Error('vide');
+      var score=Math.round(vals.reduce(function(s,v){return s+v;},0)/vals.length*100);
+      var perf=c.performance&&typeof c.performance.score==='number'?Math.round(c.performance.score*100):null;
+      if(perf!==null){if(perf>=90)plus.push('Rapide sur téléphone (vitesse '+perf+'/100)');else if(perf<50)moins.push('Lent sur téléphone (vitesse '+perf+'/100)');}
+      AUDITS.forEach(function(t){
+        var x=a[t[0]];if(!x||typeof x.score!=='number')return;
+        if(t[0]==='largest-contentful-paint'){var s=(x.numericValue||0)/1000;if(x.score>=.9)plus.push('Contenu principal affiché en '+s.toFixed(1).replace('.',',')+' s');else if(x.score<.5)moins.push('Contenu principal affiché en '+s.toFixed(1).replace('.',',')+' s : le client attend');return;}
+        (x.score>=.9?plus:moins).push(x.score>=.9?t[1]:t[2]);
+      });
+      var tp=a['third-party-summary'],ents=tp&&tp.details&&tp.details.items||[];
+      adsTag=ents.some(function(e){var n=(e.entity&&(e.entity.text||e.entity))||'';return /Doubleclick|Google Ads/i.test(String(n));});
+      an.site={score:score,url:lh.finalDisplayedUrl||lh.finalUrl||u,plus:plus.slice(0,3),moins:moins.slice(0,3)};
+      siteOut.innerHTML=bloc(score,'Score de votre site sur téléphone',plus,moins,'Mesure Google PageSpeed Insights (vitesse, référencement, accessibilité, bonnes pratiques), faite à l’instant sur '+esc(an.site.url)+'. <a href="'+lien+'" target="_blank" rel="noopener noreferrer">Voir le détail chez Google</a>.');
+      if(an.ads)calcAds();
+    }).catch(function(){
+      siteOut.innerHTML='<p class="dg-id-msg">L’outil de Google ne répond pas pour le moment (limite d’utilisation atteinte ou site injoignable). Aucun score n’est inventé : <a href="'+lien+'" target="_blank" rel="noopener noreferrer" style="color:#93c5fd">ouvrez l’analyse directement chez Google</a>.</p>';
+    }).then(function(){urlBtn.disabled=false;});
+  }
+  urlBtn.addEventListener('click',analyserSite);
+  urlIn.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();analyserSite();}});
+  var FI=[["nap", 3, "Nom, adresse et téléphone exacts", "Nom, adresse ou téléphone à corriger : le client doit pouvoir vous appeler sans erreur"], ["cat", 3, "Catégorie principale = votre métier", "Catégorie principale à revoir : c’est elle qui vous rattache à la recherche de votre métier"], ["hor", 2, "Horaires à jour", "Horaires absents ou anciens : le client ne sait pas si vous êtes ouvert"], ["pho", 2, "Photos présentes", "Peu ou pas de photos : le client compare avec les fiches voisines"], ["avi", 2, "Des avis clients visibles", "Moins de 10 avis : c’est souvent le premier élément regardé"], ["rep", 1, "Réponses aux avis", "Avis sans réponse : répondre montre que vous êtes présent"], ["sit", 1, "Lien vers votre site", "Pas de lien vers un site : le client qui hésite n’a rien de plus à lire"], ["des", 1, "Description et services remplis", "Description ou services vides"], ["pub", 1, "Fiche mise à jour récemment", "Rien d’ajouté depuis plus de 3 mois"]],AI=[["zon", 3, "Diffusion limitée à votre zone", "Zone non limitée : des clics peuvent venir de clients trop loin"], ["pag", 3, "Page d’arrivée avec numéro ou bouton d’appel", "La page d’arrivée ne met pas en avant votre numéro"], ["cnv", 2, "Appels et demandes comptés", "Appels et demandes non comptés : impossible de savoir ce qui rapporte"], ["neg", 2, "Mots inutiles exclus", "Aucun mot exclu : vous pouvez payer des clics sans rapport avec votre métier"], ["tel", 1, "Numéro ou adresse sous l’annonce", "Ni numéro ni adresse sous l’annonce"], ["bud", 1, "Budget par jour connu", "Budget par jour non suivi"], ["sui", 1, "Résultats suivis chaque mois", "Résultats rarement regardés"]];
+  function cases(p,items){var tot=0,pts=0,plus=[],moins=[];items.forEach(function(it){tot+=it[1];var c=f.querySelector('input[name="'+p+'-'+it[0]+'"]');if(c&&c.checked){pts+=it[1];plus.push(it[2]);}else moins.push(it[3]);});return {score:Math.round(pts*100/tot),plus:plus,moins:moins};}
+  var mapsIn=document.getElementById('dg-maps');
+  document.getElementById('dg-maps-btn').addEventListener('click',function(){
+    var q=mapsIn.value.trim()||(ident&&ident.nom)||'';
+    if(!mapsIn.value.trim()&&q)mapsIn.value=q;
+    window.open('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q),'_blank','noopener');
   });
-
+  mapsIn.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();document.getElementById('dg-maps-btn').click();}});
+  function calcFiche(){var r=cases('gf',FI);an.fiche={score:r.score,plus:r.plus.slice(0,3),moins:r.moins.slice(0,3)};
+    document.getElementById('dg-an-fiche-out').innerHTML=bloc(r.score,'Score de votre fiche Google',r.plus,r.moins,'Score calculé d’après les cases que vous avez cochées en regardant votre fiche. Pour une vérification par un regard extérieur, envoyez votre diagnostic plus bas.');}
+  function calcAds(){var r=cases('ga',AI),plus=r.plus.slice(0,3),moins=r.moins.slice(0,3);
+    if(adsTag===true)plus.unshift('Balise Google Ads trouvée sur votre site (mesuré)');else if(adsTag===false)moins.unshift('Aucune balise Google Ads trouvée sur votre site (mesuré)');
+    an.ads={score:r.score,plus:plus.slice(0,3),moins:moins.slice(0,3)};
+    document.getElementById('dg-an-ads-out').innerHTML=bloc(r.score,'Score de votre publicité Google',plus,moins,'Score calculé d’après les cases que vous avez cochées.'+(adsTag===null?' Analysez votre site plus haut pour vérifier aussi la présence de la balise Google Ads.':' La balise Google Ads est vérifiée sur la page de votre site analysée plus haut, grâce à l’analyse Google PageSpeed Insights.'));}
+  document.getElementById('dg-fiche-btn').addEventListener('click',calcFiche);
+  document.getElementById('dg-ads-btn').addEventListener('click',calcAds);
+  var pf=document.getElementById('ac-prog-fill'),pt=document.getElementById('ac-prog-txt');
+  f.addEventListener('change',function(){var n=['site','fiche','ads'].filter(val).length;pf.style.width=(n*100/3)+'%';pt.textContent=n+' sur 3 réponse'+(n>1?'s':'');});
   document.querySelectorAll('a.ac-go[href="#diagnostic"]').forEach(function(a){a.addEventListener('click',function(){setTimeout(function(){document.getElementById('dg-siren').focus({preventScroll:true});},450);});});
   var sticky=document.getElementById('ac-sticky'),diagSec=document.getElementById('diagnostic'),heroGo=document.querySelector('.ac-hero .ac-go');
   if(sticky&&'IntersectionObserver' in window){
@@ -320,36 +471,33 @@ html{scroll-behavior:smooth}
     var io=new IntersectionObserver(function(es){es.forEach(function(e){vu[e.target===diagSec?'diag':'hero']=e.isIntersecting;});sticky.hidden=vu.hero||vu.diag;});
     io.observe(heroGo);io.observe(diagSec);
   }
-  
   f.addEventListener('submit',function(e){
     e.preventDefault();
-    var presence=val('presence'),ent=ident?ident.nom:document.getElementById('dg-siren').value.trim();
-    if(!presence){err.hidden=false;return;}
+    var site=val('site'),fiche=val('fiche'),ads=val('ads'),ent=ident?ident.nom:document.getElementById('dg-siren').value.trim();
+    if(!site||!fiche||!ads){err.hidden=false;return;}
     err.hidden=true;
     var pts=[],lignes=[];
-    var P={oui:['dg-ok','Présence en ligne : en place.','Vous avez les bases pour être trouvé.'],
-      non:['dg-ko','Présence en ligne : inexistante ou incomplète.','Sans site ou sans fiche Google, vous êtes invisible pour les clients qui cherchent sur leur téléphone.']}[presence];
-      
-    pts.push('<li class="'+P[0]+'"><strong>'+P[1]+'</strong> '+P[2]+'</li>');
-    lignes.push('- '+P[1]+' '+P[2]);
-
-    var titre, txt, offre, lien;
-    if(presence==='non'){
-      titre='🔴 Vous êtes invisible sur Google';
-      txt='Il vous manque les bases : une fiche complète et une page claire. Sans ça, l’appel part chez le concurrent visible.';
-      offre='Offre complète : site + fiche Google + Google Ads';
-      lien='#complete';
-    } else {
-      titre='🟢 Vous avez les bases';
-      txt='Vous avez un site et une fiche. L’étape suivante : utiliser la publicité (Google Ads) pour être affiché tout en haut au moment où le client cherche.';
-      offre='Boost Google Ads';
-      lien='#google-ads';
-    }
-
+    var S={oui:['dg-ok','Site web : en place.','Vérifiez qu’il affiche votre numéro et un bouton d’appel sur téléphone.'],
+      non:['dg-ko','Site web : absent.','Le client qui hésite n’a rien pour se rassurer, et la publicité Google Ads exige une page vers laquelle renvoyer.']}[site];
+    var F={oui:['dg-ok','Fiche Google : en place.','C’est elle qui vous fait apparaître sur Google Maps. Photos et horaires à jour gardent leur effet.'],
+      non:['dg-ko','Fiche Google : absente.','Quand on cherche votre métier près de chez vous, vous n’apparaissez pas sur la carte.']}[fiche];
+    var A={oui:['dg-ok','Publicité Google : active.','Un regard extérieur peut vérifier que vous ne payez pas de clics inutiles.'],
+      non:['dg-mid','Publicité Google : aucune.','Les annonces s’affichent au-dessus des résultats gratuits : c’est souvent là que le concurrent prend l’appel.']}[ads];
+    [S,F,A].forEach(function(p){pts.push('<li class="'+p[0]+'"><strong>'+p[1]+'</strong> '+p[2]+'</li>');lignes.push('- '+p[1]+' '+p[2]);});
+    [['site','Analyse du site (Google PageSpeed Insights, téléphone)'],['fiche','Analyse de la fiche Google (d’après mes cases)'],['ads','Analyse de la publicité Google (d’après mes cases)']].forEach(function(k){
+      var x=an[k[0]];if(!x||(k[0]!=='site'&&document.getElementById('dg-an-'+k[0]).hidden)||(k[0]==='site'&&site==='non'))return;
+      pts.push('<li class="'+(x.score>=80?'dg-ok':x.score>=50?'dg-mid':'dg-ko')+'"><strong>'+esc(k[1])+' : '+x.score+'/100.</strong>'+(x.plus.length?' Positif : '+esc(x.plus.join(', '))+'.':'')+(x.moins.length?' À améliorer : '+esc(x.moins.join(', '))+'.':'')+'</li>');
+      lignes.push('- '+k[1]+' : '+x.score+'/100'+(x.url?' ('+x.url+')':'')+(x.plus.length?' ; positif : '+x.plus.join(', '):'')+(x.moins.length?' ; à améliorer : '+x.moins.join(', '):''));
+    });
+    var siteOk=site==='oui',ficheOk=fiche==='oui',titre,txt,offre,lien;
+    if(!siteOk&&!ficheOk){titre='🔴 Vous êtes peu visible sur Google';txt='Il manque les bases : une fiche complète et une page claire. Avec la publicité en plus, vous êtes affiché tout en haut dès le lancement.';offre='Offre complète : site + fiche Google + Google Ads';lien='#complete';}
+    else if(!siteOk){titre='🟠 Votre fiche existe, votre site freine';txt='Un site absent ou peu clair fait hésiter. Une page simple avec bouton d’appel rassure le client et permet de lancer une publicité locale.';offre='Offre complète : site + fiche Google + Google Ads';lien='#complete';}
+    else if(!ficheOk){titre='🟠 Votre site existe, votre fiche Google est à créer ou compléter';txt='Sur la carte Google, c’est la fiche qui vous fait apparaître, avec votre numéro. C’est le point le plus simple à corriger.';offre='Fiche Google';lien='#fiche';}
+    else if(ads==='non'){titre='🟢 Les bases sont là, prêt pour Google Ads';txt='Site et fiche sont en place. L’étape suivante : une campagne limitée à votre ville et à votre métier, pour être affiché au moment où le client cherche.';offre='Google Ads';lien='#google-ads';}
+    else{titre='🟢 Tout est en place';txt='Vous avez les trois leviers. Un regard extérieur sur votre campagne et votre fiche peut montrer ce qui coûte sans rapporter.';offre='Sur mesure';lien='#sur-mesure';}
     var idTxt=ident?'Fiche entreprise (annuaire public) : '+[ident.nom,ident.siren&&'SIREN '+ident.siren,ident.siret&&'SIRET '+ident.siret,ident.act&&'activité '+ident.act,ident.adresse,ident.forme,ident.dir&&'dirigeants : '+ident.dir,ident.creation&&'créée le '+ident.creation].filter(Boolean).join(' · ')+'\n':'';
-    var corps='Bonjour,\n\nVoici mon diagnostic de visibilité locale, fait sur josyei.com.\n\nEntreprise : '+(ent||'(à compléter)')+'\n'+idTxt+'Résultat : '+titre.replace(/^\S+ /,'')+'\n'+lignes.join('\n')+'\nOffre suggérée : '+offre+'\n\nPouvez-vous vérifier ma fiche et mon site et me répondre par écrit ?\n\nMerci,\n';
+    var corps='Bonjour,\n\nVoici mon diagnostic de visibilité locale, fait sur josyei.com.\n\nEntreprise, métier, ville : '+(ent||'(à compléter)')+'\n'+idTxt+'Résultat : '+titre.replace(/^\S+ /,'')+'\n'+lignes.join('\n')+'\nOffre suggérée : '+offre+'\n\nPouvez-vous vérifier ma fiche et mon site et me répondre par écrit ?\n\nMerci,\n';
     var mail='mailto:mrjosyvalery@gmail.com?subject='+encodeURIComponent('Mon diagnostic de visibilité locale'+(ent?' : '+ent:''))+'&body='+encodeURIComponent(corps);
-    
     res.innerHTML='<h2>'+titre+'</h2>'+(ent?'<p style="color:#94a3b8;margin:0">Pour : '+esc(ent)+'</p>':'')+'<p>'+txt+'</p><ul class="dg-pts">'+pts.join('')+'</ul>'
       +'<p><strong>Offre qui correspond :</strong> <a href="/pack-google-site/'+lien+'" style="color:#93c5fd">'+offre+'</a></p>'
       +'<p style="color:#94a3b8;font-size:.92rem">Ce résultat se base uniquement sur vos réponses. Pour une analyse réelle, envoyez-moi votre diagnostic : je regarde ce que Google affiche pour votre entreprise et je vous réponds par écrit, gratuitement et sans engagement. JOSY EI ne promet ni position ni nombre d’appels.</p>'
