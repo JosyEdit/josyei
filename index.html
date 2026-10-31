@@ -214,10 +214,8 @@ html{scroll-behavior:smooth}
     <p class="ac-lead">Répondez simplement, sans chercher la réponse parfaite. Le numéro SIREN est facultatif.</p>
     <div class="ac-prog" aria-hidden="true"><div class="ac-prog-bar"><span id="ac-prog-fill"></span></div><span id="ac-prog-txt">0 sur 3 réponses</span></div>
   <form class="dg-form" id="dg-form" novalidate>
-    <label for="dg-ent">Votre entreprise, votre métier et votre ville</label>
-    <input type="text" id="dg-ent" name="entreprise" placeholder="ex. : Plomberie Dupont, plombier, Montmorillon" autocomplete="organization">
     <label for="dg-siren">Numéro SIREN ou SIRET, ou nom de l’entreprise <span class="dg-fac">(facultatif)</span></label>
-    <div class="dg-id-row"><input type="text" id="dg-siren" name="siren" placeholder="ex. : 914 113 543" autocomplete="off" inputmode="search"><button type="button" class="dg-id-btn" id="dg-id-btn">Rechercher</button></div>
+    <div class="dg-id-row"><input type="text" id="dg-siren" name="siren" placeholder="ex. : 914 113 543" autocomplete="off" inputmode="search"required><button type="button" class="dg-id-btn" id="dg-id-btn">Rechercher</button></div>
     <p class="dg-id-note">Lecture de l’annuaire public des entreprises (INSEE, RNE), sans inscription.</p>
     <div id="dg-id-out" aria-live="polite"></div>
     <fieldset><legend>Avez-vous un site internet ?</legend><div class="dg-opt">
