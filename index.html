@@ -334,6 +334,9 @@ html{scroll-behavior:smooth}
 var dgAnswers = { site: '', fiche: '', ads: '' };
 var dgEntName = '';
 
+// Cette fonction permet d'éviter les bugs avec les accents et caractères spéciaux
+function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+
 function openModal() { document.getElementById('dg-modal').classList.add('active'); }
 function closeModal() { document.getElementById('dg-modal').classList.remove('active'); }
 
@@ -434,7 +437,7 @@ function downloadPDF() {
         var list=(d&&d.results)||[];
         if(!list.length){msg('Aucune entreprise trouvée.');return;}
         if(list.length===1||/^\d+$/.test(num)){fiche(list[0]);return;}
-        idOut.innerHTML='<p class="dg-id-msg">Choisissez votre entreprise :</p><ul class="dg-id-list">'+list.map(function(r,i){var sg=r.siege||{};return '<li><button type="button" data-i="'+i+'">'+(r.nom_complet||'')+(sg.libelle_commune?' · '+sg.libelle_commune:'')+' · SIREN '+grp(r.siren,'siren')+'</button></li>';}).join('')+'</ul>';
+        idOut.innerHTML='<p class="dg-id-msg">Choisissez votre entreprise :</p><ul class="dg-id-list">'+list.map(function(r,i){var sg=r.siege||{};return '<li><button type="button" data-i="'+i+'">'+esc(r.nom_complet||'')+(sg.libelle_commune?' · '+esc(sg.libelle_commune):'')+' · SIREN '+grp(r.siren,'siren')+'</button></li>';}).join('')+'</ul>';
         idOut.querySelectorAll('button[data-i]').forEach(function(b){b.addEventListener('click',function(){fiche(list[+b.getAttribute('data-i')]);});});
       })
       .catch(function(){msg('Erreur de connexion.');});
