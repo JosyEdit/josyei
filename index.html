@@ -16,9 +16,10 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="stylesheet" href="/assets/site-enhancements.css?v=20261030c">
+<!-- Librairie pour le PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Diagnostic de visibilité locale","url":"https://josyei.com/","description":"Test gratuit en 2 minutes : site web, fiche Google, publicité Google Ads. Répondez à 4 questions et voyez ce qui manque pour être trouvé par les clients de votre ville.","publisher":{"@type":"Organization","name":"JOSY EI","url":"https://josyei.com/"}}</script>
 <style>
-
 body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}.jx{--noir:#0a0e27;--nuit:#1a1f3a;--blanc:#fff;--gris:#b0b8d4;--bleu:#0066ff;--cyan:#00d4ff}.w{width:min(1050px,calc(100% - 2rem));margin:auto}
 .top{background:#0a0e27;border-bottom:1px solid #26304f}.top>.w{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem}.brand{color:#fff;font-weight:800;text-decoration:none}.menu{display:flex;gap:1.5rem}.menu a,.drawer a{color:#d8def0;text-decoration:none}.burger{display:none;background:none;border:1px solid #526080;border-radius:6px;color:#fff;padding:.6rem 1rem;font:inherit}.drawer{padding:1rem;gap:.8rem;background:#121831}.drawer:not([hidden]){display:grid}
 .hero{min-height:55vh;padding:4rem 0;display:grid;place-items:center;text-align:center;background:radial-gradient(ellipse at 50% 0%,#1a1f3a,#0a0e27 72%)}.hero h1{font-size:clamp(2rem,5vw,3.25rem);margin:0 0 1rem}.hero p{color:#cbd5e1;max-width:60ch;margin:0 auto 1.6rem}.btn{display:inline-block;padding:.95rem 1.5rem;border-radius:8px;background:#2563eb;color:#fff;text-decoration:none;font-weight:700}.btn:hover{background:#1d4ed8}
@@ -141,30 +142,28 @@ html{scroll-behavior:smooth}
 @keyframes ac-pop{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
 @keyframes ac-ping{0%{transform:scale(.6);opacity:.5}100%{transform:scale(2.2);opacity:0}}
 @keyframes ac-blink{50%{opacity:0}}
+</style>
 <style>
-/* Barres d'analyse sous chaque question (30/10) : site (mesure Google PageSpeed Insights), fiche et publicité (vérification guidée). */
-.dg-an{margin:.8rem 0 0;padding:.9rem 1rem;background:#0f172a;border:1px dashed #475569;border-radius:12px}
-.dg-an[hidden]{display:none}
-.dg-an>label{font-size:.95rem}
-.dg-an input[type=url],.dg-an input[type=text]{width:100%;box-sizing:border-box;padding:.75rem;border-radius:8px;border:1px solid #475569;background:#0b1224;color:#fff;font:inherit}
-.dg-chk{list-style:none;padding:0;margin:.7rem 0 0;display:grid;gap:.35rem}
-.dg-form .dg-chk label{display:flex;align-items:flex-start;gap:.55rem;font-weight:400;color:#e2e8f0;margin:0;font-size:.93rem;cursor:pointer}
-.dg-chk input{accent-color:#22c55e;margin-top:.25rem;flex:0 0 auto}
-.dg-an-btn{margin-top:.7rem;width:100%;padding:.7rem}
-.dg-sc{margin:.8rem 0 0;padding:.9rem 1rem;background:#111a33;border:1px solid #334155;border-radius:10px}
-.dg-sc-top{display:flex;align-items:center;gap:.9rem}
-.dg-sc-num{flex:0 0 auto;display:grid;place-items:center;width:4.2rem;height:4.2rem;border-radius:50%;border:4px solid #64748b;font-weight:800;font-size:1.25rem;color:#fff;line-height:1}
-.dg-sc-num small{display:block;font-size:.65rem;font-weight:400;color:#94a3b8}
-.dg-sc-ok .dg-sc-num{border-color:#22c55e}.dg-sc-mid .dg-sc-num{border-color:#f59e0b}.dg-sc-ko .dg-sc-num{border-color:#ef4444}
-.dg-sc-top p{margin:0;color:#cbd5e1;font-size:.92rem}.dg-sc-top strong{color:#fff}
-.dg-pn{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.8rem 0 0}
-.dg-pn h4{margin:0 0 .35rem;font-size:.9rem;color:#f8fafc}
-.dg-pn ul{list-style:none;padding:0;margin:0;display:grid;gap:.35rem}
-.dg-pn li{font-size:.9rem;color:#cbd5e1;padding-left:1.3rem;position:relative}
-.dg-pn .dg-plus li::before{content:"✓";position:absolute;left:0;color:#22c55e;font-weight:800}
-.dg-pn .dg-moins li::before{content:"✗";position:absolute;left:0;color:#ef4444;font-weight:800}
-.dg-sc-src{margin:.7rem 0 0;font-size:.8rem;color:#94a3b8}.dg-sc-src a{color:#93c5fd}
-@media(max-width:560px){.dg-pn{grid-template-columns:1fr}}
+/* Styles pour le tiroir modal */
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(10,14,39,0.95);z-index:1000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.4s ease}
+.modal-overlay.active{opacity:1;pointer-events:auto}
+.modal-box{background:#1e293b;border:1px solid #334155;border-radius:16px;width:90%;max-width:650px;padding:2rem;position:relative;transform:translateY(30px);transition:transform 0.4s ease;max-height:90vh;overflow-y:auto;text-align:center}
+.modal-overlay.active .modal-box{transform:translateY(0)}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:#94a3b8;font-size:1.5rem;cursor:pointer}
+.modal-step{display:none;opacity:0;transition:opacity 0.4s ease}
+.modal-step.active{display:block;animation:fadeIn 0.4s forwards}
+@keyframes fadeIn{from{opacity:0;transform:scale(0.98)}to{opacity:1;transform:scale(1)}}
+.modal-q{font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:1.5rem}
+.modal-btn-group{display:flex;gap:1rem;justify-content:center;margin-top:1rem}
+.modal-btn{background:#0066ff;color:#fff;border:none;padding:1rem 2rem;border-radius:8px;font-weight:700;cursor:pointer;font-size:1rem;transition:background 0.2s;flex:1}
+.modal-btn:hover{background:#0052cc}
+.modal-btn.sec{background:#334155}
+.modal-btn.sec:hover{background:#475569}
+#pdf-content{background:#fff;color:#000;padding:2rem;border-radius:8px;text-align:left;display:none}
+.pdf-table{width:100%;border-collapse:collapse;margin-top:1rem}
+.pdf-table th,.pdf-table td{border:1px solid #ccc;padding:0.8rem;text-align:left}
+.pdf-table th{background:#f0f0f0}
+.pack-img{width:100%;max-width:300px;border-radius:8px;margin:1rem auto;display:block;border:2px solid #3b82f6}
 </style>
 </head>
 <body>
@@ -176,13 +175,13 @@ html{scroll-behavior:smooth}
     <div class="ac-hero-txt">
       <span class="badge">Gratuit · 2 minutes · sans inscription</span>
       <h1>Quand on cherche votre métier sur Google, est-ce <span class="ac-grad">vous</span> qu’on trouve&nbsp;?</h1>
-      <p>Une seule question sur votre site, votre fiche Google et votre publicité. Vous voyez tout de suite ce qui manque pour que les clients de votre ville vous appellent.</p>
+      <p>Trois questions sur votre site, votre fiche Google et votre publicité. Vous voyez tout de suite ce qui manque pour que les clients de votre ville vous appellent.</p>
       <a class="ac-go" href="#diagnostic"><span class="ac-go-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></span><span>Diagnostiquer mon entreprise</span><span class="ac-go-arr" aria-hidden="true">→</span></a>
       <p class="ac-go-sub">Résultat immédiat · vos réponses restent dans votre navigateur</p>
     </div>
     <figure class="ac-phone">
       <svg viewBox="0 0 300 420" role="img" aria-labelledby="ac-phone-t">
-        <title id="ac-phone-t">Illustration : un téléphone affiche une recherche Google locale et les points vérifiés par le diagnostic (site, fiche Google, publicité)</title>
+        <title id="ac-phone-t">Illustration : un téléphone affiche une recherche Google locale et les trois points vérifiés par le diagnostic (site, fiche Google, publicité)</title>
         <defs><linearGradient id="ac-g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0066ff"/><stop offset="1" stop-color="#00d4ff"/></linearGradient></defs>
         <rect x="30" y="8" width="240" height="404" rx="34" fill="#111833" stroke="#2b3866" stroke-width="3"/>
         <rect x="44" y="24" width="212" height="372" rx="22" fill="#0b1124"/>
@@ -210,42 +209,19 @@ html{scroll-behavior:smooth}
   </div></section>
 
   <section class="ac-diag" id="diagnostic" tabindex="-1"><div class="w">
-    <h2>Votre diagnostic</h2>
+    <h2>Votre diagnostic en 3 questions</h2>
     <p class="ac-lead">Répondez simplement, sans chercher la réponse parfaite. Le numéro SIREN est obligatoire.</p>
-    <div class="ac-prog" aria-hidden="true"><div class="ac-prog-bar"><span id="ac-prog-fill"></span></div><span id="ac-prog-txt">0 sur 1 réponse</span></div>
   <form class="dg-form" id="dg-form" novalidate>
     <label for="dg-siren">Numéro SIREN ou SIRET, ou nom de l’entreprise</label>
     <div class="dg-id-row"><input type="text" id="dg-siren" name="siren" placeholder="ex. : 914 113 543" autocomplete="off" inputmode="search" required><button type="button" class="dg-id-btn" id="dg-id-btn">Rechercher</button></div>
     <p class="dg-id-note">Lecture de l’annuaire public des entreprises (INSEE, RNE), sans inscription.</p>
     <div id="dg-id-out" aria-live="polite"></div>
     
-    <fieldset>
-      <legend>Avez-vous un site internet, une fiche Google et faites-vous de la publicité sur Google (Google Ads) ?</legend>
-      <div class="dg-opt">
-        <label><input type="radio" name="presence" value="oui">Oui, j'ai tout</label>
-        <label><input type="radio" name="presence" value="non">Non, il m'en manque un ou plusieurs</label>
-      </div>
-    </fieldset>
-
     <button type="submit" class="ac-go"><span>Voir mon résultat</span><span class="ac-go-arr" aria-hidden="true">→</span></button>
-    <p class="dg-err" id="dg-err" hidden>Merci de répondre à la question.</p>
+    <p class="dg-err" id="dg-err" hidden>Merci de saisir votre SIREN ou le nom de l'entreprise.</p>
   </form>
   <ul class="ex-reas"><li>Gratuit</li><li>Résultat immédiat</li><li>Pour les professionnels locaux</li><li>Vos réponses restent dans votre navigateur</li></ul>
 
-  <div class="dg-res" id="dg-res" hidden aria-live="polite"></div>
-  <details class="dg-moi">
-    <summary>Qui fait ce diagnostic : <strong>JOSY EI</strong></summary>
-    <dl>
-      <dt>SIREN</dt><dd>914 113 543</dd>
-      <dt>SIRET du siège</dt><dd>914 113 543 00021</dd>
-      <dt>Activité (NAF / APE)</dt><dd>Conseil en systèmes et logiciels informatiques (6202A)</dd>
-      <dt>Forme juridique</dt><dd>Entrepreneur individuel</dd>
-      <dt>Adresse du siège</dt><dd>5 boulevard Gambetta, LOG 19, 86500 Montmorillon</dd>
-      <dt>Date de création</dt><dd>10 juin 2026</dd>
-      <dt>TVA</dt><dd>TVA non applicable, article 293 B du CGI.</dd>
-    </dl>
-    <p class="dg-id-src">Source : <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/914113543" target="_blank" rel="noopener noreferrer">annuaire des entreprises</a> (INSEE, RNE). Vérifiable avec le numéro SIREN ci-dessus.</p>
-  </details>
   </div></section>
 
   <section class="ac-quoi"><div class="w">
@@ -283,116 +259,186 @@ html{scroll-behavior:smooth}
     </div>
     <p class="ac-fin"><a class="ac-go" href="#diagnostic"><span>Je lance mon diagnostic</span><span class="ac-go-arr" aria-hidden="true">→</span></a></p>
   </div></section>
-
 </main>
+
 <a class="ac-go ac-sticky" id="ac-sticky" href="#diagnostic" hidden><span>Diagnostiquer mon entreprise</span><span class="ac-go-arr" aria-hidden="true">→</span></a>
 <footer class="foot"><div class="w"><div class="fcols">
   <section><h2><a href="/contact/">CONTACT</a></h2><p>Pour toute question sur nos offres, répondez à l’email reçu ou écrivez sur LinkedIn.</p></section>
   <nav aria-label="Services"><h2><a href="/services/">SERVICES</a></h2><ul><li><a href="/conseil-ingenierie-si/">Conseil SI</a></li><li><a href="/developpement-logiciel/">Développement</a></li><li><a href="/automatisation-ia/">Automatisation &amp; IA</a></li><li><a href="/visibilite-seo-local/">Visibilité &amp; SEO</a></li><li><a href="/formation-accompagnement/">Formation</a></li></ul></nav>
   <nav aria-label="Informations"><h2><a href="/informations/">INFORMATIONS</a></h2><ul><li><a href="/zone-intervention/">Zone d’intervention</a></li><li><a href="/ressources/">Ressources</a></li><li><a href="/outils/">Outils recommandés</a></li><li><a href="/mentions-legales/">Mentions légales</a></li><li><a href="/politique-de-confidentialite/">Politique de confidentialité</a></li></ul></nav>
 </div><p class="copy">© 2026 JOSY EI · Entrepreneur individuel · SIREN 914 113 543 · NAF 6202A</p></div></footer></div>
-<script src="/assets/site-enhancements.js?v=20261030d" defer></script>
+
+<!-- DÉBUT DU TIROIR INTERACTIF (MODAL) -->
+<div class="modal-overlay" id="dg-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    
+    <div class="modal-step active" id="step-1">
+      <div class="modal-q">1/3 - Avez-vous un site internet ?</div>
+      <div class="modal-btn-group">
+        <button class="modal-btn" onclick="nextStep(2, 'site', 'oui')">Oui</button>
+        <button class="modal-btn sec" onclick="nextStep(2, 'site', 'non')">Non</button>
+      </div>
+    </div>
+
+    <div class="modal-step" id="step-2">
+      <div class="modal-q">2/3 - Avez-vous une fiche Google (Google Maps) ?</div>
+      <div class="modal-btn-group">
+        <button class="modal-btn" onclick="nextStep(3, 'fiche', 'oui')">Oui</button>
+        <button class="modal-btn sec" onclick="nextStep(3, 'fiche', 'non')">Non</button>
+      </div>
+    </div>
+
+    <div class="modal-step" id="step-3">
+      <div class="modal-q">3/3 - Faites-vous de la publicité sur Google (Google Ads) ?</div>
+      <div class="modal-btn-group">
+        <button class="modal-btn" onclick="nextStep(4, 'ads', 'oui')">Oui</button>
+        <button class="modal-btn sec" onclick="nextStep(4, 'ads', 'non')">Non</button>
+      </div>
+    </div>
+
+    <div class="modal-step" id="step-4">
+      <h2 style="color:#fff; margin-top:0;">Votre plan d'action personnalisé</h2>
+      <p style="color:#cbd5e1; margin-bottom:1.5rem;">Voici les actions exactes à mettre en place pour être visible.</p>
+      
+      <div id="pdf-content">
+        <h2 style="margin-top:0; color:#0a0e27;">Plan d'action JOSY EI</h2>
+        <p style="color:#333;">Entreprise : <strong id="pdf-ent-name">...</strong></p>
+        <table class="pdf-table">
+          <thead><tr><th>Levier</th><th>Statut actuel</th><th>Action à mettre en place</th></tr></thead>
+          <tbody id="pdf-table-body"></tbody>
+        </table>
+        <p style="margin-top:2rem; font-size:0.9rem; color:#666;">Recommandation JOSY EI : <strong id="pdf-pack-reco">...</strong></p>
+      </div>
+
+      <div id="screen-result">
+        <ul class="dg-pts" id="modal-pts" style="text-align:left;"></ul>
+        
+        <!-- Image du pack -->
+        <div style="margin-top: 1.5rem; background: #0f172a; border: 1px solid #3b82f6; border-radius: 10px; padding: 1rem;">
+            <h4 style="color:#fff; margin:0 0 0.5rem 0;">Le pack recommandé pour vous :</h4>
+            <p id="modal-pack-name" style="color:#93c5fd; font-weight:bold; font-size:1.2rem; margin:0 0 1rem 0;"></p>
+            <!-- Image placeholder - remplace l'URL par la vraie image de ton pack -->
+            <img id="modal-pack-img" class="pack-img" src="https://josyei.com/img/pack-google.png" alt="Pack recommandé" onerror="this.src='https://via.placeholder.com/300x150/1e293b/3b82f6?text=Visuel+du+Pack'">
+        </div>
+
+        <button class="modal-btn" style="margin-top: 1.5rem; width: 100%;" onclick="downloadPDF()">📥 Télécharger mon plan d'action (PDF)</button>
+        <a href="https://josyei.com/contact" class="modal-btn sec" style="margin-top: 0.5rem; width: 100%; display:block; box-sizing:border-box; text-decoration:none;">Me contacter pour ce pack</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- FIN DU TIROIR INTERACTIF -->
+
 <script>
+var dgAnswers = { site: '', fiche: '', ads: '' };
+var dgEntName = '';
+
+function openModal() { document.getElementById('dg-modal').classList.add('active'); }
+function closeModal() { document.getElementById('dg-modal').classList.remove('active'); }
+
+function nextStep(stepNumber, key, value) {
+    dgAnswers[key] = value;
+    document.querySelectorAll('.modal-step').forEach(el => el.classList.remove('active'));
+    setTimeout(() => {
+        document.getElementById('step-' + stepNumber).classList.add('active');
+        if(stepNumber === 4) { generateFinalResult(); }
+    }, 200);
+}
+
+function generateFinalResult() {
+    var pts = [];
+    var reco = '';
+    var pdfRows = '';
+
+    if(dgAnswers.site === 'oui') {
+        pts.push('<li class="dg-ok"><strong>Site internet : en place.</strong> Vérifiez qu\'il s\'affiche bien sur mobile.</li>');
+        pdfRows += '<tr><td>Site internet</td><td>Présent</td><td>Optimiser la vitesse et le bouton d\'appel</td></tr>';
+    } else {
+        pts.push('<li class="dg-ko"><strong>Site internet : absent.</strong> Une page simple est indispensable.</li>');
+        pdfRows += '<tr><td>Site internet</td><td>Absent</td><td>Créer un site vitrine 1 page avec bouton d\'appel</td></tr>';
+    }
+
+    if(dgAnswers.fiche === 'oui') {
+        pts.push('<li class="dg-ok"><strong>Fiche Google : en place.</strong> Ajoutez des photos récentes et répondez aux avis.</li>');
+        pdfRows += '<tr><td>Fiche Google</td><td>Présente</td><td>Ajouter photos et répondre aux avis</td></tr>';
+    } else {
+        pts.push('<li class="dg-ko"><strong>Fiche Google : absente.</strong> Sans elle, vous n\'êtes pas sur Google Maps.</li>');
+        pdfRows += '<tr><td>Fiche Google</td><td>Absente</td><td>Créer et optimiser la fiche Google Business Profile</td></tr>';
+    }
+
+    if(dgAnswers.ads === 'oui') {
+        pts.push('<li class="dg-ok"><strong>Google Ads : active.</strong> Vérifiez que vous ne payez pas de clics inutiles.</li>');
+        pdfRows += '<tr><td>Google Ads</td><td>Active</td><td>Auditer les campagnes pour optimiser le budget</td></tr>';
+    } else {
+        pts.push('<li class="dg-ko"><strong>Google Ads : absente.</strong> Vous laissez les appels à vos concurrents.</li>');
+        pdfRows += '<tr><td>Google Ads</td><td>Absente</td><td>Lancer une campagne locale ciblée (Ville + Métier)</td></tr>';
+    }
+
+    if(dgAnswers.site === 'oui' && dgAnswers.fiche === 'oui' && dgAnswers.ads === 'oui') {
+        reco = 'Audit et Optimisation sur-mesure';
+    } else if(dgAnswers.site === 'non' && dgAnswers.fiche === 'non') {
+        reco = 'Pack Complet : Site + Fiche Google + Google Ads';
+    } else {
+        reco = 'Pack Visibilité Locale (Site + Fiche + Ads)';
+    }
+
+    document.getElementById('modal-pts').innerHTML = pts.join('');
+    document.getElementById('modal-pack-name').innerText = reco;
+    document.getElementById('pdf-ent-name').innerText = dgEntName || 'Votre entreprise';
+    document.getElementById('pdf-table-body').innerHTML = pdfRows;
+    document.getElementById('pdf-pack-reco').innerText = reco;
+}
+
+function downloadPDF() {
+    var element = document.getElementById('pdf-content');
+    element.style.display = 'block'; 
+    var opt = { margin: 1, filename: 'Plan_Action_JOSY_EI.pdf', image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' } };
+    html2pdf().set(opt).from(element).save().then(function() { element.style.display = 'none'; });
+}
+
 (function(){
-  var f=document.getElementById('dg-form'),res=document.getElementById('dg-res'),err=document.getElementById('dg-err');
-  function val(n){var c=f.querySelector('input[name="'+n+'"]:checked');return c?c.value:'';}
-  function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
-  
+  var f=document.getElementById('dg-form'),err=document.getElementById('dg-err');
   var idIn=document.getElementById('dg-siren'),idBtn=document.getElementById('dg-id-btn'),idOut=document.getElementById('dg-id-out'),ident=null;
   var FORMES={'1000':'Entrepreneur individuel','5499':'SARL','5498':'EURL (SARL unipersonnelle)','5710':'SAS','5720':'SASU','5599':'SA','6540':'SCI','9220':'Association déclarée','5485':'SELARL','5785':'SELAS'};
   function grp(n,t){return n?n.replace(t==='siret'?/^(\d{3})(\d{3})(\d{3})(\d{5})$/:/^(\d{3})(\d{3})(\d{3})$/,t==='siret'?'$1 $2 $3 $4':'$1 $2 $3'):'';}
   function dateFr(d){var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||'');if(!m)return '';var M=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];return (+m[3])+' '+M[+m[2]-1]+' '+m[1];}
-  function msg(t){idOut.innerHTML='<p class="dg-id-msg">'+esc(t)+'</p>';}
+  function msg(t){idOut.innerHTML='<p class="dg-id-msg">'+t+'</p>';}
   
   function fiche(r){
     var sg=r.siege||{},lignes=[];
-    var forme=FORMES[String(r.nature_juridique||'')]||'';
-    var act=r.activite_principale||sg.activite_principale||'';
-    var actLib=naf&&naf[act]?naf[act]+' ('+act.replace('.','')+')':act;
     var adresse=sg.adresse||[sg.code_postal,sg.libelle_commune].filter(Boolean).join(' ');
-    var dir=(r.dirigeants||[]).map(function(d){var n=d.type_dirigeant==='personne morale'?(d.denomination||''):[d.prenoms,d.nom].filter(Boolean).join(' ');return n?n+(d.qualite?' ('+d.qualite+')':''):'';}).filter(Boolean);
-    var dirTxt=dir.slice(0,3).join(', ')+(dir.length>3?' et '+(dir.length-3)+' autre'+(dir.length>4?'s':''):'');
-    var tva=/^\d{9}$/.test(r.siren||'')?'FR'+('0'+((12+3*(+r.siren%97))%97)).slice(-2)+r.siren:'';
-    ident={tva:tva,dir:dirTxt,nom:r.nom_complet||r.nom_raison_sociale||'',siren:grp(r.siren,'siren'),siret:grp(sg.siret,'siret'),act:actLib,forme:forme,creation:dateFr(r.date_creation),adresse:adresse,ferme:r.etat_administratif==='C'};
-    [['SIREN',ident.siren,1],['SIRET du siège',ident.siret,1],['Activité (NAF / APE)',actLib,1],['Adresse du siège',adresse,1],['Forme juridique',forme,1],['Numéro de TVA (calculé)',tva],['Dirigeants',dirTxt],['Date de création',ident.creation]].forEach(function(l){if(l[1])lignes.push('<dt>'+l[0]+'</dt><dd'+(l[2]?' class="dg-id-key"':'')+'>'+esc(l[1])+'</dd>');});
-    idOut.innerHTML='<div class="dg-id-card"><h3>'+esc(ident.nom||'Entreprise')+(ident.ferme?' (fermée)':'')+'</h3><dl>'+lignes.join('')+'</dl>'
-      +'<p class="dg-id-src">'+(tva?'Le numéro de TVA est calculé à partir du SIREN ; une entreprise en franchise de TVA peut ne pas l’utiliser. Vérification : service VIES de la Commission européenne. ':'')+'Source : <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/'+encodeURIComponent(r.siren)+'" target="_blank" rel="noopener noreferrer">annuaire des entreprises</a> (INSEE, RNE).</p></div>';
+    ident={nom:r.nom_complet||r.nom_raison_sociale||'',siren:grp(r.siren,'siren'),siret:grp(sg.siret,'siret')};
+    dgEntName = ident.nom; 
+    lignes.push('<dt>SIREN</dt><dd>'+ident.siren+'</dd>');
+    lignes.push('<dt>Adresse</dt><dd>'+adresse+'</dd>');
+    idOut.innerHTML='<div class="dg-id-card"><h3>'+ident.nom+'</h3><dl>'+lignes.join('')+'</dl></div>';
   }
   
-  var naf=null,nafP=null;
-  function chargerNaf(){if(!nafP)nafP=fetch('/assets/naf.json').then(function(r){return r.ok?r.json():null;}).then(function(d){naf=d;}).catch(function(){});return nafP;}
   function chercher(){
     var q=idIn.value.trim(),num=q.replace(/[\s.]/g,'');
     ident=null;
-    if(/^\d+$/.test(num)&&num.length!==9&&num.length!==14){msg('Un SIREN compte 9 chiffres, un SIRET 14 chiffres.');return;}
-    if(q.length<3){msg('Saisissez un SIREN, un SIRET ou au moins 3 lettres du nom.');return;}
-    msg('Recherche en cours…');
-    Promise.all([fetch('https://recherche-entreprises.api.gouv.fr/search?per_page=5&q='+encodeURIComponent(/^\d+$/.test(num)?num:q)),chargerNaf()])
-      .then(function(x){var r=x[0];if(!r.ok)throw new Error(r.status);return r.json();})
+    if(q.length<3){msg('Saisissez un SIREN, un SIRET ou un nom.');return;}
+    msg('Recherche…');
+    fetch('https://recherche-entreprises.api.gouv.fr/search?per_page=5&q='+encodeURIComponent(/^\d+$/.test(num)?num:q))
+      .then(function(r){return r.json();})
       .then(function(d){
         var list=(d&&d.results)||[];
-        if(!list.length){msg('Aucune entreprise trouvée. Vérifiez le numéro ou le nom.');return;}
+        if(!list.length){msg('Aucune entreprise trouvée.');return;}
         if(list.length===1||/^\d+$/.test(num)){fiche(list[0]);return;}
-        idOut.innerHTML='<p class="dg-id-msg">Choisissez votre entreprise :</p><ul class="dg-id-list">'+list.map(function(r,i){var sg=r.siege||{};return '<li><button type="button" data-i="'+i+'">'+esc((r.nom_complet||'')+(sg.libelle_commune?' · '+sg.libelle_commune:'')+' · SIREN '+grp(r.siren,'siren'))+'</button></li>';}).join('')+'</ul>';
+        idOut.innerHTML='<p class="dg-id-msg">Choisissez votre entreprise :</p><ul class="dg-id-list">'+list.map(function(r,i){var sg=r.siege||{};return '<li><button type="button" data-i="'+i+'">'+(r.nom_complet||'')+(sg.libelle_commune?' · '+sg.libelle_commune:'')+' · SIREN '+grp(r.siren,'siren')+'</button></li>';}).join('')+'</ul>';
         idOut.querySelectorAll('button[data-i]').forEach(function(b){b.addEventListener('click',function(){fiche(list[+b.getAttribute('data-i')]);});});
       })
-      .catch(function(){msg('L’annuaire ne répond pas pour le moment. Vous pouvez faire le diagnostic sans ce numéro.');});
+      .catch(function(){msg('Erreur de connexion.');});
   }
   idBtn.addEventListener('click',chercher);
   idIn.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();chercher();}});
 
-  var pf=document.getElementById('ac-prog-fill'),pt=document.getElementById('ac-prog-txt');
-  f.addEventListener('change',function(e){
-    if(e.target.type==='radio') {
-      pf.style.width='100%';
-      pt.textContent='1 sur 1 réponse';
-    }
-  });
-
-  document.querySelectorAll('a.ac-go[href="#diagnostic"]').forEach(function(a){a.addEventListener('click',function(){setTimeout(function(){document.getElementById('dg-siren').focus({preventScroll:true});},450);});});
-  var sticky=document.getElementById('ac-sticky'),diagSec=document.getElementById('diagnostic'),heroGo=document.querySelector('.ac-hero .ac-go');
-  if(sticky&&'IntersectionObserver' in window){
-    var vu={hero:true,diag:false};
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){vu[e.target===diagSec?'diag':'hero']=e.isIntersecting;});sticky.hidden=vu.hero||vu.diag;});
-    io.observe(heroGo);io.observe(diagSec);
-  }
-  
   f.addEventListener('submit',function(e){
     e.preventDefault();
-    var presence=val('presence'),ent=ident?ident.nom:document.getElementById('dg-siren').value.trim();
-    if(!presence){err.hidden=false;return;}
+    if(!idIn.value.trim()){err.hidden=false;return;}
     err.hidden=true;
-    var pts=[],lignes=[];
-    var P={oui:['dg-ok','Présence en ligne : complète.','Vous avez un site, une fiche Google et de la publicité.'],
-      non:['dg-ko','Présence en ligne : incomplète.','Il vous manque au moins un des trois piliers (site, fiche, ou publicité) pour être visible.']}[presence];
-      
-    pts.push('<li class="'+P[0]+'"><strong>'+P[1]+'</strong> '+P[2]+'</li>');
-    lignes.push('- '+P[1]+' '+P[2]);
-
-    var titre, txt, offre, lien;
-    if(presence==='non'){
-      titre='🔴 Il vous manque des éléments essentiels';
-      txt='Pour que les clients vous trouvent sur Google, vous avez besoin des trois : un site web, une fiche Google, et de la publicité.';
-      offre='Offre complète : site + fiche Google + Google Ads';
-      lien='#complete';
-    } else {
-      titre='🟢 Vous avez les bases';
-      txt='Vous avez un site, une fiche et de la publicité. L’étape suivante : vérifier que tout est bien optimisé pour ne pas payer de clics inutiles.';
-      offre='Audit d\'optimisation';
-      lien='#google-ads';
-    }
-
-    var idTxt=ident?'Fiche entreprise (annuaire public) : '+[ident.nom,ident.siren&&'SIREN '+ident.siren,ident.siret&&'SIRET '+ident.siret,ident.act&&'activité '+ident.act,ident.adresse,ident.forme,ident.dir&&'dirigeants : '+ident.dir,ident.creation&&'créée le '+ident.creation].filter(Boolean).join(' · ')+'\n':'';
-    var corps='Bonjour,\n\nVoici mon diagnostic de visibilité locale, fait sur josyei.com.\n\nEntreprise : '+(ent||'(à compléter)')+'\n'+idTxt+'Résultat : '+titre.replace(/^\S+ /,'')+'\n'+lignes.join('\n')+'\nOffre suggérée : '+offre+'\n\nPouvez-vous vérifier ma fiche et mon site et me répondre par écrit ?\n\nMerci,\n';
-    var mail='mailto:mrjosyvalery@gmail.com?subject='+encodeURIComponent('Mon diagnostic de visibilité locale'+(ent?' : '+ent:''))+'&body='+encodeURIComponent(corps);
-    
-    res.innerHTML='<h2>'+titre+'</h2>'+(ent?'<p style="color:#94a3b8;margin:0">Pour : '+esc(ent)+'</p>':'')+'<p>'+txt+'</p><ul class="dg-pts">'+pts.join('')+'</ul>'
-      +'<p><strong>Offre qui correspond :</strong> <a href="/pack-google-site/'+lien+'" style="color:#93c5fd">'+offre+'</a></p>'
-      +'<p style="color:#94a3b8;font-size:.92rem">Ce résultat se base uniquement sur vos réponses. Pour une analyse réelle, envoyez-moi votre diagnostic : je regarde ce que Google affiche pour votre entreprise et je vous réponds par écrit, gratuitement et sans engagement. JOSY EI ne promet ni position ni nombre d’appels.</p>'
-      +'<div class="dg-act"><a class="ex-btn" href="'+mail+'">Recevoir mon analyse par email</a><a class="ex-btn dg-sec" href="https://www.linkedin.com/in/josyei/" target="_blank" rel="noopener noreferrer" id="dg-li">Envoyer sur LinkedIn</a></div><p style="color:#94a3b8;font-size:.85rem;margin-top:.5rem">Sur LinkedIn, votre diagnostic est copié : collez-le dans votre message.</p>';
-    res.hidden=false;
-    document.getElementById('dg-li').addEventListener('click',function(){try{navigator.clipboard.writeText(corps);}catch(x){}});
-    res.scrollIntoView({behavior:'smooth',block:'start'});
+    openModal();
   });
 })();
 </script>
