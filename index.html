@@ -4,19 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Diagnostic de visibilité locale gratuit : site, fiche Google, Google Ads | JOSY EI</title>
-<meta name="description" content="Test gratuit en 2 minutes : site web, fiche Google, publicité Google Ads. Répondez à 4 questions et voyez ce qui manque pour être trouvé par les clients de votre ville.">
+<meta name="description" content="Test gratuit en 2 minutes : site web, fiche Google, publicité Google Ads. Répondez à 3 questions et voyez ce qui manque pour être trouvé par les clients de votre ville.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://josyei.com/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:title" content="Diagnostic de visibilité locale gratuit | JOSY EI">
-<meta property="og:description" content="Test gratuit en 2 minutes : site web, fiche Google, publicité Google Ads. Répondez à 4 questions et voyez ce qui manque pour être trouvé par les clients de votre ville.">
+<meta property="og:description" content="Test gratuit en 2 minutes : site web, fiche Google, publicité Google Ads. Répondez à 3 questions et voyez ce qui manque pour être trouvé par les clients de votre ville.">
 <meta property="og:url" content="https://josyei.com/">
 <meta property="og:image" content="https://josyei.com/img/og-josy-ei.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="stylesheet" href="/assets/site-enhancements.css?v=20261030c">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Diagnostic de visibilité locale","url":"https://josyei.com/","description":"Test gratuit en 2 minutes : site web, fiche Google, publicité Google Ads. Répondez à 4 questions et voyez ce qui manque pour être trouvé par les clients de votre ville.","publisher":{"@type":"Organization","name":"JOSY EI","url":"https://josyei.com/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Diagnostic de visibilité locale","url":"https://josyei.com/","description":"Test gratuit en 2 minutes : site web, fiche Google, publicité Google Ads. Répondez à 3 questions et voyez ce qui manque pour être trouvé par les clients de votre ville.","publisher":{"@type":"Organization","name":"JOSY EI","url":"https://josyei.com/"}}</script>
 <style>
 body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}.jx{--noir:#0a0e27;--nuit:#1a1f3a;--blanc:#fff;--gris:#b0b8d4;--bleu:#0066ff;--cyan:#00d4ff}.w{width:min(1050px,calc(100% - 2rem));margin:auto}
 .top{background:#0a0e27;border-bottom:1px solid #26304f}.top>.w{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:1rem}.brand{color:#fff;font-weight:800;text-decoration:none}.menu{display:flex;gap:1.5rem}.menu a,.drawer a{color:#d8def0;text-decoration:none}.burger{display:none;background:none;border:1px solid #526080;border-radius:6px;color:#fff;padding:.6rem 1rem;font:inherit}.drawer{padding:1rem;gap:.8rem;background:#121831}.drawer:not([hidden]){display:grid}
@@ -155,6 +155,55 @@ html{scroll-behavior:smooth}
 #page-resultats { padding: 3rem 0; display: none; }
 #page-resultats .w { max-width: 800px; }
 </style>
+<style>
+/* 01/11 : accueil qui vend (étapes, confiance, offres, résultat honnête) */
+.ac-etapes{list-style:none;padding:0;margin:0 auto 1.4rem;max-width:640px;display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;counter-reset:e}
+.ac-etapes li{counter-increment:e;background:#0f172a;border:1px solid #334155;border-radius:12px;padding:.6rem .7rem;font-size:.88rem;color:#cbd5e1;text-align:center}
+.ac-etapes li::before{content:counter(e);display:block;margin:0 auto .3rem;width:1.6rem;height:1.6rem;line-height:1.6rem;border-radius:50%;background:#2563eb;color:#fff;font-weight:800}
+.ac-etapes strong{display:block;color:#fff}
+.dg-form .ac-go{width:100%;justify-content:center;margin-top:1.2rem;box-sizing:border-box}
+.dg-form .ac-go[disabled]{opacity:.7;cursor:wait}
+.ac-sec{padding:3rem 0;border-top:1px solid #1e293b}
+.ac-sec h2{font-size:clamp(1.4rem,3.2vw,2rem);text-align:center;margin:0 0 .5rem;color:#fff}
+.ac-off{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.4rem}
+.ac-off a{display:flex;flex-direction:column;gap:.4rem;background:#1e293b;border:1px solid #334155;border-radius:14px;padding:1.2rem;text-decoration:none;color:#cbd5e1;transition:border-color .2s,transform .2s}
+.ac-off a:hover,.ac-off a:focus-visible{border-color:#3b82f6;transform:translateY(-2px)}
+.ac-off strong{color:#fff;font-size:1.1rem}.ac-off span.go{margin-top:auto;color:#7dd3fc;font-weight:700}
+.ac-off .top{border:2px solid #3b82f6}
+.ac-conf{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.4rem}
+.ac-conf div{background:#1e293b;border:1px solid #334155;border-radius:12px;padding:1rem 1.1rem;color:#cbd5e1;font-size:.95rem}
+.ac-conf strong{display:block;color:#fff;margin-bottom:.3rem}.ac-conf a{color:#7dd3fc}
+.ac-final{text-align:center;padding:3rem 0 4rem;border-top:1px solid #1e293b}
+.ac-final p{color:#94a3b8;max-width:52ch;margin:0 auto 1.3rem}
+.faq a{color:#93c5fd}
+/* Fenêtre des questions */
+.modal-prog{height:6px;background:#334155;border-radius:3px;margin:0 2rem 1.4rem;overflow:hidden}
+.modal-prog span{display:block;height:100%;width:33%;background:linear-gradient(90deg,#0066ff,#00d4ff);transition:width .3s}
+.modal-aide{color:#94a3b8;font-size:.92rem;margin:-1rem 0 1.2rem}
+.modal-retour{background:none;border:0;color:#94a3b8;text-decoration:underline;cursor:pointer;font:inherit;font-size:.9rem;margin-top:1.1rem}
+/* Résultat */
+.res-niveau{display:flex;gap:.4rem;justify-content:center;margin:.9rem 0 .3rem}
+.res-niveau i{width:56px;height:10px;border-radius:5px;background:#334155}.res-niveau i.on{background:#22c55e}
+.res-niveau-txt{color:#cbd5e1;margin:0;font-size:.95rem}
+.res-table td:first-child{color:#fff;font-weight:700;white-space:nowrap}
+.res-table small{display:block;color:#94a3b8;font-size:.82rem;margin-top:.25rem}
+.res-src{color:#94a3b8;font-size:.82rem;margin:.6rem 0 0}
+.res-pack{margin-top:2rem;background:#0f172a;border:2px solid #3b82f6;border-radius:12px;padding:1.6rem;text-align:center}
+.res-pack h3{color:#94a3b8;margin:0 0 .4rem;font-size:.85rem;text-transform:uppercase;letter-spacing:.05em}
+.res-pack-nom{color:#fff;font-weight:800;font-size:1.45rem;margin:0}
+.res-pack-prix{color:#93c5fd;font-weight:700;margin:.3rem 0 .4rem}
+.res-pack-pourquoi{color:#cbd5e1;margin:0 auto 1.2rem;max-width:56ch}
+.res-pack .ac-go{width:100%;justify-content:center;box-sizing:border-box}
+.res-pack-plus{color:#94a3b8;font-size:.9rem;margin:.9rem 0 0}.res-pack-plus a{color:#7dd3fc}
+.res-bloc{margin-top:2rem;background:#1e293b;border:1px solid #334155;border-radius:12px;padding:1.4rem}
+.res-bloc h3{margin:0 0 .6rem;color:#fff}
+.res-bloc ol{margin:0;padding-left:1.3rem;color:#cbd5e1}.res-bloc li{margin:.35rem 0}
+.res-envoi{margin-top:1.1rem}.res-envoi .ex-btn{flex:1 1 200px;text-align:center;margin:0;box-sizing:border-box}
+.res-envoi-note{color:#94a3b8;font-size:.85rem;margin:.7rem 0 0}
+.res-qui{margin-top:1.4rem;color:#94a3b8;font-size:.85rem;text-align:center}.res-qui a{color:inherit}
+.res-refaire{display:block;margin:1.6rem auto 0;background:none;border:0;color:#94a3b8;text-decoration:underline;cursor:pointer;font:inherit}
+@media(max-width:760px){.ac-off{grid-template-columns:1fr}.ac-etapes li{font-size:.8rem;padding:.5rem .4rem}.res-table thead,.res-table td:nth-child(3){display:none}.res-table tr{display:grid;grid-template-columns:1fr auto;border-bottom:1px solid #334155}.res-table tr:last-child{border-bottom:0}.res-table td{border:0;padding:.55rem .7rem}.res-table td:nth-child(4){grid-column:1/-1;padding-top:0}.modal-box{padding:1.6rem 1.1rem}.modal-btn{padding:.9rem 1rem}}
+</style>
 </head>
 <body>
 <div class="jx">
@@ -201,15 +250,20 @@ html{scroll-behavior:smooth}
 
     <section class="ac-diag" id="diagnostic"><div class="w">
       <h2>Votre diagnostic en 3 questions</h2>
-      <p class="ac-lead">Répondez simplement, sans chercher la réponse parfaite. Le numéro SIREN est obligatoire.</p>
+      <p class="ac-lead">Indiquez votre entreprise, puis répondez par oui ou non. Pas besoin de chercher la réponse parfaite.</p>
+      <ol class="ac-etapes">
+        <li><strong>Votre entreprise</strong>SIREN ou nom</li>
+        <li><strong>3 questions</strong>oui ou non</li>
+        <li><strong>Votre bilan</strong>tout de suite</li>
+      </ol>
     <form class="dg-form" id="dg-form" novalidate>
       <label for="dg-siren">Numéro SIREN ou SIRET, ou nom de l’entreprise</label>
       <div class="dg-id-row"><input type="text" id="dg-siren" name="siren" placeholder="ex. : 914 113 543" autocomplete="off" inputmode="search" required><button type="button" class="dg-id-btn" id="dg-id-btn">Rechercher</button></div>
-      <p class="dg-id-note">Lecture de l’annuaire public des entreprises (INSEE, RNE), sans inscription.</p>
+      <p class="dg-id-note">Votre fiche est lue dans l’annuaire public des entreprises (INSEE, RNE). Sans inscription, sans compte.</p>
       <div id="dg-id-out" aria-live="polite"></div>
       
-      <button type="submit" class="ac-go"><span>Voir mon résultat</span><span class="ac-go-arr" aria-hidden="true">→</span></button>
-      <p class="dg-err" id="dg-err" hidden>Merci de saisir votre SIREN ou le nom de l'entreprise.</p>
+      <button type="submit" class="ac-go" id="dg-go"><span>Commencer les 3 questions</span><span class="ac-go-arr" aria-hidden="true">→</span></button>
+      <p class="dg-err" id="dg-err" hidden>Saisissez votre SIREN, votre SIRET ou le nom de votre entreprise.</p>
     </form>
     <ul class="ex-reas"><li>Gratuit</li><li>Résultat immédiat</li><li>Pour les professionnels locaux</li><li>Vos réponses restent dans votre navigateur</li></ul>
     </div></section>
@@ -235,56 +289,89 @@ html{scroll-behavior:smooth}
       </div>
       <div class="faq ac-faq">
         <details><summary>Le diagnostic est-il vraiment gratuit ?</summary><p>Oui. Le test en ligne et l’analyse écrite qui suit, si vous la demandez, sont gratuits et ne vous engagent à rien.</p></details>
+        <details><summary>Et si je veux de l’aide ensuite, combien ça coûte ?</summary><p>Les offres et leurs prix sont affichés sur la <a href="/pack-google-site/">page des offres</a>, de la fiche Google seule à l’offre complète. Rien n’est facturé sans votre accord écrit, et la gestion mensuelle se résilie chaque mois.</p></details>
+        <details><summary>Vous garantissez combien de clients ?</summary><p>Aucun chiffre n’est garanti : personne ne peut le promettre honnêtement. Ce qui est garanti, c’est le travail fait, écrit noir sur blanc, et un rapport chaque mois si vous prenez la gestion Google Ads.</p></details>
         <details><summary>Ce test analyse-t-il ma vraie fiche Google ?</summary><p>Non, le résultat immédiat se base sur vos réponses. Ce que Google affiche réellement pour votre entreprise, je le vérifie moi-même si vous m’envoyez votre diagnostic, et je vous réponds par écrit.</p></details>
         <details><summary>Pourquoi être sur Google quand on est un professionnel local ?</summary><p>Parce que vos clients y cherchent. 76 % des personnes qui font une recherche de proximité sur leur smartphone se rendent dans un établissement dans la journée (source : <a href="https://www.thinkwithgoogle.com/_qs/documents/620/mobile-search-trends-consumers-to-stores.pdf" target="_blank" rel="noopener noreferrer" style="color:#93c5fd">Google, Digital Diary, mai 2016</a>).</p></details>
-        <details><summary>Que deviennent mes réponses ?</summary><p>Elles restent dans votre navigateur. Rien n’est transmis tant que vous ne choisissez pas vous-même de m’envoyer votre diagnostic. Seule exception, si vous la demandez : l’analyse de votre site, dont l’adresse est alors envoyée à l’outil gratuit de Google PageSpeed Insights. Voir la <a href="/politique-de-confidentialite/" style="color:#93c5fd">politique de confidentialité</a>.</p></details>
+        <details><summary>Que deviennent mes réponses ?</summary><p>Elles restent dans votre navigateur. Rien n’est transmis tant que vous ne choisissez pas vous-même de m’envoyer votre diagnostic. La recherche de votre entreprise interroge l’annuaire public des entreprises (data.gouv.fr). Voir la <a href="/politique-de-confidentialite/" style="color:#93c5fd">politique de confidentialité</a>.</p></details>
       </div>
+    </div></section>
+
+    <section class="ac-sec" id="offres-accueil"><div class="w">
+      <h2>Ensuite, si vous voulez de l’aide</h2>
+      <p class="ac-lead">Le diagnostic vous dit ce qui manque. Vous pouvez le corriger seul, ou me le confier. Prix fixes, affichés avant tout engagement.</p>
+      <div class="ac-off">
+        <a href="/pack-google-site/#fiche"><strong>Fiche Google</strong>Création ou mise à jour de votre fiche : photos, horaires, services, zone.<span class="go">Voir l’offre →</span></a>
+        <a href="/pack-google-site/#presence"><strong>Site + fiche Google</strong>Un site d’une page lisible sur téléphone, avec bouton d’appel, et votre fiche Google.<span class="go">Voir l’offre →</span></a>
+        <a class="top" href="/pack-google-site/#complete"><strong>Site + fiche + Google Ads</strong>Tout, plus une campagne locale gérée chaque mois, avec un rapport écrit.<span class="go">Voir l’offre →</span></a>
+      </div>
+      <p class="ac-lead" style="margin-top:1.2rem">Toutes les offres et les prix : <a href="/pack-google-site/" style="color:#7dd3fc">page des offres</a>.</p>
+    </div></section>
+
+    <section class="ac-sec"><div class="w">
+      <h2>Avec qui vous parlez</h2>
+      <div class="ac-conf">
+        <div><strong>Une entreprise déclarée</strong>JOSY EI, entrepreneur individuel, SIREN 914 113 543. <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/914113543" target="_blank" rel="noopener noreferrer">Vérifier sur l’annuaire officiel</a>.</div>
+        <div><strong>Vous restez propriétaire</strong>Votre fiche Google, votre site et votre compte Google Ads sont à votre nom.</div>
+        <div><strong>Votre budget reste chez vous</strong>Le budget publicitaire est payé par vous, directement à Google. Aucune commission dessus.</div>
+        <div><strong>Sans engagement</strong>Prix fixes écrits avant de commencer. Gestion mensuelle résiliable chaque mois.</div>
+      </div>
+    </div></section>
+
+    <section class="ac-final"><div class="w">
+      <h2 style="color:#fff;margin:0 0 .6rem;font-size:clamp(1.4rem,3.2vw,2rem)">Deux minutes pour savoir où vous en êtes</h2>
+      <p>Gratuit, sans inscription. Vous gardez votre bilan, et vous décidez ensuite.</p>
+      <a class="ac-go" href="#diagnostic"><span>Faire mon diagnostic</span><span class="ac-go-arr" aria-hidden="true">→</span></a>
     </div></section>
   </div>
 
-  <!-- NOUVELLE PAGE : RÉSULTATS -->
-  <section id="page-resultats">
+  <!-- PAGE RÉSULTATS (01/11 : aucun score inventé, tout vient des réponses ou de l'annuaire public) -->
+  <section id="page-resultats" aria-live="polite">
     <div class="w">
       <div style="text-align:center; margin-bottom:2rem;">
-        <span class="badge" style="background:#22c55e; border-color:#22c55e; color:#000;">Analyse terminée</span>
-        <h2 style="color:#fff; font-size:2rem; margin:0;">Bilan de visibilité</h2>
+        <span class="badge" style="background:#22c55e; border-color:#22c55e; color:#000;">Bilan prêt</span>
+        <h2 style="color:#fff; font-size:2rem; margin:0;">Votre bilan de visibilité</h2>
         <p id="res-ent-name" style="color:#93c5fd; font-weight:bold; font-size:1.2rem; margin-top:.5rem;"></p>
+        <div class="res-niveau" id="res-niveau" aria-hidden="true"><i></i><i></i><i></i></div>
+        <p class="res-niveau-txt" id="res-niveau-txt"></p>
       </div>
 
-      <!-- Synthèse Globale -->
-      <div id="global-analysis" style="background:#1e293b; border-left:4px solid #3b82f6; padding:1.5rem; border-radius:8px; margin-bottom:2rem; color:#cbd5e1; line-height:1.6;">
-        <!-- Rempli par JS -->
-      </div>
+      <div id="global-analysis" style="background:#1e293b; border-left:4px solid #3b82f6; padding:1.5rem; border-radius:8px; margin-bottom:2rem; color:#cbd5e1; line-height:1.6;"></div>
 
-      <!-- Analyse -->
-      <ul class="dg-pts" id="modal-pts" style="text-align:left; margin-bottom:2rem;"></ul>
-      
-      <!-- Tableau de résultats -->
       <div style="background:#1e293b; padding:1rem; border-radius:12px; border:1px solid #334155; overflow-x:auto;">
         <table class="res-table">
-          <thead>
-            <tr>
-              <th>Levier</th>
-              <th>Outil / Techno</th>
-              <th>Statut</th>
-              <th>Analyse & Impact</th>
-            </tr>
-          </thead>
-          <tbody id="res-table-body">
-            <!-- Rempli par JS -->
-          </tbody>
+          <thead><tr><th>Élément</th><th>D’après vos réponses</th><th>Pourquoi c’est utile</th><th>À faire</th></tr></thead>
+          <tbody id="res-table-body"></tbody>
         </table>
+        <p class="res-src">Ce bilan se base sur vos réponses, pas sur une mesure de votre site ou de votre fiche. Pour une vérification réelle, envoyez-le : je regarde ce que Google affiche vraiment pour votre entreprise.</p>
       </div>
 
-      <!-- Pack Recommandé -->
-      <div style="margin-top: 2rem; background: #0f172a; border: 2px solid #3b82f6; border-radius: 12px; padding: 2rem; text-align: center;">
-          <h4 style="color:#94a3b8; margin:0 0 0.5rem 0; font-size:0.9rem; text-transform:uppercase; letter-spacing:0.05em;">Le pack recommandé pour vous</h4>
-          <p id="modal-pack-name" style="color:#fff; font-weight:bold; font-size:1.6rem; margin:0 0 1.5rem 0;"></p>
-          
-          <a href="https://josyei.com/pack-google-site/" class="ac-go" style="width: 100%; display:inline-flex; justify-content:center; box-sizing:border-box; font-size:1.1rem;">Découvrir cette offre maintenant</a>
-          
-          <a href="https://josyei.com" class="ac-go-sub" style="display:inline-block; margin-top:1.5rem; text-decoration:underline; cursor:pointer;" onclick="window.location.reload()">← Refaire le test</a>
+      <div class="res-pack">
+        <h3>L’offre qui correspond à vos réponses</h3>
+        <p class="res-pack-nom" id="modal-pack-name"></p>
+        <p class="res-pack-prix" id="res-pack-prix"></p>
+        <p class="res-pack-pourquoi" id="res-pack-pourquoi"></p>
+        <a href="/pack-google-site/" id="res-pack-lien" class="ac-go"><span>Voir cette offre en détail</span><span class="ac-go-arr" aria-hidden="true">→</span></a>
+        <p class="res-pack-plus">Prix nets, TVA non applicable (art. 293 B du CGI). <a href="/pack-google-site/">Comparer les 5 offres</a>.</p>
       </div>
+
+      <div class="res-bloc">
+        <h3>Recevoir une vérification écrite, gratuite</h3>
+        <ol>
+          <li>Vous m’envoyez ce bilan (il est déjà écrit dans le message).</li>
+          <li>Je regarde ce que Google affiche vraiment pour votre entreprise : site, fiche, annonces.</li>
+          <li>Je vous réponds par écrit, avec les points à corriger. Sans engagement.</li>
+        </ol>
+        <div class="dg-act res-envoi">
+          <a class="ex-btn" id="res-mail" href="#">Envoyer mon bilan par email</a>
+          <a class="ex-btn dg-sec" id="res-gmail" href="#" target="_blank" rel="noopener noreferrer">Envoyer avec Gmail</a>
+          <a class="ex-btn dg-sec" id="res-li" href="https://www.linkedin.com/in/josyei/" target="_blank" rel="noopener noreferrer">Envoyer sur LinkedIn</a>
+        </div>
+        <p class="res-envoi-note">Il ne reste qu’à appuyer sur Envoyer. Sur LinkedIn, le bilan est copié : collez-le dans votre message.</p>
+      </div>
+
+      <p class="res-qui">Diagnostic proposé par JOSY EI, entrepreneur individuel, SIREN 914 113 543 (<a href="https://annuaire-entreprises.data.gouv.fr/entreprise/914113543" target="_blank" rel="noopener noreferrer">vérifier</a>).</p>
+      <button type="button" class="res-refaire" onclick="window.location.href='/#diagnostic';window.location.reload()">← Refaire le test</button>
     </div>
   </section>
 
@@ -296,12 +383,14 @@ html{scroll-behavior:smooth}
 </div><p class="copy">© 2026 JOSY EI · Entrepreneur individuel · SIREN 914 113 543 · NAF 6202A</p></div></footer></div>
 
 <!-- TIROIR INTERACTIF (MODAL) -->
-<div class="modal-overlay" id="dg-modal">
+<div class="modal-overlay" id="dg-modal" role="dialog" aria-modal="true" aria-label="Les 3 questions du diagnostic">
   <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">×</button>
-    
+    <button class="modal-close" onclick="closeModal()" aria-label="Fermer">×</button>
+    <div class="modal-prog" aria-hidden="true"><span id="modal-prog"></span></div>
+
     <div class="modal-step active" id="step-1">
-      <div class="modal-q">1/3 - Avez-vous un site internet ?</div>
+      <div class="modal-q">1/3 · Avez-vous un site internet ?</div>
+      <p class="modal-aide">Une page à vous, avec votre propre adresse. Une page Facebook seule ne compte pas.</p>
       <div class="modal-btn-group">
         <button class="modal-btn" onclick="nextStep(2, 'site', 'oui')">Oui</button>
         <button class="modal-btn sec" onclick="nextStep(2, 'site', 'non')">Non</button>
@@ -309,26 +398,30 @@ html{scroll-behavior:smooth}
     </div>
 
     <div class="modal-step" id="step-2">
-      <div class="modal-q">2/3 - Avez-vous une fiche Google (Google Maps) ?</div>
+      <div class="modal-q">2/3 · Avez-vous une fiche Google (Google Maps) ?</div>
+      <p class="modal-aide">La fiche qui affiche votre adresse, vos horaires et vos avis sur la carte.</p>
       <div class="modal-btn-group">
         <button class="modal-btn" onclick="nextStep(3, 'fiche', 'oui')">Oui</button>
         <button class="modal-btn sec" onclick="nextStep(3, 'fiche', 'non')">Non</button>
       </div>
+      <button type="button" class="modal-retour" onclick="prevStep(1)">← Question précédente</button>
     </div>
 
     <div class="modal-step" id="step-3">
-      <div class="modal-q">3/3 - Faites-vous de la publicité sur Google (Google Ads) ?</div>
+      <div class="modal-q">3/3 · Faites-vous de la publicité sur Google (Google Ads) ?</div>
+      <p class="modal-aide">Des annonces marquées « Sponsorisé », en haut des résultats.</p>
       <div class="modal-btn-group">
         <button class="modal-btn" onclick="nextStep(4, 'ads', 'oui')">Oui</button>
         <button class="modal-btn sec" onclick="nextStep(4, 'ads', 'non')">Non</button>
       </div>
+      <button type="button" class="modal-retour" onclick="prevStep(2)">← Question précédente</button>
     </div>
 
     <div class="modal-step" id="step-4">
-      <h2 style="color:#fff; margin-top:0;">Analyse prête !</h2>
-      <p style="color:#cbd5e1; margin-bottom:1.5rem;">Nous avons identifié les points bloquants et les actions à mettre en place.</p>
-      
-      <button class="modal-btn" style="margin-top: 1rem; width: 100%; font-size:1.1rem;" onclick="afficherPageResultats()">Afficher mon bilan complet →</button>
+      <h2 style="color:#fff; margin-top:0;">Votre bilan est prêt</h2>
+      <p style="color:#cbd5e1; margin-bottom:1.5rem;">Ce qui est en place, ce qui manque, et par quoi commencer.</p>
+      <button class="modal-btn" style="margin-top: 1rem; width: 100%; font-size:1.1rem;" onclick="afficherPageResultats()">Voir mon bilan →</button>
+      <button type="button" class="modal-retour" onclick="prevStep(3)">← Question précédente</button>
     </div>
   </div>
 </div>
@@ -339,135 +432,108 @@ var dgEntName = '';
 var dgMetier = '';
 var dgVille = '';
 
-function esc(s){return s.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
-function openModal() { document.getElementById('dg-modal').classList.add('active'); }
+function showStep(n) {
+    document.querySelectorAll('.modal-step').forEach(function(el){ el.classList.remove('active'); });
+    document.getElementById('step-' + n).classList.add('active');
+    document.getElementById('modal-prog').style.width = Math.min(n, 3) / 3 * 100 + '%';
+    var b = document.querySelector('#step-' + n + ' .modal-btn');
+    if (b) b.focus();
+}
+function openModal() { document.getElementById('dg-modal').classList.add('active'); showStep(1); }
 function closeModal() { document.getElementById('dg-modal').classList.remove('active'); }
-
+function prevStep(n) { showStep(n); }
 function nextStep(stepNumber, key, value) {
     dgAnswers[key] = value;
-    document.querySelectorAll('.modal-step').forEach(el => el.classList.remove('active'));
-    setTimeout(() => {
-        document.getElementById('step-' + stepNumber).classList.add('active');
-        if(stepNumber === 4) { generateFinalResult(); }
-    }, 200);
+    if (stepNumber === 4) { generateFinalResult(); }
+    setTimeout(function(){ showStep(stepNumber); }, 150);
 }
 
+// Offres réelles de /pack-google-site/ (prix au 01/11/2026).
+var OFFRES = {
+    complete:   { nom: 'Site web + fiche Google + Google Ads', prix: '390 € net, puis 149 € net par mois (budget publicitaire payé par vous à Google)' },
+    presence:   { nom: 'Présence : site web + fiche Google', prix: '290 € net, puis 49 € net par an dès la 2e année' },
+    fiche:      { nom: 'Fiche Google', prix: '100 € net, une seule fois' },
+    'google-ads': { nom: 'Google Ads', prix: '190 € net, puis 149 € net par mois (budget publicitaire payé par vous à Google)' },
+    'sur-mesure': { nom: 'Sur mesure', prix: 'Sur devis, prix fixe écrit avant tout engagement' }
+};
+
 function generateFinalResult() {
-    var pts = [];
-    var tableRows = '';
-    var globalText = '';
-    var reco = '';
-    
-    // Variables contextuelles selon le métier
-    var secteur = "service";
-    var m = dgMetier.toLowerCase();
-    var v = dgVille;
-    
-    if (m.includes('restaurant') || m.includes('hôtel') || m.includes('café') || m.includes('bar')) {
-        secteur = "restauration";
-    } else if (m.includes('plomb') || m.includes('élect') || m.includes('menuiserie') || m.includes('bâtiment') || m.includes('travaux')) {
-        secteur = "artisanat";
-    } else if (m.includes('commerce') || m.includes('vente') || m.includes('boutique') || m.includes('magasin')) {
-        secteur = "commerce";
-    } else if (m.includes('conseil') || m.includes('avocat') || m.includes('santé') || m.includes('médecin') || m.includes('expert')) {
-        secteur = "profession_libérale";
-    }
+    var a = dgAnswers, v = dgVille, ici = v ? ' à ' + v : ' dans votre ville';
+    var nb = (a.site === 'oui') + (a.fiche === 'oui') + (a.ads === 'oui');
 
-    // 1. ANALYSE GLOBALE
-    var introSecteur = "";
-    if(secteur === "restauration") introSecteur = "En tant que professionnel de la restauration à " + v + ", vos clients vous cherchent principalement sur leur téléphone en tapant 'restaurant " + v + "' ou 'où manger près de moi'.";
-    else if(secteur === "artisanat") introSecteur = "En tant qu'artisan à " + v + ", vos clients ont un besoin urgent (panne, fuite) ou cherchent un devis. Ils tapent 'plombier " + v + "' sur Google et appellent les 3 premiers.";
-    else if(secteur === "commerce") introSecteur = "Pour un commerce à " + v + ", 80% des clients cherchent d'abord l'itinéraire ou les horaires sur Google Maps avant de se déplacer.";
-    else if(secteur === "profession_libérale") introSecteur = "Pour une profession libérale à " + v + ", la confiance est primordiale. Vos clients regardent vos avis et votre site avant de prendre rendez-vous.";
-    else introSecteur = "En tant qu'entreprise à " + v + ", votre visibilité sur Google est le premier levier pour trouver de nouveaux clients locaux.";
+    // Niveau : simple compte des éléments en place d'après les réponses (pas une note inventée).
+    document.querySelectorAll('#res-niveau i').forEach(function(el, i){ el.classList.toggle('on', i < nb); });
+    document.getElementById('res-niveau-txt').textContent = nb + ' élément' + (nb > 1 ? 's' : '') + ' sur 3 en place, d’après vos réponses';
 
-    var diagnostic = "";
-    if(dgAnswers.site === 'oui' && dgAnswers.fiche === 'oui' && dgAnswers.ads === 'oui') {
-        diagnostic = "Vous avez les trois piliers (Site, Fiche, Ads). Votre défi n'est plus d'être visible, mais d'optimiser ce qui existe pour ne pas payer de clics inutiles et convertir un maximum d'appels.";
-        reco = 'Audit d\'optimisation sur-mesure';
-    } else if(dgAnswers.site === 'non' && dgAnswers.fiche === 'non') {
-        diagnostic = "C'est le scénario le plus critique : vous êtes invisible. Aujourd'hui, si un client cherche votre métier à " + v + ", il trouve vos concurrents. Vous devez absolument créer une fiche Google et une page web pour exister.";
-        reco = 'Pack Complet : Site + Fiche Google + Google Ads';
-    } else if(dgAnswers.site === 'oui' && dgAnswers.fiche === 'non') {
-        diagnostic = "Votre site existe mais sans fiche Google, c'est comme avoir une belle boutique au fond d'une impasse. Personne ne vous trouve sur Maps. C'est la priorité absolue à corriger.";
-        reco = 'Pack Visibilité Locale (Fiche + Ads)';
-    } else if(dgAnswers.site === 'non' && dgAnswers.fiche === 'oui') {
-        diagnostic = "Votre fiche Google vous sauve la mise, mais sans site web, les clients hésitent à vous faire confiance (pas de photos, pas de tarifs clairs). Vous perdez des appels à cause de ça.";
-        reco = 'Pack Site Web + Optimisation Fiche';
+    // 1. Analyse
+    var diag, cle, pourquoi;
+    if (a.site === 'oui' && a.fiche === 'oui' && a.ads === 'oui') {
+        diag = 'Vous avez les trois éléments. La question n’est plus d’être présent, mais de vérifier que tout est à jour et que la publicité ne paie pas des clics inutiles.';
+        cle = 'sur-mesure'; pourquoi = 'Vous avez déjà tout : une vérification sur devis, ciblée sur ce qui peut être amélioré.';
+    } else if (a.site === 'non' && a.fiche === 'non') {
+        diag = 'Sans site ni fiche Google, une personne qui cherche votre métier' + ici + ' a peu de chances de tomber sur vous. Le plus urgent : une fiche Google et une page simple.';
+        cle = a.ads === 'oui' ? 'presence' : 'complete';
+        pourquoi = a.ads === 'oui' ? 'Il vous manque la fiche et le site : vos annonces auront enfin une page où envoyer les clients.' : 'Il vous manque les trois éléments : cette offre les met en place ensemble.';
+    } else if (a.fiche === 'non') {
+        diag = 'Votre site existe, mais sans fiche Google vous n’apparaissez pas sur Google Maps quand on cherche votre métier' + ici + '. C’est la première chose à corriger, et la moins chère.';
+        cle = 'fiche'; pourquoi = 'Il vous manque la fiche Google : c’est l’offre la plus simple pour apparaître sur la carte.';
+    } else if (a.site === 'non') {
+        diag = 'Votre fiche Google vous rend visible sur la carte. Sans site, un client qui veut en savoir plus (services, zone, photos) n’a pas de page où aller' + (a.ads === 'oui' ? ', et vos annonces non plus' : '') + '.';
+        cle = 'presence'; pourquoi = 'Il vous manque un site : cette offre crée la page et remet votre fiche à jour.';
     } else {
-        diagnostic = "Vous avez les bases, mais vous n'êtes pas encore devant vos concurrents. L'étape suivante est de lancer une campagne Google Ads locale pour capter les recherches actives.";
-        reco = 'Pack Google Ads Local';
+        diag = 'Vous avez les bases : site et fiche Google. L’étape suivante est d’être affiché en haut des résultats au moment où quelqu’un cherche votre métier' + ici + ', avec une campagne Google Ads limitée à votre zone.';
+        cle = 'google-ads'; pourquoi = 'Il vous manque la publicité locale : campagne configurée, gérée, avec un plafond de dépense fixé avec vous.';
     }
+    var nomAff = dgEntName ? esc(dgEntName) : 'votre entreprise';
+    document.getElementById('global-analysis').innerHTML = '<strong>Pour ' + nomAff + ' :</strong> ' + esc(diag);
 
-    globalText = "<strong>Analyse pour " + (dgEntName || "votre entreprise") + " :</strong><br><br>" + introSecteur + "<br><br>" + diagnostic;
-    document.getElementById('global-analysis').innerHTML = globalText;
+    // 2. Tableau : uniquement ce que la personne a répondu
+    var lignes = [
+        ['Site internet', a.site, 'Une page à vous, lisible sur téléphone, où l’on trouve vos services et un bouton d’appel.',
+            'Vérifier qu’il s’affiche bien sur téléphone et qu’on peut vous appeler en un geste.', 'Créer une page simple : activité, zone, horaires, appel.'],
+        ['Fiche Google', a.fiche, 'C’est elle qui vous place sur Google Maps quand on cherche votre métier près de chez soi.',
+            'Vérifier horaires, photos récentes, services, et répondre aux avis.', 'Créer la fiche, puis la faire valider par Google.'],
+        ['Publicité Google', a.ads, 'Elle vous affiche en haut des résultats, dans votre zone, au moment où quelqu’un cherche.',
+            'Vérifier que les recherches inutiles sont exclues et que le budget est plafonné.', 'Envisager une campagne limitée à votre zone, avec un plafond par jour.']
+    ];
+    var rows = lignes.map(function(l){
+        var ok = l[1] === 'oui';
+        return '<tr><td>' + l[0] + '</td><td><span class="' + (ok ? 'status-ok' : 'status-ko') + '">' + (ok ? 'En place' : 'Absent') + '</span></td><td>' + l[2] + '</td><td>' + (ok ? l[3] : l[4]) + '</td></tr>';
+    });
+    document.getElementById('res-table-body').innerHTML = rows.join('');
 
-    // 2. ANALYSE DU TABLEAU (détaillée)
-    var impactSiteOk = "", impactSiteKo = "";
-    var impactFicheOk = "", impactFicheKo = "";
-    var impactAdsOk = "", impactAdsKo = "";
+    // 3. Offre correspondante (vraie offre, vrai prix, lien direct)
+    var o = OFFRES[cle];
+    document.getElementById('modal-pack-name').textContent = o.nom;
+    document.getElementById('res-pack-prix').textContent = o.prix;
+    document.getElementById('res-pack-pourquoi').textContent = pourquoi;
+    document.getElementById('res-pack-lien').href = '/pack-google-site/#' + cle;
+    document.getElementById('res-ent-name').textContent = dgEntName ? dgEntName + (v ? ' (' + v + ')' : '') : 'Votre entreprise';
 
-    // Adaptation des textes selon le secteur
-    if(secteur === "restauration") {
-        impactSiteOk = "Le menu est-il à jour et téléchargeable ?";
-        impactSiteKo = "Aucun client ne peut voir la carte en ligne.";
-        impactFicheOk = "Ajoutez des photos de vos plats (crucial).";
-        impactFicheKo = "Invisible sur Maps quand on cherche 'où manger'.";
-        impactAdsOk = "Permet de capter les touristes de passage.";
-        impactAdsKo = "Vous laissez les clients de passage à vos concurrents.";
-    } else if(secteur === "artisanat") {
-        impactSiteOk = "Le bouton d'appel est-il visible immédiatement ?";
-        impactSiteKo = "Impossible de demander un devis en ligne.";
-        impactFicheOk = "Les avis clients sont vitaux pour rassurer.";
-        impactFicheKo = "Vous n'apparaissez pas dans les urgences.";
-        impactAdsOk = "Cible les recherches 'panne' ou 'urgence'.";
-        impactAdsKo = "Les urgences vont chez le concurrent qui paye.";
-    } else if(secteur === "commerce") {
-        impactSiteOk = "Vos produits phares sont-ils mis en avant ?";
-        impactSiteKo = "Pas de vitrine en ligne pour donner envie.";
-        impactFicheOk = "Photos de la devanture et horaires à jour.";
-        impactFicheKo = "Le client cherche 'près de moi' et ne vous voit pas.";
-        impactAdsOk = "Cible les clients dans un rayon de 10 km.";
-        impactAdsKo = "Vous perdez les clients qui passent à côté.";
-    } else {
-        impactSiteOk = "Votre expertise est-elle assez détaillée ?";
-        impactSiteKo = "Manque de crédibilité pour rassurer le client.";
-        impactFicheOk = "Vos meilleurs avis sont-ils en évidence ?";
-        impactFicheKo = "Perte de confiance, le client va chez un autre.";
-        impactAdsOk = "Génère des contacts qualifiés immédiatement.";
-        impactAdsKo = "Vous laissez les demandes aux concurrents.";
-    }
+    preparerEnvoi(o.nom, diag);
+}
 
-    // Remplissage du tableau
-    if(dgAnswers.site === 'oui') {
-        pts.push('<li class="dg-ok"><strong>Site internet : en place.</strong> Vérifiez qu\'il s\'affiche bien sur mobile.</li>');
-        tableRows += '<tr><td>Site Web</td><td>WordPress / Vitrine</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar green" style="width: 75%;"></div></div> <span class="score-text green">75/100</span><br><small style="color:#94a3b8;font-size:0.8rem;">' + impactSiteOk + '</small></td></tr>';
-    } else {
-        pts.push('<li class="dg-ko"><strong>Site internet : absent.</strong> Une page simple est indispensable.</li>');
-        tableRows += '<tr><td>Site Web</td><td>WordPress / Vitrine</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span><br><small style="color:#94a3b8;font-size:0.8rem;">' + impactSiteKo + '</small></td></tr>';
-    }
-
-    if(dgAnswers.fiche === 'oui') {
-        pts.push('<li class="dg-ok"><strong>Fiche Google : en place.</strong> Ajoutez des photos récentes et répondez aux avis.</li>');
-        tableRows += '<tr><td>Fiche Google</td><td>Google Profile</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar orange" style="width: 60%;"></div></div> <span class="score-text orange">60/100</span><br><small style="color:#94a3b8;font-size:0.8rem;">' + impactFicheOk + '</small></td></tr>';
-    } else {
-        pts.push('<li class="dg-ko"><strong>Fiche Google : absente.</strong> Sans elle, vous n\'êtes pas sur Google Maps.</li>');
-        tableRows += '<tr><td>Fiche Google</td><td>Google Profile</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span><br><small style="color:#94a3b8;font-size:0.8rem;">' + impactFicheKo + '</small></td></tr>';
-    }
-
-    if(dgAnswers.ads === 'oui') {
-        pts.push('<li class="dg-ok"><strong>Google Ads : active.</strong> Vérifiez que vous ne payez pas de clics inutiles.</li>');
-        tableRows += '<tr><td>Publicité Google</td><td>Google Ads</td><td><span class="status-ok">Actif</span></td><td><div class="score-bar-container"><div class="score-bar green" style="width: 80%;"></div></div> <span class="score-text green">80/100</span><br><small style="color:#94a3b8;font-size:0.8rem;">' + impactAdsOk + '</small></td></tr>';
-    } else {
-        pts.push('<li class="dg-ko"><strong>Google Ads : absente.</strong> Vous laissez les appels à vos concurrents.</li>');
-        tableRows += '<tr><td>Publicité Google</td><td>Google Ads</td><td><span class="status-ko">Manquant</span></td><td><div class="score-bar-container"><div class="score-bar red" style="width: 0%;"></div></div> <span class="score-text red">0/100</span><br><small style="color:#94a3b8;font-size:0.8rem;">' + impactAdsKo + '</small></td></tr>';
-    }
-
-    document.getElementById('modal-pts').innerHTML = pts.join('');
-    document.getElementById('res-table-body').innerHTML = tableRows;
-    document.getElementById('modal-pack-name').innerText = reco;
-    document.getElementById('res-ent-name').innerText = dgEntName ? dgEntName + ' (' + dgVille + ')' : 'Votre entreprise';
+// Message pré-rempli envoyé à JOSY EI : entreprise, réponses, offre, analyse. Adresse seulement dans le lien.
+function preparerEnvoi(reco, analyse) {
+    var oui = function(x){ return x === 'oui' ? 'oui' : 'non'; };
+    var ent = dgEntName ? dgEntName + (dgVille ? ' (' + dgVille + ')' : '') : '';
+    var sujet = 'Mon bilan de visibilité' + (dgEntName ? ' : ' + dgEntName : '');
+    var corps = 'Bonjour,\n\nJe viens de faire le diagnostic de visibilité sur josyei.com et je souhaite recevoir votre vérification écrite.\n\n'
+      + 'Entreprise : ' + (ent || document.getElementById('dg-siren').value.trim() || '(à compléter)') + '\n'
+      + (dgMetier ? 'Activité : ' + dgMetier + '\n' : '')
+      + 'Site internet : ' + oui(dgAnswers.site) + '\n'
+      + 'Fiche Google : ' + oui(dgAnswers.fiche) + '\n'
+      + 'Publicité Google (Google Ads) : ' + oui(dgAnswers.ads) + '\n'
+      + 'Offre proposée : ' + reco + '\n\n'
+      + 'Bilan affiché : ' + analyse + '\n\n'
+      + 'Adresse de mon site (si j’en ai un) : \n'
+      + 'Mon numéro de téléphone (facultatif) : \n\nMerci,\n';
+    var to = 'mrjosyvalery' + '@' + 'gmail.com';
+    document.getElementById('res-mail').href = 'mailto:' + to + '?subject=' + encodeURIComponent(sujet) + '&body=' + encodeURIComponent(corps);
+    document.getElementById('res-gmail').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(to) + '&su=' + encodeURIComponent(sujet) + '&body=' + encodeURIComponent(corps);
+    document.getElementById('res-li').onclick = function(){ try { navigator.clipboard.writeText(corps); } catch(x) {} };
 }
 
 function afficherPageResultats() {
@@ -499,7 +565,7 @@ function afficherPageResultats() {
     // Sauvegarde pour l'analyse
     dgEntName = ident.nom;
     dgMetier = actLib;
-    dgVille = sg.libelle_commune || 'votre ville';
+    dgVille = (sg.libelle_commune || '').toLowerCase().replace(/(^|[\s'-])\S/g, function(c){ return c.toUpperCase(); });
 
     [['SIREN',ident.siren,1],['SIRET du siège',ident.siret,1],['Activité (NAF / APE)',actLib,1],['Adresse du siège',adresse,1],['Forme juridique',forme,1],['Numéro de TVA (calculé)',tva],['Dirigeants',dirTxt],['Date de création',ident.creation]].forEach(function(l){if(l[1])lignes.push('<dt>'+l[0]+'</dt><dd'+(l[2]?' class="dg-id-key"':'')+'>'+esc(l[1])+'</dd>');});
     idOut.innerHTML='<div class="dg-id-card"><h3>'+esc(ident.nom||'Entreprise')+(ident.ferme?' (fermée)':'')+'</h3><dl>'+lignes.join('')+'</dl>'
@@ -508,31 +574,37 @@ function afficherPageResultats() {
   
   var naf=null,nafP=null;
   function chargerNaf(){if(!nafP)nafP=fetch('/assets/naf.json').then(function(r){return r.ok?r.json():null;}).then(function(d){naf=d;}).catch(function(){});return nafP;}
-  function chercher(){
+  function chercher(auto){
     var q=idIn.value.trim(),num=q.replace(/[\s.]/g,'');
-    ident=null;
-    if(q.length<3){msg('Saisissez un SIREN, un SIRET ou un nom.');return;}
+    ident=null;dgEntName='';dgMetier='';dgVille='';
+    if(q.length<3){msg('Saisissez un SIREN, un SIRET ou un nom.');return Promise.resolve();}
     msg('Recherche…');
-    Promise.all([fetch('https://recherche-entreprises.api.gouv.fr/search?per_page=5&q='+encodeURIComponent(/^\d+$/.test(num)?num:q)),chargerNaf()])
+    var ctl=window.AbortController?new AbortController():null;if(ctl)setTimeout(function(){ctl.abort();},8000);
+    return Promise.all([fetch('https://recherche-entreprises.api.gouv.fr/search?per_page=5&q='+encodeURIComponent(/^\d+$/.test(num)?num:q),ctl?{signal:ctl.signal}:{}),chargerNaf()])
       .then(function(x){var r=x[0];if(!r.ok)throw new Error(r.status);return r.json();})
       .then(function(d){
         var list=(d&&d.results)||[];
         if(!list.length){msg('Aucune entreprise trouvée.');return;}
         if(list.length===1||/^\d+$/.test(num)){fiche(list[0]);return;}
-        idOut.innerHTML='<p class="dg-id-msg">Choisissez votre entreprise :</p><ul class="dg-id-list">'+list.map(function(r,i){var sg=r.siege||{};return '<li><button type="button" data-i="'+i+'">'+esc(r.nom_complet||'')+(sg.libelle_commune?' · '+esc(sg.libelle_commune):'')+' · SIREN '+grp(r.siren,'siren')+'</button></li>';}).join('')+'</ul>';
-        idOut.querySelectorAll('button[data-i]').forEach(function(b){b.addEventListener('click',function(){fiche(list[+b.getAttribute('data-i')]);});});
+        idOut.innerHTML='<p class="dg-id-msg">Plusieurs entreprises portent ce nom. Choisissez la vôtre :</p><ul class="dg-id-list">'+list.map(function(r,i){var sg=r.siege||{};return '<li><button type="button" data-i="'+i+'">'+esc(r.nom_complet||'')+(sg.libelle_commune?' · '+esc(sg.libelle_commune):'')+' · SIREN '+grp(r.siren,'siren')+'</button></li>';}).join('')+'</ul>';
+        idOut.querySelectorAll('button[data-i]').forEach(function(b){b.addEventListener('click',function(){fiche(list[+b.getAttribute('data-i')]);if(auto===true)openModal();});});
+        return 'liste';
       })
-      .catch(function(){msg('Erreur de connexion.');});
+      .catch(function(){msg('L’annuaire ne répond pas pour le moment. Le diagnostic fonctionne quand même.');});
   }
-  idBtn.addEventListener('click',chercher);
-  idIn.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();chercher();}});
+  idBtn.addEventListener('click',function(){chercher(false);});
+  idIn.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();chercher(false);}});
 
   f.addEventListener('submit',function(e){
     e.preventDefault();
-    if(!idIn.value.trim()){err.hidden=false;return;}
+    if(!idIn.value.trim()){err.hidden=false;idIn.focus();return;}
     err.hidden=true;
-    openModal();
+    if(ident){openModal();return;}
+    // Pas encore de fiche choisie : on cherche, puis on ouvre les questions quoi qu'il arrive.
+    var go=document.getElementById('dg-go');go.disabled=true;
+    chercher(true).then(function(r){go.disabled=false;if(r!=='liste')openModal();});
   });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
 })();
 </script>
 <script src="/assets/site-enhancements.js?v=20261030d" defer></script>
