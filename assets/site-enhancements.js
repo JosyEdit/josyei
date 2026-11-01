@@ -123,7 +123,7 @@
       {
         title: 'SERVICES & IA',
         links: [
-          ['Création d’Agents IA 24/7', '/expertises/agents-ia-support-client/'],
+          ['Agents IA pour le support client', '/expertises/agents-ia-support-client/'],
           ['Automatisation de Processus', '/expertises/automatisation-processus/'],
           ['Intégration de Chatbots & LLM', '/expertises/conseil-intelligence-artificielle/'],
           ['Audit & Conseil Numérique', '/expertises/audit-numerique-entreprise/'],
@@ -245,8 +245,8 @@
         'Automatisez avec Relevance AI.', '/outils/'],
       ['🎯', 'Je n’ai pas assez de clients, la prospection est longue.',
         'Trouvez des leads avec Volia.', '/outils/'],
-      ['🐌', 'Mon site web est lent et tombe souvent en panne.',
-        'Hébergez-le chez Hostinger.', '/outils/']
+      ['🔎', 'Je ne sais pas si mes clients me trouvent sur Google.',
+        'Faites le diagnostic gratuit en 2 minutes.', '/#diagnostic']
     ].forEach(function (item) {
       var card = document.createElement('article');
       card.className = 'digital-action-card digital-case-card';
@@ -262,7 +262,7 @@
       var link = document.createElement('a');
       link.className = 'digital-case-link';
       link.href = item[3];
-      link.textContent = 'Découvrir l’outil';
+      link.textContent = item[3] === '/#diagnostic' ? 'Faire le diagnostic' : 'Découvrir l’outil';
       card.appendChild(problem);
       card.appendChild(solution);
       card.appendChild(link);

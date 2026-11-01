@@ -16,6 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="stylesheet" href="/assets/site-enhancements.css?v=20261030c">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"JOSY EI","url":"https://josyei.com/","image":"https://josyei.com/img/og-josy-ei.jpg","description":"Diagnostic de visibilité locale gratuit, création de fiche Google, de site web et gestion de campagnes Google Ads pour les professionnels locaux.","areaServed":[{"@type":"AdministrativeArea","name":"Vienne"},{"@type":"Country","name":"France"}],"identifier":[{"@type":"PropertyValue","propertyID":"SIREN","value":"914113543"}],"sameAs":["https://www.linkedin.com/in/josyei/"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Diagnostic de visibilité locale","url":"https://josyei.com/","description":"Test gratuit en 2 minutes : site web, fiche Google, publicité Google Ads. Répondez à 3 questions et voyez ce qui manque pour être trouvé par les clients de votre ville.","publisher":{"@type":"Organization","name":"JOSY EI","url":"https://josyei.com/"}}</script>
 <style>
 body{margin:0;background:#0a0e27;color:#fff;font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}.jx{--noir:#0a0e27;--nuit:#1a1f3a;--blanc:#fff;--gris:#b0b8d4;--bleu:#0066ff;--cyan:#00d4ff}.w{width:min(1050px,calc(100% - 2rem));margin:auto}
@@ -314,10 +315,10 @@ html{scroll-behavior:smooth}
         </article>
       </div>
       <div class="faq ac-faq">
-        <details><summary>Le diagnostic est-il vraiment gratuit ?</summary><p>Oui. Le test en ligne et l’analyse écrite qui suit, si vous la demandez, sont gratuits et ne vous engagent à rien.</p></details>
+        <details><summary>Le diagnostic est-il vraiment gratuit ?</summary><p>Oui. Le test, le bilan et sa version PDF sont gratuits et ne vous engagent à rien.</p></details>
         <details><summary>Et si je veux de l’aide ensuite, combien ça coûte ?</summary><p>Les offres et leurs prix sont affichés sur la <a href="/pack-google-site/">page des offres</a>, de la fiche Google seule à l’offre complète. Rien n’est facturé sans votre accord écrit, et la gestion mensuelle se résilie chaque mois.</p></details>
         <details><summary>Vous garantissez combien de clients ?</summary><p>Aucun chiffre n’est garanti : personne ne peut le promettre honnêtement. Ce qui est garanti, c’est le travail fait, écrit noir sur blanc, et un rapport chaque mois si vous prenez la gestion Google Ads.</p></details>
-        <details><summary>Ce test analyse-t-il ma vraie fiche Google ?</summary><p>Non, le résultat immédiat se base sur vos réponses. Ce que Google affiche réellement pour votre entreprise, je le vérifie moi-même si vous m’envoyez votre diagnostic, et je vous réponds par écrit.</p></details>
+        <details><summary>Ce test analyse-t-il ma vraie fiche Google ?</summary><p>Le bilan se base sur vos réponses. Pour voir ce que Google affiche vraiment, le bilan vous donne des liens directs vers Google, Google Maps et le centre de transparence des annonces. Si vous avez un site, le bouton « Analyser mon site » le mesure avec l’outil gratuit de Google.</p></details>
         <details><summary>Pourquoi être sur Google quand on est un professionnel local ?</summary><p>Parce que vos clients y cherchent. 76 % des personnes qui font une recherche de proximité sur leur smartphone se rendent dans un établissement dans la journée (source : <a href="https://www.thinkwithgoogle.com/_qs/documents/620/mobile-search-trends-consumers-to-stores.pdf" target="_blank" rel="noopener noreferrer" style="color:#93c5fd">Google, Digital Diary, mai 2016</a>).</p></details>
         <details><summary>Que deviennent mes réponses ?</summary><p>Elles restent dans votre navigateur. Rien n’est transmis tant que vous ne choisissez pas vous-même de m’envoyer votre diagnostic. La recherche de votre entreprise interroge l’annuaire public des entreprises (data.gouv.fr). Si vous cliquez sur « Analyser mon site », son adresse est envoyée à l’outil gratuit de Google PageSpeed Insights. Voir la <a href="/politique-de-confidentialite/" style="color:#93c5fd">politique de confidentialité</a>.</p></details>
       </div>
@@ -337,7 +338,7 @@ html{scroll-behavior:smooth}
     <section class="ac-sec"><div class="w">
       <h2>Avec qui vous parlez</h2>
       <div class="ac-conf">
-        <div><strong>Une entreprise déclarée</strong>JOSY EI, entrepreneur individuel, SIREN 914 113 543. <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/914113543" target="_blank" rel="noopener noreferrer">Vérifier sur l’annuaire officiel</a>.</div>
+        <div><strong>Une entreprise déclarée</strong>JOSY EI, entrepreneur individuel basé dans la Vienne (86), SIREN 914 113 543. J’interviens partout en France. <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/914113543" target="_blank" rel="noopener noreferrer">Vérifier sur l’annuaire officiel</a>.</div>
         <div><strong>Vous restez propriétaire</strong>Votre fiche Google, votre site et votre compte Google Ads sont à votre nom.</div>
         <div><strong>Votre budget reste chez vous</strong>Le budget publicitaire est payé par vous, directement à Google. Aucune commission dessus.</div>
         <div><strong>Sans engagement</strong>Prix fixes écrits avant de commencer. Gestion mensuelle résiliable chaque mois.</div>
@@ -710,9 +711,9 @@ function afficherPageResultats() {
     dgMetier = actLib;
     dgVille = (sg.libelle_commune || '').toLowerCase().replace(/(^|[\s'-])\S/g, function(c){ return c.toUpperCase(); });
 
-    [['SIREN',ident.siren,1],['SIRET du siège',ident.siret,1],['Activité (NAF / APE)',actLib,1],['Adresse du siège',adresse,1],['Forme juridique',forme,1],['Numéro de TVA (calculé)',tva],['Dirigeants',dirTxt],['Date de création',ident.creation]].forEach(function(l){if(l[1])lignes.push('<dt>'+l[0]+'</dt><dd'+(l[2]?' class="dg-id-key"':'')+'>'+esc(l[1])+'</dd>');});
+    [['SIREN',ident.siren,1],['SIRET du siège',ident.siret,1],['Activité (NAF / APE)',actLib,1],['Adresse du siège',adresse,1],['Forme juridique',forme,1],['Dirigeants',dirTxt],['Date de création',ident.creation]].forEach(function(l){if(l[1])lignes.push('<dt>'+l[0]+'</dt><dd'+(l[2]?' class="dg-id-key"':'')+'>'+esc(l[1])+'</dd>');});
     idOut.innerHTML='<div class="dg-id-card"><h3>'+esc(ident.nom||'Entreprise')+(ident.ferme?' (fermée)':'')+'</h3><dl>'+lignes.join('')+'</dl>'
-      +'<p class="dg-id-src">'+(tva?'Le numéro de TVA est calculé à partir du SIREN ; une entreprise en franchise de TVA peut ne pas l’utiliser. Vérification : service VIES de la Commission européenne. ':'')+'Source : <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/'+encodeURIComponent(r.siren)+'" target="_blank" rel="noopener noreferrer">annuaire des entreprises</a> (INSEE, RNE).</p></div>';
+      +'<p class="dg-id-src">'+'Source : <a href="https://annuaire-entreprises.data.gouv.fr/entreprise/'+encodeURIComponent(r.siren)+'" target="_blank" rel="noopener noreferrer">annuaire des entreprises</a> (INSEE, RNE).</p></div>';
   }
   
   var naf=null,nafP=null;
@@ -750,6 +751,6 @@ function afficherPageResultats() {
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
 })();
 </script>
-<script src="/assets/site-enhancements.js?v=20261030d" defer></script>
+<script src="/assets/site-enhancements.js?v=20261101a" defer></script>
 </body>
 </html>
