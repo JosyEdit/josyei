@@ -203,6 +203,16 @@ html{scroll-behavior:smooth}
 .res-qui{margin-top:1.4rem;color:#94a3b8;font-size:.85rem;text-align:center}.res-qui a{color:inherit}
 .res-refaire{display:block;margin:1.6rem auto 0;background:none;border:0;color:#94a3b8;text-decoration:underline;cursor:pointer;font:inherit}
 .res-date{color:#64748b;font-size:.85rem;margin:.3rem 0 0}
+.dt-form{text-align:left;display:grid;gap:.9rem;margin:0 0 1rem}
+.dt-form label{display:block;font-weight:700;color:#f8fafc;margin:0 0 .3rem;font-size:.95rem}
+.dt-form input{width:100%;box-sizing:border-box;padding:.7rem .8rem;border-radius:8px;border:1px solid #475569;background:#0f172a;color:#fff;font:inherit}
+.dt-form small{display:block;color:#94a3b8;font-size:.8rem;margin-top:.25rem}
+.dt-duo{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.res-det{display:block;margin-top:.3rem;color:#cbd5e1;font-size:.85rem;overflow-wrap:anywhere}.res-det a{color:#7dd3fc}
+.res-ps{margin-top:.5rem}.res-ps button{background:#334155;color:#fff;border:0;border-radius:8px;padding:.45rem .8rem;font:inherit;font-size:.85rem;font-weight:700;cursor:pointer}
+.res-ps-out{margin:.4rem 0 0;font-size:.85rem;color:#cbd5e1}.res-ps-out a{color:#7dd3fc}
+.res-ps-out ul{margin:.3rem 0 0;padding-left:1.1rem}
+.res-repere{margin:.35rem 0 0;color:#94a3b8;font-size:.82rem}
 .res-id{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.4rem 1rem;background:#0f172a;border:1px solid #334155;border-left:4px solid #38bdf8;border-radius:10px;padding:.9rem 1.1rem;margin:0 0 1.4rem;font-size:.9rem}
 .res-id div{color:#e2e8f0}.res-id span{display:block;color:#94a3b8;font-size:.78rem}
 .res-id p{grid-column:1/-1;margin:.2rem 0 0;color:#94a3b8;font-size:.78rem}.res-id a{color:inherit}
@@ -305,7 +315,7 @@ html{scroll-behavior:smooth}
         <details><summary>Vous garantissez combien de clients ?</summary><p>Aucun chiffre n’est garanti : personne ne peut le promettre honnêtement. Ce qui est garanti, c’est le travail fait, écrit noir sur blanc, et un rapport chaque mois si vous prenez la gestion Google Ads.</p></details>
         <details><summary>Ce test analyse-t-il ma vraie fiche Google ?</summary><p>Non, le résultat immédiat se base sur vos réponses. Ce que Google affiche réellement pour votre entreprise, je le vérifie moi-même si vous m’envoyez votre diagnostic, et je vous réponds par écrit.</p></details>
         <details><summary>Pourquoi être sur Google quand on est un professionnel local ?</summary><p>Parce que vos clients y cherchent. 76 % des personnes qui font une recherche de proximité sur leur smartphone se rendent dans un établissement dans la journée (source : <a href="https://www.thinkwithgoogle.com/_qs/documents/620/mobile-search-trends-consumers-to-stores.pdf" target="_blank" rel="noopener noreferrer" style="color:#93c5fd">Google, Digital Diary, mai 2016</a>).</p></details>
-        <details><summary>Que deviennent mes réponses ?</summary><p>Elles restent dans votre navigateur. Rien n’est transmis tant que vous ne choisissez pas vous-même de m’envoyer votre diagnostic. La recherche de votre entreprise interroge l’annuaire public des entreprises (data.gouv.fr). Voir la <a href="/politique-de-confidentialite/" style="color:#93c5fd">politique de confidentialité</a>.</p></details>
+        <details><summary>Que deviennent mes réponses ?</summary><p>Elles restent dans votre navigateur. Rien n’est transmis tant que vous ne choisissez pas vous-même de m’envoyer votre diagnostic. La recherche de votre entreprise interroge l’annuaire public des entreprises (data.gouv.fr). Si vous cliquez sur « Analyser mon site », son adresse est envoyée à l’outil gratuit de Google PageSpeed Insights. Voir la <a href="/politique-de-confidentialite/" style="color:#93c5fd">politique de confidentialité</a>.</p></details>
       </div>
     </div></section>
 
@@ -358,7 +368,7 @@ html{scroll-behavior:smooth}
           <thead><tr><th>Élément</th><th>D’après vos réponses</th><th>Pourquoi c’est utile</th><th>À faire</th></tr></thead>
           <tbody id="res-table-body"></tbody>
         </table>
-        <p class="res-src">Ce bilan se base sur vos réponses, pas sur une mesure de votre site ou de votre fiche. Pour une vérification réelle, envoyez-le : je regarde ce que Google affiche vraiment pour votre entreprise.</p>
+        <p class="res-src">Ce bilan se base sur vos réponses. Seule la mesure du site, si vous la lancez, vient d’un outil de Google. Pour une vérification réelle, envoyez-le : je regarde ce que Google affiche vraiment pour votre entreprise.</p>
       </div>
 
       <div class="res-pack">
@@ -442,6 +452,22 @@ html{scroll-behavior:smooth}
       <button type="button" class="modal-retour" onclick="prevStep(2)">← Question précédente</button>
     </div>
 
+    <div class="modal-step" id="step-5">
+      <div class="modal-q">Pour finir votre bilan</div>
+      <p class="modal-aide">Facultatif. Ces précisions rendent le bilan plus juste. Elles restent dans votre navigateur.</p>
+      <div class="dt-form">
+        <div id="dt-site"><label for="dt-site-in">Adresse de votre site</label><input type="text" id="dt-site-in" placeholder="ex. : monentreprise.fr" inputmode="url" autocomplete="url"></div>
+        <div id="dt-fiche"><label for="dt-fiche-in">Votre fiche Google : lien ou nom affiché</label><input type="text" id="dt-fiche-in" placeholder="ex. : lien Google Maps, ou « Boulangerie Martin »">
+          <div class="dt-duo" style="margin-top:.5rem"><div><label for="dt-avis-in">Nombre d’avis</label><input type="number" min="0" id="dt-avis-in" placeholder="ex. : 12"></div><div><label for="dt-note-in">Note moyenne</label><input type="text" inputmode="decimal" id="dt-note-in" placeholder="ex. : 4,6"></div></div></div>
+        <div id="dt-ads"><div class="dt-duo"><div><label for="dt-camp-in">Campagnes Google Ads actives</label><input type="number" min="0" id="dt-camp-in" placeholder="ex. : 2"></div><div><label for="dt-budget-in">Budget par mois (€)</label><input type="number" min="0" id="dt-budget-in" placeholder="ex. : 300"></div></div>
+          <small>Le nombre est visible dans votre compte Google Ads, onglet Campagnes.</small></div>
+      </div>
+      <div class="modal-btn-group">
+        <button class="modal-btn" onclick="finirDetails()">Terminer mon bilan</button>
+      </div>
+      <button type="button" class="modal-retour" onclick="finirDetails()">Passer cette étape</button>
+    </div>
+
     <div class="modal-step" id="step-4">
       <h2 style="color:#fff; margin-top:0;">Votre bilan est prêt</h2>
       <p style="color:#cbd5e1; margin-bottom:1.5rem;">Ce qui est en place, ce qui manque, et par quoi commencer.</p>
@@ -471,9 +497,51 @@ function closeModal() { document.getElementById('dg-modal').classList.remove('ac
 function prevStep(n) { showStep(n); }
 function nextStep(stepNumber, key, value) {
     dgAnswers[key] = value;
+    if (stepNumber === 4 && (dgAnswers.site === 'oui' || dgAnswers.fiche === 'oui' || dgAnswers.ads === 'oui')) {
+        document.getElementById('dt-site').hidden = dgAnswers.site !== 'oui';
+        document.getElementById('dt-fiche').hidden = dgAnswers.fiche !== 'oui';
+        document.getElementById('dt-ads').hidden = dgAnswers.ads !== 'oui';
+        setTimeout(function(){ showStep(5); var i = document.querySelector('#step-5 .dt-form > div:not([hidden]) input'); if (i) i.focus(); }, 150);
+        return;
+    }
     if (stepNumber === 4) { generateFinalResult(); }
     setTimeout(function(){ showStep(stepNumber); }, 150);
 }
+var dgDet = {};
+function val(id){ return (document.getElementById(id).value || '').trim(); }
+function finirDetails() {
+    dgDet = {
+        site: dgAnswers.site === 'oui' ? val('dt-site-in') : '',
+        fiche: dgAnswers.fiche === 'oui' ? val('dt-fiche-in') : '',
+        avis: dgAnswers.fiche === 'oui' ? val('dt-avis-in') : '',
+        note: dgAnswers.fiche === 'oui' ? val('dt-note-in').replace(',', '.') : '',
+        camp: dgAnswers.ads === 'oui' ? val('dt-camp-in') : '',
+        budget: dgAnswers.ads === 'oui' ? val('dt-budget-in') : ''
+    };
+    generateFinalResult();
+    showStep(4);
+}
+function urlSite(x){ x = (x || '').trim(); if (!x) return ''; if (!/^https?:\/\//i.test(x)) x = 'https://' + x; try { var u = new URL(x); return /\./.test(u.hostname) ? u.href : ''; } catch(e) { return ''; } }
+// Mesure réelle du site : outil gratuit de Google PageSpeed Insights, lancé seulement au clic (voir politique de confidentialité).
+function analyserSite(btn) {
+    var u = urlSite(dgDet.site), out = document.getElementById('res-ps-out');
+    if (!u) return;
+    btn.disabled = true; out.textContent = 'Analyse en cours (jusqu’à 1 minute)…';
+    var api = 'https://www.googleapis.com/pagespeedonline/v5/runPagespeed?strategy=mobile&category=performance&category=seo&category=accessibility&category=best-practices&url=' + encodeURIComponent(u);
+    var lien = 'https://pagespeed.web.dev/analysis?url=' + encodeURIComponent(u);
+    fetch(api).then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); }).then(function(d){
+        var c = (d.lighthouseResult || {}).categories || {};
+        var nom = { performance: 'Vitesse', seo: 'Référencement', accessibility: 'Accessibilité', 'best-practices': 'Bonnes pratiques' };
+        var li = Object.keys(nom).filter(function(k){ return c[k] && c[k].score != null; }).map(function(k){ return '<li>' + nom[k] + ' : <strong>' + Math.round(c[k].score * 100) + '/100</strong></li>'; });
+        if (!li.length) throw new Error('vide');
+        out.innerHTML = 'Mesure Google PageSpeed sur téléphone, le ' + new Date().toLocaleDateString('fr-FR') + ' :<ul>' + li.join('') + '</ul><a href="' + lien + '" target="_blank" rel="noopener noreferrer">Voir le détail chez Google</a>';
+        dgDet.mesure = li.map(function(x){ return x.replace(/<[^>]+>/g, ''); }).join(', ');
+        preparerEnvoi(document.getElementById('modal-pack-name').textContent, dgDiag);
+    }).catch(function(){
+        out.innerHTML = 'L’outil de Google ne répond pas pour le moment. <a href="' + lien + '" target="_blank" rel="noopener noreferrer">Lancer la mesure directement chez Google</a>.';
+    }).then(function(){ btn.disabled = false; });
+}
+var dgDiag = '';
 
 // Offres réelles de /pack-google-site/ (prix au 01/11/2026).
 var OFFRES = {
@@ -523,9 +591,32 @@ function generateFinalResult() {
         ['Publicité Google', a.ads, 'Elle vous affiche en haut des résultats, dans votre zone, au moment où quelqu’un cherche.',
             'Vérifier que les recherches inutiles sont exclues et que le budget est plafonné.', 'Envisager une campagne limitée à votre zone, avec un plafond par jour.']
     ];
-    var rows = lignes.map(function(l){
+    var d = dgDet || {}, det = ['', '', ''], conseil = [null, null, null];
+    var su = urlSite(d.site);
+    if (su) {
+        det[0] = '<span class="res-det"><a href="' + esc(su) + '" target="_blank" rel="noopener noreferrer">' + esc(su.replace(/^https?:\/\//, '').replace(/\/$/, '')) + '</a></span><div class="res-ps"><button type="button" onclick="analyserSite(this)">Analyser mon site</button><div class="res-ps-out" id="res-ps-out"></div></div>';
+    } else if (d.site) { det[0] = '<span class="res-det">Adresse à vérifier : ' + esc(d.site) + '</span>'; }
+    if (d.fiche) {
+        var fl = /^https?:\/\//i.test(d.fiche) ? d.fiche : 'https://www.google.com/maps/search/' + encodeURIComponent(d.fiche + (v ? ' ' + v : ''));
+        det[1] = '<span class="res-det"><a href="' + esc(fl) + '" target="_blank" rel="noopener noreferrer">Ouvrir votre fiche</a></span>';
+    }
+    var avis = d.avis !== '' && d.avis != null ? +d.avis : NaN, note = d.note ? +d.note : NaN;
+    if (!isNaN(avis) || !isNaN(note)) {
+        det[1] += '<span class="res-det">' + [!isNaN(avis) ? avis + ' avis' : '', !isNaN(note) ? 'note ' + note.toString().replace('.', ',') + '/5' : ''].filter(Boolean).join(' · ') + '</span>';
+        var c1 = [];
+        if (!isNaN(avis) && avis < 10) c1.push('Peu d’avis : demandez-en à vos clients contents, sans contrepartie (règle de Google).');
+        if (!isNaN(note) && note < 4) c1.push('Note sous 4/5 : répondez à chaque avis, calmement, et corrigez ce qui revient souvent.');
+        if (c1.length) conseil[1] = c1.join(' ');
+    }
+    var camp = d.camp !== '' && d.camp != null ? +d.camp : NaN, bud = d.budget ? +d.budget : NaN;
+    if (!isNaN(camp) || !isNaN(bud)) {
+        det[2] = '<span class="res-det">' + [!isNaN(camp) ? camp + ' campagne' + (camp > 1 ? 's' : '') + ' active' + (camp > 1 ? 's' : '') : '', !isNaN(bud) ? bud + ' € par mois' : ''].filter(Boolean).join(' · ') + '</span>';
+        if (camp === 0) conseil[2] = 'Aucune campagne active : votre compte existe mais n’affiche rien en ce moment.';
+        else if (!isNaN(camp) && !isNaN(bud) && camp > 0 && bud / camp < 150) conseil[2] = 'Budget réparti sur ' + camp + ' campagnes : environ ' + Math.round(bud / camp) + ' € chacune par mois. Un budget trop dispersé peut limiter l’affichage ; regrouper peut aider.';
+    }
+    var rows = lignes.map(function(l, i){
         var ok = l[1] === 'oui';
-        return '<tr><td>' + l[0] + '</td><td><span class="' + (ok ? 'status-ok' : 'status-ko') + '">' + (ok ? 'En place' : 'Absent') + '</span></td><td>' + l[2] + '</td><td>' + (ok ? l[3] : l[4]) + '</td></tr>';
+        return '<tr><td>' + l[0] + '</td><td><span class="' + (ok ? 'status-ok' : 'status-ko') + '">' + (ok ? 'En place' : 'Absent') + '</span>' + (ok ? det[i] : '') + '</td><td>' + l[2] + '</td><td>' + (ok ? l[3] : l[4]) + (ok && conseil[i] ? '<p class="res-repere">' + conseil[i] + '</p>' : '') + '</td></tr>';
     });
     document.getElementById('res-table-body').innerHTML = rows.join('');
 
@@ -552,16 +643,18 @@ function generateFinalResult() {
     // Liens de vérification : outils publics de Google, ouverts par la personne elle-même
     var nom = dgEntName || document.getElementById('dg-siren').value.trim();
     var q = encodeURIComponent((nom + ' ' + v).trim());
+    var su = urlSite((dgDet || {}).site);
     var liens = [
         ['https://www.google.com/search?q=' + q, 'Votre entreprise sur Google', 'Ce qui s’affiche quand on tape votre nom.'],
         ['https://www.google.com/maps/search/' + q, 'Votre entreprise sur Google Maps', 'Votre fiche apparaît-elle sur la carte ?'],
         ['https://adstransparency.google.com/?region=FR', 'Vos annonces Google', 'Centre de transparence des annonces : cherchez votre nom.']
     ];
-    if (a.site === 'oui') liens.push(['https://pagespeed.web.dev/', 'Votre site sur téléphone', 'Outil gratuit de Google : collez l’adresse de votre site.']);
+    if (a.site === 'oui') liens.push([su ? 'https://pagespeed.web.dev/analysis?url=' + encodeURIComponent(su) : 'https://pagespeed.web.dev/', 'Votre site sur téléphone', su ? 'Outil gratuit de Google, avec votre adresse déjà remplie.' : 'Outil gratuit de Google : collez l’adresse de votre site.']);
     document.getElementById('res-verif').innerHTML = liens.map(function(l){
         return '<a href="' + l[0] + '" target="_blank" rel="noopener noreferrer"><strong>' + l[1] + ' →</strong>' + l[2] + '</a>';
     }).join('');
 
+    dgDiag = diag;
     preparerEnvoi(o.nom, diag);
 }
 
@@ -576,9 +669,14 @@ function preparerEnvoi(reco, analyse) {
       + 'Site internet : ' + oui(dgAnswers.site) + '\n'
       + 'Fiche Google : ' + oui(dgAnswers.fiche) + '\n'
       + 'Publicité Google (Google Ads) : ' + oui(dgAnswers.ads) + '\n'
+      + (dgDet.site ? 'Mon site : ' + dgDet.site + '\n' : '')
+      + (dgDet.mesure ? 'Mesure Google PageSpeed (téléphone) : ' + dgDet.mesure + '\n' : '')
+      + (dgDet.fiche ? 'Ma fiche Google : ' + dgDet.fiche + '\n' : '')
+      + (dgDet.avis || dgDet.note ? 'Avis : ' + (dgDet.avis || '?') + ', note ' + (dgDet.note || '?') + '/5\n' : '')
+      + (dgDet.camp || dgDet.budget ? 'Google Ads : ' + (dgDet.camp || '?') + ' campagne(s), ' + (dgDet.budget || '?') + ' € par mois\n' : '')
       + 'Offre proposée : ' + reco + '\n\n'
       + 'Bilan affiché : ' + analyse + '\n\n'
-      + 'Adresse de mon site (si j’en ai un) : \n'
+      + (dgDet.site ? '' : 'Adresse de mon site (si j’en ai un) : \n')
       + 'Mon numéro de téléphone (facultatif) : \n\nMerci,\n';
     var to = 'mrjosyvalery' + '@' + 'gmail.com';
     document.getElementById('res-mail').href = 'mailto:' + to + '?subject=' + encodeURIComponent(sujet) + '&body=' + encodeURIComponent(corps);
