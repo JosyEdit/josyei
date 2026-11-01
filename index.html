@@ -368,7 +368,7 @@ html{scroll-behavior:smooth}
           <thead><tr><th>Élément</th><th>D’après vos réponses</th><th>Pourquoi c’est utile</th><th>À faire</th></tr></thead>
           <tbody id="res-table-body"></tbody>
         </table>
-        <p class="res-src">Ce bilan se base sur vos réponses. Seule la mesure du site, si vous la lancez, vient d’un outil de Google. Pour une vérification réelle, envoyez-le : je regarde ce que Google affiche vraiment pour votre entreprise.</p>
+        <p class="res-src">Ce bilan se base sur vos réponses. Seule la mesure du site, si vous la lancez, vient d’un outil de Google.</p>
       </div>
 
       <div class="res-pack">
@@ -381,20 +381,6 @@ html{scroll-behavior:smooth}
         <p class="res-pack-plus">Prix nets, TVA non applicable (art. 293 B du CGI). <a href="/pack-google-site/">Comparer les 5 offres</a>.</p>
       </div>
 
-      <div class="res-bloc">
-        <h3>Recevoir une vérification écrite, gratuite</h3>
-        <ol>
-          <li>Vous m’envoyez ce bilan (il est déjà écrit dans le message).</li>
-          <li>Je regarde ce que Google affiche vraiment pour votre entreprise : site, fiche, annonces.</li>
-          <li>Je vous réponds par écrit, avec les points à corriger. Sans engagement.</li>
-        </ol>
-        <div class="dg-act res-envoi">
-          <a class="ex-btn" id="res-mail" href="#">Envoyer mon bilan par email</a>
-          <a class="ex-btn dg-sec" id="res-gmail" href="#" target="_blank" rel="noopener noreferrer">Envoyer avec Gmail</a>
-          <a class="ex-btn dg-sec" id="res-li" href="https://www.linkedin.com/in/josyei/" target="_blank" rel="noopener noreferrer">Envoyer sur LinkedIn</a>
-        </div>
-        <p class="res-envoi-note">Il ne reste qu’à appuyer sur Envoyer. Sur LinkedIn, le bilan est copié : collez-le dans votre message.</p>
-      </div>
 
       <div class="res-bloc">
         <h3>Vérifiez vous-même en 1 minute</h3>
@@ -678,6 +664,7 @@ function preparerEnvoi(reco, analyse) {
       + 'Bilan affiché : ' + analyse + '\n\n'
       + (dgDet.site ? '' : 'Adresse de mon site (si j’en ai un) : \n')
       + 'Mon numéro de téléphone (facultatif) : \n\nMerci,\n';
+    if (!document.getElementById('res-mail')) return; // bloc d'envoi retiré le 01/11 à sa demande
     var to = 'mrjosyvalery' + '@' + 'gmail.com';
     document.getElementById('res-mail').href = 'mailto:' + to + '?subject=' + encodeURIComponent(sujet) + '&body=' + encodeURIComponent(corps);
     document.getElementById('res-gmail').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(to) + '&su=' + encodeURIComponent(sujet) + '&body=' + encodeURIComponent(corps);
