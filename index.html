@@ -673,7 +673,7 @@ function preparerEnvoi(reco, analyse) {
       + (dgDet.site ? '' : 'Adresse de mon site (si j’en ai un) : \n')
       + 'Mon numéro de téléphone (facultatif) : \n\nMerci,\n';
     if (!document.getElementById('res-mail')) return; // bloc d'envoi retiré le 01/11 à sa demande
-    var to = 'mrjosyvalery' + '@' + 'gmail.com';
+    var to = 'contact' + '@' + 'josyei.com';
     document.getElementById('res-mail').href = 'mailto:' + to + '?subject=' + encodeURIComponent(sujet) + '&body=' + encodeURIComponent(corps);
     document.getElementById('res-gmail').href = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(to) + '&su=' + encodeURIComponent(sujet) + '&body=' + encodeURIComponent(corps);
     document.getElementById('res-li').onclick = function(){ try { navigator.clipboard.writeText(corps); } catch(x) {} };
