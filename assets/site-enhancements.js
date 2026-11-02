@@ -592,3 +592,110 @@
     h.parentNode.insertBefore(svg, h);
   });
 })();
+
+// Urgences vraies (02/11/2026) : bandeau tournant + bloc « Pourquoi maintenant ».
+// Règle : uniquement des faits vrais calculés en direct (date du jour, saison, échéance légale
+// réelle du 1er septembre 2027). Aucun faux compte à rebours, aucune fausse rareté, aucun chiffre inventé.
+(function () {
+  'use strict';
+  var root = document.querySelector('.jx');
+  if (!root) return;
+  var path = location.pathname;
+  if (/mentions-legales|politique-de-confidentialite|informations|merci/.test(path)) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var now = new Date();
+  var jours = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+  var mois = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+  var auj = jours[now.getDay()] + ' ' + now.getDate() + (now.getDate() === 1 ? 'er' : '') + ' ' + mois[now.getMonth()];
+  var m = now.getMonth();
+  var saison;
+  if (m >= 10 || m <= 1) saison = 'L’hiver arrive : pannes de chauffage, fuites de toit, dépannages… les gens cherchent sur Google le jour où le problème arrive.';
+  else if (m <= 4) saison = 'Le printemps arrive : travaux, rénovations et entretien se décident maintenant, souvent après une recherche Google.';
+  else if (m <= 7) saison = 'L’été : les clients qui préparent la rentrée cherchent dès maintenant qui appeler.';
+  else saison = 'La rentrée : les projets de l’automne et de l’hiver se décident maintenant.';
+  var echeance = new Date(2027, 8, 1);
+  var restant = Math.ceil((echeance - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000);
+  var diag = '/#diagnostic';
+
+  var msgs = [
+    { t: 'Aujourd’hui, ' + auj + ' : un client qui cherche aujourd’hui appelle celui qu’il trouve aujourd’hui.', a: 'Voir si on vous trouve', h: diag },
+    { t: saison, a: 'Faire le diagnostic gratuit', h: diag }
+  ];
+  if (restant > 0) msgs.push({ t: 'Facture électronique : plus que ' + restant + ' jours avant le 1er septembre 2027, date où les petites entreprises devront l’émettre.', a: 'La check-list', h: '/facturation-electronique-tpe-vienne/' });
+  msgs.push({ t: 'Je travaille seul : je suis un nombre limité d’entreprises en même temps.', a: 'Commencer par le diagnostic', h: diag });
+
+  // 1. Bandeau en haut de page (fermable, mémorisé pour la visite)
+  var ferme = false;
+  try { ferme = sessionStorage.getItem('ux-band-off') === '1'; } catch (e) {}
+  if (!ferme) {
+    var band = document.createElement('div');
+    band.className = 'ux-band';
+    band.setAttribute('role', 'region');
+    band.setAttribute('aria-label', 'À savoir aujourd’hui');
+    band.innerHTML = '<span class="ux-dot" aria-hidden="true"></span><p class="ux-msg" aria-live="polite"></p><a class="ux-cta"></a><button type="button" class="ux-x" aria-label="Fermer">×</button>';
+    root.insertBefore(band, root.firstChild);
+    var p = band.querySelector('.ux-msg'), a = band.querySelector('.ux-cta'), i = 0;
+    var show = function () {
+      var x = msgs[i % msgs.length];
+      p.classList.remove('ux-in');
+      void p.offsetWidth;
+      p.textContent = x.t; a.textContent = x.a + ' →'; a.href = x.h;
+      p.classList.add('ux-in');
+      i++;
+    };
+    show();
+    if (!reduce) {
+      var timer = setInterval(show, 7000);
+      band.addEventListener('mouseenter', function () { clearInterval(timer); });
+      band.addEventListener('mouseleave', function () { timer = setInterval(show, 7000); });
+    }
+    band.querySelector('.ux-x').addEventListener('click', function () {
+      band.remove();
+      try { sessionStorage.setItem('ux-band-off', '1'); } catch (e) {}
+    });
+  }
+
+  // 2. Bloc « Pourquoi maintenant » : accueil, page offres et pages trouver-clients
+  var main = root.querySelector('main');
+  if (!main || !(path === '/' || /^\/(index\.html)?$|pack-google-site|trouver-clients|diagnostic-visibilite/.test(path))) return;
+  var box = document.createElement('section');
+  box.className = 'ux-now';
+  box.setAttribute('aria-labelledby', 'ux-now-t');
+  box.innerHTML =
+    '<div class="ux-now-in">' +
+    '<p class="ux-kick"><span class="ux-dot" aria-hidden="true"></span>' + auj.charAt(0).toUpperCase() + auj.slice(1) + '</p>' +
+    '<h2 id="ux-now-t">Pourquoi s’en occuper maintenant</h2>' +
+    '<div class="ux-grid">' +
+    '<div class="ux-card"><b class="ux-big">Aujourd’hui</b><p>Quand quelqu’un a besoin d’un professionnel, il cherche sur Google et appelle souvent l’un des premiers qu’il voit. Ce qui n’est pas visible aujourd’hui ne reçoit pas l’appel d’aujourd’hui.</p></div>' +
+    '<div class="ux-card"><b class="ux-big">La saison</b><p>' + saison + '</p></div>' +
+    (restant > 0 ? '<div class="ux-card"><b class="ux-big"><span class="ux-count" data-n="' + restant + '">' + (reduce ? restant : 0) + '</span> jours</b><p>avant le 1er septembre 2027 : les petites entreprises devront émettre leurs factures au format électronique. <a href="/facturation-electronique-tpe-vienne/">Voir la check-list</a></p></div>' : '') +
+    '</div>' +
+    '<p class="ux-note">Je travaille seul et je suis un nombre limité d’entreprises en même temps. Le diagnostic est gratuit et le résultat s’affiche tout de suite.</p>' +
+    '<a class="ux-go" href="' + diag + '">Faire mon diagnostic gratuit →</a>' +
+    '</div>';
+  var diagSec = main.querySelector('#diagnostic');
+  if (diagSec) diagSec.parentNode.insertBefore(box, diagSec);
+  else main.appendChild(box);
+  if (path === '/' || /^\/index\.html$/.test(path)) box.querySelector('.ux-go').href = '#diagnostic';
+
+  var c = box.querySelector('.ux-count');
+  if (c && !reduce) {
+    var run = function () {
+      var n = +c.dataset.n, t0 = null;
+      var step = function (ts) {
+        if (!t0) t0 = ts;
+        var k = Math.min(1, (ts - t0) / 1400);
+        c.textContent = Math.round(n * (1 - Math.pow(1 - k, 3)));
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { run(); io.disconnect(); } });
+      }, { threshold: 0.4 });
+      io.observe(c);
+    } else run();
+    setTimeout(function () { if (c.textContent === '0') c.textContent = c.dataset.n; }, 4000);
+  }
+})();
