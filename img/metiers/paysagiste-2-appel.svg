@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Illustration : paysagiste qui reçoit un appel sur le chantier"><title>Illustration : paysagiste qui reçoit un appel sur le chantier</title><clipPath id="c"><rect width="640" height="400" rx="18"/></clipPath><g clip-path="url(#c)"><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0ea5e9"/><stop offset="1" stop-color="#1e3a8a"/></linearGradient></defs><rect width="640" height="400" fill="url(#sky)"/><circle cx="560" cy="70" r="26" fill="#fde68a" opacity=".85"/><rect y="340" width="640" height="60" fill="#166534"/><rect x="340" y="200" width="290" height="140" rx="30" fill="#15803d"/><rect x="340" y="200" width="290" height="20" rx="10" fill="#22c55e"/><rect x="80" y="180" width="18" height="160" fill="#78350f"/><circle cx="89" cy="160" r="60" fill="#16a34a"/><polyline points="204.0,262.0 216.0,302.0 222.0,340.0" fill="none" stroke="#16203a" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="219" y="334" width="22" height="11" rx="5" fill="#0b1020" transform="translate(-5,0)"/>
+<polyline points="202.0,196.0 196.0,230.0 198.0,266.0" fill="none" stroke="#1d4ed8" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="198.0" cy="266.0" r="7" fill="#e8b98f"/>
+<path d="M188,192 Q210,180 232,192 L231,266 Q210,272 189,266 Z" fill="#16a34a"/>
+<path d="M208,188 L208,268" stroke="#1e40af" stroke-width="2"/>
+<rect x="189" y="252" width="42" height="9" rx="3" fill="#f59e0b" opacity=".85"/>
+<polyline points="216.0,262.0 210.0,302.0 206.0,340.0" fill="none" stroke="#1e2a44" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="200" y="334" width="22" height="11" rx="5" fill="#0b1020"/>
+<rect x="204" y="176" width="12" height="12" fill="#e8b98f"/>
+<circle cx="212" cy="162" r="18" fill="#e8b98f"/>
+<circle cx="220" cy="160" r="2.2" fill="#1f2937"/>
+<path d="M193,159 Q212,132 231,159 Z" fill="#1e3a8a"/><path d="M212,157 L242,159" stroke="#1e3a8a" stroke-width="5" stroke-linecap="round"/>
+<polyline points="218.0,196.0 240.0,220.0 222.0,172.0" fill="none" stroke="#16a34a" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="222.0" cy="172.0" r="7.5" fill="#e8b98f"/>
+<rect x="218" y="156" width="11" height="21" rx="3" fill="#0f172a" stroke="#93c5fd" stroke-width="2"/><g transform="translate(306,112)"><rect x="-58" y="-26" width="116" height="44" rx="14" fill="#f8fafc"/><path d="M-10,18 l-12,18 l24,-18z" fill="#f8fafc"/><circle cx="-34" cy="-4" r="13" fill="#22c55e"/><path d="M-40,-9 q2,-4 5,-1 l3,3 q1,2 -1,3 q2,5 6,7 q1,-2 3,-1 l3,3 q2,3 -1,5 q-10,3 -18,-19z" fill="#fff"/><rect x="-14" y="-12" width="58" height="6" rx="3" fill="#94a3b8"/><rect x="-14" y="0" width="40" height="6" rx="3" fill="#cbd5e1"/></g><path d="M240,154 q8,8 0,18" fill="none" stroke="#22c55e" stroke-width="3" opacity="1.0"/><path d="M249,145 q8,8 0,18" fill="none" stroke="#22c55e" stroke-width="3" opacity="0.75"/><path d="M258,136 q8,8 0,18" fill="none" stroke="#22c55e" stroke-width="3" opacity="0.5"/></g></svg>

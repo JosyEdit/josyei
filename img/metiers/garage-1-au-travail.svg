@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Illustration : garagiste au travail"><title>Illustration : garagiste au travail</title><clipPath id="c"><rect width="640" height="400" rx="18"/></clipPath><g clip-path="url(#c)"><rect width="640" height="400" fill="#334155"/><rect y="340" width="640" height="60" fill="#1f2937"/><rect x="0" y="336" width="640" height="6" fill="#0f172a" opacity=".5"/><rect x="0" y="40" width="640" height="10" fill="#facc15" opacity=".4"/><g transform="translate(300,300)"><path d="M0,-30 q10,-50 70,-56 h90 q50,4 90,40 l40,6 q14,4 14,20 v20 h-304z" fill="#dc2626"/><path d="M84,-80 h70 q30,4 54,30 h-138z" fill="#7dd3fc" opacity=".7"/><circle cx="66" cy="0" r="26" fill="#0b1020"/><circle cx="66" cy="0" r="10" fill="#94a3b8"/><circle cx="250" cy="0" r="26" fill="#0b1020"/><circle cx="250" cy="0" r="10" fill="#94a3b8"/></g><rect x="290" y="326" width="320" height="10" fill="#6b7280"/><g transform="translate(110,300)"><circle r="34" fill="#111827"/><circle r="14" fill="#6b7280"/></g><polyline points="234.0,262.0 246.0,302.0 252.0,340.0" fill="none" stroke="#16203a" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="249" y="334" width="22" height="11" rx="5" fill="#0b1020" transform="translate(-5,0)"/>
+<polyline points="232.0,196.0 256.0,216.0 286.0,208.0" fill="none" stroke="#1d4ed8" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="286.0" cy="208.0" r="7" fill="#e8b98f"/>
+<path d="M218,192 Q240,180 262,192 L261,266 Q240,272 219,266 Z" fill="#1e40af"/>
+<path d="M238,188 L238,268" stroke="#1e40af" stroke-width="2"/>
+<rect x="219" y="252" width="42" height="9" rx="3" fill="#f59e0b" opacity=".85"/>
+<polyline points="246.0,262.0 240.0,302.0 236.0,340.0" fill="none" stroke="#1e2a44" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="230" y="334" width="22" height="11" rx="5" fill="#0b1020"/>
+<rect x="234" y="176" width="12" height="12" fill="#e8b98f"/>
+<circle cx="242" cy="162" r="18" fill="#e8b98f"/>
+<circle cx="250" cy="160" r="2.2" fill="#1f2937"/>
+<path d="M223,159 Q242,132 261,159 Z" fill="#1e3a8a"/><path d="M242,157 L272,159" stroke="#1e3a8a" stroke-width="5" stroke-linecap="round"/>
+<polyline points="248.0,196.0 282.0,192.0 314.0,192.0" fill="none" stroke="#1e40af" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="314.0" cy="192.0" r="7.5" fill="#e8b98f"/>
+<g transform="translate(314,192) rotate(80)"><rect x="-3" y="-34" width="7" height="34" rx="3" fill="#cbd5e1"/><path d="M-9,-46 a10,10 0 1 1 20,0 l-4,4 h-12z" fill="#cbd5e1"/></g></g></svg>

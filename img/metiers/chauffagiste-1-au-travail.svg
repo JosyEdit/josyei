@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Illustration : chauffagiste au travail"><title>Illustration : chauffagiste au travail</title><clipPath id="c"><rect width="640" height="400" rx="18"/></clipPath><g clip-path="url(#c)"><rect width="640" height="400" fill="#2b3b5f"/><rect y="340" width="640" height="60" fill="#16203a"/><rect x="0" y="336" width="640" height="6" fill="#0f172a" opacity=".5"/><rect x="380" y="60" width="140" height="190" rx="10" fill="#f8fafc"/><rect x="400" y="90" width="100" height="30" rx="4" fill="#0f172a"/><text x="450" y="111" font-size="18" text-anchor="middle" fill="#38bdf8" font-family="sans-serif">55°</text><circle cx="420" cy="150" r="9" fill="#cbd5e1"/><circle cx="450" cy="150" r="9" fill="#cbd5e1"/><path d="M400,250 v90 M430,250 v90 M470,250 v90 M500,250 v90" stroke="#b45309" stroke-width="9"/><path d="M400,250 v90" stroke="#ef4444" stroke-width="9"/><path d="M500,250 v90" stroke="#3b82f6" stroke-width="9"/><g transform="translate(128,314)"><path d="M12,0 v-8 h20 v8" fill="none" stroke="#334155" stroke-width="4"/><rect x="0" y="0" width="44" height="26" rx="4" fill="#ef4444"/><rect x="0" y="9" width="44" height="3" fill="#b91c1c"/></g><polyline points="284.0,262.0 296.0,302.0 302.0,340.0" fill="none" stroke="#16203a" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="299" y="334" width="22" height="11" rx="5" fill="#0b1020" transform="translate(-5,0)"/>
+<polyline points="282.0,196.0 308.0,218.0 332.0,226.0" fill="none" stroke="#1d4ed8" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="332.0" cy="226.0" r="7" fill="#e8b98f"/>
+<path d="M268,192 Q290,180 312,192 L311,266 Q290,272 269,266 Z" fill="#2563eb"/>
+<path d="M288,188 L288,268" stroke="#1e40af" stroke-width="2"/>
+<rect x="269" y="252" width="42" height="9" rx="3" fill="#f59e0b" opacity=".85"/>
+<polyline points="296.0,262.0 290.0,302.0 286.0,340.0" fill="none" stroke="#1e2a44" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="280" y="334" width="22" height="11" rx="5" fill="#0b1020"/>
+<rect x="284" y="176" width="12" height="12" fill="#e8b98f"/>
+<circle cx="292" cy="162" r="18" fill="#e8b98f"/>
+<circle cx="300" cy="160" r="2.2" fill="#1f2937"/>
+<path d="M273,159 Q292,132 311,159 Z" fill="#1e3a8a"/><path d="M292,157 L322,159" stroke="#1e3a8a" stroke-width="5" stroke-linecap="round"/>
+<polyline points="298.0,196.0 330.0,184.0 366.0,156.0" fill="none" stroke="#2563eb" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="366.0" cy="156.0" r="7.5" fill="#e8b98f"/>
+<g transform="translate(366,156) rotate(-30)"><rect x="0" y="-5" width="18" height="10" rx="4" fill="#f59e0b"/><rect x="18" y="-2" width="20" height="4" fill="#cbd5e1"/></g></g></svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Illustration : menuisier au travail"><title>Illustration : menuisier au travail</title><clipPath id="c"><rect width="640" height="400" rx="18"/></clipPath><g clip-path="url(#c)"><rect width="640" height="400" fill="#3f3f46"/><rect y="340" width="640" height="60" fill="#27272a"/><rect x="0" y="336" width="640" height="6" fill="#0f172a" opacity=".5"/><rect x="320" y="240" width="260" height="20" fill="#b7791f"/><rect x="336" y="260" width="16" height="80" fill="#92400e"/><rect x="548" y="260" width="16" height="80" fill="#92400e"/><rect x="340" y="226" width="200" height="14" fill="#e3b26b"/><rect x="70" y="80" width="120" height="180" fill="none" stroke="#d6a25a" stroke-width="12"/><line x1="130" y1="80" x2="130" y2="260" stroke="#d6a25a" stroke-width="8"/><rect x="76" y="86" width="108" height="168" fill="#7dd3fc" opacity=".25"/><polyline points="264.0,262.0 276.0,302.0 282.0,340.0" fill="none" stroke="#16203a" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="279" y="334" width="22" height="11" rx="5" fill="#0b1020" transform="translate(-5,0)"/>
+<polyline points="262.0,196.0 288.0,218.0 322.0,202.0" fill="none" stroke="#1d4ed8" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="322.0" cy="202.0" r="7" fill="#e8b98f"/>
+<path d="M248,192 Q270,180 292,192 L291,266 Q270,272 249,266 Z" fill="#1d4ed8"/>
+<path d="M268,188 L268,268" stroke="#1e40af" stroke-width="2"/>
+<rect x="249" y="252" width="42" height="9" rx="3" fill="#f59e0b" opacity=".85"/>
+<polyline points="276.0,262.0 270.0,302.0 266.0,340.0" fill="none" stroke="#1e2a44" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="260" y="334" width="22" height="11" rx="5" fill="#0b1020"/>
+<rect x="264" y="176" width="12" height="12" fill="#e8b98f"/>
+<circle cx="272" cy="162" r="18" fill="#e8b98f"/>
+<circle cx="280" cy="160" r="2.2" fill="#1f2937"/>
+<path d="M254,160 Q268,134 290,156 Q276,150 254,160Z" fill="#3b2a20"/>
+<polyline points="278.0,196.0 312.0,206.0 348.0,196.0" fill="none" stroke="#1d4ed8" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="348.0" cy="196.0" r="7.5" fill="#e8b98f"/>
+<rect x="344" y="182" width="34" height="18" rx="4" fill="#ef4444"/></g></svg>
