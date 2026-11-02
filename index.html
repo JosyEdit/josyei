@@ -316,7 +316,7 @@ html{scroll-behavior:smooth}
       </div>
       <div class="faq ac-faq">
         <details><summary>Le diagnostic est-il vraiment gratuit ?</summary><p>Oui. Le test, le bilan et sa version PDF sont gratuits et ne vous engagent à rien.</p></details>
-        <details><summary>Et si je veux de l’aide ensuite, combien ça coûte ?</summary><p>Les offres et leurs prix sont affichés sur la <a href="/pack-google-site/">page des offres</a>, de la fiche Google seule à l’offre complète. Rien n’est facturé sans votre accord écrit, et la gestion mensuelle se résilie chaque mois.</p></details>
+        <details><summary>Et si je veux de l’aide ensuite, combien ça coûte ?</summary><p>À partir de 100 €. Vous recevez un devis écrit et gratuit, à prix fixe, avec seulement ce qui vous manque (voir la <a href="/pack-google-site/">page des offres</a>). Rien n’est facturé sans votre accord écrit, et la gestion mensuelle se résilie chaque mois.</p></details>
         <details><summary>Vous garantissez combien de clients ?</summary><p>Aucun chiffre n’est garanti : personne ne peut le promettre honnêtement. Ce qui est garanti, c’est le travail fait, écrit noir sur blanc, et un rapport chaque mois si vous prenez la gestion Google Ads.</p></details>
         <details><summary>Ce test analyse-t-il ma vraie fiche Google ?</summary><p>Le bilan se base sur vos réponses. Pour voir ce que Google affiche vraiment, le bilan vous donne des liens directs vers Google, Google Maps et le centre de transparence des annonces. Si vous avez un site, le bouton « Analyser mon site » le mesure avec l’outil gratuit de Google.</p></details>
         <details><summary>Pourquoi être sur Google quand on est un professionnel local ?</summary><p>Parce que vos clients y cherchent. 76 % des personnes qui font une recherche de proximité sur leur smartphone se rendent dans un établissement dans la journée (source : <a href="https://www.thinkwithgoogle.com/_qs/documents/620/mobile-search-trends-consumers-to-stores.pdf" target="_blank" rel="noopener noreferrer" style="color:#93c5fd">Google, Digital Diary, mai 2016</a>).</p></details>
@@ -326,13 +326,13 @@ html{scroll-behavior:smooth}
 
     <section class="ac-sec" id="offres-accueil"><div class="w">
       <h2>La machine à clients JOSY EI</h2>
-      <p class="ac-lead">Je mets votre entreprise devant les personnes qui cherchent déjà votre métier près de chez vous. Vous pouvez corriger seul ce que le diagnostic montre, ou me le confier. Prix fixes, affichés avant tout engagement.</p>
+      <p class="ac-lead">Je mets votre entreprise devant les personnes qui cherchent déjà votre métier près de chez vous. Vous pouvez corriger seul ce que le diagnostic montre, ou me le confier. Devis écrit et gratuit, à prix fixe, avant tout engagement.</p>
       <div class="ac-off">
         <a href="/pack-google-site/#fiche"><strong>Fiche Google</strong>Création ou mise à jour de votre fiche : photos, horaires, services, zone.<span class="go">Voir l’offre →</span></a>
         <a href="/pack-google-site/#presence"><strong>Site + fiche Google</strong>Un site d’une page lisible sur téléphone, avec bouton d’appel, et votre fiche Google.<span class="go">Voir l’offre →</span></a>
         <a class="top" href="/pack-google-site/#complete"><strong>Site + fiche + Google Ads</strong>Tout, plus une campagne locale gérée chaque mois, avec un rapport écrit.<span class="go">Voir l’offre →</span></a>
       </div>
-      <p class="ac-lead" style="margin-top:1.2rem">Toutes les offres et les prix : <a href="/pack-google-site/" style="color:#7dd3fc">page des offres</a>.</p>
+      <p class="ac-lead" style="margin-top:1.2rem">Tout ce que je peux régler pour vous : <a href="/pack-google-site/" style="color:#7dd3fc">page des offres</a>.</p>
     </div></section>
 
     <section class="ac-sec"><div class="w">
@@ -381,7 +381,6 @@ html{scroll-behavior:smooth}
         <p class="res-pack-nom" id="modal-pack-name"></p>
         <p class="res-pack-prix" id="res-pack-prix"></p>
         <p class="res-pack-pourquoi" id="res-pack-pourquoi"></p>
-        <p class="res-lanc" id="res-lanc" hidden>Lancement : pour les 5 premiers clients, la gestion est à 99 € par mois pendant les 3 mois qui suivent le premier mois inclus, en échange de l’accord pour citer les chiffres réels de la campagne (sans votre nom si vous préférez).</p>
         <div class="res-choix">
           <button type="button" class="ac-go res-pdf" onclick="window.print()"><span class="ac-go-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m-5-5 5 5 5-5M5 20h14"/></svg></span><span>Télécharger mon bilan (PDF)</span></button>
           <a href="/pack-google-site/" id="res-pack-lien" class="ac-go"><span>Voir l’offre proposée</span><span class="ac-go-arr" aria-hidden="true">→</span></a>
@@ -537,12 +536,12 @@ function analyserSite(btn) {
 }
 var dgDiag = '';
 
-// Offres réelles de /pack-google-site/ (prix au 01/11/2026).
+// Offres réelles de /pack-google-site/ (sans grille de prix depuis le 02/11/2026 : devis à partir de 100 €).
 var OFFRES = {
-    complete:   { nom: 'Site web + fiche Google + Google Ads', prix: '390 € net, puis 149 € net par mois (budget publicitaire payé par vous à Google)' },
-    presence:   { nom: 'Présence : site web + fiche Google', prix: '290 € net, puis 49 € net par an dès la 2e année' },
-    fiche:      { nom: 'Fiche Google', prix: '100 € net, une seule fois' },
-    'google-ads': { nom: 'Google Ads', prix: '190 € net, puis 149 € net par mois (budget publicitaire payé par vous à Google)' },
+    complete:   { nom: 'Site web + fiche Google + Google Ads', prix: 'Prix fixe écrit dans votre devis gratuit (à partir de 100 €)' },
+    presence:   { nom: 'Présence : site web + fiche Google', prix: 'Prix fixe écrit dans votre devis gratuit (à partir de 100 €)' },
+    fiche:      { nom: 'Fiche Google', prix: 'Prix fixe écrit dans votre devis gratuit (à partir de 100 €)' },
+    'google-ads': { nom: 'Google Ads', prix: 'Prix fixe écrit dans votre devis gratuit (à partir de 100 €)' },
     'sur-mesure': { nom: 'Sur mesure', prix: 'Sur devis, prix fixe écrit avant tout engagement' }
 };
 
@@ -622,7 +621,6 @@ function generateFinalResult() {
     document.getElementById('res-pack-lien').href = '/pack-google-site/#' + cle;
     document.getElementById('res-ent-name').textContent = dgEntName ? dgEntName + (v ? ' (' + v + ')' : '') : 'Votre entreprise';
 
-    document.getElementById('res-lanc').hidden = !(cle === 'complete' || cle === 'google-ads');
     document.getElementById('res-date').textContent = 'Bilan du ' + new Date().toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
 
     // Fiche de l'entreprise, lue dans l'annuaire public (si trouvée)
