@@ -526,3 +526,69 @@
   tiltTargets.forEach(function (el) { bind(el, 7); });
   root.querySelectorAll('.ax-b3d:not(.ex-sticky)').forEach(function (el) { bind(el, 12); });
 })();
+
+/* IMAGES ANIMÉES DES SECTIONS (02/11) : une petite illustration animée au-dessus du titre de chaque section,
+   choisie d'après le sujet du titre. Rien n'est retiré de la page ; décoratif (aria-hidden). */
+(function () {
+  'use strict';
+  var root = document.querySelector('.jx');
+  if (!root) return;
+  var main = root.querySelector('main') || root;
+  var G = '<defs><linearGradient id="axIcoG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0066ff"/><stop offset="1" stop-color="#00d4ff"/></linearGradient></defs>';
+  var S = 'fill="none" stroke="url(#axIcoG)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"';
+  var icons = {
+    loupe: '<circle cx="32" cy="32" r="26" class="ax-ico-bg"/><g class="ax-i-loupe"><circle cx="28" cy="28" r="11" ' + S + '/><path d="M36 36l10 10" ' + S + '/></g><circle class="ax-i-tw" cx="16" cy="18" r="1.8" fill="#7dd3fc"/><circle class="ax-i-tw" cx="48" cy="20" r="1.5" fill="#22c55e"/>',
+    prix: '<circle cx="32" cy="32" r="26" class="ax-ico-bg"/><g class="ax-i-flip"><circle cx="32" cy="32" r="15" ' + S + '/><path d="M37 25.5a8 8 0 1 0 0 13M24 30h10M24 34.5h10" ' + S + ' stroke-width="2.6"/></g>',
+    etapes: '<circle cx="32" cy="32" r="26" class="ax-ico-bg"/><rect class="ax-i-bar" x="17" y="34" width="7" height="12" rx="2" fill="url(#axIcoG)"/><rect class="ax-i-bar" x="28.5" y="27" width="7" height="19" rx="2" fill="url(#axIcoG)"/><rect class="ax-i-bar" x="40" y="19" width="7" height="27" rx="2" fill="url(#axIcoG)"/>',
+    question: '<circle cx="32" cy="32" r="26" class="ax-ico-bg"/><path d="M16 22a6 6 0 0 1 6-6h20a6 6 0 0 1 6 6v13a6 6 0 0 1-6 6H29l-8 7v-7h0a6 6 0 0 1-5-6z" ' + S + '/><circle class="ax-i-dot" cx="25" cy="28.5" r="2.4" fill="#00d4ff"/><circle class="ax-i-dot" cx="32" cy="28.5" r="2.4" fill="#00d4ff"/><circle class="ax-i-dot" cx="39" cy="28.5" r="2.4" fill="#00d4ff"/>',
+    zone: '<circle cx="32" cy="32" r="26" class="ax-ico-bg"/><circle class="ax-i-ring" cx="32" cy="44" r="12" fill="none" stroke="#00d4ff" stroke-width="1.6"/><g class="ax-i-bob"><path d="M32 13c-6.6 0-12 5.2-12 11.7C20 33.5 32 45 32 45s12-11.5 12-20.3C44 18.2 38.6 13 32 13z" ' + S + '/><circle cx="32" cy="25" r="4" fill="#00d4ff"/></g>',
+    confiance: '<circle cx="32" cy="32" r="26" class="ax-ico-bg"/><path d="M32 12l16 6v12c0 10-7 17.5-16 21-9-3.5-16-11-16-21V18z" ' + S + '/><path class="ax-i-draw" d="M24.5 31.5l5.5 5.5 10-11" ' + S + ' stroke="#22c55e"/>',
+    chiffres: '<circle cx="32" cy="32" r="26" class="ax-ico-bg"/><path d="M15 46h34M15 46V16" ' + S + ' stroke-width="2.4"/><path class="ax-i-draw" d="M19 40l8-9 7 5 11-14" ' + S + '/><circle class="ax-i-dot" cx="45" cy="22" r="3" fill="#22c55e"/>',
+    reglages: '<circle cx="32" cy="32" r="26" class="ax-ico-bg"/><g class="ax-i-spin" style="transform-origin:26px 28px"><circle cx="26" cy="28" r="6" ' + S + '/><path d="M26 16v4M26 36v4M14 28h4M34 28h4M17.5 19.5l2.8 2.8M31.7 33.7l2.8 2.8M17.5 36.5l2.8-2.8M31.7 22.3l2.8-2.8" ' + S + ' stroke-width="2.6"/></g><g class="ax-i-spinr" style="transform-origin:42px 42px"><circle cx="42" cy="42" r="4" ' + S + ' stroke-width="2.4"/><path d="M42 34.5v2.5M42 47v2.5M34.5 42h2.5M47 42h2.5" ' + S + ' stroke-width="2.4"/></g>',
+    ia: '<circle cx="32" cy="32" r="26" class="ax-ico-bg"/><rect x="20" y="20" width="24" height="24" rx="5" ' + S + '/><path d="M26 14v6M32 14v6M38 14v6M26 44v6M32 44v6M38 44v6M14 26h6M14 32h6M14 38h6M44 26h6M44 32h6M44 38h6" ' + S + ' stroke-width="2.2"/><circle class="ax-i-dot" cx="32" cy="32" r="4.5" fill="#00d4ff"/>',
+    contact: '<circle cx="32" cy="32" r="26" class="ax-ico-bg"/><rect x="15" y="21" width="34" height="23" rx="4" ' + S + '/><path class="ax-i-flap" d="M16 23l16 12 16-12" ' + S + '/>',
+    appel: '<circle cx="32" cy="32" r="26" class="ax-ico-bg"/><g class="ax-i-ring2"><path d="M22 15h6l3 8-4 3a20 20 0 0 0 11 11l3-4 8 3v6a4 4 0 0 1-4 4C29 46 18 35 18 19a4 4 0 0 1 4-4z" ' + S + '/></g><path class="ax-i-wave" d="M38 16a10 10 0 0 1 10 10M38 22a4 4 0 0 1 4 4" ' + S + ' stroke-width="2.4"/>',
+    eclat: '<circle cx="32" cy="32" r="26" class="ax-ico-bg"/><path class="ax-i-star" d="M32 14l4.5 11.5L48 30l-11.5 4.5L32 46l-4.5-11.5L16 30l11.5-4.5z" ' + S + '/><circle class="ax-i-tw" cx="47" cy="17" r="2" fill="#7dd3fc"/><circle class="ax-i-tw" cx="18" cy="46" r="1.8" fill="#22c55e"/>'
+  };
+  var rules = [
+    ['question', /question|faq|vous vous demandez/],
+    ['prix', /prix|€|co[uû]t|tarif|combien|offre|abonnement|paiement/],
+    ['chiffres', /chiffre|r[ée]sultat|rapport|donn[ée]es|statisti|bilan|diagnostic|mesure/],
+    ['etapes', /comment|[ée]tape|m[ée]thode|d[ée]marr|par o[uù]|commencer/],
+    ['loupe', /recherch|google|tapent|trouv|visibilit|seo|cherch/],
+    ['appel', /appel|t[ée]l[ée]phone|d[ée]pannage|aujourd|se passe|urgence/],
+    ['zone', /zone|ville|commune|autour|o[uù] se trouv|carte|proche|r[ée]gion|vienne|montmorillon|poitiers/],
+    ['confiance', /savoir|confiance|garantie|s[ée]curit|avec qui|engagement|rgpd|l[ée]gal|protection/],
+    ['ia', /\bia\b|intelligence|agent|automatis|robot|chatbot|llm/],
+    ['contact', /contact|e-?mail|[ée]crire|message|linkedin/],
+    ['reglages', /mets en place|mise en place|outil|service|expertise|ce que je|compris|solution|fonctionn/]
+  ];
+  var defaults = ['eclat', 'ia', 'reglages', 'chiffres'];
+  var count = 0;
+  var pick = function (text) {
+    var t = (text || '').toLowerCase();
+    for (var i = 0; i < rules.length; i++) if (rules[i][1].test(t)) return rules[i][0];
+    return defaults[count++ % defaults.length];
+  };
+  var heads = main.querySelectorAll('h2');
+  Array.prototype.forEach.call(heads, function (h) {
+    if (h.closest('.modal-box, #page-resultats, .top-search, .ax-hero, [hidden], details, nav')) return;
+    var prev = h.previousElementSibling;
+    if (prev && (prev.matches('svg, img, picture, figure, .ax-ico') || prev.querySelector && prev.querySelector('svg, img'))) return;
+    var box = h.closest('section, article, div') || h.parentElement;
+    var first = box && box.querySelector('svg, img');
+    if (first && (first.compareDocumentPosition(h) & Node.DOCUMENT_POSITION_FOLLOWING) && !first.closest('.ax-ico') && box.contains(first) && first.getBoundingClientRect().top < h.getBoundingClientRect().top && Math.abs(first.getBoundingClientRect().top - h.getBoundingClientRect().top) < 200) return;
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 64 64');
+    svg.setAttribute('width', '60');
+    svg.setAttribute('height', '60');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+    var kind = pick(h.textContent);
+    svg.setAttribute('class', 'ax-ico ax-ico-' + kind);
+    svg.innerHTML = G + icons[kind];
+    var align = getComputedStyle(h).textAlign;
+    if (align === 'left' || align === 'start') svg.classList.add('ax-ico-left');
+    h.parentNode.insertBefore(svg, h);
+  });
+})();
