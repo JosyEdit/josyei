@@ -709,3 +709,63 @@
     setTimeout(function () { if (c.textContent === '0') c.textContent = c.dataset.n; }, 4000);
   }
 })();
+
+/* Fenêtre « Votre métier ? » : un clic sur le bouton SMS ouvre des cases d'un mot,
+   chaque case ouvre l'application SMS avec un message déjà écrit. Rien n'est envoyé ni stocké par le site. */
+(function () {
+  var btns = document.querySelectorAll('a.smsb-btn[href^="sms:"]');
+  if (!btns.length) return;
+  var M = [
+    ['Plombier', 'je suis plombier'], ['Électricien', 'je suis électricien'], ['Maçon', 'je suis maçon'],
+    ['Peintre', 'je suis peintre'], ['Carreleur', 'je suis carreleur'], ['Couvreur', 'je suis couvreur'],
+    ['Menuisier', 'je suis menuisier'], ['Charpentier', 'je suis charpentier'], ['Chauffagiste', 'je suis chauffagiste'],
+    ['Plaquiste', 'je suis plaquiste'], ['Paysagiste', 'je suis paysagiste'], ['Serrurier', 'je suis serrurier'],
+    ['Terrassier', 'je suis terrassier'], ['Ramoneur', 'je suis ramoneur'], ['Garage', 'j’ai un garage'],
+    ['Commerce', 'j’ai un commerce'], ['Restaurant', 'j’ai un restaurant']
+  ];
+  var css = '.smm{position:fixed;inset:0;z-index:100000;display:none;align-items:flex-end;justify-content:center;background:rgba(2,6,23,.72)}' +
+    '.smm.on{display:flex}@media(min-width:640px){.smm{align-items:center}}' +
+    '.smm-b{width:100%;max-width:34rem;max-height:90vh;overflow:auto;box-sizing:border-box;background:linear-gradient(135deg,#0b1a3d,#062b45);border:1px solid #00b4ff66;border-radius:20px 20px 0 0;padding:1.4rem 1.1rem 1.2rem;color:#e2e8f0;text-align:center;box-shadow:0 -10px 40px -10px #00b4ff88}' +
+    '@media(min-width:640px){.smm-b{border-radius:20px}}' +
+    '.smm-t{margin:0 0 .3rem;font-size:1.25rem;font-weight:800;color:#fff}.smm-s{margin:0 0 1rem;color:#cbd5e1;font-size:.95rem}' +
+    '.smm-g{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center}' +
+    '.smm-c{display:inline-block;padding:.65rem 1rem;border-radius:999px;border:1px solid #38bdf8;background:#0f2a4a;color:#fff!important;font-weight:700;font-size:1rem;text-decoration:none!important;transition:background .15s,transform .15s}' +
+    '.smm-c:hover,.smm-c:focus-visible{background:#0066ff;transform:translateY(-1px)}.smm-c.cur{background:#0066ff;border-color:#7dd3fc}' +
+    '.smm-c.autre{background:transparent;border-style:dashed}' +
+    '.smm-x{margin-top:1rem;background:none;border:0;color:#94a3b8;font-size:.95rem;text-decoration:underline;cursor:pointer}' +
+    '.smm-h{margin:.9rem 0 0;color:#7dd3fc;font-size:.85rem}';
+  var st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
+  var box = document.createElement('div'); box.className = 'smm'; box.setAttribute('role', 'dialog');
+  box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-labelledby', 'smm-t');
+  box.innerHTML = '<div class="smm-b"><p class="smm-t" id="smm-t">Votre métier ?</p>' +
+    '<p class="smm-s">Touchez votre métier : le SMS s’ouvre, déjà écrit. Il ne reste qu’à l’envoyer.</p>' +
+    '<div class="smm-g"></div><p class="smm-h">Gratuit, sans engagement. Rien n’est stocké sur le site.</p>' +
+    '<button type="button" class="smm-x">Fermer</button></div>';
+  document.body.appendChild(box);
+  var grid = box.querySelector('.smm-g'), last = null;
+  function close() { box.classList.remove('on'); if (last) last.focus(); }
+  box.addEventListener('click', function (e) { if (e.target === box) close(); });
+  box.querySelector('.smm-x').addEventListener('click', close);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && box.classList.contains('on')) close(); });
+  var page = (location.pathname.match(/trouver-clients-([a-z]+)-vienne/) || [])[1] || '';
+  function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+  function open(a) {
+    last = a;
+    var href = a.getAttribute('href'), orig = '';
+    try { orig = decodeURIComponent((href.split('body=')[1] || '')); } catch (e) {}
+    var ville = (orig.match(/mon entreprise est (à|au|aux) ([^,]+),/) || []);
+    var lieu = ville[2] ? ', mon entreprise est ' + ville[1] + ' ' + ville[2] : '';
+    grid.innerHTML = '';
+    M.forEach(function (m) {
+      var c = document.createElement('a'); c.className = 'smm-c' + (page && norm(m[0]) === page ? ' cur' : '');
+      c.textContent = m[0];
+      c.href = 'sms:+33759168260?&body=' + encodeURIComponent('Bonjour Josy, ' + m[1] + lieu +
+        '. Je veux mon diagnostic gratuit. ' + (lieu ? 'Son nom : ' : 'Mon entreprise : '));
+      if (c.className.indexOf('cur') > 0) grid.insertBefore(c, grid.firstChild); else grid.appendChild(c);
+    });
+    var o = document.createElement('a'); o.className = 'smm-c autre'; o.textContent = 'Autre'; o.href = href;
+    grid.appendChild(o);
+    box.classList.add('on'); grid.firstChild.focus();
+  }
+  btns.forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); open(a); }); });
+})();
