@@ -172,6 +172,21 @@
         ]
       },
       {
+        title: 'AUTOUR DE MONTMORILLON',
+        links: [
+          ['Montmorillon', '/trouver-clients-montmorillon/'],
+          ['Lussac-les-Châteaux', '/trouver-clients-lussac-les-chateaux/'],
+          ['Chauvigny', '/trouver-clients-chauvigny/'],
+          ['Saint-Savin', '/trouver-clients-saint-savin/'],
+          ['L’Isle-Jourdain', '/trouver-clients-l-isle-jourdain/'],
+          ['Le Blanc', '/trouver-clients-le-blanc/'],
+          ['Vivonne', '/trouver-clients-vivonne/'],
+          ['Gençay', '/trouver-clients-gencay/'],
+          ['Nouaillé-Maupertuis', '/trouver-clients-nouaille-maupertuis/'],
+          ['Les 50 communes', '/trouver-clients-autour-de-montmorillon/']
+        ]
+      },
+      {
         title: 'INFORMATIONS',
         links: [
           ['Accueil : diagnostic gratuit', '/'],
@@ -400,4 +415,114 @@
     ' <a href="' + PACK + '#offres" style="display:inline-block;color:#7dd3fc;padding:.85rem .6rem">Voir les offres</a>' +
     '</div>';
   foot.parentNode.insertBefore(s, foot);
+})();
+
+/* ANIMATIONS 2026 (02/11) : début de page animé, image animée près du titre, boutons 3D,
+   apparition au défilement, cartes en relief. Rien ne s'anime si le visiteur a demandé
+   « réduire les animations » ; le contenu reste toujours lisible sans script. */
+(function () {
+  'use strict';
+  var root = document.querySelector('.jx');
+  if (!root) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var main = root.querySelector('main') || root;
+  var svgNS = 'http://www.w3.org/2000/svg';
+
+  // 1. Début de page : le premier bloc qui contient le titre reçoit le fond animé.
+  var h1 = main.querySelector('h1');
+  var hero = h1 && (h1.closest('section, header:not(.top), .hero, .ac-hero') || h1.parentElement);
+  if (hero && hero !== main && !hero.classList.contains('ax-hero')) {
+    hero.classList.add('ax-hero');
+    if (!reduce) {
+      var aurora = document.createElement('div');
+      aurora.className = 'ax-aurora';
+      aurora.setAttribute('aria-hidden', 'true');
+      aurora.innerHTML = '<i></i><i></i><i></i><b></b><b></b><b></b><b></b><b></b>';
+      hero.insertBefore(aurora, hero.firstChild);
+    }
+    // Image animée du titre (radar), sauf si la page a déjà son illustration.
+    if (!hero.querySelector('.ax-emblem, svg, img:not([width="32"])')) {
+      var svg = document.createElementNS(svgNS, 'svg');
+      svg.setAttribute('viewBox', '0 0 120 120');
+      svg.setAttribute('class', 'ax-emblem ax-emblem-float');
+      svg.setAttribute('aria-hidden', 'true');
+      svg.innerHTML = '<defs><radialGradient id="axfg" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#00d4ff" stop-opacity=".35"/><stop offset="1" stop-color="#00d4ff" stop-opacity="0"/></radialGradient>' +
+        '<linearGradient id="axfs" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#00d4ff" stop-opacity="0"/><stop offset="1" stop-color="#00d4ff" stop-opacity=".55"/></linearGradient></defs>' +
+        '<circle cx="60" cy="60" r="56" fill="url(#axfg)"/><circle cx="60" cy="60" r="56" fill="none" stroke="#1d4ed8" stroke-width="1"/><circle cx="60" cy="60" r="36" fill="none" stroke="#1d4ed8" stroke-width="1" stroke-dasharray="3 4"/>' +
+        '<circle class="ax-ring" cx="60" cy="60" r="56"/><circle class="ax-ring" cx="60" cy="60" r="56"/><circle class="ax-ring" cx="60" cy="60" r="56"/>' +
+        '<path class="ax-sweep" d="M60 60 L116 60 A56 56 0 0 0 99.6 20.4 Z" fill="url(#axfs)"/>' +
+        '<circle class="ax-dot" cx="34" cy="38" r="3" fill="#22c55e"/><circle class="ax-dot" cx="88" cy="80" r="3" fill="#22c55e"/><circle class="ax-dot" cx="80" cy="34" r="2.5" fill="#7dd3fc"/><circle class="ax-dot" cx="30" cy="84" r="2.5" fill="#7dd3fc"/>' +
+        '<g class="ax-pin"><path d="M60 34c-8.3 0-15 6.6-15 14.8C45 60 60 74 60 74s15-14 15-25.2C75 40.6 68.3 34 60 34z" fill="#0066ff" stroke="#fff" stroke-width="2"/><circle cx="60" cy="49" r="5.5" fill="#fff"/></g>';
+      var firstContent = hero.querySelector(':scope > .ax-aurora');
+      hero.insertBefore(svg, firstContent ? firstContent.nextSibling : hero.firstChild);
+    }
+  }
+  if (h1 && !h1.querySelector('*:not(br)') && !h1.classList.contains('ax-shine')) h1.classList.add('ax-shine');
+
+  // 2. Boutons 3D (le premier bouton du début de page « respire » pour attirer l'œil).
+  var buttons = root.querySelectorAll('.btn, .ex-btn, .ac-go, .top-diag, .modal-btn, .digital-case-link, .dg-id-btn, #pack-cta a, .pg-cta a, .ax-btn');
+  buttons.forEach(function (b) {
+    b.classList.add('ax-b3d');
+    if (b.classList.contains('btn-s') || b.classList.contains('sec') || (b.closest('#pack-cta') && b.previousElementSibling)) b.classList.add('ax-ghost');
+  });
+  var mainBtn = hero && hero.querySelector('.ax-b3d');
+  if (mainBtn && !reduce) mainBtn.classList.add('ax-main');
+  var sticky = root.querySelector('.ex-sticky');
+  if (sticky && !reduce) sticky.classList.add('ax-main');
+
+  // 3. Sous-titres avec barre lumineuse.
+  main.querySelectorAll('h2').forEach(function (h) {
+    if (h.closest('.modal-box, #page-resultats, .top-search') || h.querySelector('a')) return;
+    if (getComputedStyle(h).textAlign === 'center') h.classList.add('ax-h2');
+  });
+
+  if (reduce || !('IntersectionObserver' in window)) return;
+  root.classList.add('ax-on');
+
+  // 4. Apparition au défilement, en cascade, seulement sous la ligne de flottaison.
+  var selectors = 'main h2, main .card, main .ex-card, main .ac-card, main .steps li, main .faq details, main .note, main .ex-proof, main .ex-trust > div, main .ex-reas li, main .grid > *, main .ax-city, main article, .digital-action-card, footer.foot nav, footer.foot section, #pack-cta > div';
+  var fold = window.innerHeight || 800;
+  var seen = [];
+  root.querySelectorAll(selectors).forEach(function (el) {
+    if (el.closest('.modal-box, #page-resultats, .ax-hero, [hidden]')) return;
+    if (seen.some(function (p) { return p.contains(el); })) return;
+    if (el.getBoundingClientRect().top < fold * 0.92) return;
+    seen.push(el);
+    var siblings = el.parentElement ? Array.prototype.indexOf.call(el.parentElement.children, el) : 0;
+    el.style.setProperty('--ax-d', Math.min(siblings, 6) * 0.07 + 's');
+    el.classList.add('ax-rv');
+  });
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('ax-in');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -6% 0px' });
+  root.querySelectorAll('.ax-rv, .ax-h2').forEach(function (el) { io.observe(el); });
+  // Sécurité : tout est affiché au bout de 4 s quoi qu'il arrive (impression, robots, onglet caché).
+  setTimeout(function () { root.querySelectorAll('.ax-rv, .ax-h2').forEach(function (el) { el.classList.add('ax-in'); }); }, 4000);
+  window.addEventListener('beforeprint', function () { root.classList.remove('ax-on'); });
+
+  // 5. Relief qui suit la souris (ordinateur uniquement) pour cartes et boutons.
+  if (!finePointer) return;
+  var tiltTargets = root.querySelectorAll('main .card, main .ex-card, main .ac-card, main .ax-city, .digital-action-card');
+  tiltTargets.forEach(function (el) { el.classList.add('ax-tilt'); });
+  var bind = function (el, max) {
+    el.addEventListener('pointermove', function (ev) {
+      var r = el.getBoundingClientRect();
+      var x = (ev.clientX - r.left) / r.width, y = (ev.clientY - r.top) / r.height;
+      el.style.setProperty('--ax-ry', ((x - 0.5) * max).toFixed(2) + 'deg');
+      el.style.setProperty('--ax-rx', ((0.5 - y) * max).toFixed(2) + 'deg');
+      el.style.setProperty('--ax-mx', (x * 100).toFixed(1) + '%');
+      el.style.setProperty('--ax-my', (y * 100).toFixed(1) + '%');
+    });
+    el.addEventListener('pointerleave', function () {
+      el.style.setProperty('--ax-rx', '0deg');
+      el.style.setProperty('--ax-ry', '0deg');
+    });
+  };
+  tiltTargets.forEach(function (el) { bind(el, 7); });
+  root.querySelectorAll('.ax-b3d:not(.ex-sticky)').forEach(function (el) { bind(el, 12); });
 })();

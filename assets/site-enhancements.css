@@ -1097,3 +1097,164 @@
   .jx .top-search { flex: 1 1 auto; }
   .jx .top-diag { padding: .55rem .75rem; font-size: .9rem; }
 }
+
+/* ==========================================================================
+   ANIMATIONS 2026 (02/11) : début de page animé, titres animés, boutons 3D,
+   apparition au défilement, cartes en relief, barre de lecture, transitions
+   entre pages. Uniquement CSS + un petit script, sans bibliothèque externe.
+   Tout est coupé si le visiteur a demandé « réduire les animations ».
+   ========================================================================== */
+@view-transition { navigation: auto; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .28s; }
+
+/* Barre de lecture en haut de l'écran (navigateurs récents, sans script) */
+@supports (animation-timeline: scroll()) {
+  .jx::before {
+    content: ""; position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 9999;
+    background: linear-gradient(90deg, #0066ff, #00d4ff, #22c55e);
+    transform-origin: 0 50%; transform: scaleX(0);
+    animation: ax-progress linear both; animation-timeline: scroll(root);
+    pointer-events: none;
+  }
+}
+@keyframes ax-progress { to { transform: scaleX(1); } }
+
+/* Début de page : fond aurore animé + particules */
+.ax-hero { position: relative; isolation: isolate; overflow: hidden; }
+.ax-hero > :not(.ax-aurora):not(.ax-emblem-float) { position: relative; z-index: 1; }
+.ax-aurora { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.ax-aurora i {
+  position: absolute; width: 46vmax; height: 46vmax; border-radius: 50%;
+  filter: blur(60px); opacity: .38; will-change: transform;
+}
+.ax-aurora i:nth-child(1) { background: #0066ff; top: -28vmax; left: -12vmax; animation: ax-float1 18s ease-in-out infinite alternate; }
+.ax-aurora i:nth-child(2) { background: #00d4ff; top: -20vmax; right: -18vmax; opacity: .22; animation: ax-float2 22s ease-in-out infinite alternate; }
+.ax-aurora i:nth-child(3) { background: #7c3aed; bottom: -34vmax; left: 30%; opacity: .18; animation: ax-float1 26s ease-in-out infinite alternate-reverse; }
+.ax-aurora b {
+  position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #7dd3fc;
+  box-shadow: 0 0 10px #00d4ff; opacity: 0; animation: ax-spark 7s linear infinite;
+}
+.ax-aurora b:nth-of-type(1) { left: 12%; top: 70%; animation-delay: 0s; }
+.ax-aurora b:nth-of-type(2) { left: 28%; top: 85%; animation-delay: 1.4s; }
+.ax-aurora b:nth-of-type(3) { left: 52%; top: 78%; animation-delay: 2.8s; }
+.ax-aurora b:nth-of-type(4) { left: 74%; top: 88%; animation-delay: 4.2s; }
+.ax-aurora b:nth-of-type(5) { left: 90%; top: 72%; animation-delay: 5.6s; }
+@keyframes ax-float1 { to { transform: translate3d(14vmax, 8vmax, 0) scale(1.15); } }
+@keyframes ax-float2 { to { transform: translate3d(-12vmax, 10vmax, 0) scale(.9); } }
+@keyframes ax-spark {
+  0% { transform: translateY(0); opacity: 0; } 15% { opacity: .9; }
+  100% { transform: translateY(-260px); opacity: 0; }
+}
+
+/* Titre principal : entrée en douceur + reflet lumineux qui passe sur le texte */
+.jx main h1, .jx .ax-hero h1 { animation: ax-rise .7s cubic-bezier(.2,.8,.2,1) both; }
+.jx .ax-hero h1 ~ *, .jx .ax-hero .badge { animation: ax-rise .7s cubic-bezier(.2,.8,.2,1) both; animation-delay: .12s; }
+.jx .ax-shine {
+  background: linear-gradient(100deg, #fff 0%, #fff 40%, #7dd3fc 50%, #fff 60%, #fff 100%);
+  background-size: 250% 100%; -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: #fff;
+  animation: ax-rise .7s cubic-bezier(.2,.8,.2,1) both, ax-text-shine 6s ease-in-out 1s infinite;
+}
+@keyframes ax-rise { from { transform: translateY(18px); opacity: .01; } to { transform: none; opacity: 1; } }
+@keyframes ax-text-shine { 0%, 55% { background-position: 100% 0; } 100% { background-position: -150% 0; } }
+
+/* Image animée du titre (radar de la zone, pastille qui pulse) */
+.ax-emblem { display: block; width: 96px; height: 96px; margin: 0 auto 1rem; overflow: visible; }
+.ax-emblem-float { position: absolute; z-index: 0; top: 1.2rem; right: 1.2rem; width: 120px; height: 120px; margin: 0; opacity: .9; pointer-events: none; }
+@media (max-width: 760px) { .ax-emblem-float { position: relative; top: auto; right: auto; width: 72px; height: 72px; margin: 0 auto .8rem; order: -1; opacity: 1; } }
+.ax-emblem .ax-ring { fill: none; stroke: #00d4ff; stroke-width: 1.5; transform-origin: 50% 50%; transform-box: fill-box; animation: ax-ring 3s ease-out infinite; }
+.ax-emblem .ax-ring:nth-of-type(2) { animation-delay: 1s; }
+.ax-emblem .ax-ring:nth-of-type(3) { animation-delay: 2s; }
+.ax-emblem .ax-sweep { transform-origin: 60px 60px; animation: ax-spin 4s linear infinite; }
+.ax-emblem .ax-pin { animation: ax-bob 2.6s ease-in-out infinite; transform-origin: 60px 60px; }
+.ax-emblem .ax-dot { animation: ax-blink 2.4s ease-in-out infinite; }
+.ax-emblem .ax-dot:nth-of-type(2n) { animation-delay: .8s; }
+.ax-emblem .ax-dot:nth-of-type(3n) { animation-delay: 1.6s; }
+@keyframes ax-ring { from { transform: scale(.25); opacity: .9; } to { transform: scale(1); opacity: 0; } }
+@keyframes ax-spin { to { transform: rotate(360deg); } }
+@keyframes ax-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes ax-blink { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+
+/* Sous-titres : barre lumineuse qui se dessine à l'apparition */
+.jx .ax-h2 { position: relative; }
+.jx .ax-h2::after {
+  content: ""; display: block; width: 72px; height: 4px; border-radius: 4px; margin: .55rem auto 0;
+  background: linear-gradient(90deg, #0066ff, #00d4ff, #0066ff); background-size: 200% 100%;
+  transform: scaleX(0); transition: transform .8s cubic-bezier(.2,.8,.2,1) .15s;
+  animation: ax-bar 3s linear infinite;
+}
+.jx .ax-h2.ax-in::after, .jx:not(.ax-on) .ax-h2::after { transform: scaleX(1); }
+@keyframes ax-bar { to { background-position: -200% 0; } }
+
+/* Boutons 3D : épaisseur visible, se soulèvent au survol, s'enfoncent au clic, reflet qui passe */
+.jx .ax-b3d {
+  --ax-edge: #0a3a99; --ax-glow: rgba(0, 102, 255, .38); --ax-rx: 0deg; --ax-ry: 0deg; --ax-y: 0px;
+  position: relative; isolation: isolate; overflow: hidden;
+  transform: perspective(600px) rotateX(var(--ax-rx)) rotateY(var(--ax-ry)) translateY(var(--ax-y));
+  box-shadow: 0 5px 0 var(--ax-edge), 0 10px 22px var(--ax-glow), inset 0 1px 0 rgba(255,255,255,.28);
+  transition: transform .18s ease, box-shadow .18s ease, background-color .2s ease, filter .2s ease;
+  will-change: transform;
+}
+.jx .ax-b3d.ax-ghost { --ax-edge: #1e293b; --ax-glow: rgba(0, 0, 0, .3); }
+.jx .ax-b3d::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.38) 50%, transparent 70%);
+  transform: translateX(-130%); transition: transform .7s ease;
+}
+.jx .ax-b3d:hover, .jx .ax-b3d:focus-visible {
+  --ax-y: -3px; filter: brightness(1.08);
+  box-shadow: 0 8px 0 var(--ax-edge), 0 18px 34px var(--ax-glow), inset 0 1px 0 rgba(255,255,255,.32);
+}
+.jx .ax-b3d:hover::before, .jx .ax-b3d:focus-visible::before { transform: translateX(130%); }
+.jx .ax-b3d:active {
+  --ax-y: 4px; transition-duration: .06s;
+  box-shadow: 0 1px 0 var(--ax-edge), 0 4px 10px var(--ax-glow), inset 0 2px 4px rgba(0,0,0,.25);
+}
+/* Bouton principal : halo qui respire pour attirer l'œil sans gêner */
+.jx .ax-main { animation: ax-breathe 2.8s ease-in-out infinite; }
+.jx .ax-main::before { animation: ax-sweep 4.5s ease-in-out 1.2s infinite; }
+@keyframes ax-breathe {
+  0%, 100% { box-shadow: 0 5px 0 var(--ax-edge), 0 10px 22px var(--ax-glow), 0 0 0 0 rgba(0,212,255,.45), inset 0 1px 0 rgba(255,255,255,.28); }
+  50% { box-shadow: 0 5px 0 var(--ax-edge), 0 10px 22px var(--ax-glow), 0 0 0 10px rgba(0,212,255,0), inset 0 1px 0 rgba(255,255,255,.28); }
+}
+@keyframes ax-sweep { 0%, 70% { transform: translateX(-130%); } 100% { transform: translateX(130%); } }
+.jx .ax-main:hover, .jx .ax-main:active { animation: none; }
+.jx .ex-sticky.ax-b3d { position: fixed; }
+
+/* Apparition au défilement (seulement pour ce qui est sous la ligne de flottaison) */
+.jx.ax-on .ax-rv { opacity: 0; transform: translateY(26px) scale(.98); transition: opacity .6s ease, transform .7s cubic-bezier(.2,.8,.2,1); transition-delay: var(--ax-d, 0s); }
+.jx.ax-on .ax-rv.ax-in { opacity: 1; transform: none; }
+
+/* Cartes en relief : se penchent vers la souris et s'éclairent */
+.jx .ax-tilt {
+  --ax-rx: 0deg; --ax-ry: 0deg; --ax-mx: 50%; --ax-my: 50%;
+  transform: perspective(900px) rotateX(var(--ax-rx)) rotateY(var(--ax-ry));
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  background-image: radial-gradient(400px circle at var(--ax-mx) var(--ax-my), rgba(0,212,255,.10), transparent 45%);
+}
+.jx.ax-on .ax-tilt.ax-rv.ax-in { transform: perspective(900px) rotateX(var(--ax-rx)) rotateY(var(--ax-ry)); }
+.jx .ax-tilt:hover { border-color: #3b82f6; box-shadow: 0 18px 40px -12px rgba(0,102,255,.45); }
+
+/* Questions fréquentes : ouverture animée */
+.jx details[open] > :not(summary) { animation: ax-open .35s ease both; }
+@keyframes ax-open { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.jx details summary { transition: color .2s ease; }
+.jx details summary:hover { color: #7dd3fc; }
+
+/* Liens du pied de page : soulignement qui glisse */
+.jx footer.foot a { background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size .3s ease, color .2s ease; text-decoration: none; }
+.jx footer.foot a:hover, .jx footer.foot a:focus-visible { background-size: 100% 1px; color: #fff; }
+
+/* Pastilles : petit rebond au survol */
+.jx .ex-reas li { transition: transform .2s ease, border-color .2s ease; }
+.jx .ex-reas li:hover { transform: translateY(-3px); border-color: #22c55e; }
+
+@media (hover: none) { .jx .ax-tilt { transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+  .jx::before, .ax-aurora, .ax-emblem *, .jx .ax-shine, .jx main h1, .jx .ax-hero *, .jx .ax-h2::after, .jx .ax-main, .jx .ax-main::before, .jx details[open] > * { animation: none !important; }
+  .jx .ax-shine { -webkit-text-fill-color: currentColor; background: none; }
+  .ax-aurora { display: none; }
+  .jx .ax-b3d, .jx .ax-tilt, .jx .ax-rv { transition: none !important; transform: none !important; }
+  .jx.ax-on .ax-rv { opacity: 1; }
+}
