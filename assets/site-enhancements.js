@@ -168,7 +168,17 @@
           ['Couvreurs', '/trouver-clients-couvreur-vienne/'],
           ['Menuisiers', '/trouver-clients-menuisier-vienne/'],
           ['Électriciens', '/trouver-clients-electricien-vienne/'],
-          ['Garages', '/trouver-clients-garage-vienne/']
+          ['Garages', '/trouver-clients-garage-vienne/'],
+          ['Plombiers', '/trouver-clients-plombier-vienne/'],
+          ['Maçons', '/trouver-clients-macon-vienne/'],
+          ['Peintres', '/trouver-clients-peintre-vienne/'],
+          ['Carreleurs', '/trouver-clients-carreleur-vienne/'],
+          ['Paysagistes', '/trouver-clients-paysagiste-vienne/'],
+          ['Serruriers', '/trouver-clients-serrurier-vienne/'],
+          ['Charpentiers', '/trouver-clients-charpentier-vienne/'],
+          ['Plaquistes et plâtriers', '/trouver-clients-plaquiste-vienne/'],
+          ['Terrassiers', '/trouver-clients-terrassier-vienne/'],
+          ['Ramoneurs', '/trouver-clients-ramoneur-vienne/']
         ]
       },
       {
