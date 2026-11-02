@@ -162,6 +162,16 @@
         ]
       },
       {
+        title: 'ARTISANS DE LA VIENNE',
+        links: [
+          ['Chauffagistes', '/trouver-clients-chauffagiste-vienne/'],
+          ['Couvreurs', '/trouver-clients-couvreur-vienne/'],
+          ['Menuisiers', '/trouver-clients-menuisier-vienne/'],
+          ['Électriciens', '/trouver-clients-electricien-vienne/'],
+          ['Garages', '/trouver-clients-garage-vienne/']
+        ]
+      },
+      {
         title: 'INFORMATIONS',
         links: [
           ['Accueil : diagnostic gratuit', '/'],
