@@ -1,0 +1,26 @@
+/* Pages du menu : entrée « Ce que ça change » + sections ajoutées (03/11/2026) */
+.pm-bref{max-width:640px;margin:1.6rem auto 0;padding:1.3rem 1.4rem;background:rgba(30,41,59,.85);border:1px solid #334155;border-radius:14px;text-align:left}
+.pm-bref-t{margin:0 0 .5rem;color:#93c5fd;font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.05em}
+.pm-bref ul{margin:0;padding:0;list-style:none}
+.pm-bref li{position:relative;padding-left:1.6rem;margin:.45rem 0;color:#e2e8f0}
+.pm-bref li::before{content:"";position:absolute;left:.15rem;top:.45em;width:.7rem;height:.38rem;border-left:2.5px solid #4ade80;border-bottom:2.5px solid #4ade80;transform:rotate(-45deg)}
+.pm-cta{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.1rem}
+.pm-sms{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.1rem;border-radius:10px;background:#16a34a;color:#fff;font-weight:700;text-decoration:none}
+.pm-sms:hover{background:#15803d}
+.pm-alt{display:inline-flex;align-items:center;padding:.75rem 1.1rem;border-radius:10px;border:1px solid #475569;color:#e2e8f0;text-decoration:none}
+.pm-alt:hover{border-color:#60a5fa;color:#fff}
+.pm-rassure{margin:.8rem 0 0;font-size:.88rem;color:#94a3b8}
+.pm-s{max-width:78ch;margin:2rem auto 0;padding:0 0;color:#cbd5e1}
+.pm-s{padding:0 16px;box-sizing:border-box}
+.pm-s h2{margin:0 0 .7rem;color:#f8fafc;font-size:1.5rem}
+.pm-etapes{counter-reset:pm;list-style:none;margin:0;padding:0;display:grid;gap:.7rem}
+.pm-etapes li{counter-increment:pm;position:relative;padding:.9rem 1rem .9rem 3.2rem;background:#1e293b;border:1px solid #334155;border-radius:12px}
+.pm-etapes li::before{content:counter(pm);position:absolute;left:.9rem;top:.85rem;width:1.7rem;height:1.7rem;border-radius:50%;background:#2563eb;color:#fff;font-weight:700;display:grid;place-items:center;font-size:.9rem}
+.pm-note{margin:.9rem 0 0;padding:.8rem 1rem;border-left:3px solid #4ade80;background:rgba(74,222,128,.08);border-radius:0 10px 10px 0}
+.pm-faq details{background:#1e293b;border:1px solid #334155;border-radius:12px;margin:.6rem 0;padding:.2rem 1rem}
+.pm-faq summary{cursor:pointer;padding:.7rem 0;color:#f8fafc;font-weight:600}
+.pm-faq details p{margin:0 0 .8rem}
+.pm-liens{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 1rem;padding:0;list-style:none}
+.pm-liens a{display:inline-block;padding:.5rem .9rem;border:1px solid #334155;border-radius:999px;color:#93c5fd;text-decoration:none}
+.pm-liens a:hover{border-color:#60a5fa;color:#fff}
+@media(max-width:560px){.pm-cta a{width:100%;justify-content:center}}
