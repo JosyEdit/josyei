@@ -154,4 +154,15 @@
       <news:title>Mistral Large 4 recule sur le nouvel indice d'Artificial Analysis</news:title>
     </news:news>
   </url>
+  <url>
+    <loc>https://josyei.com/actualites/anthropic-bourse-avance-ia-chiffres-261117/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>JOSY EI</news:name>
+        <news:language>fr</news:language>
+      </news:publication>
+      <news:publication_date>2026-11-17T08:00:24+01:00</news:publication_date>
+      <news:title>Anthropic en Bourse : combien de mois d'avance face aux rivaux ?</news:title>
+    </news:news>
+  </url>
 </urlset>

@@ -6,7 +6,15 @@
     <atom:link href="https://josyei.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Analyses, guides et sélections d’outils : l’IA et l’automatisation décryptées sans jargon.</description>
     <language>fr</language>
-    <lastBuildDate>Fri, 30 Oct 2026 08:00:13 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2026 08:00:24 +0100</lastBuildDate>
+    <item>
+      <title>Anthropic en Bourse : combien de mois d'avance face aux rivaux ?</title>
+      <link>https://josyei.com/actualites/anthropic-bourse-avance-ia-chiffres-261117/</link>
+      <guid isPermaLink="true">https://josyei.com/actualites/anthropic-bourse-avance-ia-chiffres-261117/</guid>
+      <description>Anthropic fixe son entrée en Bourse avec des engagements massifs. Quels sont les écarts réels mesurés face aux modèles ouverts et concurrents ?</description>
+      <pubDate>Tue, 17 Nov 2026 08:00:24 +0100</pubDate>
+      <enclosure url="https://images.unsplash.com/photo-1778146476147-5f8d4bd03c79?w=1200&amp;q=80&amp;fm=jpg" length="276638" type="image/jpeg"/>
+    </item>
     <item>
       <title>Mistral Large 4 recule sur le nouvel indice d'Artificial Analysis</title>
       <link>https://josyei.com/actualites/mistral-large-4-indice-artificial-analysis-261030/</link>
@@ -78,14 +86,6 @@
       <description>Une méthode en trois étapes pour diagnostiquer, tester et déployer des outils numériques dans une petite entreprise à distance.</description>
       <pubDate>Fri, 23 Oct 2026 17:03:45 +0200</pubDate>
       <enclosure url="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&amp;fit=crop&amp;w=800&amp;q=80" length="55393" type="image/jpeg"/>
-    </item>
-    <item>
-      <title>Les 5 erreurs SEO qui tuent la visibilité de votre activité</title>
-      <link>https://josyei.com/actualites/erreurs-seo-visibilite-tpe/</link>
-      <guid isPermaLink="true">https://josyei.com/actualites/erreurs-seo-visibilite-tpe/</guid>
-      <description>Repérez cinq erreurs SEO fréquentes des petites entreprises et appliquez une méthode simple pour améliorer la qualité de vos pages web.</description>
-      <pubDate>Fri, 23 Oct 2026 17:03:45 +0200</pubDate>
-      <enclosure url="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?auto=format&amp;fit=crop&amp;w=800&amp;q=80" length="55886" type="image/jpeg"/>
     </item>
   </channel>
 </rss>
