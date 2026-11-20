@@ -6,7 +6,15 @@
     <atom:link href="https://josyei.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Analyses, guides et sélections d’outils : l’IA et l’automatisation décryptées sans jargon.</description>
     <language>fr</language>
-    <lastBuildDate>Tue, 17 Nov 2026 08:00:24 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 20 Nov 2026 08:00:27 +0100</lastBuildDate>
+    <item>
+      <title>Quand le style des IA brouille leur surveillance</title>
+      <link>https://josyei.com/actualites/ia-raisonnement-stylise-surveillance-difficile-261120/</link>
+      <guid isPermaLink="true">https://josyei.com/actualites/ia-raisonnement-stylise-surveillance-difficile-261120/</guid>
+      <description>Une prépublication arXiv révèle qu'un modèle d'IA dont on stylise le raisonnement devient moins lisible par les moniteurs automatiques.</description>
+      <pubDate>Fri, 20 Nov 2026 08:00:27 +0100</pubDate>
+      <enclosure url="https://images.unsplash.com/photo-1778146476147-5f8d4bd03c79?w=1200&amp;q=80&amp;fm=jpg" length="276638" type="image/jpeg"/>
+    </item>
     <item>
       <title>Anthropic en Bourse : combien de mois d'avance face aux rivaux ?</title>
       <link>https://josyei.com/actualites/anthropic-bourse-avance-ia-chiffres-261117/</link>
@@ -78,14 +86,6 @@
       <description>Automatisez la préparation des devis et le suivi des relances avec des règles explicites, des contrôles et une validation humaine.</description>
       <pubDate>Fri, 23 Oct 2026 17:03:45 +0200</pubDate>
       <enclosure url="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&amp;fit=crop&amp;w=800&amp;q=80" length="71346" type="image/jpeg"/>
-    </item>
-    <item>
-      <title>La méthode en 3 étapes pour digitaliser son entreprise à distance</title>
-      <link>https://josyei.com/actualites/digitaliser-entreprise-distance-methode-3-etapes/</link>
-      <guid isPermaLink="true">https://josyei.com/actualites/digitaliser-entreprise-distance-methode-3-etapes/</guid>
-      <description>Une méthode en trois étapes pour diagnostiquer, tester et déployer des outils numériques dans une petite entreprise à distance.</description>
-      <pubDate>Fri, 23 Oct 2026 17:03:45 +0200</pubDate>
-      <enclosure url="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&amp;fit=crop&amp;w=800&amp;q=80" length="55393" type="image/jpeg"/>
     </item>
   </channel>
 </rss>
